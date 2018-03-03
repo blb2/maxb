@@ -18,6 +18,7 @@ override CXXFLAGS += -O3 -DNDEBUG
 endif
 
 override CXXFLAGS += -Iexternal/asio/include
+override LDLIBS   += -lpthread
 
 .SUFFIXES:
 .SUFFIXES: .d .cpp .h .o
@@ -38,7 +39,7 @@ $(GCH): src/stdafx.h
 	$(CXX) $(CXXFLAGS) -x c++-header -c -o $@ $^
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LDLIBS)
 
 $(OBJSDIR)/%.o: %.cpp
 	$(MKDIR) $(dir $@)
