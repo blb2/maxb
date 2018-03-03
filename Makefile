@@ -9,7 +9,7 @@ DEPS    = $(addprefix $(OBJSDIR)/,$(SRCS:.cpp=.d))
 PCH     = $(OBJSDIR)/src/stdafx.h
 GCH     = $(PCH).gch
 
-override CXXFLAGS += -std=c++11
+override CXXFLAGS += -std=c++14
 
 ifeq ($(DEBUG),1)
 override CXXFLAGS += -g
