@@ -21,5 +21,19 @@
 #include "targetver.h"
 #endif
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
+#include <cassert>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+
+#include <algorithm>
+#include <chrono>
+#include <future>
+#include <random>
+#include <string>
+#include <memory>
+#include <thread>
+#include <vector>
+
+#define ASIO_STANDALONE
+#include "asio.hpp"
