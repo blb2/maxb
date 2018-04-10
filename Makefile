@@ -1,8 +1,12 @@
+SRCS = \
+	   src/maxb.cpp \
+	   src/platform_linux.cpp \
+	   src/stdafx.cpp
+
 CXX    ?= g++
 RM      = @rm
 MKDIR   = @mkdir -p
 NAME    = maxb
-SRCS    = src/maxb.cpp src/stdafx.cpp
 OBJSDIR = obj
 OBJS    = $(addprefix $(OBJSDIR)/,$(SRCS:.cpp=.o))
 DEPS    = $(addprefix $(OBJSDIR)/,$(SRCS:.cpp=.d))

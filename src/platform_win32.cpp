@@ -17,30 +17,9 @@
  * along with maxb.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef _WIN32
-#include "targetver.h"
-#else
-#define _GNU_SOURCE
-#endif
+#include "stdafx.h"
 
-#include <cassert>
-#include <cstdint>
-#include <cstdio>
-#include <cstdlib>
-
-#include <algorithm>
-#include <chrono>
-#include <future>
-#include <random>
-#include <string>
-#include <memory>
-#include <thread>
-#include <vector>
-
-#ifndef _WIN32
-#include <pthread.h>
-#include <sched.h>
-#endif
-
-#define ASIO_STANDALONE
-#include "asio.hpp"
+void set_thread_affinity(unsigned int cpu_num)
+{
+	SetThreadAffinityMask(GetCurrentThread(), (DWORD_PTR)1 << cpu_num);
+}

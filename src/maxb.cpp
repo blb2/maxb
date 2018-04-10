@@ -18,6 +18,22 @@
  */
 
 #include "stdafx.h"
+#include "platform.h"
+
+struct sender_data {
+	std::chrono::high_resolution_clock::time_point reftime;
+	std::chrono::seconds duration;
+
+	asio::ip::udp::socket*   p_socket;
+	asio::ip::udp::endpoint* p_endpoint;
+
+	const uint8_t* p_buf;
+	int buf_size;
+	int pkt_size;
+
+	std::thread       thread;
+	std::promise<int> nsends;
+};
 
 static bool parse_addr(const char* str, asio::ip::udp::endpoint& endpoint)
 {
@@ -61,14 +77,23 @@ static void send(asio::ip::udp::socket& sock, const uint8_t* p_buf, int buf_size
 	}
 }
 
+static void send(sender_data* p_sender)
+{
+	int nsends;
+
+	for (nsends = 0; std::chrono::high_resolution_clock::now() - p_sender->reftime < p_sender->duration; nsends++)
+		send(*p_sender->p_socket, p_sender->p_buf, p_sender->buf_size, p_sender->pkt_size, p_sender->p_endpoint);
+
+	p_sender->nsends.set_value(nsends);
+}
+
 int main(int argc, char* argv[])
 {
 	const int buf_size  = 1024 * 1024; // 1 MiB
 	const int pkt_size  = 8000;
-	const int max_sends = 100;
 
-	if (argc != 2 && argc != 3) {
-		fprintf(stderr, "Usage: %s ip [time]\n", argv[0]);
+	if (argc != 3) {
+		fprintf(stderr, "Usage: %s ip time\n", argv[0]);
 		return EXIT_FAILURE;
 	} 
 
@@ -78,8 +103,8 @@ int main(int argc, char* argv[])
 		return EXIT_FAILURE;
 	}
 
-	int time_sec = 0;
-	if (argc == 3 && !parse_int(argv[2], time_sec)) {
+	int time_sec;
+	if (!parse_int(argv[2], time_sec) || time_sec < 1) {
 		fprintf(stderr, "invalid time: %s\n", argv[2]);
 		return EXIT_FAILURE;
 	}
@@ -91,9 +116,9 @@ int main(int argc, char* argv[])
 	asio::io_service io;
 	asio::io_service::work* p_work = new asio::io_service::work(io);
 
-	std::vector<std::thread> threads;
+	std::vector<std::thread> io_threads;
 	for (unsigned int i = 0, n = std::thread::hardware_concurrency(); i != n; i++)
-		threads.emplace_back([&io]() { io.run(); });
+		io_threads.emplace_back([i, &io]() { set_thread_affinity(i); io.run(); });
 
 	std::random_device random_device;
 	std::default_random_engine random_engine(random_device());
@@ -112,29 +137,35 @@ int main(int argc, char* argv[])
 		p_endpoint = &endpoint;
 	}
 
-	std::promise<bool> completion_promise;
-	std::future<bool>  completion = completion_promise.get_future();
+	std::vector<sender_data> senders(std::thread::hardware_concurrency());
+	for (auto& sender : senders) {
+		sender.duration   = std::chrono::seconds(time_sec);
+		sender.p_socket   = &sock;
+		sender.p_endpoint = p_endpoint;
+		sender.p_buf      = p_buf.get();
+		sender.buf_size   = buf_size;
+		sender.pkt_size   = pkt_size;
+	}
 
 	auto beg_time = std::chrono::high_resolution_clock::now();
 
-	int nsends;
-	if (time_sec == 0) {
-		for (nsends = 1; nsends != max_sends; nsends++)
-			send(sock, p_buf.get(), buf_size, pkt_size, p_endpoint);
-	} else {
-		for (nsends = 1; std::chrono::high_resolution_clock::now() - beg_time < std::chrono::seconds(time_sec); nsends++)
-			send(sock, p_buf.get(), buf_size, pkt_size, p_endpoint);
+	for (size_t i = 0, n = senders.size(); i != n; i++) {
+		sender_data* p_sender = &senders[i];
+		p_sender->reftime = beg_time;
+		p_sender->thread  = std::thread([i, p_sender]() { set_thread_affinity((int)i); send(p_sender); });
 	}
 
-	send(sock, p_buf.get(), buf_size, pkt_size, p_endpoint);
-	completion_promise.set_value(true);
-	completion.wait();
+	int nsends = 0;
+	for (auto& sender : senders) {
+		nsends += sender.nsends.get_future().get();
+		sender.thread.join();
+	}
 
 	auto   end_time = std::chrono::high_resolution_clock::now();
 	double elapsed  = std::chrono::duration_cast<std::chrono::duration<double>>(end_time - beg_time).count();
 
 	delete p_work;
-	for (auto& thread : threads)
+	for (auto& thread : io_threads)
 		thread.join();
 
 	printf("%f Mbps over %f seconds\n", ((8.0 * nsends * buf_size) / elapsed) / (1000.0 * 1000.0), elapsed);

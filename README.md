@@ -11,15 +11,10 @@ Makefile is provided for building on GNU-compatible systems.
 
 Usage
 -----
-At the moment, this application supports testing for UDP bandwidth.  There are
-only two modes for running.
+At the moment, this application supports testing for UDP bandwidth.
 
-1. Benchmark how long it takes to send 100 MB.
-
-		maxb 10.28.1.138
-
-2. Benchmark how much data can be transferred within a specific time period.
-The time period is specified in seconds.  In this example, 10 seconds is used.
+1. Benchmark how much data can be transferred within a specific time period.
+The time period is specified in seconds.  In this example, 10 seconds is used:
 
 		maxb 10.28.1.130 10
 
