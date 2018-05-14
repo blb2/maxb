@@ -6,7 +6,7 @@ The current project page is located here: <https://github.com/bbrice/maxb>
 
 Building
 --------
-A Visual Studio 2013.5 project is provided for building on Windows and a
+A Visual Studio 2017 project is provided for building on Windows and a
 Makefile is provided for building on GNU-compatible systems.
 
 Usage
