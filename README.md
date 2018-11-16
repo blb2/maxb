@@ -6,8 +6,9 @@ The current project page is located here: <https://github.com/bbrice/maxb>
 
 Building
 --------
-A Visual Studio 2017 project is provided for building on Windows and a
-Makefile is provided for building on GNU-compatible systems.
+A Visual Studio 2017 project is provided for building on Windows, a
+Makefile is provided for building on GNU-compatible systems, and an Xcode
+project is provided for Apple.
 
 Usage
 -----
