@@ -6,14 +6,14 @@
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="../../index.html" title="Asio">
 <link rel="up" href="../reference.html" title="Reference">
-<link rel="prev" href="basic_datagram_socket/_basic_datagram_socket.html" title="basic_datagram_socket::~basic_datagram_socket">
+<link rel="prev" href="basic_datagram_socket__rebind_executor/other.html" title="basic_datagram_socket::rebind_executor::other">
 <link rel="next" href="basic_deadline_timer/async_wait.html" title="basic_deadline_timer::async_wait">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="asio C++ library" width="250" height="60" src="../../asio.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="basic_datagram_socket/_basic_datagram_socket.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_deadline_timer/async_wait.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="basic_datagram_socket__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_deadline_timer/async_wait.html"><img src="../../next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -24,7 +24,8 @@
       </p>
 <pre class="programlisting">template&lt;
     typename Time,
-    typename <a class="link" href="TimeTraits.html" title="Time traits requirements">TimeTraits</a> = asio::time_traits&lt;Time&gt;&gt;
+    typename <a class="link" href="TimeTraits.html" title="Time traits requirements">TimeTraits</a> = asio::time_traits&lt;Time&gt;,
+    typename <a class="link" href="Executor1.html" title="Executor requirements">Executor</a> = executor&gt;
 class basic_deadline_timer
 </pre>
 <h5>
@@ -49,6 +50,18 @@ class basic_deadline_timer
               </th>
 </tr></thead>
 <tbody>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_deadline_timer__rebind_executor.html" title="basic_deadline_timer::rebind_executor"><span class="bold"><strong>rebind_executor</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Rebinds the timer type to another executor.
+                </p>
+              </td>
+</tr>
 <tr>
 <td>
                 <p>
@@ -213,32 +226,6 @@ class basic_deadline_timer
 <tr>
 <td>
                 <p>
-                  <a class="link" href="basic_deadline_timer/get_io_context.html" title="basic_deadline_timer::get_io_context"><span class="bold"><strong>get_io_context</strong></span></a>
-                </p>
-              </td>
-<td>
-                <p>
-                  (Deprecated: Use get_executor().) Get the io_context associated
-                  with the object.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <a class="link" href="basic_deadline_timer/get_io_service.html" title="basic_deadline_timer::get_io_service"><span class="bold"><strong>get_io_service</strong></span></a>
-                </p>
-              </td>
-<td>
-                <p>
-                  (Deprecated: Use get_executor().) Get the io_context associated
-                  with the object.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
                   <a class="link" href="basic_deadline_timer/operator_eq_.html" title="basic_deadline_timer::operator="><span class="bold"><strong>operator=</strong></span></a>
                 </p>
               </td>
@@ -307,7 +294,7 @@ class basic_deadline_timer
         Performing a blocking wait:
       </p>
 <pre class="programlisting">// Construct a timer without setting an expiry time.
-asio::deadline_timer timer(io_context);
+asio::deadline_timer timer(my_context);
 
 // Set an expiry time relative to now.
 timer.expires_from_now(boost::posix_time::seconds(5));
@@ -329,7 +316,7 @@ timer.wait();
 ...
 
 // Construct a timer with an absolute expiry time.
-asio::deadline_timer timer(io_context,
+asio::deadline_timer timer(my_context,
     boost::posix_time::time_from_string("2005-12-07 23:59:59.000"));
 
 // Start an asynchronous wait.
@@ -393,7 +380,8 @@ void on_timeout(const asio::error_code&amp; e)
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2018 Christopher M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+      Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -401,7 +389,7 @@ void on_timeout(const asio::error_code&amp; e)
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="basic_datagram_socket/_basic_datagram_socket.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_deadline_timer/async_wait.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="basic_datagram_socket__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_deadline_timer/async_wait.html"><img src="../../next.png" alt="Next"></a>
 </div>
 </body>
 </html>

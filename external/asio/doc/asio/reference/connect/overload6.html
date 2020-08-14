@@ -25,9 +25,10 @@
         </p>
 <pre class="programlisting">template&lt;
     typename <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol</a>,
+    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>,
     typename Iterator&gt;
 Iterator connect(
-    basic_socket&lt; Protocol &gt; &amp; s,
+    basic_socket&lt; Protocol, Executor &gt; &amp; s,
     Iterator begin,
     Iterator end,
     asio::error_code &amp; ec);
@@ -79,10 +80,10 @@ Iterator connect(
 <a name="asio.reference.connect.overload6.h2"></a>
           <span><a name="asio.reference.connect.overload6.example"></a></span><a class="link" href="overload6.html#asio.reference.connect.overload6.example">Example</a>
         </h6>
-<pre class="programlisting">tcp::resolver r(io_context);
+<pre class="programlisting">tcp::resolver r(my_context);
 tcp::resolver::query q("host", "service");
 tcp::resolver::results_type e = r.resolve(q);
-tcp::socket s(io_context);
+tcp::socket s(my_context);
 asio::error_code ec;
 asio::connect(s, e.begin(), e.end(), ec);
 if (ec)
@@ -93,7 +94,8 @@ if (ec)
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2018 Christopher M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+      Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

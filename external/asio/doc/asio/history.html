@@ -21,6 +21,608 @@
 </h2></div></div></div>
 <h4>
 <a name="asio.history.h0"></a>
+      <span><a name="asio.history.asio_1_16_1"></a></span><a class="link" href="history.html#asio.history.asio_1_16_1">Asio
+      1.16.1</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Fixed compatibility with C++20 concept syntax.
+        </li>
+<li class="listitem">
+          Marked the POSIX descriptor classes' move constructors as <code class="computeroutput">noexcept</code>.
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">ssl::host_name_verification</code> class, which is a drop-in
+          replacement for <code class="computeroutput">ssl::rfc2818_verification</code>. The <code class="computeroutput">ssl::rfc2818_verification</code>
+          class has been marked as deprecated. As a consequence of this change, SSL
+          support now depends on functions that were introduced in OpenSSL 1.0.2.
+        </li>
+<li class="listitem">
+          Added an <code class="computeroutput">ssl::context</code> constructor to take ownership of a native
+          handle.
+        </li>
+<li class="listitem">
+          Changed C++ language version detection with <code class="literal">gcc</code> to use
+          <code class="computeroutput">__cplusplus</code> macro.
+        </li>
+<li class="listitem">
+          Fixed a work counting issue in the asynchronous resolve operation for endpoints.
+        </li>
+<li class="listitem">
+          Fixed the <code class="computeroutput">strand&lt;&gt;</code> converting constructors and assignment
+          operators.
+        </li>
+<li class="listitem">
+          Ensured that resolvers are restarted correctly after a fork.
+        </li>
+<li class="listitem">
+          Fixed compatibility with the current NetBSD release.
+        </li>
+<li class="listitem">
+          Removed spurious handler requirement checks in some <code class="computeroutput">async_read</code>
+          overloads.
+        </li>
+<li class="listitem">
+          Changed the <code class="computeroutput">ssl::context</code> class to propagate non-EOF errors
+          from the <code class="computeroutput">add_certificate_authority</code> function.
+        </li>
+<li class="listitem">
+          Fixed a Windows-specific <code class="computeroutput">thread_pool</code> destructor hang that
+          occurred when the pool had an associated I/O object.
+        </li>
+<li class="listitem">
+          Changed the <code class="literal">select</code> reactor to recreate the "self
+          pipe trick" sockets on error. This addresses an issue on some versions
+          of Windows, where these sockets are discconected after a system sleep.
+        </li>
+<li class="listitem">
+          Fixed a compile error in the buffered streams due to the lack of reference
+          collapsing in C++98.
+        </li>
+<li class="listitem">
+          Changed the <code class="computeroutput">priority_scheduler</code> example to demonstrate calls
+          to <code class="computeroutput">shutdown()</code> and <code class="computeroutput">destroy()</code>.
+        </li>
+<li class="listitem">
+          Removed some unnecessary null pointer checks.
+        </li>
+<li class="listitem">
+          Changed Windows platform detection to recognise TV titles as Windows apps.
+        </li>
+<li class="listitem">
+          Added some emscripten compatibility patches.
+        </li>
+<li class="listitem">
+          Fixed a compile error in the <code class="computeroutput">use_awaitable_t::as_default_on</code>
+          function.
+        </li>
+<li class="listitem">
+          Changed all uses of the boost.bind placeholders to use the <code class="computeroutput">boost::placeholders</code>
+          namespace.
+        </li>
+<li class="listitem">
+          Fixed a potential compile error in the <code class="computeroutput">async_compose</code> implementation
+          due to incorrect overload selection.
+        </li>
+<li class="listitem">
+          Suppressed some non-virtual destructor warnings.
+        </li>
+<li class="listitem">
+          Various documentation fixes and improvements.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h1"></a>
+      <span><a name="asio.history.asio_1_16_0"></a></span><a class="link" href="history.html#asio.history.asio_1_16_0">Asio
+      1.16.0</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Changed the <code class="computeroutput">async_initiate</code> helper function to automatically
+          deduce its return type. This is enabled for C++11 or later.
+        </li>
+<li class="listitem">
+          Changed all asynchronous operations to use automatically deduced return
+          types. This allows completion token implementations to incorporate the
+          asynchronous operation initiation into the initiating function's return
+          type, without type erasure. Note that C++14 or later is required to support
+          completion tokens that use per-operation return type deduction. For C++11
+          or earlier, a completion token's async_result specialisation must still
+          provide the nested typedef <code class="computeroutput">return_type</code>.
+        </li>
+<li class="listitem">
+          Introduced three new concepts to support <code class="computeroutput">async_initiate</code>.
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                <code class="computeroutput">completion_signature&lt;T&gt;</code>: Checks if <code class="computeroutput">T</code>
+                is a signature of the form <code class="computeroutput">R(Args...)</code>.
+              </li>
+<li class="listitem">
+                <code class="computeroutput">completion_handler_for&lt;T, Signature&gt;</code>: Checks if
+                <code class="computeroutput">T</code> is usable as a completion handler with the specified
+                signature.
+              </li>
+<li class="listitem">
+                <code class="computeroutput">completion_token_for&lt;T, Signature&gt;</code>: Checks if
+                <code class="computeroutput">T</code> is a completion token that can be used with async_initiate
+                and the specified signature.
+              </li>
+<li class="listitem">
+                For backward compatibility with pre-concepts C++, the macros <code class="computeroutput">(BOOST_)ASIO_COMPLETION_SIGNATURE</code>,
+                <code class="computeroutput">(BOOST_)ASIO_COMPLETION_HANDLER_FOR</code>, and <code class="computeroutput">(BOOST_)ASIO_COMPLETION_TOKEN_FOR</code>
+                are provided. These macros expand to <code class="computeroutput">typename</code> when concepts
+                are unsupported.
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Added the nested template type <code class="computeroutput">rebind_executor</code> to all I/O
+          object types, as a way to generically rebind them to use alternative I/O
+          executors. For example:
+<pre class="programlisting">using my_socket_type = tcp::socket::rebind_executor&lt;my_executor_type&gt;::other;
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Changed the asynchronous operations' initiation function objects to report
+          their associated I/O executor via the nested type <code class="computeroutput">executor_type</code>
+          and member function <code class="computeroutput">get_executor()</code>. Note that the presence
+          of <code class="computeroutput">executor_type</code> and <code class="computeroutput">get_executor()</code> should be
+          treated as optional, and consequently it may be preferable to access them
+          via the <code class="computeroutput">associated_executor</code> trait and the <code class="computeroutput">get_associated_executor()</code>
+          helper function.
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">default_completion_token</code> trait, so that every I/O
+          executor type now has an associated default completion token type. This
+          trait may be used in asynchronous operation declarations as follows:
+<pre class="programlisting">template &lt;
+    typename IoObject,
+    typename CompletionToken =
+      typename default_completion_token&lt;
+        typename IoObject::executor_type
+      &gt;::type
+  &gt;
+auto async_xyz(
+    IoObject&amp; io_object,
+    CompletionToken&amp;&amp; token =
+      typename default_completion_token&lt;
+        typename IoObject::executor_type
+      &gt;::type{}
+  );
+</pre>
+          <br> If not specialised, this trait type is <code class="computeroutput">void</code>, meaning
+          no default completion token type is available for the given I/O executor.
+        </li>
+<li class="listitem">
+          Specialised the <code class="computeroutput">default_completion_token</code> trait for the <code class="computeroutput">use_awaitable</code>
+          completion token, so that it may be used as shown in the following example:
+<pre class="programlisting">auto socket = use_awaitable.as_default_on(tcp::socket(my_context));
+// ...
+co_await socket.async_connect(my_endpoint); // Defaults to use_awaitable.
+</pre>
+          <br> In this example, the type of the <code class="computeroutput">socket</code> object is transformed
+          from <code class="computeroutput">tcp::socket</code> to have an I/O executor with the default
+          completion token set to <code class="computeroutput">use_awaitable</code>. Alternatively, the
+          socket type may be computed directly:
+<pre class="programlisting">using tcp_socket = use_awaitable_t&lt;&gt;::as_default_on_t&lt;tcp::socket&gt;;
+tcp_socket socket(my_context);
+// ...
+co_await socket.async_connect(my_endpoint); // Defaults to use_awaitable.
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Added missing <code class="computeroutput">async_initiate</code> to the Windows-specific I/O objects'
+          asynchronous operations.
+        </li>
+<li class="listitem">
+          Ensured that the executor type is propagated to newly accepted sockets.
+          When synchronously or asynchronously accepting a new connection, but without
+          specifying an executor or execution context, the accept operation will
+          now correctly propagate the executor type from the acceptor to the socket.
+          For example, if your acceptor type is:
+<pre class="programlisting">basic_socket_acceptor&lt;ip::tcp, my_executor_type&gt;
+</pre>
+          <br> then your accepted socket type will be:
+<pre class="programlisting">basic_stream_socket&lt;ip::tcp, my_executor_type&gt;
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Changed to require that <code class="computeroutput">Protocol</code> copy and move operations
+          never throw.
+        </li>
+<li class="listitem">
+          Changed to require that <code class="computeroutput">Endpoint</code> default constructor and move
+          operations never throw.
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">noexcept</code> qualifier to protocol accessors.
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">noexcept</code> qualifier to socket move constructors.
+        </li>
+<li class="listitem">
+          Fixed issues associated with opening serial ports on Windows:
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                Use the correct constant to initialise the RTS control flag.
+              </li>
+<li class="listitem">
+                Specify a default baud rate (9600).
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Fixed a lost "outstanding work count" that can occur when an
+          asynchronous accept operation is automatically restarted.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h2"></a>
+      <span><a name="asio.history.asio_1_14_1"></a></span><a class="link" href="history.html#asio.history.asio_1_14_1">Asio
+      1.14.1</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Improved performance slightly by eliminating a redundant move construction
+          when completed handlers are dispatched.
+        </li>
+<li class="listitem">
+          Eliminated a compiler warning by annotating a <code class="computeroutput">case</code> fall-through
+          in the free function <code class="computeroutput">connect()</code> implementation.
+        </li>
+<li class="listitem">
+          Fixed the <code class="computeroutput">is_*_buffer_sequence</code> detection traits for user-defined
+          sequence types.
+        </li>
+<li class="listitem">
+          Fixed some Windows-specific warnings about an incompatible pointer cast
+          when obtaining the <code class="computeroutput">CancelIoEx</code> entry point.
+        </li>
+<li class="listitem">
+          Changed to automatically set the defaults when opening a serial port on
+          Windows.
+        </li>
+<li class="listitem">
+          Changed the serial port <code class="computeroutput">get_option()</code> member function to be
+          const.
+        </li>
+<li class="listitem">
+          Fixed a name hiding issue with the WinRT stream-oriented socket backend's
+          <code class="computeroutput">shutdown</code> function.
+        </li>
+<li class="listitem">
+          Applied a minor fix to the documentation for <code class="computeroutput">is_dynamic_buffer</code>.
+        </li>
+<li class="listitem">
+          Added some support for Haiku OS.
+        </li>
+<li class="listitem">
+          Added wolfSSL compatability.
+        </li>
+<li class="listitem">
+          Changed to require C++17 or later for coroutines TS support with clang.
+        </li>
+<li class="listitem">
+          Fixed a doxygen generation problem in the tutorial.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h3"></a>
+      <span><a name="asio.history.asio_1_14_0"></a></span><a class="link" href="history.html#asio.history.asio_1_14_0">Asio
+      1.14.0</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Improved I/O object performance by adding runtime detection of native I/O
+          executors when using the polymorphic executor wrapper.
+        </li>
+<li class="listitem">
+          Changed I/O object move constructors so that the executor is copied, not
+          moved. This ensures that the moved-from I/O object is left in the same
+          state as if constructed with a valid executor but without a resource.
+        </li>
+<li class="listitem">
+          On Windows, fixed an issue where global object destructors were not being
+          run.
+        </li>
+<li class="listitem">
+          Fixed move-based <code class="computeroutput">async_accept</code> between sockets with different
+          executor types.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h4"></a>
+      <span><a name="asio.history.asio_1_13_0"></a></span><a class="link" href="history.html#asio.history.asio_1_13_0">Asio
+      1.13.0</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Added custom I/O executor support to I/O objects.
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                All I/O objects now have an additional <code class="computeroutput">Executor</code> template
+                parameter. This template parameter defaults to the <code class="computeroutput">asio::executor</code>
+                type (the polymorphic executor wrapper) but can be used to specify
+                a user-defined executor type.
+              </li>
+<li class="listitem">
+                I/O objects' constructors and functions that previously took an
+                <code class="computeroutput">asio::io_context&amp;</code> now accept either an <code class="computeroutput">Executor</code>
+                or a reference to a concrete <code class="computeroutput">ExecutionContext</code> (such
+                as <code class="computeroutput">asio::io_context</code> or <code class="computeroutput">asio::thread_pool</code>).
+              </li>
+<li class="listitem">
+                Note: One potential source of breakage in existing user code is when
+                reusing an I/O object's <code class="computeroutput">io_context</code> for constructing
+                another I/O object, as in:
+<pre class="programlisting">asio::steady_timer my_timer(my_socket.get_executor().context());
+</pre>
+                <br> To fix this, either construct the second I/O object using
+                the first I/O object's executor:<br>
+<pre class="programlisting">asio::steady_timer my_timer(my_socket.get_executor());
+</pre>
+                <br> or otherwise explicitly pass the <code class="computeroutput">io_context</code>:<br>
+<pre class="programlisting">asio::steady_timer my_timer(my_io_context);
+</pre>
+                <br>
+              </li>
+<li class="listitem">
+                The previously deprecated <code class="computeroutput">get_io_context</code> and <code class="computeroutput">get_io_service</code>
+                member functions have now been removed.
+              </li>
+<li class="listitem">
+                The previously deprecated service template parameters, and the corresponding
+                classes, have now been removed.
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Added a new <code class="computeroutput">async_result</code> form with an <code class="computeroutput">initiate</code>
+          static member function.
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                The <code class="computeroutput">async_result</code> template now supports a new form:
+<pre class="programlisting">template &lt;typename CompletionToken, typename Signature&gt;
+struct async_result
+{
+  typedef /* ... */ return_type;
+
+  template &lt;typename Initiation,
+      typename RawCompletionToken,
+      typename... Args&gt;
+  static return_type initiate(
+      Initiation&amp;&amp; initiation,
+      RawCompletionToken&amp;&amp; token,
+      Args&amp;&amp;... args);
+};
+</pre>
+                <br>
+              </li>
+<li class="listitem">
+                The <code class="computeroutput">initiate</code> member function must: (a) transform the
+                token into a completion handler object <code class="computeroutput">handler</code>; (b)
+                cause the invocation of the function object <code class="computeroutput">initiation</code>
+                as if by calling <code class="computeroutput">std::forward&lt;Initiation&gt;(initiation)(std::move(handler),
+                std::forward&lt;Args&gt;(args)...)</code>. Note that the invocation
+                of <code class="computeroutput">initiation</code> may be deferred (e.g. lazily evaluated),
+                in which case <code class="computeroutput">initiation</code> and <code class="computeroutput">args</code> must
+                be decay-copied and moved as required.
+              </li>
+<li class="listitem">
+                A helper function template <code class="computeroutput">async_initiate</code> has also been
+                added as a wrapper for the invocation of <code class="computeroutput">async_result&lt;&gt;::initiate</code>.
+                For backward compatibility, this function supports both the old and
+                new <code class="computeroutput">async_result</code> forms.
+              </li>
+<li class="listitem">
+                The composed operations examples have been updated to use <code class="computeroutput">async_initiate</code>.
+              </li>
+<li class="listitem">
+                The previously deprecated <code class="computeroutput">handler_type</code> trait and single-argument
+                form of <code class="computeroutput">async_result</code> have now been removed.
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Updated the Coroutines TS support and promoted it to the <code class="computeroutput">asio</code>
+          namespace.
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                The <code class="computeroutput">awaitable&lt;&gt;</code>, <code class="computeroutput">co_spawn</code>, <code class="computeroutput">this_coro</code>,
+                <code class="computeroutput">detached</code>, and <code class="computeroutput">redirect_error</code> facilities
+                have been moved from the <code class="computeroutput">asio::experimental</code> namespace
+                to namespace <code class="computeroutput">asio</code>. As part of this change, the <code class="computeroutput">this_coro::token()</code>
+                awaitable has been superseded by the <code class="computeroutput">asio::use_awaitable</code>
+                completion token.
+              </li>
+<li class="listitem">
+                Please note that the <code class="computeroutput">use_awaitable</code> and <code class="computeroutput">redirect_error</code>
+                completion tokens work only with asynchronous operations that use
+                the new form of <code class="computeroutput">async_result</code> with member function <code class="computeroutput">initiate</code>.
+                Furthermore, when using <code class="computeroutput">use_awaitable</code>, please be aware
+                that the asynchronous operation is not initiated until <code class="computeroutput">co_await</code>
+                is applied to the <code class="computeroutput">awaitable&lt;&gt;</code>.
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Added a new <code class="computeroutput">DynamicBuffer_v2</code> concept which is CopyConstructible.
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                This change adds a new set of type requirements for dynamic buffers,
+                <code class="computeroutput">DynamicBuffer_v2</code>, which supports copy construction.
+                These new type requirements enable dynamic buffers to be used as
+                arguments to user-defined composed operations, where the same dynamic
+                buffer object is used repeatedly for multiple underlying operations.
+                For example:<br>
+<pre class="programlisting">template &lt;typename DynamicBuffer&gt;
+void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
+{
+  n = asio::read_until(sock, buf, '\n');
+  asio::write(sock, buf, asio::transfer_exactly(n));
+}
+</pre>
+                <br>
+              </li>
+<li class="listitem">
+                The original <code class="computeroutput">DynamicBuffer</code> type requirements have been
+                renamed to <code class="computeroutput">DynamicBuffer_v1</code>. These requirements continue
+                to be compatible with the Networking TS.
+              </li>
+<li class="listitem">
+                New type traits <code class="computeroutput">is_dynamic_buffer_v1</code> and <code class="computeroutput">is_dynamic_buffer_v2</code>
+                have been added to test for conformance to <code class="computeroutput">DynamicBuffer_v1</code>
+                and <code class="computeroutput">DynamicBuffer_v2</code> respectively. The existing <code class="computeroutput">is_dynamic_buffer</code>
+                trait has been retained and delegates to <code class="computeroutput">is_dynamic_buffer_v1</code>
+                (unless <code class="computeroutput">ASIO_NO_DYNAMIC_BUFFER_V1</code> is explicitly defined,
+                in which case it delegates to <code class="computeroutput">is_dynamic_buffer_v2</code>).
+              </li>
+<li class="listitem">
+                For convenience, the <code class="computeroutput">dynamic_string_buffer</code> and <code class="computeroutput">dynamic_vector_buffer</code>
+                classes conform to both <code class="computeroutput">DynamicBuffer_v1</code> and <code class="computeroutput">DynamicBuffer_v2</code>
+                requirements.
+              </li>
+<li class="listitem">
+                When <code class="computeroutput">ASIO_NO_DYNAMIC_BUFFER_V1</code> is defined, all support
+                for <code class="computeroutput">DynamicBuffer_v1</code> types and functions is #ifdef-ed
+                out. Support for using <code class="computeroutput">basic_streambuf</code> with the <code class="computeroutput">read</code>,
+                <code class="computeroutput">async_read</code>, <code class="computeroutput">read_until</code>, <code class="computeroutput">async_read_until</code>,
+                <code class="computeroutput">write</code>, and <code class="computeroutput">async_write</code> functions is also
+                disabled as a consequence.
+              </li>
+<li class="listitem">
+                Note: This change should have no impact on existing source code that
+                simply uses dynamic buffers in conjunction with Asio's composed operations.
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Added a new <code class="computeroutput">async_compose</code> function that simplifies the implementation
+          of user-defined asynchronous operations.
+        </li>
+<li class="listitem">
+          Added a <code class="computeroutput">make_strand</code> function, which creates a <code class="computeroutput">strand</code>
+          with a deduced <code class="computeroutput">Executor</code> template argument.
+        </li>
+<li class="listitem">
+          Relaxed the completion condition type requirements to only require move-constructibility
+          rather than copy-constructibility.
+        </li>
+<li class="listitem">
+          Added a constructor for <code class="computeroutput">local::basic_endpoint</code> that takes a
+          <code class="computeroutput">string_view</code>.
+        </li>
+<li class="listitem">
+          Added the noexcept qualifier to various member functions of the <code class="computeroutput">ip::address</code>,
+          <code class="computeroutput">ip::address_v4</code>, <code class="computeroutput">ip::address_v6</code>, <code class="computeroutput">ip::basic_endpoint</code>,
+          and <code class="computeroutput">executor_work_guard</code> classes.
+        </li>
+<li class="listitem">
+          Added the noexcept qualifier to the <code class="computeroutput">buffer_sequence_begin</code>
+          and <code class="computeroutput">buffer_sequence_end</code> functions.
+        </li>
+<li class="listitem">
+          Added a new <code class="computeroutput">ASIO_DISABLE_VISIBILITY</code> configuration <code class="computeroutput">#define</code>
+          that allows visibility pragmas to be disabled. (Note: If symbols are hidden,
+          extra care must be taken to ensure that Asio types are not passed across
+          shared library API boundaries.)
+        </li>
+<li class="listitem">
+          Changed compile-time feature detection to define <code class="computeroutput">ASIO_STANDALONE</code>
+          automatically if C++11 or later is detected.
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                Users should define <code class="computeroutput">ASIO_ENABLE_BOOST</code> to explicitly
+                disable standalone mode when compiling with C++11 or later.
+              </li>
+<li class="listitem">
+                The <code class="computeroutput">configure</code> script now defaults to a standalone build
+                unless Boost is specified or detected.
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Enabled recycling of the memory used to type-erase a function object with
+          the polymorphic executor.
+        </li>
+<li class="listitem">
+          Changed receive operations to return the correct number of bytes transferred
+          when truncation (<code class="computeroutput">error::message_size</code>) occurs on a datagram-oriented
+          socket.
+        </li>
+<li class="listitem">
+          Fixed multicast behaviour on QNX by automatically applying <code class="computeroutput">SO_REUSEPORT</code>
+          when the <code class="computeroutput">reuse_address</code> option is set.
+        </li>
+<li class="listitem">
+          Added inclusion of <code class="computeroutput">unistd.h</code> when targeting Haiku OS, to fix
+          feature detection.
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">network_v[46].hpp</code> headers to the top-level convenience
+          header.
+        </li>
+<li class="listitem">
+          Fixed calculation of absolute timeout when the backend uses <code class="computeroutput">pthread_cond_timedwait</code>.
+        </li>
+<li class="listitem">
+          Changed the range-based asynchronous connect operation to deduce the <code class="computeroutput">EndpointSequence</code>
+          iterator type rather than assume the presence of a <code class="computeroutput">const_iterator</code>
+          typedef.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">buffer_sequence_begin</code> and <code class="computeroutput">buffer_sequence_end</code>
+          to prevent implicit conversion. This change addresses an issue where a
+          call to <code class="computeroutput">buffer_sequence_begin</code> or <code class="computeroutput">buffer_sequence_end</code>
+          could trigger an implicit conversion to <code class="computeroutput">const_buffer</code> or <code class="computeroutput">mutable_buffer</code>.
+          Whenever this implicit conversion occurred, the return value of <code class="computeroutput">buffer_sequence_begin</code>
+          or <code class="computeroutput">buffer_sequence_end</code> would point to a temporary object.
+        </li>
+<li class="listitem">
+          Ensured SSL handshake errors are propagated to the peer before the local
+          operation completes.
+        </li>
+<li class="listitem">
+          Suppressed the <code class="computeroutput">eof</code> error on SSL shutdown as it actually indicates
+          success.
+        </li>
+<li class="listitem">
+          Added a fallback error code for when we OpenSSL produces an <code class="computeroutput">SSL_ERROR_SYSCALL</code>
+          result without an associated error.
+        </li>
+<li class="listitem">
+          Changed composed asynchronous read and write operations to move, rather
+          than copy, the buffer sequence objects when the composed operation implementation
+          is moved.
+        </li>
+<li class="listitem">
+          Changed to use <code class="computeroutput">&lt;atomic&gt;</code> when targeting apple/clang/libc++
+          with recent Xcode versions, even for C++03. This fixes a warning about
+          the deprecation of <code class="computeroutput">OSMemoryBarrier</code>.
+        </li>
+<li class="listitem">
+          Fixed compile errors that occur when using the composed read and write
+          operations with MSVC 11.0, by disabling <code class="computeroutput">decltype</code> support for
+          that compiler.
+        </li>
+<li class="listitem">
+          Increased the default value of <code class="computeroutput">_WIN32_WINNT</code> to <code class="computeroutput">0x0601</code>
+          (Windows 7).
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">dispatch</code> documentation to note that it may call the
+          supplied function object in the current thread.
+        </li>
+<li class="listitem">
+          Updated <code class="computeroutput">post</code> and <code class="computeroutput">defer</code> documentation to clarify
+          the the distinction between them.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h5"></a>
       <span><a name="asio.history.asio_1_12_2"></a></span><a class="link" href="history.html#asio.history.asio_1_12_2">Asio
       1.12.2</a>
     </h4>
@@ -94,7 +696,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h1"></a>
+<a name="asio.history.h6"></a>
       <span><a name="asio.history.asio_1_12_1"></a></span><a class="link" href="history.html#asio.history.asio_1_12_1">Asio
       1.12.1</a>
     </h4>
@@ -215,7 +817,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h2"></a>
+<a name="asio.history.h7"></a>
       <span><a name="asio.history.asio_1_12_0"></a></span><a class="link" href="history.html#asio.history.asio_1_12_0">Asio
       1.12.0</a>
     </h4>
@@ -258,7 +860,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h3"></a>
+<a name="asio.history.h8"></a>
       <span><a name="asio.history.asio_1_11_0"></a></span><a class="link" href="history.html#asio.history.asio_1_11_0">Asio
       1.11.0</a>
     </h4>
@@ -480,7 +1082,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h4"></a>
+<a name="asio.history.h9"></a>
       <span><a name="asio.history.asio_1_10_5"></a></span><a class="link" href="history.html#asio.history.asio_1_10_5">Asio
       1.10.5</a>
     </h4>
@@ -520,7 +1122,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h5"></a>
+<a name="asio.history.h10"></a>
       <span><a name="asio.history.asio_1_10_4"></a></span><a class="link" href="history.html#asio.history.asio_1_10_4">Asio
       1.10.4</a>
     </h4>
@@ -542,7 +1144,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h6"></a>
+<a name="asio.history.h11"></a>
       <span><a name="asio.history.asio_1_10_3"></a></span><a class="link" href="history.html#asio.history.asio_1_10_3">Asio
       1.10.3</a>
     </h4>
@@ -576,7 +1178,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h7"></a>
+<a name="asio.history.h12"></a>
       <span><a name="asio.history.asio_1_10_2"></a></span><a class="link" href="history.html#asio.history.asio_1_10_2">Asio
       1.10.2</a>
     </h4>
@@ -652,7 +1254,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h8"></a>
+<a name="asio.history.h13"></a>
       <span><a name="asio.history.asio_1_10_1"></a></span><a class="link" href="history.html#asio.history.asio_1_10_1">Asio
       1.10.1</a>
     </h4>
@@ -783,7 +1385,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h9"></a>
+<a name="asio.history.h14"></a>
       <span><a name="asio.history.asio_1_10_0"></a></span><a class="link" href="history.html#asio.history.asio_1_10_0">Asio
       1.10.0</a>
     </h4>
@@ -947,7 +1549,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h10"></a>
+<a name="asio.history.h15"></a>
       <span><a name="asio.history.asio_1_8_3"></a></span><a class="link" href="history.html#asio.history.asio_1_8_3">Asio
       1.8.3</a>
     </h4>
@@ -984,7 +1586,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h11"></a>
+<a name="asio.history.h16"></a>
       <span><a name="asio.history.asio_1_8_2"></a></span><a class="link" href="history.html#asio.history.asio_1_8_2">Asio
       1.8.2</a>
     </h4>
@@ -1025,7 +1627,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h12"></a>
+<a name="asio.history.h17"></a>
       <span><a name="asio.history.asio_1_8_1"></a></span><a class="link" href="history.html#asio.history.asio_1_8_1">Asio
       1.8.1</a>
     </h4>
@@ -1059,7 +1661,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h13"></a>
+<a name="asio.history.h18"></a>
       <span><a name="asio.history.asio_1_8_0"></a></span><a class="link" href="history.html#asio.history.asio_1_8_0">Asio
       1.8.0</a>
     </h4>
@@ -1106,7 +1708,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h14"></a>
+<a name="asio.history.h19"></a>
       <span><a name="asio.history.asio_1_6_1"></a></span><a class="link" href="history.html#asio.history.asio_1_6_1">Asio
       1.6.1</a>
     </h4>
@@ -1197,7 +1799,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h15"></a>
+<a name="asio.history.h20"></a>
       <span><a name="asio.history.asio_1_6_0"></a></span><a class="link" href="history.html#asio.history.asio_1_6_0">Asio
       1.6.0</a>
     </h4>
@@ -1242,7 +1844,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h16"></a>
+<a name="asio.history.h21"></a>
       <span><a name="asio.history.asio_1_5_3"></a></span><a class="link" href="history.html#asio.history.asio_1_5_3">Asio
       1.5.3</a>
     </h4>
@@ -1275,7 +1877,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h17"></a>
+<a name="asio.history.h22"></a>
       <span><a name="asio.history.asio_1_5_2"></a></span><a class="link" href="history.html#asio.history.asio_1_5_2">Asio
       1.5.2</a>
     </h4>
@@ -1337,7 +1939,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h18"></a>
+<a name="asio.history.h23"></a>
       <span><a name="asio.history.asio_1_5_1"></a></span><a class="link" href="history.html#asio.history.asio_1_5_1">Asio
       1.5.1</a>
     </h4>
@@ -1382,7 +1984,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h19"></a>
+<a name="asio.history.h24"></a>
       <span><a name="asio.history.asio_1_5_0"></a></span><a class="link" href="history.html#asio.history.asio_1_5_0">Asio
       1.5.0</a>
     </h4>
@@ -1534,7 +2136,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h20"></a>
+<a name="asio.history.h25"></a>
       <span><a name="asio.history.asio_1_4_8"></a></span><a class="link" href="history.html#asio.history.asio_1_4_8">Asio
       1.4.8</a>
     </h4>
@@ -1550,7 +2152,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h21"></a>
+<a name="asio.history.h26"></a>
       <span><a name="asio.history.asio_1_4_7"></a></span><a class="link" href="history.html#asio.history.asio_1_4_7">Asio
       1.4.7</a>
     </h4>
@@ -1626,7 +2228,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h22"></a>
+<a name="asio.history.h27"></a>
       <span><a name="asio.history.asio_1_4_6"></a></span><a class="link" href="history.html#asio.history.asio_1_4_6">Asio
       1.4.6</a>
     </h4>
@@ -1693,7 +2295,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h23"></a>
+<a name="asio.history.h28"></a>
       <span><a name="asio.history.asio_1_4_5"></a></span><a class="link" href="history.html#asio.history.asio_1_4_5">Asio
       1.4.5</a>
     </h4>
@@ -1759,7 +2361,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h24"></a>
+<a name="asio.history.h29"></a>
       <span><a name="asio.history.asio_1_4_4"></a></span><a class="link" href="history.html#asio.history.asio_1_4_4">Asio
       1.4.4</a>
     </h4>
@@ -1818,7 +2420,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h25"></a>
+<a name="asio.history.h30"></a>
       <span><a name="asio.history.asio_1_4_3"></a></span><a class="link" href="history.html#asio.history.asio_1_4_3">Asio
       1.4.3</a>
     </h4>
@@ -1870,7 +2472,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h26"></a>
+<a name="asio.history.h31"></a>
       <span><a name="asio.history.asio_1_4_2"></a></span><a class="link" href="history.html#asio.history.asio_1_4_2">Asio
       1.4.2</a>
     </h4>
@@ -1922,7 +2524,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h27"></a>
+<a name="asio.history.h32"></a>
       <span><a name="asio.history.asio_1_4_1"></a></span><a class="link" href="history.html#asio.history.asio_1_4_1">Asio
       1.4.1</a>
     </h4>
@@ -1949,7 +2551,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h28"></a>
+<a name="asio.history.h33"></a>
       <span><a name="asio.history.asio_1_4_0"></a></span><a class="link" href="history.html#asio.history.asio_1_4_0">Asio
       1.4.0</a>
     </h4>
@@ -1984,7 +2586,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h29"></a>
+<a name="asio.history.h34"></a>
       <span><a name="asio.history.asio_1_2_0"></a></span><a class="link" href="history.html#asio.history.asio_1_2_0">Asio
       1.2.0</a>
     </h4>
@@ -2034,7 +2636,7 @@
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h30"></a>
+<a name="asio.history.h35"></a>
       <span><a name="asio.history.asio_1_0_0"></a></span><a class="link" href="history.html#asio.history.asio_1_0_0">Asio
       1.0.0</a>
     </h4>
@@ -2044,7 +2646,8 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2018 Christopher M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+      Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

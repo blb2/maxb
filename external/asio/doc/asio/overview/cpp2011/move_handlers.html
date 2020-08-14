@@ -20,11 +20,8 @@
 <a name="asio.overview.cpp2011.move_handlers"></a><a class="link" href="move_handlers.html" title="Movable Handlers">Movable Handlers</a>
 </h4></div></div></div>
 <p>
-          As an optimisation, user-defined completion handlers may provide move constructors,
-          and Asio's implementation will use a handler's move constructor in preference
-          to its copy constructor. In certain circumstances, Asio may be able to
-          eliminate all calls to a handler's copy constructor. However, handler types
-          are still required to be copy constructible.
+          With C++11 and later, user-defined completion handlers are only required
+          to be move constructible, and are not required to be copy constructible.
         </p>
 <p>
           When move support is enabled, asynchronous that are documented as follows:
@@ -47,8 +44,8 @@ void async_XYZ(..., Handler&amp;&amp; handler);
         </p>
 <pre class="programlisting">struct my_operation
 {
-  shared_ptr&lt;tcp::socket&gt; socket;
-  shared_ptr&lt;vector&lt;char&gt;&gt; buffer;
+  unique_ptr&lt;tcp::socket&gt; socket;
+  unique_ptr&lt;vector&lt;char&gt;&gt; buffer;
   ...
   void operator(error_code ec, size_t length)
   {
@@ -69,7 +66,8 @@ void async_XYZ(..., Handler&amp;&amp; handler);
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2018 Christopher M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+      Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -6,14 +6,14 @@
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="../../index.html" title="Asio">
 <link rel="up" href="../reference.html" title="Reference">
-<link rel="prev" href="has_service.html" title="has_service">
+<link rel="prev" href="get_associated_executor/overload3.html" title="get_associated_executor (3 of 3 overloads)">
 <link rel="next" href="invalid_service_owner.html" title="invalid_service_owner">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="asio C++ library" width="250" height="60" src="../../asio.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="has_service.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="invalid_service_owner.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="get_associated_executor/overload3.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="invalid_service_owner.html"><img src="../../next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -48,6 +48,18 @@ Typedef for a timer
               </th>
 </tr></thead>
 <tbody>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_waitable_timer__rebind_executor.html" title="basic_waitable_timer::rebind_executor"><span class="bold"><strong>rebind_executor</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Rebinds the timer type to another executor.
+                </p>
+              </td>
+</tr>
 <tr>
 <td>
                 <p>
@@ -255,32 +267,6 @@ Typedef for a timer
 <tr>
 <td>
                 <p>
-                  <a class="link" href="basic_waitable_timer/get_io_context.html" title="basic_waitable_timer::get_io_context"><span class="bold"><strong>get_io_context</strong></span></a>
-                </p>
-              </td>
-<td>
-                <p>
-                  (Deprecated: Use get_executor().) Get the io_context associated
-                  with the object.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <a class="link" href="basic_waitable_timer/get_io_service.html" title="basic_waitable_timer::get_io_service"><span class="bold"><strong>get_io_service</strong></span></a>
-                </p>
-              </td>
-<td>
-                <p>
-                  (Deprecated: Use get_executor().) Get the io_context associated
-                  with the object.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
                   <a class="link" href="basic_waitable_timer/operator_eq_.html" title="basic_waitable_timer::operator="><span class="bold"><strong>operator=</strong></span></a>
                 </p>
               </td>
@@ -359,7 +345,7 @@ Typedef for a timer
         Performing a blocking wait (C++11):
       </p>
 <pre class="programlisting">// Construct a timer without setting an expiry time.
-asio::steady_timer timer(io_context);
+asio::steady_timer timer(my_context);
 
 // Set an expiry time relative to now.
 timer.expires_after(std::chrono::seconds(5));
@@ -381,7 +367,7 @@ timer.wait();
 ...
 
 // Construct a timer with an absolute expiry time.
-asio::steady_timer timer(io_context,
+asio::steady_timer timer(my_context,
     std::chrono::steady_clock::now() + std::chrono::seconds(60));
 
 // Start an asynchronous wait.
@@ -453,7 +439,8 @@ void on_timeout(const asio::error_code&amp; e)
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2018 Christopher M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+      Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -461,7 +448,7 @@ void on_timeout(const asio::error_code&amp; e)
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="has_service.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="invalid_service_owner.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="get_associated_executor/overload3.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="invalid_service_owner.html"><img src="../../next.png" alt="Next"></a>
 </div>
 </body>
 </html>

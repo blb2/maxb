@@ -24,16 +24,21 @@
         </p>
 <pre class="programlisting">template&lt;
     typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>,
-    typename CompletionToken&gt;
+    typename CompletionToken = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>&gt;
 <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> post(
     const Executor &amp; ex,
-    CompletionToken &amp;&amp; token,
+    CompletionToken &amp;&amp; token = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
     typename enable_if&lt; is_executor&lt; Executor &gt;::value &gt;::type *  = 0);
 </pre>
 <p>
           This function submits an object for execution using the specified executor.
           The function object is queued for execution, and is never called from the
           current thread prior to returning from <code class="computeroutput">post()</code>.
+        </p>
+<p>
+          The use of <code class="computeroutput">post()</code>, rather than <a class="link" href="../defer.html" title="defer"><code class="computeroutput">defer</code></a>
+          , indicates the caller's preference that the function object be eagerly
+          queued for execution.
         </p>
 <p>
           This function has the following effects:
@@ -73,7 +78,8 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2018 Christopher M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+      Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
