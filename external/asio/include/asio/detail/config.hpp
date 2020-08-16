@@ -315,9 +315,9 @@
 #    endif // (__cplusplus >= 201103) || defined(__GXX_EXPERIMENTAL_CXX0X__)
 #   endif // ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 7)) || (__GNUC__ > 4)
 #  elif defined(ASIO_MSVC)
-#   if (_MSC_VER >= 1900)
+#   if (_MSC_VER >= 1900) && !defined(__INTELLISENSE__)
 #    define ASIO_HAS_NOEXCEPT 1
-#   endif // (_MSC_VER >= 1900)
+#   endif // (_MSC_VER >= 1900) && !defined(__INTELLISENSE__)
 #  endif // defined(ASIO_MSVC)
 # endif // !defined(ASIO_DISABLE_NOEXCEPT)
 # if !defined(ASIO_NOEXCEPT)
