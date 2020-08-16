@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>defer</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
@@ -28,7 +28,7 @@ Submits a completion token or function object for
     typename CompletionToken&gt;
 <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <a class="link" href="defer/overload1.html" title="defer (1 of 3 overloads)">defer</a>(
     CompletionToken &amp;&amp; token);
-  <span class="emphasis"><em>&#187; <a class="link" href="defer/overload1.html" title="defer (1 of 3 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="defer/overload1.html" title="defer (1 of 3 overloads)">more...</a></em></span>
 
 template&lt;
     typename <a class="link" href="Executor1.html" title="Executor requirements">Executor</a>,
@@ -36,8 +36,8 @@ template&lt;
 <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <a class="link" href="defer/overload2.html" title="defer (2 of 3 overloads)">defer</a>(
     const Executor &amp; ex,
     CompletionToken &amp;&amp; token = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_executor&lt; Executor &gt;::value &gt;::type *  = 0);
-  <span class="emphasis"><em>&#187; <a class="link" href="defer/overload2.html" title="defer (2 of 3 overloads)">more...</a></em></span>
+    typename enable_if&lt; execution::is_executor&lt; Executor &gt;::value||is_executor&lt; Executor &gt;::value &gt;::type *  = 0);
+  <span class="emphasis"><em>» <a class="link" href="defer/overload2.html" title="defer (2 of 3 overloads)">more...</a></em></span>
 
 template&lt;
     typename ExecutionContext,
@@ -46,7 +46,7 @@ template&lt;
     ExecutionContext &amp; ctx,
     CompletionToken &amp;&amp; token = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
     typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
-  <span class="emphasis"><em>&#187; <a class="link" href="defer/overload3.html" title="defer (3 of 3 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="defer/overload3.html" title="defer (3 of 3 overloads)">more...</a></em></span>
 </pre>
 <h5>
 <a name="asio.reference.defer.h0"></a>
@@ -61,7 +61,7 @@ template&lt;
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
       Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)

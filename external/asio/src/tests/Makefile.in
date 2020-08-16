@@ -110,8 +110,31 @@ check_PROGRAMS = unit/associated_allocator$(EXEEXT) \
 	unit/connect$(EXEEXT) unit/coroutine$(EXEEXT) \
 	unit/deadline_timer$(EXEEXT) unit/defer$(EXEEXT) \
 	unit/detached$(EXEEXT) unit/dispatch$(EXEEXT) \
-	unit/error$(EXEEXT) unit/execution_context$(EXEEXT) \
-	unit/executor$(EXEEXT) unit/executor_work_guard$(EXEEXT) \
+	unit/error$(EXEEXT) unit/execution/any_executor$(EXEEXT) \
+	unit/execution/blocking$(EXEEXT) \
+	unit/execution/blocking_adaptation$(EXEEXT) \
+	unit/execution/bulk_execute$(EXEEXT) \
+	unit/execution/bulk_guarantee$(EXEEXT) \
+	unit/execution/connect$(EXEEXT) \
+	unit/execution/context_as$(EXEEXT) \
+	unit/execution/execute$(EXEEXT) \
+	unit/execution/executor$(EXEEXT) \
+	unit/execution/invocable_archetype$(EXEEXT) \
+	unit/execution/mapping$(EXEEXT) \
+	unit/execution/operation_state$(EXEEXT) \
+	unit/execution/outstanding_work$(EXEEXT) \
+	unit/execution/prefer_only$(EXEEXT) \
+	unit/execution/receiver$(EXEEXT) \
+	unit/execution/relationship$(EXEEXT) \
+	unit/execution/schedule$(EXEEXT) \
+	unit/execution/scheduler$(EXEEXT) \
+	unit/execution/sender$(EXEEXT) \
+	unit/execution/set_done$(EXEEXT) \
+	unit/execution/set_error$(EXEEXT) \
+	unit/execution/set_value$(EXEEXT) \
+	unit/execution/start$(EXEEXT) unit/execution/submit$(EXEEXT) \
+	unit/execution_context$(EXEEXT) unit/executor$(EXEEXT) \
+	unit/executor_work_guard$(EXEEXT) \
 	unit/generic/basic_endpoint$(EXEEXT) \
 	unit/generic/datagram_protocol$(EXEEXT) \
 	unit/generic/raw_protocol$(EXEEXT) \
@@ -150,10 +173,11 @@ check_PROGRAMS = unit/associated_allocator$(EXEEXT) \
 	unit/read_until$(EXEEXT) unit/redirect_error$(EXEEXT) \
 	unit/serial_port$(EXEEXT) unit/serial_port_base$(EXEEXT) \
 	unit/signal_set$(EXEEXT) unit/socket_base$(EXEEXT) \
-	unit/steady_timer$(EXEEXT) unit/strand$(EXEEXT) \
-	unit/streambuf$(EXEEXT) unit/system_context$(EXEEXT) \
-	unit/system_executor$(EXEEXT) unit/system_timer$(EXEEXT) \
-	unit/this_coro$(EXEEXT) unit/thread$(EXEEXT) \
+	unit/static_thread_pool$(EXEEXT) unit/steady_timer$(EXEEXT) \
+	unit/strand$(EXEEXT) unit/streambuf$(EXEEXT) \
+	unit/system_context$(EXEEXT) unit/system_executor$(EXEEXT) \
+	unit/system_timer$(EXEEXT) unit/this_coro$(EXEEXT) \
+	unit/thread$(EXEEXT) unit/thread_pool$(EXEEXT) \
 	unit/time_traits$(EXEEXT) unit/ts/buffer$(EXEEXT) \
 	unit/ts/executor$(EXEEXT) unit/ts/internet$(EXEEXT) \
 	unit/ts/io_context$(EXEEXT) unit/ts/net$(EXEEXT) \
@@ -205,6 +229,29 @@ TESTS = unit/associated_allocator$(EXEEXT) \
 	unit/connect$(EXEEXT) unit/deadline_timer$(EXEEXT) \
 	unit/defer$(EXEEXT) unit/detached$(EXEEXT) \
 	unit/dispatch$(EXEEXT) unit/error$(EXEEXT) \
+	unit/execution/any_executor$(EXEEXT) \
+	unit/execution/blocking$(EXEEXT) \
+	unit/execution/blocking_adaptation$(EXEEXT) \
+	unit/execution/bulk_execute$(EXEEXT) \
+	unit/execution/bulk_guarantee$(EXEEXT) \
+	unit/execution/connect$(EXEEXT) \
+	unit/execution/context_as$(EXEEXT) \
+	unit/execution/execute$(EXEEXT) \
+	unit/execution/executor$(EXEEXT) \
+	unit/execution/invocable_archetype$(EXEEXT) \
+	unit/execution/mapping$(EXEEXT) \
+	unit/execution/operation_state$(EXEEXT) \
+	unit/execution/outstanding_work$(EXEEXT) \
+	unit/execution/prefer_only$(EXEEXT) \
+	unit/execution/receiver$(EXEEXT) \
+	unit/execution/relationship$(EXEEXT) \
+	unit/execution/schedule$(EXEEXT) \
+	unit/execution/scheduler$(EXEEXT) \
+	unit/execution/sender$(EXEEXT) \
+	unit/execution/set_done$(EXEEXT) \
+	unit/execution/set_error$(EXEEXT) \
+	unit/execution/set_value$(EXEEXT) \
+	unit/execution/start$(EXEEXT) unit/execution/submit$(EXEEXT) \
 	unit/execution_context$(EXEEXT) unit/executor$(EXEEXT) \
 	unit/executor_work_guard$(EXEEXT) \
 	unit/high_resolution_timer$(EXEEXT) unit/io_context$(EXEEXT) \
@@ -240,10 +287,11 @@ TESTS = unit/associated_allocator$(EXEEXT) \
 	unit/read_until$(EXEEXT) unit/redirect_error$(EXEEXT) \
 	unit/serial_port$(EXEEXT) unit/serial_port_base$(EXEEXT) \
 	unit/signal_set$(EXEEXT) unit/socket_base$(EXEEXT) \
-	unit/steady_timer$(EXEEXT) unit/strand$(EXEEXT) \
-	unit/streambuf$(EXEEXT) unit/system_context$(EXEEXT) \
-	unit/system_executor$(EXEEXT) unit/system_timer$(EXEEXT) \
-	unit/this_coro$(EXEEXT) unit/thread$(EXEEXT) \
+	unit/static_thread_pool$(EXEEXT) unit/steady_timer$(EXEEXT) \
+	unit/strand$(EXEEXT) unit/streambuf$(EXEEXT) \
+	unit/system_context$(EXEEXT) unit/system_executor$(EXEEXT) \
+	unit/system_timer$(EXEEXT) unit/this_coro$(EXEEXT) \
+	unit/thread$(EXEEXT) unit/thread_pool$(EXEEXT) \
 	unit/time_traits$(EXEEXT) unit/ts/buffer$(EXEEXT) \
 	unit/ts/executor$(EXEEXT) unit/ts/internet$(EXEEXT) \
 	unit/ts/io_context$(EXEEXT) unit/ts/net$(EXEEXT) \
@@ -510,6 +558,162 @@ am_unit_error_OBJECTS = unit/error.$(OBJEXT)
 unit_error_OBJECTS = $(am_unit_error_OBJECTS)
 unit_error_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_error_DEPENDENCIES = libasio.a
+am_unit_execution_any_executor_OBJECTS =  \
+	unit/execution/any_executor.$(OBJEXT)
+unit_execution_any_executor_OBJECTS =  \
+	$(am_unit_execution_any_executor_OBJECTS)
+unit_execution_any_executor_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_any_executor_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_blocking_OBJECTS =  \
+	unit/execution/blocking.$(OBJEXT)
+unit_execution_blocking_OBJECTS =  \
+	$(am_unit_execution_blocking_OBJECTS)
+unit_execution_blocking_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_blocking_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_blocking_adaptation_OBJECTS =  \
+	unit/execution/blocking_adaptation.$(OBJEXT)
+unit_execution_blocking_adaptation_OBJECTS =  \
+	$(am_unit_execution_blocking_adaptation_OBJECTS)
+unit_execution_blocking_adaptation_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_blocking_adaptation_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_bulk_execute_OBJECTS =  \
+	unit/execution/bulk_execute.$(OBJEXT)
+unit_execution_bulk_execute_OBJECTS =  \
+	$(am_unit_execution_bulk_execute_OBJECTS)
+unit_execution_bulk_execute_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_bulk_execute_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_bulk_guarantee_OBJECTS =  \
+	unit/execution/bulk_guarantee.$(OBJEXT)
+unit_execution_bulk_guarantee_OBJECTS =  \
+	$(am_unit_execution_bulk_guarantee_OBJECTS)
+unit_execution_bulk_guarantee_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_bulk_guarantee_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_connect_OBJECTS = unit/execution/connect.$(OBJEXT)
+unit_execution_connect_OBJECTS = $(am_unit_execution_connect_OBJECTS)
+unit_execution_connect_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_connect_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_context_as_OBJECTS =  \
+	unit/execution/context_as.$(OBJEXT)
+unit_execution_context_as_OBJECTS =  \
+	$(am_unit_execution_context_as_OBJECTS)
+unit_execution_context_as_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_context_as_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_execute_OBJECTS = unit/execution/execute.$(OBJEXT)
+unit_execution_execute_OBJECTS = $(am_unit_execution_execute_OBJECTS)
+unit_execution_execute_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_execute_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_executor_OBJECTS =  \
+	unit/execution/executor.$(OBJEXT)
+unit_execution_executor_OBJECTS =  \
+	$(am_unit_execution_executor_OBJECTS)
+unit_execution_executor_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_executor_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_invocable_archetype_OBJECTS =  \
+	unit/execution/invocable_archetype.$(OBJEXT)
+unit_execution_invocable_archetype_OBJECTS =  \
+	$(am_unit_execution_invocable_archetype_OBJECTS)
+unit_execution_invocable_archetype_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_invocable_archetype_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_mapping_OBJECTS = unit/execution/mapping.$(OBJEXT)
+unit_execution_mapping_OBJECTS = $(am_unit_execution_mapping_OBJECTS)
+unit_execution_mapping_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_mapping_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_operation_state_OBJECTS =  \
+	unit/execution/operation_state.$(OBJEXT)
+unit_execution_operation_state_OBJECTS =  \
+	$(am_unit_execution_operation_state_OBJECTS)
+unit_execution_operation_state_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_operation_state_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_outstanding_work_OBJECTS =  \
+	unit/execution/outstanding_work.$(OBJEXT)
+unit_execution_outstanding_work_OBJECTS =  \
+	$(am_unit_execution_outstanding_work_OBJECTS)
+unit_execution_outstanding_work_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_outstanding_work_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_prefer_only_OBJECTS =  \
+	unit/execution/prefer_only.$(OBJEXT)
+unit_execution_prefer_only_OBJECTS =  \
+	$(am_unit_execution_prefer_only_OBJECTS)
+unit_execution_prefer_only_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_prefer_only_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_receiver_OBJECTS =  \
+	unit/execution/receiver.$(OBJEXT)
+unit_execution_receiver_OBJECTS =  \
+	$(am_unit_execution_receiver_OBJECTS)
+unit_execution_receiver_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_receiver_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_relationship_OBJECTS =  \
+	unit/execution/relationship.$(OBJEXT)
+unit_execution_relationship_OBJECTS =  \
+	$(am_unit_execution_relationship_OBJECTS)
+unit_execution_relationship_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_relationship_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_schedule_OBJECTS =  \
+	unit/execution/schedule.$(OBJEXT)
+unit_execution_schedule_OBJECTS =  \
+	$(am_unit_execution_schedule_OBJECTS)
+unit_execution_schedule_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_schedule_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_scheduler_OBJECTS =  \
+	unit/execution/scheduler.$(OBJEXT)
+unit_execution_scheduler_OBJECTS =  \
+	$(am_unit_execution_scheduler_OBJECTS)
+unit_execution_scheduler_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_scheduler_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_sender_OBJECTS = unit/execution/sender.$(OBJEXT)
+unit_execution_sender_OBJECTS = $(am_unit_execution_sender_OBJECTS)
+unit_execution_sender_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_sender_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_set_done_OBJECTS =  \
+	unit/execution/set_done.$(OBJEXT)
+unit_execution_set_done_OBJECTS =  \
+	$(am_unit_execution_set_done_OBJECTS)
+unit_execution_set_done_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_set_done_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_set_error_OBJECTS =  \
+	unit/execution/set_error.$(OBJEXT)
+unit_execution_set_error_OBJECTS =  \
+	$(am_unit_execution_set_error_OBJECTS)
+unit_execution_set_error_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_set_error_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_set_value_OBJECTS =  \
+	unit/execution/set_value.$(OBJEXT)
+unit_execution_set_value_OBJECTS =  \
+	$(am_unit_execution_set_value_OBJECTS)
+unit_execution_set_value_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_set_value_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_start_OBJECTS = unit/execution/start.$(OBJEXT)
+unit_execution_start_OBJECTS = $(am_unit_execution_start_OBJECTS)
+unit_execution_start_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_start_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_execution_submit_OBJECTS = unit/execution/submit.$(OBJEXT)
+unit_execution_submit_OBJECTS = $(am_unit_execution_submit_OBJECTS)
+unit_execution_submit_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_execution_submit_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
 am_unit_execution_context_OBJECTS = unit/execution_context.$(OBJEXT)
 unit_execution_context_OBJECTS = $(am_unit_execution_context_OBJECTS)
 unit_execution_context_LDADD = $(LDADD)
@@ -863,6 +1067,13 @@ unit_ssl_stream_base_OBJECTS = $(am_unit_ssl_stream_base_OBJECTS)
 unit_ssl_stream_base_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_ssl_stream_base_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_static_thread_pool_OBJECTS =  \
+	unit/static_thread_pool.$(OBJEXT)
+unit_static_thread_pool_OBJECTS =  \
+	$(am_unit_static_thread_pool_OBJECTS)
+unit_static_thread_pool_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_static_thread_pool_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
 am_unit_steady_timer_OBJECTS = unit/steady_timer.$(OBJEXT)
 unit_steady_timer_OBJECTS = $(am_unit_steady_timer_OBJECTS)
 unit_steady_timer_LDADD = $(LDADD)
@@ -897,6 +1108,10 @@ am_unit_thread_OBJECTS = unit/thread.$(OBJEXT)
 unit_thread_OBJECTS = $(am_unit_thread_OBJECTS)
 unit_thread_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_thread_DEPENDENCIES = libasio.a
+am_unit_thread_pool_OBJECTS = unit/thread_pool.$(OBJEXT)
+unit_thread_pool_OBJECTS = $(am_unit_thread_pool_OBJECTS)
+unit_thread_pool_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_thread_pool_DEPENDENCIES = libasio.a
 am_unit_time_traits_OBJECTS = unit/time_traits.$(OBJEXT)
 unit_time_traits_OBJECTS = $(am_unit_time_traits_OBJECTS)
 unit_time_traits_LDADD = $(LDADD)
@@ -1082,14 +1297,40 @@ am__depfiles_remade = ../$(DEPDIR)/asio.Po ../$(DEPDIR)/asio_ssl.Po \
 	unit/$(DEPDIR)/redirect_error.Po unit/$(DEPDIR)/serial_port.Po \
 	unit/$(DEPDIR)/serial_port_base.Po \
 	unit/$(DEPDIR)/signal_set.Po unit/$(DEPDIR)/socket_base.Po \
+	unit/$(DEPDIR)/static_thread_pool.Po \
 	unit/$(DEPDIR)/steady_timer.Po unit/$(DEPDIR)/strand.Po \
 	unit/$(DEPDIR)/streambuf.Po unit/$(DEPDIR)/system_context.Po \
 	unit/$(DEPDIR)/system_executor.Po \
 	unit/$(DEPDIR)/system_timer.Po unit/$(DEPDIR)/this_coro.Po \
-	unit/$(DEPDIR)/thread.Po unit/$(DEPDIR)/time_traits.Po \
-	unit/$(DEPDIR)/use_awaitable.Po unit/$(DEPDIR)/use_future.Po \
-	unit/$(DEPDIR)/uses_executor.Po unit/$(DEPDIR)/wait_traits.Po \
-	unit/$(DEPDIR)/write.Po unit/$(DEPDIR)/write_at.Po \
+	unit/$(DEPDIR)/thread.Po unit/$(DEPDIR)/thread_pool.Po \
+	unit/$(DEPDIR)/time_traits.Po unit/$(DEPDIR)/use_awaitable.Po \
+	unit/$(DEPDIR)/use_future.Po unit/$(DEPDIR)/uses_executor.Po \
+	unit/$(DEPDIR)/wait_traits.Po unit/$(DEPDIR)/write.Po \
+	unit/$(DEPDIR)/write_at.Po \
+	unit/execution/$(DEPDIR)/any_executor.Po \
+	unit/execution/$(DEPDIR)/blocking.Po \
+	unit/execution/$(DEPDIR)/blocking_adaptation.Po \
+	unit/execution/$(DEPDIR)/bulk_execute.Po \
+	unit/execution/$(DEPDIR)/bulk_guarantee.Po \
+	unit/execution/$(DEPDIR)/connect.Po \
+	unit/execution/$(DEPDIR)/context_as.Po \
+	unit/execution/$(DEPDIR)/execute.Po \
+	unit/execution/$(DEPDIR)/executor.Po \
+	unit/execution/$(DEPDIR)/invocable_archetype.Po \
+	unit/execution/$(DEPDIR)/mapping.Po \
+	unit/execution/$(DEPDIR)/operation_state.Po \
+	unit/execution/$(DEPDIR)/outstanding_work.Po \
+	unit/execution/$(DEPDIR)/prefer_only.Po \
+	unit/execution/$(DEPDIR)/receiver.Po \
+	unit/execution/$(DEPDIR)/relationship.Po \
+	unit/execution/$(DEPDIR)/schedule.Po \
+	unit/execution/$(DEPDIR)/scheduler.Po \
+	unit/execution/$(DEPDIR)/sender.Po \
+	unit/execution/$(DEPDIR)/set_done.Po \
+	unit/execution/$(DEPDIR)/set_error.Po \
+	unit/execution/$(DEPDIR)/set_value.Po \
+	unit/execution/$(DEPDIR)/start.Po \
+	unit/execution/$(DEPDIR)/submit.Po \
 	unit/generic/$(DEPDIR)/basic_endpoint.Po \
 	unit/generic/$(DEPDIR)/datagram_protocol.Po \
 	unit/generic/$(DEPDIR)/raw_protocol.Po \
@@ -1179,8 +1420,32 @@ SOURCES = $(libasio_a_SOURCES) $(latency_tcp_client_SOURCES) \
 	$(unit_connect_SOURCES) $(unit_coroutine_SOURCES) \
 	$(unit_deadline_timer_SOURCES) $(unit_defer_SOURCES) \
 	$(unit_detached_SOURCES) $(unit_dispatch_SOURCES) \
-	$(unit_error_SOURCES) $(unit_execution_context_SOURCES) \
-	$(unit_executor_SOURCES) $(unit_executor_work_guard_SOURCES) \
+	$(unit_error_SOURCES) $(unit_execution_any_executor_SOURCES) \
+	$(unit_execution_blocking_SOURCES) \
+	$(unit_execution_blocking_adaptation_SOURCES) \
+	$(unit_execution_bulk_execute_SOURCES) \
+	$(unit_execution_bulk_guarantee_SOURCES) \
+	$(unit_execution_connect_SOURCES) \
+	$(unit_execution_context_as_SOURCES) \
+	$(unit_execution_execute_SOURCES) \
+	$(unit_execution_executor_SOURCES) \
+	$(unit_execution_invocable_archetype_SOURCES) \
+	$(unit_execution_mapping_SOURCES) \
+	$(unit_execution_operation_state_SOURCES) \
+	$(unit_execution_outstanding_work_SOURCES) \
+	$(unit_execution_prefer_only_SOURCES) \
+	$(unit_execution_receiver_SOURCES) \
+	$(unit_execution_relationship_SOURCES) \
+	$(unit_execution_schedule_SOURCES) \
+	$(unit_execution_scheduler_SOURCES) \
+	$(unit_execution_sender_SOURCES) \
+	$(unit_execution_set_done_SOURCES) \
+	$(unit_execution_set_error_SOURCES) \
+	$(unit_execution_set_value_SOURCES) \
+	$(unit_execution_start_SOURCES) \
+	$(unit_execution_submit_SOURCES) \
+	$(unit_execution_context_SOURCES) $(unit_executor_SOURCES) \
+	$(unit_executor_work_guard_SOURCES) \
 	$(unit_generic_basic_endpoint_SOURCES) \
 	$(unit_generic_datagram_protocol_SOURCES) \
 	$(unit_generic_raw_protocol_SOURCES) \
@@ -1225,17 +1490,18 @@ SOURCES = $(libasio_a_SOURCES) $(latency_tcp_client_SOURCES) \
 	$(unit_ssl_host_name_verification_SOURCES) \
 	$(unit_ssl_rfc2818_verification_SOURCES) \
 	$(unit_ssl_stream_SOURCES) $(unit_ssl_stream_base_SOURCES) \
+	$(unit_static_thread_pool_SOURCES) \
 	$(unit_steady_timer_SOURCES) $(unit_strand_SOURCES) \
 	$(unit_streambuf_SOURCES) $(unit_system_context_SOURCES) \
 	$(unit_system_executor_SOURCES) $(unit_system_timer_SOURCES) \
 	$(unit_this_coro_SOURCES) $(unit_thread_SOURCES) \
-	$(unit_time_traits_SOURCES) $(unit_ts_buffer_SOURCES) \
-	$(unit_ts_executor_SOURCES) $(unit_ts_internet_SOURCES) \
-	$(unit_ts_io_context_SOURCES) $(unit_ts_net_SOURCES) \
-	$(unit_ts_netfwd_SOURCES) $(unit_ts_socket_SOURCES) \
-	$(unit_ts_timer_SOURCES) $(unit_use_awaitable_SOURCES) \
-	$(unit_use_future_SOURCES) $(unit_uses_executor_SOURCES) \
-	$(unit_wait_traits_SOURCES) \
+	$(unit_thread_pool_SOURCES) $(unit_time_traits_SOURCES) \
+	$(unit_ts_buffer_SOURCES) $(unit_ts_executor_SOURCES) \
+	$(unit_ts_internet_SOURCES) $(unit_ts_io_context_SOURCES) \
+	$(unit_ts_net_SOURCES) $(unit_ts_netfwd_SOURCES) \
+	$(unit_ts_socket_SOURCES) $(unit_ts_timer_SOURCES) \
+	$(unit_use_awaitable_SOURCES) $(unit_use_future_SOURCES) \
+	$(unit_uses_executor_SOURCES) $(unit_wait_traits_SOURCES) \
 	$(unit_windows_basic_object_handle_SOURCES) \
 	$(unit_windows_basic_overlapped_handle_SOURCES) \
 	$(unit_windows_basic_random_access_handle_SOURCES) \
@@ -1275,8 +1541,32 @@ DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(unit_connect_SOURCES) $(unit_coroutine_SOURCES) \
 	$(unit_deadline_timer_SOURCES) $(unit_defer_SOURCES) \
 	$(unit_detached_SOURCES) $(unit_dispatch_SOURCES) \
-	$(unit_error_SOURCES) $(unit_execution_context_SOURCES) \
-	$(unit_executor_SOURCES) $(unit_executor_work_guard_SOURCES) \
+	$(unit_error_SOURCES) $(unit_execution_any_executor_SOURCES) \
+	$(unit_execution_blocking_SOURCES) \
+	$(unit_execution_blocking_adaptation_SOURCES) \
+	$(unit_execution_bulk_execute_SOURCES) \
+	$(unit_execution_bulk_guarantee_SOURCES) \
+	$(unit_execution_connect_SOURCES) \
+	$(unit_execution_context_as_SOURCES) \
+	$(unit_execution_execute_SOURCES) \
+	$(unit_execution_executor_SOURCES) \
+	$(unit_execution_invocable_archetype_SOURCES) \
+	$(unit_execution_mapping_SOURCES) \
+	$(unit_execution_operation_state_SOURCES) \
+	$(unit_execution_outstanding_work_SOURCES) \
+	$(unit_execution_prefer_only_SOURCES) \
+	$(unit_execution_receiver_SOURCES) \
+	$(unit_execution_relationship_SOURCES) \
+	$(unit_execution_schedule_SOURCES) \
+	$(unit_execution_scheduler_SOURCES) \
+	$(unit_execution_sender_SOURCES) \
+	$(unit_execution_set_done_SOURCES) \
+	$(unit_execution_set_error_SOURCES) \
+	$(unit_execution_set_value_SOURCES) \
+	$(unit_execution_start_SOURCES) \
+	$(unit_execution_submit_SOURCES) \
+	$(unit_execution_context_SOURCES) $(unit_executor_SOURCES) \
+	$(unit_executor_work_guard_SOURCES) \
 	$(unit_generic_basic_endpoint_SOURCES) \
 	$(unit_generic_datagram_protocol_SOURCES) \
 	$(unit_generic_raw_protocol_SOURCES) \
@@ -1323,17 +1613,18 @@ DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(am__unit_ssl_rfc2818_verification_SOURCES_DIST) \
 	$(am__unit_ssl_stream_SOURCES_DIST) \
 	$(am__unit_ssl_stream_base_SOURCES_DIST) \
+	$(unit_static_thread_pool_SOURCES) \
 	$(unit_steady_timer_SOURCES) $(unit_strand_SOURCES) \
 	$(unit_streambuf_SOURCES) $(unit_system_context_SOURCES) \
 	$(unit_system_executor_SOURCES) $(unit_system_timer_SOURCES) \
 	$(unit_this_coro_SOURCES) $(unit_thread_SOURCES) \
-	$(unit_time_traits_SOURCES) $(unit_ts_buffer_SOURCES) \
-	$(unit_ts_executor_SOURCES) $(unit_ts_internet_SOURCES) \
-	$(unit_ts_io_context_SOURCES) $(unit_ts_net_SOURCES) \
-	$(unit_ts_netfwd_SOURCES) $(unit_ts_socket_SOURCES) \
-	$(unit_ts_timer_SOURCES) $(unit_use_awaitable_SOURCES) \
-	$(unit_use_future_SOURCES) $(unit_uses_executor_SOURCES) \
-	$(unit_wait_traits_SOURCES) \
+	$(unit_thread_pool_SOURCES) $(unit_time_traits_SOURCES) \
+	$(unit_ts_buffer_SOURCES) $(unit_ts_executor_SOURCES) \
+	$(unit_ts_internet_SOURCES) $(unit_ts_io_context_SOURCES) \
+	$(unit_ts_net_SOURCES) $(unit_ts_netfwd_SOURCES) \
+	$(unit_ts_socket_SOURCES) $(unit_ts_timer_SOURCES) \
+	$(unit_use_awaitable_SOURCES) $(unit_use_future_SOURCES) \
+	$(unit_uses_executor_SOURCES) $(unit_wait_traits_SOURCES) \
 	$(unit_windows_basic_object_handle_SOURCES) \
 	$(unit_windows_basic_overlapped_handle_SOURCES) \
 	$(unit_windows_basic_random_access_handle_SOURCES) \
@@ -1344,12 +1635,28 @@ DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(unit_windows_random_access_handle_SOURCES) \
 	$(unit_windows_stream_handle_SOURCES) $(unit_write_SOURCES) \
 	$(unit_write_at_SOURCES)
+RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
+	ctags-recursive dvi-recursive html-recursive info-recursive \
+	install-data-recursive install-dvi-recursive \
+	install-exec-recursive install-html-recursive \
+	install-info-recursive install-pdf-recursive \
+	install-ps-recursive install-recursive installcheck-recursive \
+	installdirs-recursive pdf-recursive ps-recursive \
+	tags-recursive uninstall-recursive
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
     *) (install-info --version) >/dev/null 2>&1;; \
   esac
 HEADERS = $(noinst_HEADERS)
+RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
+  distclean-recursive maintainer-clean-recursive
+am__recursive_targets = \
+  $(RECURSIVE_TARGETS) \
+  $(RECURSIVE_CLEAN_TARGETS) \
+  $(am__extra_recursive_targets)
+AM_RECURSIVE_TARGETS = $(am__recursive_targets:-recursive=) TAGS CTAGS \
+	check recheck distdir distdir-am
 am__tagged_files = $(HEADERS) $(SOURCES) $(TAGS_FILES) $(LISP)
 # Read a list of newline-separated strings from the standard input,
 # and print each of them once, without duplicates.  Input order is
@@ -1552,7 +1859,6 @@ am__set_TESTS_bases = \
   bases=`for i in $$bases; do echo $$i; done | sed 's/\.log$$//'`; \
   bases=`echo $$bases`
 RECHECK_LOGS = $(TEST_LOGS)
-AM_RECURSIVE_TARGETS = check recheck
 TEST_SUITE_LOG = test-suite.log
 TEST_EXTENSIONS = @EXEEXT@ .test
 LOG_DRIVER = $(SHELL) $(top_srcdir)/test-driver
@@ -1573,9 +1879,35 @@ TEST_LOGS = $(am__test_logs2:.test.log=.log)
 TEST_LOG_DRIVER = $(SHELL) $(top_srcdir)/test-driver
 TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
 	$(TEST_LOG_FLAGS)
+DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/depcomp \
 	$(top_srcdir)/test-driver
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+am__relativize = \
+  dir0=`pwd`; \
+  sed_first='s,^\([^/]*\)/.*$$,\1,'; \
+  sed_rest='s,^[^/]*/*,,'; \
+  sed_last='s,^.*/\([^/]*\)$$,\1,'; \
+  sed_butlast='s,/*[^/]*$$,,'; \
+  while test -n "$$dir1"; do \
+    first=`echo "$$dir1" | sed -e "$$sed_first"`; \
+    if test "$$first" != "."; then \
+      if test "$$first" = ".."; then \
+        dir2=`echo "$$dir0" | sed -e "$$sed_last"`/"$$dir2"; \
+        dir0=`echo "$$dir0" | sed -e "$$sed_butlast"`; \
+      else \
+        first2=`echo "$$dir2" | sed -e "$$sed_first"`; \
+        if test "$$first2" = "$$first"; then \
+          dir2=`echo "$$dir2" | sed -e "$$sed_rest"`; \
+        else \
+          dir2="../$$dir2"; \
+        fi; \
+        dir0="$$dir0"/"$$first"; \
+      fi; \
+    fi; \
+    dir1=`echo "$$dir1" | sed -e "$$sed_rest"`; \
+  done; \
+  reldir="$$dir2"
 ACLOCAL = @ACLOCAL@
 AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
@@ -1682,6 +2014,7 @@ AUTOMAKE_OPTIONS = subdir-objects
 @SEPARATE_COMPILATION_TRUE@libasio_a_SOURCES = ../asio.cpp \
 @SEPARATE_COMPILATION_TRUE@	$(am__append_1)
 @SEPARATE_COMPILATION_TRUE@LDADD = libasio.a
+SUBDIRS = properties
 noinst_HEADERS = \
 	latency/high_res_clock.hpp \
 	unit/unit_test.hpp
@@ -1724,6 +2057,30 @@ unit_defer_SOURCES = unit/defer.cpp
 unit_detached_SOURCES = unit/detached.cpp
 unit_dispatch_SOURCES = unit/dispatch.cpp
 unit_error_SOURCES = unit/error.cpp
+unit_execution_any_executor_SOURCES = unit/execution/any_executor.cpp
+unit_execution_blocking_SOURCES = unit/execution/blocking.cpp
+unit_execution_blocking_adaptation_SOURCES = unit/execution/blocking_adaptation.cpp
+unit_execution_bulk_execute_SOURCES = unit/execution/bulk_execute.cpp
+unit_execution_bulk_guarantee_SOURCES = unit/execution/bulk_guarantee.cpp
+unit_execution_connect_SOURCES = unit/execution/connect.cpp
+unit_execution_context_as_SOURCES = unit/execution/context_as.cpp
+unit_execution_execute_SOURCES = unit/execution/execute.cpp
+unit_execution_executor_SOURCES = unit/execution/executor.cpp
+unit_execution_invocable_archetype_SOURCES = unit/execution/invocable_archetype.cpp
+unit_execution_mapping_SOURCES = unit/execution/mapping.cpp
+unit_execution_outstanding_work_SOURCES = unit/execution/outstanding_work.cpp
+unit_execution_operation_state_SOURCES = unit/execution/operation_state.cpp
+unit_execution_prefer_only_SOURCES = unit/execution/prefer_only.cpp
+unit_execution_receiver_SOURCES = unit/execution/receiver.cpp
+unit_execution_relationship_SOURCES = unit/execution/relationship.cpp
+unit_execution_schedule_SOURCES = unit/execution/schedule.cpp
+unit_execution_scheduler_SOURCES = unit/execution/scheduler.cpp
+unit_execution_sender_SOURCES = unit/execution/sender.cpp
+unit_execution_set_done_SOURCES = unit/execution/set_done.cpp
+unit_execution_set_error_SOURCES = unit/execution/set_error.cpp
+unit_execution_set_value_SOURCES = unit/execution/set_value.cpp
+unit_execution_start_SOURCES = unit/execution/start.cpp
+unit_execution_submit_SOURCES = unit/execution/submit.cpp
 unit_execution_context_SOURCES = unit/execution_context.cpp
 unit_executor_SOURCES = unit/executor.cpp
 unit_executor_work_guard_SOURCES = unit/executor_work_guard.cpp
@@ -1779,6 +2136,7 @@ unit_serial_port_SOURCES = unit/serial_port.cpp
 unit_serial_port_base_SOURCES = unit/serial_port_base.cpp
 unit_signal_set_SOURCES = unit/signal_set.cpp
 unit_socket_base_SOURCES = unit/socket_base.cpp
+unit_static_thread_pool_SOURCES = unit/static_thread_pool.cpp
 unit_steady_timer_SOURCES = unit/steady_timer.cpp
 unit_strand_SOURCES = unit/strand.cpp
 unit_streambuf_SOURCES = unit/streambuf.cpp
@@ -1787,6 +2145,7 @@ unit_system_executor_SOURCES = unit/system_executor.cpp
 unit_system_timer_SOURCES = unit/system_timer.cpp
 unit_this_coro_SOURCES = unit/this_coro.cpp
 unit_thread_SOURCES = unit/thread.cpp
+unit_thread_pool_SOURCES = unit/thread_pool.cpp
 unit_time_traits_SOURCES = unit/time_traits.cpp
 unit_ts_buffer_SOURCES = unit/ts/buffer.cpp
 unit_ts_executor_SOURCES = unit/ts/executor.cpp
@@ -1830,7 +2189,7 @@ EXTRA_DIST = \
 MAINTAINERCLEANFILES = \
 	$(srcdir)/Makefile.in
 
-all: all-am
+all: all-recursive
 
 .SUFFIXES:
 .SUFFIXES: .cpp .log .o .obj .test .test$(EXEEXT) .trs
@@ -2125,6 +2484,161 @@ unit/error.$(OBJEXT): unit/$(am__dirstamp) \
 unit/error$(EXEEXT): $(unit_error_OBJECTS) $(unit_error_DEPENDENCIES) $(EXTRA_unit_error_DEPENDENCIES) unit/$(am__dirstamp)
 	@rm -f unit/error$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_error_OBJECTS) $(unit_error_LDADD) $(LIBS)
+unit/execution/$(am__dirstamp):
+	@$(MKDIR_P) unit/execution
+	@: > unit/execution/$(am__dirstamp)
+unit/execution/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) unit/execution/$(DEPDIR)
+	@: > unit/execution/$(DEPDIR)/$(am__dirstamp)
+unit/execution/any_executor.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/any_executor$(EXEEXT): $(unit_execution_any_executor_OBJECTS) $(unit_execution_any_executor_DEPENDENCIES) $(EXTRA_unit_execution_any_executor_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/any_executor$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_any_executor_OBJECTS) $(unit_execution_any_executor_LDADD) $(LIBS)
+unit/execution/blocking.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/blocking$(EXEEXT): $(unit_execution_blocking_OBJECTS) $(unit_execution_blocking_DEPENDENCIES) $(EXTRA_unit_execution_blocking_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/blocking$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_blocking_OBJECTS) $(unit_execution_blocking_LDADD) $(LIBS)
+unit/execution/blocking_adaptation.$(OBJEXT):  \
+	unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/blocking_adaptation$(EXEEXT): $(unit_execution_blocking_adaptation_OBJECTS) $(unit_execution_blocking_adaptation_DEPENDENCIES) $(EXTRA_unit_execution_blocking_adaptation_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/blocking_adaptation$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_blocking_adaptation_OBJECTS) $(unit_execution_blocking_adaptation_LDADD) $(LIBS)
+unit/execution/bulk_execute.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/bulk_execute$(EXEEXT): $(unit_execution_bulk_execute_OBJECTS) $(unit_execution_bulk_execute_DEPENDENCIES) $(EXTRA_unit_execution_bulk_execute_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/bulk_execute$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_bulk_execute_OBJECTS) $(unit_execution_bulk_execute_LDADD) $(LIBS)
+unit/execution/bulk_guarantee.$(OBJEXT):  \
+	unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/bulk_guarantee$(EXEEXT): $(unit_execution_bulk_guarantee_OBJECTS) $(unit_execution_bulk_guarantee_DEPENDENCIES) $(EXTRA_unit_execution_bulk_guarantee_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/bulk_guarantee$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_bulk_guarantee_OBJECTS) $(unit_execution_bulk_guarantee_LDADD) $(LIBS)
+unit/execution/connect.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/connect$(EXEEXT): $(unit_execution_connect_OBJECTS) $(unit_execution_connect_DEPENDENCIES) $(EXTRA_unit_execution_connect_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/connect$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_connect_OBJECTS) $(unit_execution_connect_LDADD) $(LIBS)
+unit/execution/context_as.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/context_as$(EXEEXT): $(unit_execution_context_as_OBJECTS) $(unit_execution_context_as_DEPENDENCIES) $(EXTRA_unit_execution_context_as_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/context_as$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_context_as_OBJECTS) $(unit_execution_context_as_LDADD) $(LIBS)
+unit/execution/execute.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/execute$(EXEEXT): $(unit_execution_execute_OBJECTS) $(unit_execution_execute_DEPENDENCIES) $(EXTRA_unit_execution_execute_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/execute$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_execute_OBJECTS) $(unit_execution_execute_LDADD) $(LIBS)
+unit/execution/executor.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/executor$(EXEEXT): $(unit_execution_executor_OBJECTS) $(unit_execution_executor_DEPENDENCIES) $(EXTRA_unit_execution_executor_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/executor$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_executor_OBJECTS) $(unit_execution_executor_LDADD) $(LIBS)
+unit/execution/invocable_archetype.$(OBJEXT):  \
+	unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/invocable_archetype$(EXEEXT): $(unit_execution_invocable_archetype_OBJECTS) $(unit_execution_invocable_archetype_DEPENDENCIES) $(EXTRA_unit_execution_invocable_archetype_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/invocable_archetype$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_invocable_archetype_OBJECTS) $(unit_execution_invocable_archetype_LDADD) $(LIBS)
+unit/execution/mapping.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/mapping$(EXEEXT): $(unit_execution_mapping_OBJECTS) $(unit_execution_mapping_DEPENDENCIES) $(EXTRA_unit_execution_mapping_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/mapping$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_mapping_OBJECTS) $(unit_execution_mapping_LDADD) $(LIBS)
+unit/execution/operation_state.$(OBJEXT):  \
+	unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/operation_state$(EXEEXT): $(unit_execution_operation_state_OBJECTS) $(unit_execution_operation_state_DEPENDENCIES) $(EXTRA_unit_execution_operation_state_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/operation_state$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_operation_state_OBJECTS) $(unit_execution_operation_state_LDADD) $(LIBS)
+unit/execution/outstanding_work.$(OBJEXT):  \
+	unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/outstanding_work$(EXEEXT): $(unit_execution_outstanding_work_OBJECTS) $(unit_execution_outstanding_work_DEPENDENCIES) $(EXTRA_unit_execution_outstanding_work_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/outstanding_work$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_outstanding_work_OBJECTS) $(unit_execution_outstanding_work_LDADD) $(LIBS)
+unit/execution/prefer_only.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/prefer_only$(EXEEXT): $(unit_execution_prefer_only_OBJECTS) $(unit_execution_prefer_only_DEPENDENCIES) $(EXTRA_unit_execution_prefer_only_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/prefer_only$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_prefer_only_OBJECTS) $(unit_execution_prefer_only_LDADD) $(LIBS)
+unit/execution/receiver.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/receiver$(EXEEXT): $(unit_execution_receiver_OBJECTS) $(unit_execution_receiver_DEPENDENCIES) $(EXTRA_unit_execution_receiver_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/receiver$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_receiver_OBJECTS) $(unit_execution_receiver_LDADD) $(LIBS)
+unit/execution/relationship.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/relationship$(EXEEXT): $(unit_execution_relationship_OBJECTS) $(unit_execution_relationship_DEPENDENCIES) $(EXTRA_unit_execution_relationship_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/relationship$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_relationship_OBJECTS) $(unit_execution_relationship_LDADD) $(LIBS)
+unit/execution/schedule.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/schedule$(EXEEXT): $(unit_execution_schedule_OBJECTS) $(unit_execution_schedule_DEPENDENCIES) $(EXTRA_unit_execution_schedule_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/schedule$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_schedule_OBJECTS) $(unit_execution_schedule_LDADD) $(LIBS)
+unit/execution/scheduler.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/scheduler$(EXEEXT): $(unit_execution_scheduler_OBJECTS) $(unit_execution_scheduler_DEPENDENCIES) $(EXTRA_unit_execution_scheduler_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/scheduler$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_scheduler_OBJECTS) $(unit_execution_scheduler_LDADD) $(LIBS)
+unit/execution/sender.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/sender$(EXEEXT): $(unit_execution_sender_OBJECTS) $(unit_execution_sender_DEPENDENCIES) $(EXTRA_unit_execution_sender_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/sender$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_sender_OBJECTS) $(unit_execution_sender_LDADD) $(LIBS)
+unit/execution/set_done.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/set_done$(EXEEXT): $(unit_execution_set_done_OBJECTS) $(unit_execution_set_done_DEPENDENCIES) $(EXTRA_unit_execution_set_done_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/set_done$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_set_done_OBJECTS) $(unit_execution_set_done_LDADD) $(LIBS)
+unit/execution/set_error.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/set_error$(EXEEXT): $(unit_execution_set_error_OBJECTS) $(unit_execution_set_error_DEPENDENCIES) $(EXTRA_unit_execution_set_error_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/set_error$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_set_error_OBJECTS) $(unit_execution_set_error_LDADD) $(LIBS)
+unit/execution/set_value.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/set_value$(EXEEXT): $(unit_execution_set_value_OBJECTS) $(unit_execution_set_value_DEPENDENCIES) $(EXTRA_unit_execution_set_value_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/set_value$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_set_value_OBJECTS) $(unit_execution_set_value_LDADD) $(LIBS)
+unit/execution/start.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/start$(EXEEXT): $(unit_execution_start_OBJECTS) $(unit_execution_start_DEPENDENCIES) $(EXTRA_unit_execution_start_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/start$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_start_OBJECTS) $(unit_execution_start_LDADD) $(LIBS)
+unit/execution/submit.$(OBJEXT): unit/execution/$(am__dirstamp) \
+	unit/execution/$(DEPDIR)/$(am__dirstamp)
+
+unit/execution/submit$(EXEEXT): $(unit_execution_submit_OBJECTS) $(unit_execution_submit_DEPENDENCIES) $(EXTRA_unit_execution_submit_DEPENDENCIES) unit/execution/$(am__dirstamp)
+	@rm -f unit/execution/submit$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_execution_submit_OBJECTS) $(unit_execution_submit_LDADD) $(LIBS)
 unit/execution_context.$(OBJEXT): unit/$(am__dirstamp) \
 	unit/$(DEPDIR)/$(am__dirstamp)
 
@@ -2530,6 +3044,12 @@ unit/ssl/stream_base.$(OBJEXT): unit/ssl/$(am__dirstamp) \
 unit/ssl/stream_base$(EXEEXT): $(unit_ssl_stream_base_OBJECTS) $(unit_ssl_stream_base_DEPENDENCIES) $(EXTRA_unit_ssl_stream_base_DEPENDENCIES) unit/ssl/$(am__dirstamp)
 	@rm -f unit/ssl/stream_base$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_ssl_stream_base_OBJECTS) $(unit_ssl_stream_base_LDADD) $(LIBS)
+unit/static_thread_pool.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/static_thread_pool$(EXEEXT): $(unit_static_thread_pool_OBJECTS) $(unit_static_thread_pool_DEPENDENCIES) $(EXTRA_unit_static_thread_pool_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/static_thread_pool$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_static_thread_pool_OBJECTS) $(unit_static_thread_pool_LDADD) $(LIBS)
 unit/steady_timer.$(OBJEXT): unit/$(am__dirstamp) \
 	unit/$(DEPDIR)/$(am__dirstamp)
 
@@ -2578,6 +3098,12 @@ unit/thread.$(OBJEXT): unit/$(am__dirstamp) \
 unit/thread$(EXEEXT): $(unit_thread_OBJECTS) $(unit_thread_DEPENDENCIES) $(EXTRA_unit_thread_DEPENDENCIES) unit/$(am__dirstamp)
 	@rm -f unit/thread$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_thread_OBJECTS) $(unit_thread_LDADD) $(LIBS)
+unit/thread_pool.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/thread_pool$(EXEEXT): $(unit_thread_pool_OBJECTS) $(unit_thread_pool_DEPENDENCIES) $(EXTRA_unit_thread_pool_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/thread_pool$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_thread_pool_OBJECTS) $(unit_thread_pool_LDADD) $(LIBS)
 unit/time_traits.$(OBJEXT): unit/$(am__dirstamp) \
 	unit/$(DEPDIR)/$(am__dirstamp)
 
@@ -2747,6 +3273,7 @@ mostlyclean-compile:
 	-rm -f latency/*.$(OBJEXT)
 	-rm -f performance/*.$(OBJEXT)
 	-rm -f unit/*.$(OBJEXT)
+	-rm -f unit/execution/*.$(OBJEXT)
 	-rm -f unit/generic/*.$(OBJEXT)
 	-rm -f unit/ip/*.$(OBJEXT)
 	-rm -f unit/local/*.$(OBJEXT)
@@ -2816,6 +3343,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/serial_port_base.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/signal_set.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/socket_base.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/static_thread_pool.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/steady_timer.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/strand.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/streambuf.Po@am__quote@ # am--include-marker
@@ -2824,6 +3352,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/system_timer.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/this_coro.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/thread.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/thread_pool.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/time_traits.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/use_awaitable.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/use_future.Po@am__quote@ # am--include-marker
@@ -2831,6 +3360,30 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/wait_traits.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/write.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/write_at.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/any_executor.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/blocking.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/blocking_adaptation.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/bulk_execute.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/bulk_guarantee.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/connect.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/context_as.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/execute.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/executor.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/invocable_archetype.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/mapping.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/operation_state.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/outstanding_work.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/prefer_only.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/receiver.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/relationship.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/schedule.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/scheduler.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/sender.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/set_done.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/set_error.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/set_value.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/start.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/submit.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/generic/$(DEPDIR)/basic_endpoint.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/generic/$(DEPDIR)/datagram_protocol.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/generic/$(DEPDIR)/raw_protocol.Po@am__quote@ # am--include-marker
@@ -2914,14 +3467,61 @@ am--depfiles: $(am__depfiles_remade)
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(AM_V_CXX@am__nodep@)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
+# This directory's subdirectories are mostly independent; you can cd
+# into them and run 'make' without going through this Makefile.
+# To change the values of 'make' variables: instead of editing Makefiles,
+# (1) if the variable is set in 'config.status', edit 'config.status'
+#     (which will cause the Makefiles to be regenerated when you run 'make');
+# (2) otherwise, pass the desired values on the 'make' command line.
+$(am__recursive_targets):
+	@fail=; \
+	if $(am__make_keepgoing); then \
+	  failcom='fail=yes'; \
+	else \
+	  failcom='exit 1'; \
+	fi; \
+	dot_seen=no; \
+	target=`echo $@ | sed s/-recursive//`; \
+	case "$@" in \
+	  distclean-* | maintainer-clean-*) list='$(DIST_SUBDIRS)' ;; \
+	  *) list='$(SUBDIRS)' ;; \
+	esac; \
+	for subdir in $$list; do \
+	  echo "Making $$target in $$subdir"; \
+	  if test "$$subdir" = "."; then \
+	    dot_seen=yes; \
+	    local_target="$$target-am"; \
+	  else \
+	    local_target="$$target"; \
+	  fi; \
+	  ($(am__cd) $$subdir && $(MAKE) $(AM_MAKEFLAGS) $$local_target) \
+	  || eval $$failcom; \
+	done; \
+	if test "$$dot_seen" = "no"; then \
+	  $(MAKE) $(AM_MAKEFLAGS) "$$target-am" || exit 1; \
+	fi; test -z "$$fail"
+
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
-tags: tags-am
+tags: tags-recursive
 TAGS: tags
 
 tags-am: $(TAGS_DEPENDENCIES) $(am__tagged_files)
 	set x; \
 	here=`pwd`; \
+	if ($(ETAGS) --etags-include --version) >/dev/null 2>&1; then \
+	  include_option=--etags-include; \
+	  empty_fix=.; \
+	else \
+	  include_option=--include; \
+	  empty_fix=; \
+	fi; \
+	list='$(SUBDIRS)'; for subdir in $$list; do \
+	  if test "$$subdir" = .; then :; else \
+	    test ! -f $$subdir/TAGS || \
+	      set "$$@" "$$include_option=$$here/$$subdir/TAGS"; \
+	  fi; \
+	done; \
 	$(am__define_uniq_tagged_files); \
 	shift; \
 	if test -z "$(ETAGS_ARGS)$$*$$unique"; then :; else \
@@ -2934,7 +3534,7 @@ tags-am: $(TAGS_DEPENDENCIES) $(am__tagged_files)
 	      $$unique; \
 	  fi; \
 	fi
-ctags: ctags-am
+ctags: ctags-recursive
 
 CTAGS: ctags
 ctags-am: $(TAGS_DEPENDENCIES) $(am__tagged_files)
@@ -2947,7 +3547,7 @@ GTAGS:
 	here=`$(am__cd) $(top_builddir) && pwd` \
 	  && $(am__cd) $(top_srcdir) \
 	  && gtags -i $(GTAGS_ARGS) "$$here"
-cscopelist: cscopelist-am
+cscopelist: cscopelist-recursive
 
 cscopelist-am: $(am__tagged_files)
 	list='$(am__tagged_files)'; \
@@ -3317,6 +3917,174 @@ unit/error.log: unit/error$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/any_executor.log: unit/execution/any_executor$(EXEEXT)
+	@p='unit/execution/any_executor$(EXEEXT)'; \
+	b='unit/execution/any_executor'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/blocking.log: unit/execution/blocking$(EXEEXT)
+	@p='unit/execution/blocking$(EXEEXT)'; \
+	b='unit/execution/blocking'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/blocking_adaptation.log: unit/execution/blocking_adaptation$(EXEEXT)
+	@p='unit/execution/blocking_adaptation$(EXEEXT)'; \
+	b='unit/execution/blocking_adaptation'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/bulk_execute.log: unit/execution/bulk_execute$(EXEEXT)
+	@p='unit/execution/bulk_execute$(EXEEXT)'; \
+	b='unit/execution/bulk_execute'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/bulk_guarantee.log: unit/execution/bulk_guarantee$(EXEEXT)
+	@p='unit/execution/bulk_guarantee$(EXEEXT)'; \
+	b='unit/execution/bulk_guarantee'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/connect.log: unit/execution/connect$(EXEEXT)
+	@p='unit/execution/connect$(EXEEXT)'; \
+	b='unit/execution/connect'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/context_as.log: unit/execution/context_as$(EXEEXT)
+	@p='unit/execution/context_as$(EXEEXT)'; \
+	b='unit/execution/context_as'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/execute.log: unit/execution/execute$(EXEEXT)
+	@p='unit/execution/execute$(EXEEXT)'; \
+	b='unit/execution/execute'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/executor.log: unit/execution/executor$(EXEEXT)
+	@p='unit/execution/executor$(EXEEXT)'; \
+	b='unit/execution/executor'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/invocable_archetype.log: unit/execution/invocable_archetype$(EXEEXT)
+	@p='unit/execution/invocable_archetype$(EXEEXT)'; \
+	b='unit/execution/invocable_archetype'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/mapping.log: unit/execution/mapping$(EXEEXT)
+	@p='unit/execution/mapping$(EXEEXT)'; \
+	b='unit/execution/mapping'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/operation_state.log: unit/execution/operation_state$(EXEEXT)
+	@p='unit/execution/operation_state$(EXEEXT)'; \
+	b='unit/execution/operation_state'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/outstanding_work.log: unit/execution/outstanding_work$(EXEEXT)
+	@p='unit/execution/outstanding_work$(EXEEXT)'; \
+	b='unit/execution/outstanding_work'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/prefer_only.log: unit/execution/prefer_only$(EXEEXT)
+	@p='unit/execution/prefer_only$(EXEEXT)'; \
+	b='unit/execution/prefer_only'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/receiver.log: unit/execution/receiver$(EXEEXT)
+	@p='unit/execution/receiver$(EXEEXT)'; \
+	b='unit/execution/receiver'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/relationship.log: unit/execution/relationship$(EXEEXT)
+	@p='unit/execution/relationship$(EXEEXT)'; \
+	b='unit/execution/relationship'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/schedule.log: unit/execution/schedule$(EXEEXT)
+	@p='unit/execution/schedule$(EXEEXT)'; \
+	b='unit/execution/schedule'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/scheduler.log: unit/execution/scheduler$(EXEEXT)
+	@p='unit/execution/scheduler$(EXEEXT)'; \
+	b='unit/execution/scheduler'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/sender.log: unit/execution/sender$(EXEEXT)
+	@p='unit/execution/sender$(EXEEXT)'; \
+	b='unit/execution/sender'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/set_done.log: unit/execution/set_done$(EXEEXT)
+	@p='unit/execution/set_done$(EXEEXT)'; \
+	b='unit/execution/set_done'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/set_error.log: unit/execution/set_error$(EXEEXT)
+	@p='unit/execution/set_error$(EXEEXT)'; \
+	b='unit/execution/set_error'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/set_value.log: unit/execution/set_value$(EXEEXT)
+	@p='unit/execution/set_value$(EXEEXT)'; \
+	b='unit/execution/set_value'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/start.log: unit/execution/start$(EXEEXT)
+	@p='unit/execution/start$(EXEEXT)'; \
+	b='unit/execution/start'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/execution/submit.log: unit/execution/submit$(EXEEXT)
+	@p='unit/execution/submit$(EXEEXT)'; \
+	b='unit/execution/submit'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 unit/execution_context.log: unit/execution_context$(EXEEXT)
 	@p='unit/execution_context$(EXEEXT)'; \
 	b='unit/execution_context'; \
@@ -3667,6 +4435,13 @@ unit/socket_base.log: unit/socket_base$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/static_thread_pool.log: unit/static_thread_pool$(EXEEXT)
+	@p='unit/static_thread_pool$(EXEEXT)'; \
+	b='unit/static_thread_pool'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 unit/steady_timer.log: unit/steady_timer$(EXEEXT)
 	@p='unit/steady_timer$(EXEEXT)'; \
 	b='unit/steady_timer'; \
@@ -3719,6 +4494,13 @@ unit/this_coro.log: unit/this_coro$(EXEEXT)
 unit/thread.log: unit/thread$(EXEEXT)
 	@p='unit/thread$(EXEEXT)'; \
 	b='unit/thread'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/thread_pool.log: unit/thread_pool$(EXEEXT)
+	@p='unit/thread_pool$(EXEEXT)'; \
+	b='unit/thread_pool'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -3988,21 +4770,47 @@ distdir-am: $(DISTFILES)
 	    || exit 1; \
 	  fi; \
 	done
+	@list='$(DIST_SUBDIRS)'; for subdir in $$list; do \
+	  if test "$$subdir" = .; then :; else \
+	    $(am__make_dryrun) \
+	      || test -d "$(distdir)/$$subdir" \
+	      || $(MKDIR_P) "$(distdir)/$$subdir" \
+	      || exit 1; \
+	    dir1=$$subdir; dir2="$(distdir)/$$subdir"; \
+	    $(am__relativize); \
+	    new_distdir=$$reldir; \
+	    dir1=$$subdir; dir2="$(top_distdir)"; \
+	    $(am__relativize); \
+	    new_top_distdir=$$reldir; \
+	    echo " (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) top_distdir="$$new_top_distdir" distdir="$$new_distdir" \\"; \
+	    echo "     am__remove_distdir=: am__skip_length_check=: am__skip_mode_fix=: distdir)"; \
+	    ($(am__cd) $$subdir && \
+	      $(MAKE) $(AM_MAKEFLAGS) \
+	        top_distdir="$$new_top_distdir" \
+	        distdir="$$new_distdir" \
+		am__remove_distdir=: \
+		am__skip_length_check=: \
+		am__skip_mode_fix=: \
+	        distdir) \
+	      || exit 1; \
+	  fi; \
+	done
 check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
 	$(MAKE) $(AM_MAKEFLAGS) check-TESTS
-check: check-am
+check: check-recursive
 all-am: Makefile $(PROGRAMS) $(LIBRARIES) $(HEADERS)
-installdirs:
-install: install-am
-install-exec: install-exec-am
-install-data: install-data-am
-uninstall: uninstall-am
+installdirs: installdirs-recursive
+installdirs-am:
+install: install-recursive
+install-exec: install-exec-recursive
+install-data: install-data-recursive
+uninstall: uninstall-recursive
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 
-installcheck: installcheck-am
+installcheck: installcheck-recursive
 install-strip:
 	if test -z '$(STRIP)'; then \
 	  $(MAKE) $(AM_MAKEFLAGS) INSTALL_PROGRAM="$(INSTALL_STRIP_PROGRAM)" \
@@ -4031,6 +4839,8 @@ distclean-generic:
 	-rm -f performance/$(am__dirstamp)
 	-rm -f unit/$(DEPDIR)/$(am__dirstamp)
 	-rm -f unit/$(am__dirstamp)
+	-rm -f unit/execution/$(DEPDIR)/$(am__dirstamp)
+	-rm -f unit/execution/$(am__dirstamp)
 	-rm -f unit/generic/$(DEPDIR)/$(am__dirstamp)
 	-rm -f unit/generic/$(am__dirstamp)
 	-rm -f unit/ip/$(DEPDIR)/$(am__dirstamp)
@@ -4050,12 +4860,12 @@ maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
 	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
-clean: clean-am
+clean: clean-recursive
 
 clean-am: clean-checkPROGRAMS clean-generic clean-noinstLIBRARIES \
 	clean-noinstPROGRAMS mostlyclean-am
 
-distclean: distclean-am
+distclean: distclean-recursive
 		-rm -f ../$(DEPDIR)/asio.Po
 	-rm -f ../$(DEPDIR)/asio_ssl.Po
 	-rm -f latency/$(DEPDIR)/tcp_client.Po
@@ -4114,6 +4924,7 @@ distclean: distclean-am
 	-rm -f unit/$(DEPDIR)/serial_port_base.Po
 	-rm -f unit/$(DEPDIR)/signal_set.Po
 	-rm -f unit/$(DEPDIR)/socket_base.Po
+	-rm -f unit/$(DEPDIR)/static_thread_pool.Po
 	-rm -f unit/$(DEPDIR)/steady_timer.Po
 	-rm -f unit/$(DEPDIR)/strand.Po
 	-rm -f unit/$(DEPDIR)/streambuf.Po
@@ -4122,6 +4933,7 @@ distclean: distclean-am
 	-rm -f unit/$(DEPDIR)/system_timer.Po
 	-rm -f unit/$(DEPDIR)/this_coro.Po
 	-rm -f unit/$(DEPDIR)/thread.Po
+	-rm -f unit/$(DEPDIR)/thread_pool.Po
 	-rm -f unit/$(DEPDIR)/time_traits.Po
 	-rm -f unit/$(DEPDIR)/use_awaitable.Po
 	-rm -f unit/$(DEPDIR)/use_future.Po
@@ -4129,6 +4941,30 @@ distclean: distclean-am
 	-rm -f unit/$(DEPDIR)/wait_traits.Po
 	-rm -f unit/$(DEPDIR)/write.Po
 	-rm -f unit/$(DEPDIR)/write_at.Po
+	-rm -f unit/execution/$(DEPDIR)/any_executor.Po
+	-rm -f unit/execution/$(DEPDIR)/blocking.Po
+	-rm -f unit/execution/$(DEPDIR)/blocking_adaptation.Po
+	-rm -f unit/execution/$(DEPDIR)/bulk_execute.Po
+	-rm -f unit/execution/$(DEPDIR)/bulk_guarantee.Po
+	-rm -f unit/execution/$(DEPDIR)/connect.Po
+	-rm -f unit/execution/$(DEPDIR)/context_as.Po
+	-rm -f unit/execution/$(DEPDIR)/execute.Po
+	-rm -f unit/execution/$(DEPDIR)/executor.Po
+	-rm -f unit/execution/$(DEPDIR)/invocable_archetype.Po
+	-rm -f unit/execution/$(DEPDIR)/mapping.Po
+	-rm -f unit/execution/$(DEPDIR)/operation_state.Po
+	-rm -f unit/execution/$(DEPDIR)/outstanding_work.Po
+	-rm -f unit/execution/$(DEPDIR)/prefer_only.Po
+	-rm -f unit/execution/$(DEPDIR)/receiver.Po
+	-rm -f unit/execution/$(DEPDIR)/relationship.Po
+	-rm -f unit/execution/$(DEPDIR)/schedule.Po
+	-rm -f unit/execution/$(DEPDIR)/scheduler.Po
+	-rm -f unit/execution/$(DEPDIR)/sender.Po
+	-rm -f unit/execution/$(DEPDIR)/set_done.Po
+	-rm -f unit/execution/$(DEPDIR)/set_error.Po
+	-rm -f unit/execution/$(DEPDIR)/set_value.Po
+	-rm -f unit/execution/$(DEPDIR)/start.Po
+	-rm -f unit/execution/$(DEPDIR)/submit.Po
 	-rm -f unit/generic/$(DEPDIR)/basic_endpoint.Po
 	-rm -f unit/generic/$(DEPDIR)/datagram_protocol.Po
 	-rm -f unit/generic/$(DEPDIR)/raw_protocol.Po
@@ -4193,47 +5029,47 @@ distclean: distclean-am
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
 
-dvi: dvi-am
+dvi: dvi-recursive
 
 dvi-am:
 
-html: html-am
+html: html-recursive
 
 html-am:
 
-info: info-am
+info: info-recursive
 
 info-am:
 
 install-data-am:
 
-install-dvi: install-dvi-am
+install-dvi: install-dvi-recursive
 
 install-dvi-am:
 
 install-exec-am:
 
-install-html: install-html-am
+install-html: install-html-recursive
 
 install-html-am:
 
-install-info: install-info-am
+install-info: install-info-recursive
 
 install-info-am:
 
 install-man:
 
-install-pdf: install-pdf-am
+install-pdf: install-pdf-recursive
 
 install-pdf-am:
 
-install-ps: install-ps-am
+install-ps: install-ps-recursive
 
 install-ps-am:
 
 installcheck-am:
 
-maintainer-clean: maintainer-clean-am
+maintainer-clean: maintainer-clean-recursive
 		-rm -f ../$(DEPDIR)/asio.Po
 	-rm -f ../$(DEPDIR)/asio_ssl.Po
 	-rm -f latency/$(DEPDIR)/tcp_client.Po
@@ -4292,6 +5128,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f unit/$(DEPDIR)/serial_port_base.Po
 	-rm -f unit/$(DEPDIR)/signal_set.Po
 	-rm -f unit/$(DEPDIR)/socket_base.Po
+	-rm -f unit/$(DEPDIR)/static_thread_pool.Po
 	-rm -f unit/$(DEPDIR)/steady_timer.Po
 	-rm -f unit/$(DEPDIR)/strand.Po
 	-rm -f unit/$(DEPDIR)/streambuf.Po
@@ -4300,6 +5137,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f unit/$(DEPDIR)/system_timer.Po
 	-rm -f unit/$(DEPDIR)/this_coro.Po
 	-rm -f unit/$(DEPDIR)/thread.Po
+	-rm -f unit/$(DEPDIR)/thread_pool.Po
 	-rm -f unit/$(DEPDIR)/time_traits.Po
 	-rm -f unit/$(DEPDIR)/use_awaitable.Po
 	-rm -f unit/$(DEPDIR)/use_future.Po
@@ -4307,6 +5145,30 @@ maintainer-clean: maintainer-clean-am
 	-rm -f unit/$(DEPDIR)/wait_traits.Po
 	-rm -f unit/$(DEPDIR)/write.Po
 	-rm -f unit/$(DEPDIR)/write_at.Po
+	-rm -f unit/execution/$(DEPDIR)/any_executor.Po
+	-rm -f unit/execution/$(DEPDIR)/blocking.Po
+	-rm -f unit/execution/$(DEPDIR)/blocking_adaptation.Po
+	-rm -f unit/execution/$(DEPDIR)/bulk_execute.Po
+	-rm -f unit/execution/$(DEPDIR)/bulk_guarantee.Po
+	-rm -f unit/execution/$(DEPDIR)/connect.Po
+	-rm -f unit/execution/$(DEPDIR)/context_as.Po
+	-rm -f unit/execution/$(DEPDIR)/execute.Po
+	-rm -f unit/execution/$(DEPDIR)/executor.Po
+	-rm -f unit/execution/$(DEPDIR)/invocable_archetype.Po
+	-rm -f unit/execution/$(DEPDIR)/mapping.Po
+	-rm -f unit/execution/$(DEPDIR)/operation_state.Po
+	-rm -f unit/execution/$(DEPDIR)/outstanding_work.Po
+	-rm -f unit/execution/$(DEPDIR)/prefer_only.Po
+	-rm -f unit/execution/$(DEPDIR)/receiver.Po
+	-rm -f unit/execution/$(DEPDIR)/relationship.Po
+	-rm -f unit/execution/$(DEPDIR)/schedule.Po
+	-rm -f unit/execution/$(DEPDIR)/scheduler.Po
+	-rm -f unit/execution/$(DEPDIR)/sender.Po
+	-rm -f unit/execution/$(DEPDIR)/set_done.Po
+	-rm -f unit/execution/$(DEPDIR)/set_error.Po
+	-rm -f unit/execution/$(DEPDIR)/set_value.Po
+	-rm -f unit/execution/$(DEPDIR)/start.Po
+	-rm -f unit/execution/$(DEPDIR)/submit.Po
 	-rm -f unit/generic/$(DEPDIR)/basic_endpoint.Po
 	-rm -f unit/generic/$(DEPDIR)/datagram_protocol.Po
 	-rm -f unit/generic/$(DEPDIR)/raw_protocol.Po
@@ -4370,32 +5232,33 @@ maintainer-clean: maintainer-clean-am
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
-mostlyclean: mostlyclean-am
+mostlyclean: mostlyclean-recursive
 
 mostlyclean-am: mostlyclean-compile mostlyclean-generic
 
-pdf: pdf-am
+pdf: pdf-recursive
 
 pdf-am:
 
-ps: ps-am
+ps: ps-recursive
 
 ps-am:
 
 uninstall-am:
 
-.MAKE: check-am install-am install-strip
+.MAKE: $(am__recursive_targets) check-am install-am install-strip
 
-.PHONY: CTAGS GTAGS TAGS all all-am am--depfiles check check-TESTS \
-	check-am clean clean-checkPROGRAMS clean-generic \
-	clean-noinstLIBRARIES clean-noinstPROGRAMS cscopelist-am ctags \
-	ctags-am distclean distclean-compile distclean-generic \
-	distclean-tags distdir dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am install-man \
-	install-pdf install-pdf-am install-ps install-ps-am \
-	install-strip installcheck installcheck-am installdirs \
+.PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am \
+	am--depfiles check check-TESTS check-am clean \
+	clean-checkPROGRAMS clean-generic clean-noinstLIBRARIES \
+	clean-noinstPROGRAMS cscopelist-am ctags ctags-am distclean \
+	distclean-compile distclean-generic distclean-tags distdir dvi \
+	dvi-am html html-am info info-am install install-am \
+	install-data install-data-am install-dvi install-dvi-am \
+	install-exec install-exec-am install-html install-html-am \
+	install-info install-info-am install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs installdirs-am \
 	maintainer-clean maintainer-clean-generic mostlyclean \
 	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
 	recheck tags tags-am uninstall uninstall-am

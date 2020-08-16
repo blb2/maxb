@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>basic_socket_acceptor::async_accept</title>
 <link rel="stylesheet" href="../../../boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
@@ -32,7 +32,7 @@ Start
     basic_socket&lt; Protocol1, Executor1 &gt; &amp; peer,
     AcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
     typename enable_if&lt; is_convertible&lt; Protocol, Protocol1 &gt;::value &gt;::type *  = 0);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload1.html" title="basic_socket_acceptor::async_accept (1 of 8 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload1.html" title="basic_socket_acceptor::async_accept (1 of 8 overloads)">more...</a></em></span>
 
 template&lt;
     typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>,
@@ -41,13 +41,13 @@ template&lt;
     basic_socket&lt; protocol_type, Executor1 &gt; &amp; peer,
     endpoint_type &amp; peer_endpoint,
     AcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload2.html" title="basic_socket_acceptor::async_accept (2 of 8 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload2.html" title="basic_socket_acceptor::async_accept (2 of 8 overloads)">more...</a></em></span>
 
 template&lt;
     typename <a class="link" href="../MoveAcceptHandler.html" title="Move accept handler requirements">MoveAcceptHandler</a> = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>&gt;
 <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <a class="link" href="async_accept/overload3.html" title="basic_socket_acceptor::async_accept (3 of 8 overloads)">async_accept</a>(
     MoveAcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload3.html" title="basic_socket_acceptor::async_accept (3 of 8 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload3.html" title="basic_socket_acceptor::async_accept (3 of 8 overloads)">more...</a></em></span>
 
 template&lt;
     typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>,
@@ -55,8 +55,8 @@ template&lt;
 <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <a class="link" href="async_accept/overload4.html" title="basic_socket_acceptor::async_accept (4 of 8 overloads)">async_accept</a>(
     const Executor1 &amp; ex,
     MoveAcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_executor&lt; Executor1 &gt;::value &gt;::type *  = 0);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload4.html" title="basic_socket_acceptor::async_accept (4 of 8 overloads)">more...</a></em></span>
+    typename enable_if&lt; is_executor&lt; Executor1 &gt;::value||execution::is_executor&lt; Executor1 &gt;::value &gt;::type *  = 0);
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload4.html" title="basic_socket_acceptor::async_accept (4 of 8 overloads)">more...</a></em></span>
 
 template&lt;
     typename ExecutionContext,
@@ -65,14 +65,14 @@ template&lt;
     ExecutionContext &amp; context,
     MoveAcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
     typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload5.html" title="basic_socket_acceptor::async_accept (5 of 8 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload5.html" title="basic_socket_acceptor::async_accept (5 of 8 overloads)">more...</a></em></span>
 
 template&lt;
     typename <a class="link" href="../MoveAcceptHandler.html" title="Move accept handler requirements">MoveAcceptHandler</a> = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>&gt;
 <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <a class="link" href="async_accept/overload6.html" title="basic_socket_acceptor::async_accept (6 of 8 overloads)">async_accept</a>(
     endpoint_type &amp; peer_endpoint,
     MoveAcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload6.html" title="basic_socket_acceptor::async_accept (6 of 8 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload6.html" title="basic_socket_acceptor::async_accept (6 of 8 overloads)">more...</a></em></span>
 
 template&lt;
     typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>,
@@ -81,8 +81,8 @@ template&lt;
     const Executor1 &amp; ex,
     endpoint_type &amp; peer_endpoint,
     MoveAcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_executor&lt; Executor1 &gt;::value &gt;::type *  = 0);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload7.html" title="basic_socket_acceptor::async_accept (7 of 8 overloads)">more...</a></em></span>
+    typename enable_if&lt; is_executor&lt; Executor1 &gt;::value||execution::is_executor&lt; Executor1 &gt;::value &gt;::type *  = 0);
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload7.html" title="basic_socket_acceptor::async_accept (7 of 8 overloads)">more...</a></em></span>
 
 template&lt;
     typename ExecutionContext,
@@ -92,12 +92,12 @@ template&lt;
     endpoint_type &amp; peer_endpoint,
     MoveAcceptHandler &amp;&amp; handler = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
     typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
-  <span class="emphasis"><em>&#187; <a class="link" href="async_accept/overload8.html" title="basic_socket_acceptor::async_accept (8 of 8 overloads)">more...</a></em></span>
+  <span class="emphasis"><em>» <a class="link" href="async_accept/overload8.html" title="basic_socket_acceptor::async_accept (8 of 8 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
       Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)

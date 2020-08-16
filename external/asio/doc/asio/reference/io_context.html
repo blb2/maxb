@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>io_context</title>
 <link rel="stylesheet" href="../../boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
@@ -50,12 +50,12 @@
 <tr>
 <td>
                 <p>
-                  <a class="link" href="io_context__executor_type.html" title="io_context::executor_type"><span class="bold"><strong>executor_type</strong></span></a>
+                  <a class="link" href="io_context__basic_executor_type.html" title="io_context::basic_executor_type"><span class="bold"><strong>basic_executor_type</strong></span></a>
                 </p>
               </td>
 <td>
                 <p>
-                  Executor used to submit functions to an io_context.
+                  Executor implementation type used to submit functions to an io_context.
                 </p>
               </td>
 </tr>
@@ -105,6 +105,18 @@
 <td>
                 <p>
                   The type used to count the number of handlers executed by the context.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="io_context/executor_type.html" title="io_context::executor_type"><span class="bold"><strong>executor_type</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Executor used to submit functions to an io_context.
                 </p>
               </td>
 </tr>
@@ -173,7 +185,7 @@
 <tr>
 <td>
                 <p>
-                  <a class="link" href="io_context/io_context.html" title="io_context::io_context"><span class="bold"><strong>io_context</strong></span></a>
+                  <a class="link" href="io_context/io_context.html" title="io_context::io_context"><span class="bold"><strong>io_context</strong></span></a> <span class="silver">[constructor]</span>
                 </p>
               </td>
 <td>
@@ -203,7 +215,7 @@
 <td>
                 <p>
                   Run the io_context object's event processing loop to execute ready
-                  handlers. <br> <span class="silver"> &#8212;</span><br> (Deprecated: Use non-error_code overload.)
+                  handlers. <br> <span class="silver"> —</span><br> (Deprecated: Use non-error_code overload.)
                   Run the io_context object's event processing loop to execute ready
                   handlers.
                 </p>
@@ -218,7 +230,7 @@
 <td>
                 <p>
                   Run the io_context object's event processing loop to execute one
-                  ready handler. <br> <span class="silver"> &#8212;</span><br> (Deprecated: Use non-error_code overload.)
+                  ready handler. <br> <span class="silver"> —</span><br> (Deprecated: Use non-error_code overload.)
                   Run the io_context object's event processing loop to execute one
                   ready handler.
                 </p>
@@ -270,7 +282,7 @@
               </td>
 <td>
                 <p>
-                  Run the io_context object's event processing loop. <br> <span class="silver"> &#8212;</span><br>
+                  Run the io_context object's event processing loop. <br> <span class="silver"> —</span><br>
                   (Deprecated: Use non-error_code overload.) Run the io_context object's
                   event processing loop.
                 </p>
@@ -298,7 +310,7 @@
 <td>
                 <p>
                   Run the io_context object's event processing loop to execute at
-                  most one handler. <br> <span class="silver"> &#8212;</span><br> (Deprecated: Use non-error_code
+                  most one handler. <br> <span class="silver"> —</span><br> (Deprecated: Use non-error_code
                   overlaod.) Run the io_context object's event processing loop to
                   execute at most one handler.
                 </p>
@@ -383,7 +395,7 @@
 <tr>
 <td>
                 <p>
-                  <a class="link" href="io_context/_io_context.html" title="io_context::~io_context"><span class="bold"><strong>~io_context</strong></span></a>
+                  <a class="link" href="io_context/_io_context.html" title="io_context::~io_context"><span class="bold"><strong>~io_context</strong></span></a> <span class="silver">[destructor]</span>
                 </p>
               </td>
 <td>
@@ -510,7 +522,7 @@
               </td>
 <td>
                 <p>
-                  <br> <span class="silver"> &#8212;</span><br> Obtain the service object corresponding to the given
+                  <br> <span class="silver"> —</span><br> Obtain the service object corresponding to the given
                   type.
                 </p>
               </td>
@@ -664,11 +676,32 @@ io_context.run();
         to do. For example, the <a class="link" href="io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
         may be being run in a background thread that is launched prior to the application's
         asynchronous operations. The <code class="computeroutput">run()</code> call may be kept running
-        by creating an object of type asio::executor_work_guard&lt;io_context::executor_type&gt;:
+        by creating an executor that tracks work against the <a class="link" href="io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>:
       </p>
 <pre class="programlisting">asio::io_context io_context;
-asio::executor_work_guard&lt;asio::io_context::executor_type&gt;
-  = asio::make_work_guard(io_context);
+auto work = asio::require(io_context.get_executor(),
+    asio::execution::outstanding_work.tracked);
+...
+</pre>
+<p>
+        If using C++03, which lacks automatic variable type deduction, you may compute
+        the return type of the require call:
+      </p>
+<pre class="programlisting">asio::io_context io_context;
+typename asio::require_result&lt;
+    asio::io_context::executor_type,
+    asio::exeution::outstanding_work_t::tracked_t&gt;
+  work = asio::require(io_context.get_executor(),
+    asio::execution::outstanding_work.tracked);
+...
+</pre>
+<p>
+        or store the result in the type-erasing executor wrapper, any_io_executor:
+      </p>
+<pre class="programlisting">asio::io_context io_context;
+asio::any_io_executor work
+  = asio::require(io_context.get_executor(),
+      asio::execution::outstanding_work.tracked);
 ...
 </pre>
 <p>
@@ -679,13 +712,15 @@ asio::executor_work_guard&lt;asio::io_context::executor_type&gt;
       </p>
 <p>
         Alternatively, if the application requires that all operations and handlers
-        be allowed to finish normally, the work object may be explicitly reset.
+        be allowed to finish normally, store the work-tracking executor in an any_io_executor
+        object, so that it may be explicitly reset.
       </p>
 <pre class="programlisting">asio::io_context io_context;
-asio::executor_work_guard&lt;asio::io_context::executor_type&gt;
-  = asio::make_work_guard(io_context);
+asio::any_io_executor work
+  = asio::require(io_context.get_executor(),
+      asio::execution::outstanding_work.tracked);
 ...
-work.reset(); // Allow run() to exit.
+work = asio::any_io_executor(); // Allow run() to exit.
 </pre>
 <h5>
 <a name="asio.reference.io_context.h9"></a>
@@ -700,7 +735,7 @@ work.reset(); // Allow run() to exit.
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright &#169; 2003-2020 Christopher M.
+<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
       Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)

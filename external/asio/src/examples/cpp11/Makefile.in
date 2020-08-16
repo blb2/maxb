@@ -104,6 +104,7 @@ noinst_PROGRAMS = allocation/server$(EXEEXT) \
 	executors/pipeline$(EXEEXT) \
 	executors/priority_scheduler$(EXEEXT) \
 	futures/daytime_client$(EXEEXT) \
+	handler_tracking/async_tcp_echo_server$(EXEEXT) \
 	http/server/http_server$(EXEEXT) \
 	invocation/prioritised_handlers$(EXEEXT) \
 	iostreams/http_client$(EXEEXT) multicast/receiver$(EXEEXT) \
@@ -285,6 +286,13 @@ am_futures_daytime_client_OBJECTS = futures/daytime_client.$(OBJEXT)
 futures_daytime_client_OBJECTS = $(am_futures_daytime_client_OBJECTS)
 futures_daytime_client_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@futures_daytime_client_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_handler_tracking_async_tcp_echo_server_OBJECTS =  \
+	handler_tracking/async_tcp_echo_server.$(OBJEXT)
+handler_tracking_async_tcp_echo_server_OBJECTS =  \
+	$(am_handler_tracking_async_tcp_echo_server_OBJECTS)
+handler_tracking_async_tcp_echo_server_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@handler_tracking_async_tcp_echo_server_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
 am_http_server_http_server_OBJECTS = http/server/connection.$(OBJEXT) \
 	http/server/connection_manager.$(OBJEXT) \
@@ -491,6 +499,7 @@ am__depfiles_remade = ../../$(DEPDIR)/asio.Po \
 	fork/$(DEPDIR)/daemon.Po \
 	fork/$(DEPDIR)/process_per_connection.Po \
 	futures/$(DEPDIR)/daytime_client.Po \
+	handler_tracking/$(DEPDIR)/async_tcp_echo_server.Po \
 	http/server/$(DEPDIR)/connection.Po \
 	http/server/$(DEPDIR)/connection_manager.Po \
 	http/server/$(DEPDIR)/main.Po \
@@ -551,6 +560,7 @@ SOURCES = $(libasio_a_SOURCES) $(allocation_server_SOURCES) \
 	$(executors_priority_scheduler_SOURCES) $(fork_daemon_SOURCES) \
 	$(fork_process_per_connection_SOURCES) \
 	$(futures_daytime_client_SOURCES) \
+	$(handler_tracking_async_tcp_echo_server_SOURCES) \
 	$(http_server_http_server_SOURCES) \
 	$(invocation_prioritised_handlers_SOURCES) \
 	$(iostreams_http_client_SOURCES) $(local_connect_pair_SOURCES) \
@@ -590,6 +600,7 @@ DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(am__fork_daemon_SOURCES_DIST) \
 	$(am__fork_process_per_connection_SOURCES_DIST) \
 	$(futures_daytime_client_SOURCES) \
+	$(handler_tracking_async_tcp_echo_server_SOURCES) \
 	$(http_server_http_server_SOURCES) \
 	$(invocation_prioritised_handlers_SOURCES) \
 	$(iostreams_http_client_SOURCES) \
@@ -770,6 +781,7 @@ executors_fork_join_SOURCES = executors/fork_join.cpp
 executors_pipeline_SOURCES = executors/pipeline.cpp
 executors_priority_scheduler_SOURCES = executors/priority_scheduler.cpp
 futures_daytime_client_SOURCES = futures/daytime_client.cpp
+handler_tracking_async_tcp_echo_server_SOURCES = handler_tracking/async_tcp_echo_server.cpp
 http_server_http_server_SOURCES = \
 	http/server/connection.cpp \
 	http/server/connection_manager.cpp \
@@ -1037,6 +1049,19 @@ futures/daytime_client.$(OBJEXT): futures/$(am__dirstamp) \
 futures/daytime_client$(EXEEXT): $(futures_daytime_client_OBJECTS) $(futures_daytime_client_DEPENDENCIES) $(EXTRA_futures_daytime_client_DEPENDENCIES) futures/$(am__dirstamp)
 	@rm -f futures/daytime_client$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(futures_daytime_client_OBJECTS) $(futures_daytime_client_LDADD) $(LIBS)
+handler_tracking/$(am__dirstamp):
+	@$(MKDIR_P) handler_tracking
+	@: > handler_tracking/$(am__dirstamp)
+handler_tracking/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) handler_tracking/$(DEPDIR)
+	@: > handler_tracking/$(DEPDIR)/$(am__dirstamp)
+handler_tracking/async_tcp_echo_server.$(OBJEXT):  \
+	handler_tracking/$(am__dirstamp) \
+	handler_tracking/$(DEPDIR)/$(am__dirstamp)
+
+handler_tracking/async_tcp_echo_server$(EXEEXT): $(handler_tracking_async_tcp_echo_server_OBJECTS) $(handler_tracking_async_tcp_echo_server_DEPENDENCIES) $(EXTRA_handler_tracking_async_tcp_echo_server_DEPENDENCIES) handler_tracking/$(am__dirstamp)
+	@rm -f handler_tracking/async_tcp_echo_server$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(handler_tracking_async_tcp_echo_server_OBJECTS) $(handler_tracking_async_tcp_echo_server_LDADD) $(LIBS)
 http/server/$(am__dirstamp):
 	@$(MKDIR_P) http/server
 	@: > http/server/$(am__dirstamp)
@@ -1308,6 +1333,7 @@ mostlyclean-compile:
 	-rm -f executors/*.$(OBJEXT)
 	-rm -f fork/*.$(OBJEXT)
 	-rm -f futures/*.$(OBJEXT)
+	-rm -f handler_tracking/*.$(OBJEXT)
 	-rm -f http/server/*.$(OBJEXT)
 	-rm -f invocation/*.$(OBJEXT)
 	-rm -f iostreams/*.$(OBJEXT)
@@ -1345,6 +1371,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@fork/$(DEPDIR)/daemon.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@fork/$(DEPDIR)/process_per_connection.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@futures/$(DEPDIR)/daytime_client.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@handler_tracking/$(DEPDIR)/async_tcp_echo_server.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@http/server/$(DEPDIR)/connection.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@http/server/$(DEPDIR)/connection_manager.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@http/server/$(DEPDIR)/main.Po@am__quote@ # am--include-marker
@@ -1535,6 +1562,8 @@ distclean-generic:
 	-rm -f fork/$(am__dirstamp)
 	-rm -f futures/$(DEPDIR)/$(am__dirstamp)
 	-rm -f futures/$(am__dirstamp)
+	-rm -f handler_tracking/$(DEPDIR)/$(am__dirstamp)
+	-rm -f handler_tracking/$(am__dirstamp)
 	-rm -f http/server/$(DEPDIR)/$(am__dirstamp)
 	-rm -f http/server/$(am__dirstamp)
 	-rm -f invocation/$(DEPDIR)/$(am__dirstamp)
@@ -1591,6 +1620,7 @@ distclean: distclean-am
 	-rm -f fork/$(DEPDIR)/daemon.Po
 	-rm -f fork/$(DEPDIR)/process_per_connection.Po
 	-rm -f futures/$(DEPDIR)/daytime_client.Po
+	-rm -f handler_tracking/$(DEPDIR)/async_tcp_echo_server.Po
 	-rm -f http/server/$(DEPDIR)/connection.Po
 	-rm -f http/server/$(DEPDIR)/connection_manager.Po
 	-rm -f http/server/$(DEPDIR)/main.Po
@@ -1693,6 +1723,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f fork/$(DEPDIR)/daemon.Po
 	-rm -f fork/$(DEPDIR)/process_per_connection.Po
 	-rm -f futures/$(DEPDIR)/daytime_client.Po
+	-rm -f handler_tracking/$(DEPDIR)/async_tcp_echo_server.Po
 	-rm -f http/server/$(DEPDIR)/connection.Po
 	-rm -f http/server/$(DEPDIR)/connection_manager.Po
 	-rm -f http/server/$(DEPDIR)/main.Po
