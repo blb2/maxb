@@ -21,5 +21,4 @@ The time period is specified in seconds.  In this example, 10 seconds is used:
 
 License
 -------
-`maxb` is licensed under the GPL v2 license. See [LICENSE.txt](LICENSE.txt)
-for more info.
+`maxb` is licensed under version 3 of the GPL or later. See [LICENSE.txt](LICENSE.txt) for more info.
