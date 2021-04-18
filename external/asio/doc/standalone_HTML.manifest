@@ -2019,6 +2019,19 @@ asio/reference/executor_work_guard/get_executor.html
 asio/reference/executor_work_guard/owns_work.html
 asio/reference/executor_work_guard/reset.html
 asio/reference/executor_work_guard/_executor_work_guard.html
+asio/reference/experimental__as_single.html
+asio/reference/experimental__as_single_t.html
+asio/reference/experimental__as_single_t/as_default_on.html
+asio/reference/experimental__as_single_t/as_single_t.html
+asio/reference/experimental__as_single_t/as_single_t/overload1.html
+asio/reference/experimental__as_single_t/as_single_t/overload2.html
+asio/reference/experimental__as_single_t/token_.html
+asio/reference/experimental__as_single_t__default_constructor_tag.html
+asio/reference/experimental__as_single_t__executor_with_default.html
+asio/reference/experimental__as_single_t__executor_with_default/default_completion_token_type.html
+asio/reference/experimental__as_single_t__executor_with_default/executor_with_default.html
+asio/reference/experimental__as_single_t__executor_with_default/executor_with_default/overload1.html
+asio/reference/experimental__as_single_t__executor_with_default/executor_with_default/overload2.html
 asio/reference/generic__basic_endpoint.html
 asio/reference/generic__basic_endpoint/basic_endpoint.html
 asio/reference/generic__basic_endpoint/basic_endpoint/overload1.html
@@ -2466,6 +2479,7 @@ asio/reference/ip__basic_resolver/basic_resolver.html
 asio/reference/ip__basic_resolver/basic_resolver/overload1.html
 asio/reference/ip__basic_resolver/basic_resolver/overload2.html
 asio/reference/ip__basic_resolver/basic_resolver/overload3.html
+asio/reference/ip__basic_resolver/basic_resolver/overload4.html
 asio/reference/ip__basic_resolver/cancel.html
 asio/reference/ip__basic_resolver/canonical_name.html
 asio/reference/ip__basic_resolver/endpoint_type.html
@@ -2476,6 +2490,8 @@ asio/reference/ip__basic_resolver/iterator.html
 asio/reference/ip__basic_resolver/numeric_host.html
 asio/reference/ip__basic_resolver/numeric_service.html
 asio/reference/ip__basic_resolver/operator_eq_.html
+asio/reference/ip__basic_resolver/operator_eq_/overload1.html
+asio/reference/ip__basic_resolver/operator_eq_/overload2.html
 asio/reference/ip__basic_resolver/passive.html
 asio/reference/ip__basic_resolver/protocol_type.html
 asio/reference/ip__basic_resolver/query.html
