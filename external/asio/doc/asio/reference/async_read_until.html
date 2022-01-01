@@ -39,7 +39,8 @@ The <code class="computeroutput">async_read_until</code>
     DynamicBuffer_v1 &amp;&amp; buffers,
     char delim,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload1.html" title="async_read_until (1 of 12 overloads)">more...</a></em></span>
 
 template&lt;
@@ -51,7 +52,8 @@ template&lt;
     DynamicBuffer_v1 &amp;&amp; buffers,
     string_view delim,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload2.html" title="async_read_until (2 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -67,7 +69,8 @@ template&lt;
     DynamicBuffer_v1 &amp;&amp; buffers,
     const boost::regex &amp; expr,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload3.html" title="async_read_until (3 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -84,7 +87,9 @@ template&lt;
     DynamicBuffer_v1 &amp;&amp; buffers,
     MatchCondition match_condition,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_match_condition&lt; MatchCondition &gt;::value &amp;&amp;is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_match_condition&lt; MatchCondition &gt;::value &gt;::type  = 0,
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload4.html" title="async_read_until (4 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -142,7 +147,7 @@ template&lt;
     asio::basic_streambuf&lt; Allocator &gt; &amp; b,
     MatchCondition match_condition,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_match_condition&lt; MatchCondition &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_match_condition&lt; MatchCondition &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload8.html" title="async_read_until (8 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -158,7 +163,7 @@ template&lt;
     DynamicBuffer_v2 buffers,
     char delim,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload9.html" title="async_read_until (9 of 12 overloads)">more...</a></em></span>
 
 template&lt;
@@ -170,7 +175,7 @@ template&lt;
     DynamicBuffer_v2 buffers,
     string_view delim,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload10.html" title="async_read_until (10 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -186,7 +191,7 @@ template&lt;
     DynamicBuffer_v2 buffers,
     const boost::regex &amp; expr,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload11.html" title="async_read_until (11 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -203,7 +208,8 @@ template&lt;
     DynamicBuffer_v2 buffers,
     MatchCondition match_condition,
     ReadHandler &amp;&amp; handler = <a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_match_condition&lt; MatchCondition &gt;::value &amp;&amp;is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_match_condition&lt; MatchCondition &gt;::value &gt;::type  = 0,
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="async_read_until/overload12.html" title="async_read_until (12 of 12 overloads)">more...</a></em></span>
 </pre>
 <h5>
@@ -219,8 +225,8 @@ template&lt;
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -890,6 +890,15 @@ The UDP socket type.
 <p>
           <span class="emphasis"><em>Shared</em></span> <span class="emphasis"><em>objects:</em></span> Unsafe.
         </p>
+<p>
+          Synchronous <code class="computeroutput">send</code>, <code class="computeroutput">send_to</code>, <code class="computeroutput">receive</code>,
+          <code class="computeroutput">receive_from</code>, and <code class="computeroutput">connect</code> operations are thread
+          safe with respect to each other, if the underlying operating system calls
+          are also thread safe. This means that it is permitted to perform concurrent
+          calls to these synchronous operations on a single socket object. Other
+          synchronous operations, such as <code class="computeroutput">open</code> or <code class="computeroutput">close</code>,
+          are not thread safe.
+        </p>
 <h6>
 <a name="asio.reference.ip__udp.socket.h4"></a>
           <span><a name="asio.reference.ip__udp.socket.requirements"></a></span><a class="link" href="socket.html#asio.reference.ip__udp.socket.requirements">Requirements</a>
@@ -903,8 +912,8 @@ The UDP socket type.
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

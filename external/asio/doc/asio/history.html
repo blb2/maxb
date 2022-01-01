@@ -21,6 +21,653 @@
 </h2></div></div></div>
 <h4>
 <a name="asio.history.h0"></a>
+      <span><a name="asio.history.asio_1_20_0"></a></span><a class="link" href="history.html#asio.history.asio_1_20_0">Asio
+      1.20.0</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Fixed <code class="computeroutput">experimental::coro</code> compatibility with <code class="literal">gcc</code>.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">experimental::promise</code> compatibility with <code class="literal">gcc</code>.
+        </li>
+<li class="listitem">
+          Added documentation for per-operation cancellation.
+        </li>
+<li class="listitem">
+          Added documentation for <code class="computeroutput">parallel_group</code>.
+        </li>
+<li class="listitem">
+          Added overview documentation for <code class="computeroutput">experimental::coro</code>.
+        </li>
+<li class="listitem">
+          Added some missing C++14 examples.
+        </li>
+<li class="listitem">
+          Updated C++20 coroutines overview documentation.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h1"></a>
+      <span><a name="asio.history.asio_1_19_2"></a></span><a class="link" href="history.html#asio.history.asio_1_19_2">Asio
+      1.19.2</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Cleaned up memory recycling to ensure the cache size is used consistently.
+        </li>
+<li class="listitem">
+          Changed <code class="computeroutput">parallel_group</code> to use the recycling allocator for
+          shared state.
+        </li>
+<li class="listitem">
+          Changed <code class="computeroutput">awaitable</code> memory recycling to use the configurable
+          cache size.
+        </li>
+<li class="listitem">
+          Ensured <code class="computeroutput">parallel_group</code> respects operations' associated executors.
+        </li>
+<li class="listitem">
+          Added defence against macros defined by Qt.
+        </li>
+<li class="listitem">
+          Added missing <code class="computeroutput">boost_</code> prefix to namespaces during boostification.
+        </li>
+<li class="listitem">
+          Added missing lvalue-qualified overloads for <code class="computeroutput">deferred</code> operator().
+        </li>
+<li class="listitem">
+          Added a tag to disambiguate <code class="computeroutput">deferred</code> constructors.
+        </li>
+<li class="listitem">
+          Added missing <code class="computeroutput">push</code>/<code class="computeroutput">pop_options</code> includes.
+        </li>
+<li class="listitem">
+          Fixed argument evaluation order issue with a potentially moved-from variable
+          in <code class="computeroutput">awaitable</code> implementation.
+        </li>
+<li class="listitem">
+          Enabled "expression SFINAE" for recent MSVC using <code class="computeroutput">/std:c++latest</code>.
+        </li>
+<li class="listitem">
+          Fixed compilation errors when <code class="computeroutput">dev_poll_reactor</code> backend is
+          used.
+        </li>
+<li class="listitem">
+          Fixed handler type requirements checking to reflect rvalue completion handler
+          invocation.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">posix::basic_stream_descriptor</code> move operations to work
+          with non-defaulted executors.
+        </li>
+<li class="listitem">
+          Added missing move of executor in strand implementation.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h2"></a>
+      <span><a name="asio.history.asio_1_19_1"></a></span><a class="link" href="history.html#asio.history.asio_1_19_1">Asio
+      1.19.1</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Fixed handling of move-only results with awaitable operators <code class="computeroutput">&amp;&amp;</code>
+          and <code class="computeroutput">||</code>.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">strand&lt;&gt;</code> to avoid using a potentially moved-from
+          executor.
+        </li>
+<li class="listitem">
+          Fixed order of <code class="computeroutput">_aligned_malloc</code> arguments for MSVC.
+        </li>
+<li class="listitem">
+          Ensured handler alignment requirements are respected by <code class="computeroutput">cancellation_signal</code>.
+        </li>
+<li class="listitem">
+          Ensured <code class="literal">gcc</code> tests are not used for <code class="literal">clang</code>
+          when detecting compiler features.
+        </li>
+<li class="listitem">
+          Disabled coroutines support for the <code class="literal">clang</code> shipped with
+          MSVC.
+        </li>
+<li class="listitem">
+          Fixed compatibility with recent LibreSSL when <code class="computeroutput">OPENSSL_NO_SSL_INTERN</code>
+          is defined.
+        </li>
+<li class="listitem">
+          Documented supported cancellation types for individual asynchronous operations.
+        </li>
+<li class="listitem">
+          Ensured un-cancelled ops are correctly placed back in the queue.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h3"></a>
+      <span><a name="asio.history.asio_1_19_0"></a></span><a class="link" href="history.html#asio.history.asio_1_19_0">Asio
+      1.19.0</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Added support for cancellation of individual asynchronous operations. Cancellation
+          is implemented by having each completion handler carry an associated <code class="computeroutput">CancellationSlot</code>,
+          a lightweight cancellation channel that is specified through the new <code class="computeroutput">associated_cancellation_slot</code>
+          associator. A concrete <code class="computeroutput">CancellationSlot</code> implementation is
+          provided in the form of the <code class="computeroutput">cancellation_signal</code> and <code class="computeroutput">cancellation_slot</code>
+          classes. In conjunction with the <code class="computeroutput">bind_cancellation_slot</code> helper
+          function, these may be used to hook cancellation into asynchronous operations.
+          However, it should be noted that these classes are the low-level building
+          blocks of cancellation, and most use cases should use a higher level abstraction
+          for cancellation, such as <code class="computeroutput">experimental::parallel_group</code> or
+          the new logical operators for <code class="computeroutput">awaitable</code> (see below). The ability
+          to cancel individual operations, or composed operations, is currently supported
+          by:
+          <div class="itemizedlist"><ul class="itemizedlist" type="circle">
+<li class="listitem">
+                timers
+              </li>
+<li class="listitem">
+                sockets on POSIX and Windows
+              </li>
+<li class="listitem">
+                POSIX descriptors
+              </li>
+<li class="listitem">
+                Windows HANDLEs
+              </li>
+<li class="listitem">
+                SSL streams
+              </li>
+<li class="listitem">
+                all Asio-provided composed operations such as <code class="computeroutput">async_read</code>
+                and <code class="computeroutput">async_write</code>
+              </li>
+<li class="listitem">
+                compositions based on <code class="computeroutput">async_compose</code>
+              </li>
+<li class="listitem">
+                C++20 coroutines that use <code class="computeroutput">awaitable</code>
+              </li>
+<li class="listitem">
+                C++20 coroutines that use the new <code class="computeroutput">experimental::coro</code>
+                (see below)
+              </li>
+<li class="listitem">
+                the new <code class="computeroutput">experimental::parallel_group</code> operation (see
+                below)
+              </li>
+<li class="listitem">
+                the new <code class="computeroutput">experimental::promise</code> class (see below)
+              </li>
+</ul></div>
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">associator</code> trait. The <code class="computeroutput">associator</code> trait
+          is used to generically forward associators, such as <code class="computeroutput">associated_executor</code>
+          and <code class="computeroutput">associated_allocator</code>, through intermediate completion
+          handlers. For example:<br>
+<pre class="programlisting">template &lt;typename Handler&gt;
+struct intermediate_handler
+{
+  Handler handler_;
+
+  template &lt;typename... Args&gt;
+  void operator()(Args&amp;... args)
+  {
+    // ...
+  }
+};
+
+namespace asio {
+  template &lt;
+      template &lt;typename, typename&gt; class Associator,
+      typename Handler,
+      typename DefaultCandidate&gt;
+  struct associator&lt;
+      Associator,
+      intermediate_handler&lt;Handler&gt;,
+      DefaultCandidate&gt;
+  {
+    using type =
+      typename Associator&lt;Handler, DefaultCandidate&gt;::type;
+
+    static type get(
+        const intermediate_handler&lt;Handler&gt;&amp; h,
+        const DefaultCandidate&amp; c = DefaultCandidate()) noexcept
+    {
+      return Associator&lt;Handler, DefaultCandidate&gt;::get(
+          h.handler_, c);
+    }
+  };
+} // namespace asio
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Changed all asynchronous operations implemented in Asio to invoke their
+          completion handlers as rvalue references. This allows an rvalue reference
+          qualifier to be added to the function call operator.
+        </li>
+<li class="listitem">
+          Added support for asynchronous operations with multiple completion signatures.
+          Completion signatures may also specify that they are <code class="computeroutput">noexcept</code>,
+          and whether they are lvalue-invocable (and thus do not "consume"
+          the completion handler) or rvalue-invocable (and thus do "consume"
+          the handler, indicating an end to the asynchronous operation). For example:<br>
+<pre class="programlisting">auto my_async_operation(...,
+    asio::completion_token_for&lt;
+      void(intermediate_result_type) &amp; noexcept,
+      void(final_result_type) &amp;&amp;
+    &gt; auto&amp;&amp; token)
+{
+  // ...
+}
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Added <code class="computeroutput">operator&amp;&amp;</code> and <code class="computeroutput">operator||</code> for
+          <code class="computeroutput">awaitable&lt;&gt;</code>. The logical operators <code class="computeroutput">||</code> and
+          <code class="computeroutput">&amp;&amp;</code> have been overloaded for <code class="computeroutput">awaitable&lt;&gt;</code>,
+          to allow coroutines to be trivially awaited in parallel.<br> <br> When
+          awaited using <code class="computeroutput">&amp;&amp;</code>, the <code class="computeroutput">co_await</code> expression
+          waits until both operations have completed successfully. As a "short-circuit"
+          evaluation, if one operation fails with an exception, the other is immediately
+          cancelled. For example:<br>
+<pre class="programlisting">std::tuple&lt;std::size_t, std::size_t&gt; results =
+  co_await (
+    async_read(socket, input_buffer, use_awaitable)
+      &amp;&amp; async_write(socket, output_buffer, use_awaitable)
+  );
+</pre>
+          <br> When awaited using <code class="computeroutput">||</code>, the <code class="computeroutput">co_await</code> expression
+          waits until either operation succeeds. As a "short-circuit" evaluation,
+          if one operation succeeds without throwing an exception, the other is immediately
+          cancelled. For example:<br>
+<pre class="programlisting">std::variant&lt;std::size_t, std::monostate&gt; results =
+  co_await (
+    async_read(socket, input_buffer, use_awaitable)
+      || timer.async_wait(use_awaitable)
+  );
+</pre>
+          <br> The operators may be enabled by adding the <code class="computeroutput">#include</code>:<br>
+<pre class="programlisting">#include &lt;asio/experimental/awaitable_operators.hpp&gt;
+</pre>
+          <br> and then bringing the contents of the <code class="computeroutput">experimental::awaitable_operators</code>
+          namespace into scope:<br>
+<pre class="programlisting">using namespace asio::experimental::awaitable_operators;
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">experimental::as_tuple</code> completion token adapter.
+          The <code class="computeroutput">as_tuple</code> completion token adapter can be used to specify
+          that the completion handler arguments should be combined into a single
+          tuple argument. The <code class="computeroutput">as_tuple</code> adapter may be used in conjunction
+          with <code class="computeroutput">use_awaitable</code> and structured bindings as follows:<br>
+<pre class="programlisting">auto [e, n] = co_await socket.async_read_some(
+    asio::buffer(data), as_tuple(use_awaitable));
+</pre>
+          <br> Alternatively, it may be used as a default completion token like
+          so:<br>
+<pre class="programlisting">using default_token = as_tuple_t&lt;use_awaitable_t&lt;&gt;&gt;;
+using tcp_socket = default_token::as_default_on_t&lt;tcp::socket&gt;;
+// ...
+awaitable&lt;void&gt; do_read(tcp_socket socket)
+{
+  // ...
+  auto [e, n] = co_await socket.async_read_some(asio::buffer(data));
+  // ...
+}
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">experimental::append</code> completion token adapter. The
+          <code class="computeroutput">append</code> completion token adapter can be used to pass additional
+          completion handler arguments at the end of the completion signature. For
+          example:<br>
+<pre class="programlisting">timer.async_wait(
+    asio::experimental::append(
+      [](std::error_code ec, int i)
+      {
+        // ...
+      },
+    42)
+  );
+
+std::future&lt;int&gt; f = timer.async_wait(
+    asio::experimental::append(
+      asio::use_future,
+      42
+    )
+  );
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">experimental::prepend</code> completion token adapter.
+          The <code class="computeroutput">prepend</code> completion token adapter can be used to pass additional
+          arguments before the existing completion handler arguments. For example:<br>
+<pre class="programlisting">timer.async_wait(
+    asio::experimental::prepend(
+      [](int i, std::error_code ec)
+      {
+        // ...
+      },
+    42)
+  );
+
+std::future&lt;std::tuple&lt;int, std::error_code&gt;&gt; f = timer.async_wait(
+    asio::experimental::prepend(
+      asio::use_future,
+      42
+    )
+  );
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">experimental::deferred</code> completion token. The <code class="computeroutput">deferred</code>
+          completion token takes a call to an asynchronous operation's initiating
+          function and turns it into a function object that accepts a completion
+          token. For example:<br>
+<pre class="programlisting">auto deferred_op =
+  timer.async_wait(
+    asio::experimental::deferred);
+...
+std::move(deferred_op)(
+    [](std::error_code ec){ ... });
+</pre>
+          <br> or:<br>
+<pre class="programlisting">auto deferred_op =
+  timer.async_wait(
+    asio::experimental::deferred);
+...
+std::future&lt;void&gt; =
+  std::move(deferred_op)(
+    asio::use_future);
+</pre>
+          <br> The deferred token also supports chaining, to create simple compositions:<br>
+<pre class="programlisting">auto deferred_op =
+  timer.async_wait(
+    asio::experimental::deferred(
+      [&amp;](std::error_code ec)
+      {
+        timer.expires_after(
+            std::chrono::seconds(1));
+
+        return timer.async_wait(
+            asio::experimental::deferred);
+      });
+...
+std::future&lt;void&gt; = std::move(deferred_op)(asio::use_future);
+</pre>
+          <br>
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">experimental::parallel_group</code> class and <code class="computeroutput">experimental::make_parallel_group</code>
+          function. This utility may be used to launch work that is performed in
+          parallel, and wait for one or all of the operations to complete. A <code class="computeroutput">parallel_group</code>
+          implements automatic cancellation of incomplete operations. For example:<br>
+<pre class="programlisting">experimental::make_parallel_group(
+    [&amp;](auto token)
+    {
+      return stream.async_read_some(asio::buffer(data), token);
+    },
+    [&amp;](auto token)
+    {
+      return timer.async_wait(token);
+    }
+  ).async_wait(
+    experimental::wait_for_one(),
+    [](
+        std::array&lt;std::size_t, 2&gt; completion_order,
+        std::error_code ec1, std::size_t n1,
+        std::error_code ec2
+    )
+    {
+      // ...
+    }
+  );
+</pre>
+          <br> The conditions for completion of the group may be specified using
+          one of the four provided function objects <code class="computeroutput">wait_for_all</code>, <code class="computeroutput">wait_for_one</code>,
+          <code class="computeroutput">wait_for_one_success</code>, and <code class="computeroutput">wait_for_one_error</code>,
+          or with a custom function. The <code class="computeroutput">parallel_group</code> class can also
+          be combined with <code class="computeroutput">deferred</code> as follows:<br>
+<pre class="programlisting">experimental::make_parallel_group(
+    stream.async_read_some(asio::buffer(data), experimental::deferred),
+    timer.async_wait(experimental::deferred)
+  ).async_wait(
+    // ...
+  );
+</pre>
+          <br> Note: for maximum flexibility, <code class="computeroutput">parallel_group</code> does
+          not propagate the executor automatically to the operations within the group.
+        </li>
+<li class="listitem">
+          Added <code class="computeroutput">experimental::promise</code>. The <code class="computeroutput">promise</code> type
+          allows eager execution and synchronisation of async operations. For example:<br>
+<pre class="programlisting">auto promise = async_read(
+    stream, asio::buffer(my_buffer),
+    asio::experimental::use_promise);
+
+... do other stuff while the read is going on ...
+
+promise.async_wait( // completion the operation
+    [](error_code ec, std::size_t bytes_read)
+    {
+      ...
+    });
+</pre>
+          <br> Promises can be safely disregarded if the result is no longer required.
+          Different operations can be combined to either wait for all to complete
+          or for one to complete (and cancel the rest). For example, to wait for
+          one to complete:<br>
+<pre class="programlisting">auto timeout_promise =
+  timer.async_wait(
+    asio::experimental::use_promise);
+
+auto read_promise = async_read(
+    stream, asio::buffer(my_buffer),
+    asio::experimental::use_promise);
+
+auto promise =
+  asio::experimental::promise&lt;&gt;::race(
+    timeout_promise, read_promise);
+
+promise.async_wait(
+    [](std::variant&lt;error_code, std::tuple&lt;error_code, std::size_t&gt;&gt; v)
+    {
+      if (v.index() == 0) {} //timed out
+      else if (v.index() == 1) // completed in time
+    });
+</pre>
+          <br> or to wait for all to complete:<br>
+<pre class="programlisting">auto write_promise = async_write(
+    stream, asio::buffer(my_write_buffer),
+    asio::experimental::use_promise);
+
+auto read_promise = async_read(
+    stream, asio::buffer(my_buffer),
+    asio::experimental::use_promise);
+
+auto promise =
+  asio::experimental::promise&lt;&gt;::all(
+    write_promise, read_promise);
+
+promise.async_wait(
+    [](std::tuple&lt;error_code, std::size_t&gt; write_result,
+      std::tuple&lt;error_code, std::size_t&gt; read_result)
+    {
+    });
+</pre>
+          <br> Thanks go to Klemens Morgenstern for contributing this feature.
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">experimental::coro</code> class template. The <code class="computeroutput">coro</code>
+          type is a C++20 coroutine primitive for resumable functions, with the ability
+          to combine both asynchronous waiting (<code class="computeroutput">co_await</code>) and yielding
+          (<code class="computeroutput">co_yield</code>) into a single, stateful control flow. For example:<br>
+<pre class="programlisting">#include &lt;asio.hpp&gt;
+#include &lt;asio/experimental/coro.hpp&gt;
+
+using asio::ip::tcp;
+
+asio::experimental::coro&lt;std::string&gt; reader(tcp::socket&amp; sock)
+{
+  std::string buf;
+  while (sock.is_open())
+  {
+    std::size_t n = co_await asio::async_read_until(
+        sock, asio::dynamic_buffer(buf), '\n',
+        asio::experimental::use_coro);
+    co_yield buf.substr(0, n);
+    buf.erase(0, n);
+  }
+}
+
+asio::awaitable&lt;void&gt; consumer(tcp::socket sock)
+{
+  auto r = reader(sock);
+  auto msg1 = co_await r.async_resume(asio::use_awaitable);
+  std::cout &lt;&lt; "Message 1: " &lt;&lt; msg1.value_or("\n");
+  auto msg2 = co_await r.async_resume(asio::use_awaitable);
+  std::cout &lt;&lt; "Message 2: " &lt;&lt; msg2.value_or("\n");
+}
+
+asio::awaitable&lt;void&gt; listen(tcp::acceptor&amp; acceptor)
+{
+  for (;;)
+  {
+    co_spawn(
+        acceptor.get_executor(),
+        consumer(co_await acceptor.async_accept(asio::use_awaitable)),
+        asio::detached);
+  }
+}
+
+int main()
+{
+  asio::io_context ctx;
+  tcp::acceptor acceptor(ctx, {tcp::v4(), 54321});
+  co_spawn(ctx, listen(acceptor), asio::detached);
+  ctx.run();
+}
+</pre>
+          <br> Thanks go to Klemens Morgenstern for contributing this feature.
+        </li>
+<li class="listitem">
+          Added move assignment to <code class="computeroutput">ssl::stream&lt;&gt;</code>.
+        </li>
+<li class="listitem">
+          Changed <code class="computeroutput">co_spawn</code> to <code class="computeroutput">dispatch</code> the coroutine's
+          initial step to the executor, and to only <code class="computeroutput">post</code> the completion
+          handler if the coroutine did not otherwise perform a context switch (i.e.
+          a <code class="computeroutput">co_await</code> on an asynchronous operation).
+        </li>
+<li class="listitem">
+          Enabled additional optimisations for <code class="computeroutput">any_executor</code> and <code class="computeroutput">any_io_executor</code>
+          when used with asynchronous operations.
+        </li>
+<li class="listitem">
+          Added the <code class="computeroutput">nodiscard</code> attribute to <code class="computeroutput">awaitable&lt;&gt;</code>.
+        </li>
+<li class="listitem">
+          Increased the number of cached slots in the default recycling allocator.
+          This number defaults to 2, but may also be specified by defining the <code class="computeroutput">ASIO_RECYCLING_ALLOCATOR_CACHE_SIZE</code>
+          macro.
+        </li>
+<li class="listitem">
+          Disabled the <code class="computeroutput">std::system_error</code> message workaround for recent
+          MSVC.
+        </li>
+<li class="listitem">
+          Changed the default allocator behaviour to respect alignment requirements,
+          to support over-aligned types. Requires C++17 or later, or Boost.
+        </li>
+<li class="listitem">
+          Ensured the result strings are always initialised in reverse name resolution.
+        </li>
+<li class="listitem">
+          Fixed recursive template instantiation issues in <code class="computeroutput">use_awaitable_t::executor_with_default</code>.
+        </li>
+<li class="listitem">
+          Fixed the <code class="computeroutput">any_io_executor</code> equality operators to correctly
+          return a result based on the target executor.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h4"></a>
+      <span><a name="asio.history.asio_1_18_2"></a></span><a class="link" href="history.html#asio.history.asio_1_18_2">Asio
+      1.18.2</a>
+    </h4>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+          Added <code class="computeroutput">ip::scope_id_type</code> type alias.
+        </li>
+<li class="listitem">
+          Added <code class="computeroutput">ip::port_type</code> type alias.
+        </li>
+<li class="listitem">
+          Added <code class="computeroutput">std::hash</code> specialisations for IP addresses.
+        </li>
+<li class="listitem">
+          Added <code class="computeroutput">std::hash</code> specialisations for <code class="computeroutput">ip::basic_endpoint&lt;&gt;</code>.
+        </li>
+<li class="listitem">
+          Refactored SFINAE usage to improve compile times.
+        </li>
+<li class="listitem">
+          Added friendship support to customisation points, and made most customisations
+          private.
+        </li>
+<li class="listitem">
+          Changed <code class="computeroutput">any_io_executor</code> to a "strong typedef"-style
+          class.
+        </li>
+<li class="listitem">
+          Fixed <code class="computeroutput">experimental::as_single</code> to work with handler hook deprecation.
+        </li>
+<li class="listitem">
+          Ensured pthread condition variable attributes are cleaned up on all platforms.
+        </li>
+<li class="listitem">
+          Clarified thread safety notes on sockets and descriptors.
+        </li>
+<li class="listitem">
+          Ensured <code class="computeroutput">errno</code> is not overwritten if <code class="computeroutput">socket()</code>
+          fails on macOS/FreeBSD.
+        </li>
+<li class="listitem">
+          Fixed work tracking for <code class="computeroutput">io_context</code> and <code class="computeroutput">thread_pool</code>
+          executors when move-assigned.
+        </li>
+<li class="listitem">
+          Ensured internal <code class="computeroutput">call_stack</code> objects are accessed only from
+          implementation files.
+        </li>
+<li class="listitem">
+          Fixed I/O object move-assignment to ensure the executor is left in a valid
+          state.
+        </li>
+<li class="listitem">
+          Fixed detection of compiler support for defaulted template argument on
+          functions with MSVC.
+        </li>
+<li class="listitem">
+          Prevented the <code class="computeroutput">blocking.always</code> property from being used with
+          <code class="computeroutput">strand&lt;&gt;</code>, as it did not produce the correct semantics.
+        </li>
+<li class="listitem">
+          Removed deprecated file <code class="literal">asio/impl/src.cpp</code>.
+        </li>
+</ul></div>
+<h4>
+<a name="asio.history.h5"></a>
       <span><a name="asio.history.asio_1_18_1"></a></span><a class="link" href="history.html#asio.history.asio_1_18_1">Asio
       1.18.1</a>
     </h4>
@@ -139,7 +786,7 @@ awaitable&lt;void&gt; do_read(tcp_socket socket)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h1"></a>
+<a name="asio.history.h6"></a>
       <span><a name="asio.history.asio_1_18_0"></a></span><a class="link" href="history.html#asio.history.asio_1_18_0">Asio
       1.18.0</a>
     </h4>
@@ -239,7 +886,7 @@ awaitable&lt;void&gt; do_read(tcp_socket socket)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h2"></a>
+<a name="asio.history.h7"></a>
       <span><a name="asio.history.asio_1_17_0"></a></span><a class="link" href="history.html#asio.history.asio_1_17_0">Asio
       1.17.0</a>
     </h4>
@@ -477,7 +1124,7 @@ basic_waitable_timer&lt;
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h3"></a>
+<a name="asio.history.h8"></a>
       <span><a name="asio.history.asio_1_16_1"></a></span><a class="link" href="history.html#asio.history.asio_1_16_1">Asio
       1.16.1</a>
     </h4>
@@ -569,7 +1216,7 @@ basic_waitable_timer&lt;
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h4"></a>
+<a name="asio.history.h9"></a>
       <span><a name="asio.history.asio_1_16_0"></a></span><a class="link" href="history.html#asio.history.asio_1_16_0">Asio
       1.16.0</a>
     </h4>
@@ -717,7 +1364,7 @@ co_await socket.async_connect(my_endpoint); // Defaults to use_awaitable.
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h5"></a>
+<a name="asio.history.h10"></a>
       <span><a name="asio.history.asio_1_14_1"></a></span><a class="link" href="history.html#asio.history.asio_1_14_1">Asio
       1.14.1</a>
     </h4>
@@ -767,7 +1414,7 @@ co_await socket.async_connect(my_endpoint); // Defaults to use_awaitable.
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h6"></a>
+<a name="asio.history.h11"></a>
       <span><a name="asio.history.asio_1_14_0"></a></span><a class="link" href="history.html#asio.history.asio_1_14_0">Asio
       1.14.0</a>
     </h4>
@@ -791,7 +1438,7 @@ co_await socket.async_connect(my_endpoint); // Defaults to use_awaitable.
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h7"></a>
+<a name="asio.history.h12"></a>
       <span><a name="asio.history.asio_1_13_0"></a></span><a class="link" href="history.html#asio.history.asio_1_13_0">Asio
       1.13.0</a>
     </h4>
@@ -1079,7 +1726,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h8"></a>
+<a name="asio.history.h13"></a>
       <span><a name="asio.history.asio_1_12_2"></a></span><a class="link" href="history.html#asio.history.asio_1_12_2">Asio
       1.12.2</a>
     </h4>
@@ -1153,7 +1800,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h9"></a>
+<a name="asio.history.h14"></a>
       <span><a name="asio.history.asio_1_12_1"></a></span><a class="link" href="history.html#asio.history.asio_1_12_1">Asio
       1.12.1</a>
     </h4>
@@ -1274,7 +1921,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h10"></a>
+<a name="asio.history.h15"></a>
       <span><a name="asio.history.asio_1_12_0"></a></span><a class="link" href="history.html#asio.history.asio_1_12_0">Asio
       1.12.0</a>
     </h4>
@@ -1317,7 +1964,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h11"></a>
+<a name="asio.history.h16"></a>
       <span><a name="asio.history.asio_1_11_0"></a></span><a class="link" href="history.html#asio.history.asio_1_11_0">Asio
       1.11.0</a>
     </h4>
@@ -1539,7 +2186,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h12"></a>
+<a name="asio.history.h17"></a>
       <span><a name="asio.history.asio_1_10_5"></a></span><a class="link" href="history.html#asio.history.asio_1_10_5">Asio
       1.10.5</a>
     </h4>
@@ -1579,7 +2226,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h13"></a>
+<a name="asio.history.h18"></a>
       <span><a name="asio.history.asio_1_10_4"></a></span><a class="link" href="history.html#asio.history.asio_1_10_4">Asio
       1.10.4</a>
     </h4>
@@ -1601,7 +2248,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h14"></a>
+<a name="asio.history.h19"></a>
       <span><a name="asio.history.asio_1_10_3"></a></span><a class="link" href="history.html#asio.history.asio_1_10_3">Asio
       1.10.3</a>
     </h4>
@@ -1635,7 +2282,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h15"></a>
+<a name="asio.history.h20"></a>
       <span><a name="asio.history.asio_1_10_2"></a></span><a class="link" href="history.html#asio.history.asio_1_10_2">Asio
       1.10.2</a>
     </h4>
@@ -1711,7 +2358,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h16"></a>
+<a name="asio.history.h21"></a>
       <span><a name="asio.history.asio_1_10_1"></a></span><a class="link" href="history.html#asio.history.asio_1_10_1">Asio
       1.10.1</a>
     </h4>
@@ -1842,7 +2489,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h17"></a>
+<a name="asio.history.h22"></a>
       <span><a name="asio.history.asio_1_10_0"></a></span><a class="link" href="history.html#asio.history.asio_1_10_0">Asio
       1.10.0</a>
     </h4>
@@ -2006,7 +2653,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h18"></a>
+<a name="asio.history.h23"></a>
       <span><a name="asio.history.asio_1_8_3"></a></span><a class="link" href="history.html#asio.history.asio_1_8_3">Asio
       1.8.3</a>
     </h4>
@@ -2043,7 +2690,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h19"></a>
+<a name="asio.history.h24"></a>
       <span><a name="asio.history.asio_1_8_2"></a></span><a class="link" href="history.html#asio.history.asio_1_8_2">Asio
       1.8.2</a>
     </h4>
@@ -2084,7 +2731,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h20"></a>
+<a name="asio.history.h25"></a>
       <span><a name="asio.history.asio_1_8_1"></a></span><a class="link" href="history.html#asio.history.asio_1_8_1">Asio
       1.8.1</a>
     </h4>
@@ -2118,7 +2765,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h21"></a>
+<a name="asio.history.h26"></a>
       <span><a name="asio.history.asio_1_8_0"></a></span><a class="link" href="history.html#asio.history.asio_1_8_0">Asio
       1.8.0</a>
     </h4>
@@ -2165,7 +2812,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h22"></a>
+<a name="asio.history.h27"></a>
       <span><a name="asio.history.asio_1_6_1"></a></span><a class="link" href="history.html#asio.history.asio_1_6_1">Asio
       1.6.1</a>
     </h4>
@@ -2256,7 +2903,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h23"></a>
+<a name="asio.history.h28"></a>
       <span><a name="asio.history.asio_1_6_0"></a></span><a class="link" href="history.html#asio.history.asio_1_6_0">Asio
       1.6.0</a>
     </h4>
@@ -2301,7 +2948,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h24"></a>
+<a name="asio.history.h29"></a>
       <span><a name="asio.history.asio_1_5_3"></a></span><a class="link" href="history.html#asio.history.asio_1_5_3">Asio
       1.5.3</a>
     </h4>
@@ -2334,7 +2981,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h25"></a>
+<a name="asio.history.h30"></a>
       <span><a name="asio.history.asio_1_5_2"></a></span><a class="link" href="history.html#asio.history.asio_1_5_2">Asio
       1.5.2</a>
     </h4>
@@ -2396,7 +3043,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h26"></a>
+<a name="asio.history.h31"></a>
       <span><a name="asio.history.asio_1_5_1"></a></span><a class="link" href="history.html#asio.history.asio_1_5_1">Asio
       1.5.1</a>
     </h4>
@@ -2441,7 +3088,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h27"></a>
+<a name="asio.history.h32"></a>
       <span><a name="asio.history.asio_1_5_0"></a></span><a class="link" href="history.html#asio.history.asio_1_5_0">Asio
       1.5.0</a>
     </h4>
@@ -2593,7 +3240,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h28"></a>
+<a name="asio.history.h33"></a>
       <span><a name="asio.history.asio_1_4_8"></a></span><a class="link" href="history.html#asio.history.asio_1_4_8">Asio
       1.4.8</a>
     </h4>
@@ -2609,7 +3256,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h29"></a>
+<a name="asio.history.h34"></a>
       <span><a name="asio.history.asio_1_4_7"></a></span><a class="link" href="history.html#asio.history.asio_1_4_7">Asio
       1.4.7</a>
     </h4>
@@ -2685,7 +3332,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h30"></a>
+<a name="asio.history.h35"></a>
       <span><a name="asio.history.asio_1_4_6"></a></span><a class="link" href="history.html#asio.history.asio_1_4_6">Asio
       1.4.6</a>
     </h4>
@@ -2752,7 +3399,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h31"></a>
+<a name="asio.history.h36"></a>
       <span><a name="asio.history.asio_1_4_5"></a></span><a class="link" href="history.html#asio.history.asio_1_4_5">Asio
       1.4.5</a>
     </h4>
@@ -2818,7 +3465,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h32"></a>
+<a name="asio.history.h37"></a>
       <span><a name="asio.history.asio_1_4_4"></a></span><a class="link" href="history.html#asio.history.asio_1_4_4">Asio
       1.4.4</a>
     </h4>
@@ -2877,7 +3524,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h33"></a>
+<a name="asio.history.h38"></a>
       <span><a name="asio.history.asio_1_4_3"></a></span><a class="link" href="history.html#asio.history.asio_1_4_3">Asio
       1.4.3</a>
     </h4>
@@ -2929,7 +3576,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h34"></a>
+<a name="asio.history.h39"></a>
       <span><a name="asio.history.asio_1_4_2"></a></span><a class="link" href="history.html#asio.history.asio_1_4_2">Asio
       1.4.2</a>
     </h4>
@@ -2981,7 +3628,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h35"></a>
+<a name="asio.history.h40"></a>
       <span><a name="asio.history.asio_1_4_1"></a></span><a class="link" href="history.html#asio.history.asio_1_4_1">Asio
       1.4.1</a>
     </h4>
@@ -3008,7 +3655,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h36"></a>
+<a name="asio.history.h41"></a>
       <span><a name="asio.history.asio_1_4_0"></a></span><a class="link" href="history.html#asio.history.asio_1_4_0">Asio
       1.4.0</a>
     </h4>
@@ -3043,7 +3690,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h37"></a>
+<a name="asio.history.h42"></a>
       <span><a name="asio.history.asio_1_2_0"></a></span><a class="link" href="history.html#asio.history.asio_1_2_0">Asio
       1.2.0</a>
     </h4>
@@ -3093,7 +3740,7 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
         </li>
 </ul></div>
 <h4>
-<a name="asio.history.h38"></a>
+<a name="asio.history.h43"></a>
       <span><a name="asio.history.asio_1_0_0"></a></span><a class="link" href="history.html#asio.history.asio_1_0_0">Asio
       1.0.0</a>
     </h4>
@@ -3103,8 +3750,8 @@ void echo_line(tcp::socket&amp; sock, DynamicBuffer buf)
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

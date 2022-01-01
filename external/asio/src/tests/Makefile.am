@@ -13,7 +13,9 @@ SUBDIRS = properties
 
 check_PROGRAMS = \
 	unit/associated_allocator \
+	unit/associated_cancellation_slot \
 	unit/associated_executor \
+	unit/associator \
 	unit/async_result \
 	unit/awaitable \
 	unit/basic_datagram_socket \
@@ -27,12 +29,16 @@ check_PROGRAMS = \
 	unit/basic_stream_socket \
 	unit/basic_streambuf \
 	unit/basic_waitable_timer \
+	unit/bind_cancellation_slot \
 	unit/bind_executor \
 	unit/buffered_read_stream \
 	unit/buffered_stream \
 	unit/buffered_write_stream \
 	unit/buffer \
 	unit/buffers_iterator \
+	unit/cancellation_signal \
+	unit/cancellation_state \
+	unit/cancellation_type \
 	unit/co_spawn \
 	unit/completion_condition \
 	unit/compose \
@@ -167,6 +173,27 @@ noinst_PROGRAMS = \
 	performance/server
 endif
 
+if HAVE_CXX14
+check_PROGRAMS += \
+	unit/experimental/deferred
+endif
+
+if HAVE_CXX20
+check_PROGRAMS += \
+	unit/experimental/promise
+
+if HAVE_COROUTINES
+check_PROGRAMS += \
+	unit/experimental/awaitable_operators \
+	unit/experimental/coro/cancel \
+	unit/experimental/coro/exception \
+	unit/experimental/coro/partial \
+	unit/experimental/coro/simple_test \
+	unit/experimental/coro/stack_test \
+	unit/experimental/coro/use_coro
+endif
+endif
+
 if HAVE_OPENSSL
 check_PROGRAMS += \
 	unit/ssl/context_base \
@@ -180,7 +207,9 @@ endif
 
 TESTS = \
 	unit/associated_allocator \
+	unit/associated_cancellation_slot \
 	unit/associated_executor \
+	unit/associator \
 	unit/async_result \
 	unit/awaitable \
 	unit/basic_datagram_socket \
@@ -194,12 +223,16 @@ TESTS = \
 	unit/basic_stream_socket \
 	unit/basic_streambuf \
 	unit/basic_waitable_timer \
+	unit/bind_cancellation_slot \
 	unit/bind_executor \
 	unit/buffered_read_stream \
 	unit/buffered_stream \
 	unit/buffered_write_stream \
 	unit/buffer \
 	unit/buffers_iterator \
+	unit/cancellation_signal \
+	unit/cancellation_state \
+	unit/cancellation_type \
 	unit/co_spawn \
 	unit/completion_condition \
 	unit/compose \
@@ -318,6 +351,27 @@ TESTS = \
 	unit/write \
 	unit/write_at
 
+if HAVE_CXX14
+TESTS += \
+	unit/experimental/deferred
+endif
+
+if HAVE_CXX20
+TESTS += \
+	unit/experimental/promise
+
+if HAVE_COROUTINES
+TESTS += \
+	unit/experimental/awaitable_operators \
+	unit/experimental/coro/cancel \
+	unit/experimental/coro/exception \
+	unit/experimental/coro/partial \
+	unit/experimental/coro/simple_test \
+	unit/experimental/coro/stack_test \
+	unit/experimental/coro/use_coro
+endif
+endif
+
 if HAVE_OPENSSL
 TESTS += \
 	unit/ssl/context_base \
@@ -345,7 +399,9 @@ performance_server_SOURCES = performance/server.cpp
 endif
 
 unit_associated_allocator_SOURCES = unit/associated_allocator.cpp
+unit_associated_cancellation_slot_SOURCES = unit/associated_cancellation_slot.cpp
 unit_associated_executor_SOURCES = unit/associated_executor.cpp
+unit_associator_SOURCES = unit/associator.cpp
 unit_async_result_SOURCES = unit/async_result.cpp
 unit_awaitable_SOURCES = unit/awaitable.cpp
 unit_basic_datagram_socket_SOURCES = unit/basic_datagram_socket.cpp
@@ -359,12 +415,16 @@ unit_basic_socket_acceptor_SOURCES = unit/basic_socket_acceptor.cpp
 unit_basic_stream_socket_SOURCES = unit/basic_stream_socket.cpp
 unit_basic_streambuf_SOURCES = unit/basic_streambuf.cpp
 unit_basic_waitable_timer_SOURCES = unit/basic_waitable_timer.cpp
+unit_bind_cancellation_slot_SOURCES = unit/bind_cancellation_slot.cpp
 unit_bind_executor_SOURCES = unit/bind_executor.cpp
 unit_buffer_SOURCES = unit/buffer.cpp
 unit_buffers_iterator_SOURCES = unit/buffers_iterator.cpp
 unit_buffered_read_stream_SOURCES = unit/buffered_read_stream.cpp
 unit_buffered_stream_SOURCES = unit/buffered_stream.cpp
 unit_buffered_write_stream_SOURCES = unit/buffered_write_stream.cpp
+unit_cancellation_signal_SOURCES = unit/cancellation_signal.cpp
+unit_cancellation_state_SOURCES = unit/cancellation_state.cpp
+unit_cancellation_type_SOURCES = unit/cancellation_type.cpp
 unit_co_spawn_SOURCES = unit/co_spawn.cpp
 unit_completion_condition_SOURCES = unit/completion_condition.cpp
 unit_compose_SOURCES = unit/compose.cpp
@@ -488,6 +548,24 @@ unit_windows_random_access_handle_SOURCES = unit/windows/random_access_handle.cp
 unit_windows_stream_handle_SOURCES = unit/windows/stream_handle.cpp
 unit_write_SOURCES = unit/write.cpp
 unit_write_at_SOURCES = unit/write_at.cpp
+
+if HAVE_CXX14
+unit_experimental_deferred_SOURCES = unit/experimental/deferred.cpp
+endif
+
+if HAVE_CXX20
+unit_experimental_promise_SOURCES = unit/experimental/promise.cpp
+
+if HAVE_COROUTINES
+unit_experimental_awaitable_operators_SOURCES = unit/experimental/awaitable_operators.cpp
+unit_experimental_coro_cancel_SOURCES = unit/experimental/coro/cancel.cpp
+unit_experimental_coro_exception_SOURCES = unit/experimental/coro/exception.cpp
+unit_experimental_coro_partial_SOURCES = unit/experimental/coro/partial.cpp
+unit_experimental_coro_simple_test_SOURCES = unit/experimental/coro/simple_test.cpp
+unit_experimental_coro_stack_test_SOURCES = unit/experimental/coro/stack_test.cpp
+unit_experimental_coro_use_coro_SOURCES = unit/experimental/coro/use_coro.cpp
+endif
+endif
 
 if HAVE_OPENSSL
 unit_ssl_context_base_SOURCES = unit/ssl/context_base.cpp

@@ -27,7 +27,7 @@
 <pre class="programlisting">template&lt;
     typename <a class="link" href="../../Protocol.html" title="Protocol requirements">Protocol1</a>,
     typename <a class="link" href="../../Executor1.html" title="Executor requirements">Executor1</a>&gt;
-enable_if&lt; is_convertible&lt; Protocol1, Protocol &gt;::value &amp;&amp;is_convertible&lt; Executor1, Executor &gt;::value, basic_socket &amp; &gt;::type operator=(
+constraint&lt; is_convertible&lt; Protocol1, Protocol &gt;::value &amp;&amp;is_convertible&lt; Executor1, Executor &gt;::value, basic_socket &amp; &gt;::type operator=(
     basic_socket&lt; Protocol1, Executor1 &gt; &amp;&amp; other);
 </pre>
 <p>
@@ -58,8 +58,8 @@ enable_if&lt; is_convertible&lt; Protocol1, Protocol &gt;::value &amp;&amp;is_co
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

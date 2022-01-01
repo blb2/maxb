@@ -7,24 +7,26 @@
 <link rel="home" href="../../index.html" title="Asio">
 <link rel="up" href="../reference.html" title="Reference">
 <link rel="prev" href="WriteHandler.html" title="Write handler requirements">
-<link rel="next" href="asio_handler_allocate.html" title="asio_handler_allocate">
+<link rel="next" href="any_io_executor/any_io_executor.html" title="any_io_executor::any_io_executor">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="asio C++ library" width="250" height="60" src="../../asio.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="WriteHandler.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="asio_handler_allocate.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="WriteHandler.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="any_io_executor/any_io_executor.html"><img src="../../next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
 <a name="asio.reference.any_io_executor"></a><a class="link" href="any_io_executor.html" title="any_io_executor">any_io_executor</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.any_io_executor"></a> 
-Polymorphic executor type for
-        use with I/O objects.
+        <a class="indexterm" name="asio.indexterm.any_io_executor"></a>
       </p>
-<pre class="programlisting">typedef execution::any_executor&lt;...&gt; any_io_executor;
+<p>
+        Polymorphic executor type for use with I/O objects.
+      </p>
+<pre class="programlisting">class any_io_executor :
+  public execution::any_executor&lt; SupportableProperties &gt;
 </pre>
 <h5>
 <a name="asio.reference.any_io_executor.h0"></a>
@@ -52,7 +54,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/any_executor.html" title="execution::any_executor::any_executor"><span class="bold"><strong>any_executor</strong></span></a> <span class="silver">[constructor]</span>
+                  <a class="link" href="any_io_executor/any_io_executor.html" title="any_io_executor::any_io_executor"><span class="bold"><strong>any_io_executor</strong></span></a> <span class="silver">[constructor]</span>
                 </p>
               </td>
 <td>
@@ -68,7 +70,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/context.html" title="execution::any_executor::context"><span class="bold"><strong>context</strong></span></a>
+                  <a class="link" href="any_io_executor/context.html" title="any_io_executor::context"><span class="bold"><strong>context</strong></span></a>
                 </p>
               </td>
 <td>
@@ -80,7 +82,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/execute.html" title="execution::any_executor::execute"><span class="bold"><strong>execute</strong></span></a>
+                  <a class="link" href="any_io_executor/execute.html" title="any_io_executor::execute"><span class="bold"><strong>execute</strong></span></a>
                 </p>
               </td>
 <td>
@@ -92,7 +94,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/operator_bool.html" title="execution::any_executor::operator bool"><span class="bold"><strong>operator bool</strong></span></a>
+                  <a class="link" href="any_io_executor/operator_bool.html" title="any_io_executor::operator bool"><span class="bold"><strong>operator bool</strong></span></a>
                 </p>
               </td>
 <td>
@@ -104,22 +106,21 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/operator_eq_.html" title="execution::any_executor::operator="><span class="bold"><strong>operator=</strong></span></a>
+                  <a class="link" href="any_io_executor/operator_eq_.html" title="any_io_executor::operator="><span class="bold"><strong>operator=</strong></span></a>
                 </p>
               </td>
 <td>
                 <p>
                   Assignment operator. <br> <span class="silver"> —</span><br> Move assignment operator. <br>
                   <span class="silver"> —</span><br> Assignment operator that sets the polymorphic wrapper to
-                  the empty state. <br> <span class="silver"> —</span><br> Assignment operator to create a
-                  polymorphic wrapper for the specified executor.
+                  the empty state.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/prefer.html" title="execution::any_executor::prefer"><span class="bold"><strong>prefer</strong></span></a>
+                  <a class="link" href="any_io_executor/prefer.html" title="any_io_executor::prefer"><span class="bold"><strong>prefer</strong></span></a>
                 </p>
               </td>
 <td>
@@ -131,7 +132,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/query.html" title="execution::any_executor::query"><span class="bold"><strong>query</strong></span></a>
+                  <a class="link" href="any_io_executor/query.html" title="any_io_executor::query"><span class="bold"><strong>query</strong></span></a>
                 </p>
               </td>
 <td>
@@ -143,7 +144,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/require.html" title="execution::any_executor::require"><span class="bold"><strong>require</strong></span></a>
+                  <a class="link" href="any_io_executor/require.html" title="any_io_executor::require"><span class="bold"><strong>require</strong></span></a>
                 </p>
               </td>
 <td>
@@ -155,7 +156,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/swap.html" title="execution::any_executor::swap"><span class="bold"><strong>swap</strong></span></a>
+                  <a class="link" href="any_io_executor/swap.html" title="any_io_executor::swap"><span class="bold"><strong>swap</strong></span></a>
                 </p>
               </td>
 <td>
@@ -167,7 +168,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/target.html" title="execution::any_executor::target"><span class="bold"><strong>target</strong></span></a>
+                  <a class="link" href="any_io_executor/target.html" title="any_io_executor::target"><span class="bold"><strong>target</strong></span></a>
                 </p>
               </td>
 <td>
@@ -179,7 +180,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/target_type.html" title="execution::any_executor::target_type"><span class="bold"><strong>target_type</strong></span></a>
+                  <a class="link" href="any_io_executor/target_type.html" title="any_io_executor::target_type"><span class="bold"><strong>target_type</strong></span></a>
                 </p>
               </td>
 <td>
@@ -191,7 +192,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/_any_executor.html" title="execution::any_executor::~any_executor"><span class="bold"><strong>~any_executor</strong></span></a> <span class="silver">[destructor]</span>
+                  <a class="link" href="any_io_executor/_any_io_executor.html" title="any_io_executor::~any_io_executor"><span class="bold"><strong>~any_io_executor</strong></span></a> <span class="silver">[destructor]</span>
                 </p>
               </td>
 <td>
@@ -228,7 +229,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/operator_not__eq_.html" title="execution::any_executor::operator!="><span class="bold"><strong>operator!=</strong></span></a>
+                  <a class="link" href="any_io_executor/operator_not__eq_.html" title="any_io_executor::operator!="><span class="bold"><strong>operator!=</strong></span></a>
                 </p>
               </td>
 <td>
@@ -240,7 +241,7 @@ Polymorphic executor type for
 <tr>
 <td>
                 <p>
-                  <a class="link" href="execution__any_executor/operator_eq__eq_.html" title="execution::any_executor::operator=="><span class="bold"><strong>operator==</strong></span></a>
+                  <a class="link" href="any_io_executor/operator_eq__eq_.html" title="any_io_executor::operator=="><span class="bold"><strong>operator==</strong></span></a>
                 </p>
               </td>
 <td>
@@ -279,8 +280,8 @@ Polymorphic executor type for
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -288,7 +289,7 @@ Polymorphic executor type for
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="WriteHandler.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="asio_handler_allocate.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="WriteHandler.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="any_io_executor/any_io_executor.html"><img src="../../next.png" alt="Next"></a>
 </div>
 </body>
 </html>

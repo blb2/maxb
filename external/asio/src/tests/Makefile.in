@@ -92,8 +92,10 @@ build_triplet = @build@
 host_triplet = @host@
 @HAVE_OPENSSL_TRUE@@SEPARATE_COMPILATION_TRUE@am__append_1 = ../asio_ssl.cpp
 check_PROGRAMS = unit/associated_allocator$(EXEEXT) \
-	unit/associated_executor$(EXEEXT) unit/async_result$(EXEEXT) \
-	unit/awaitable$(EXEEXT) unit/basic_datagram_socket$(EXEEXT) \
+	unit/associated_cancellation_slot$(EXEEXT) \
+	unit/associated_executor$(EXEEXT) unit/associator$(EXEEXT) \
+	unit/async_result$(EXEEXT) unit/awaitable$(EXEEXT) \
+	unit/basic_datagram_socket$(EXEEXT) \
 	unit/basic_deadline_timer$(EXEEXT) \
 	unit/basic_raw_socket$(EXEEXT) \
 	unit/basic_seq_packet_socket$(EXEEXT) \
@@ -101,11 +103,15 @@ check_PROGRAMS = unit/associated_allocator$(EXEEXT) \
 	unit/basic_socket$(EXEEXT) unit/basic_socket_acceptor$(EXEEXT) \
 	unit/basic_stream_socket$(EXEEXT) \
 	unit/basic_streambuf$(EXEEXT) \
-	unit/basic_waitable_timer$(EXEEXT) unit/bind_executor$(EXEEXT) \
-	unit/buffered_read_stream$(EXEEXT) \
+	unit/basic_waitable_timer$(EXEEXT) \
+	unit/bind_cancellation_slot$(EXEEXT) \
+	unit/bind_executor$(EXEEXT) unit/buffered_read_stream$(EXEEXT) \
 	unit/buffered_stream$(EXEEXT) \
 	unit/buffered_write_stream$(EXEEXT) unit/buffer$(EXEEXT) \
-	unit/buffers_iterator$(EXEEXT) unit/co_spawn$(EXEEXT) \
+	unit/buffers_iterator$(EXEEXT) \
+	unit/cancellation_signal$(EXEEXT) \
+	unit/cancellation_state$(EXEEXT) \
+	unit/cancellation_type$(EXEEXT) unit/co_spawn$(EXEEXT) \
 	unit/completion_condition$(EXEEXT) unit/compose$(EXEEXT) \
 	unit/connect$(EXEEXT) unit/coroutine$(EXEEXT) \
 	unit/deadline_timer$(EXEEXT) unit/defer$(EXEEXT) \
@@ -194,14 +200,30 @@ check_PROGRAMS = unit/associated_allocator$(EXEEXT) \
 	unit/windows/overlapped_ptr$(EXEEXT) \
 	unit/windows/random_access_handle$(EXEEXT) \
 	unit/windows/stream_handle$(EXEEXT) unit/write$(EXEEXT) \
-	unit/write_at$(EXEEXT) $(am__EXEEXT_1)
+	unit/write_at$(EXEEXT) $(am__EXEEXT_1) $(am__EXEEXT_2) \
+	$(am__EXEEXT_3) $(am__EXEEXT_4)
 @STANDALONE_FALSE@noinst_PROGRAMS = latency/tcp_client$(EXEEXT) \
 @STANDALONE_FALSE@	latency/tcp_server$(EXEEXT) \
 @STANDALONE_FALSE@	latency/udp_client$(EXEEXT) \
 @STANDALONE_FALSE@	latency/udp_server$(EXEEXT) \
 @STANDALONE_FALSE@	performance/client$(EXEEXT) \
 @STANDALONE_FALSE@	performance/server$(EXEEXT)
-@HAVE_OPENSSL_TRUE@am__append_2 = \
+@HAVE_CXX14_TRUE@am__append_2 = \
+@HAVE_CXX14_TRUE@	unit/experimental/deferred
+
+@HAVE_CXX20_TRUE@am__append_3 = \
+@HAVE_CXX20_TRUE@	unit/experimental/promise
+
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am__append_4 = \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/awaitable_operators \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/cancel \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/exception \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/partial \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/simple_test \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/stack_test \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/use_coro
+
+@HAVE_OPENSSL_TRUE@am__append_5 = \
 @HAVE_OPENSSL_TRUE@	unit/ssl/context_base \
 @HAVE_OPENSSL_TRUE@	unit/ssl/context \
 @HAVE_OPENSSL_TRUE@	unit/ssl/error \
@@ -211,8 +233,10 @@ check_PROGRAMS = unit/associated_allocator$(EXEEXT) \
 @HAVE_OPENSSL_TRUE@	unit/ssl/stream
 
 TESTS = unit/associated_allocator$(EXEEXT) \
-	unit/associated_executor$(EXEEXT) unit/async_result$(EXEEXT) \
-	unit/awaitable$(EXEEXT) unit/basic_datagram_socket$(EXEEXT) \
+	unit/associated_cancellation_slot$(EXEEXT) \
+	unit/associated_executor$(EXEEXT) unit/associator$(EXEEXT) \
+	unit/async_result$(EXEEXT) unit/awaitable$(EXEEXT) \
+	unit/basic_datagram_socket$(EXEEXT) \
 	unit/basic_deadline_timer$(EXEEXT) \
 	unit/basic_raw_socket$(EXEEXT) \
 	unit/basic_seq_packet_socket$(EXEEXT) \
@@ -220,11 +244,15 @@ TESTS = unit/associated_allocator$(EXEEXT) \
 	unit/basic_socket$(EXEEXT) unit/basic_socket_acceptor$(EXEEXT) \
 	unit/basic_stream_socket$(EXEEXT) \
 	unit/basic_streambuf$(EXEEXT) \
-	unit/basic_waitable_timer$(EXEEXT) unit/bind_executor$(EXEEXT) \
-	unit/buffered_read_stream$(EXEEXT) \
+	unit/basic_waitable_timer$(EXEEXT) \
+	unit/bind_cancellation_slot$(EXEEXT) \
+	unit/bind_executor$(EXEEXT) unit/buffered_read_stream$(EXEEXT) \
 	unit/buffered_stream$(EXEEXT) \
 	unit/buffered_write_stream$(EXEEXT) unit/buffer$(EXEEXT) \
-	unit/buffers_iterator$(EXEEXT) unit/co_spawn$(EXEEXT) \
+	unit/buffers_iterator$(EXEEXT) \
+	unit/cancellation_signal$(EXEEXT) \
+	unit/cancellation_state$(EXEEXT) \
+	unit/cancellation_type$(EXEEXT) unit/co_spawn$(EXEEXT) \
 	unit/completion_condition$(EXEEXT) unit/compose$(EXEEXT) \
 	unit/connect$(EXEEXT) unit/deadline_timer$(EXEEXT) \
 	unit/defer$(EXEEXT) unit/detached$(EXEEXT) \
@@ -308,8 +336,24 @@ TESTS = unit/associated_allocator$(EXEEXT) \
 	unit/windows/overlapped_ptr$(EXEEXT) \
 	unit/windows/random_access_handle$(EXEEXT) \
 	unit/windows/stream_handle$(EXEEXT) unit/write$(EXEEXT) \
-	unit/write_at$(EXEEXT) $(am__EXEEXT_1)
-@HAVE_OPENSSL_TRUE@am__append_3 = \
+	unit/write_at$(EXEEXT) $(am__EXEEXT_1) $(am__EXEEXT_2) \
+	$(am__EXEEXT_3) $(am__EXEEXT_4)
+@HAVE_CXX14_TRUE@am__append_6 = \
+@HAVE_CXX14_TRUE@	unit/experimental/deferred
+
+@HAVE_CXX20_TRUE@am__append_7 = \
+@HAVE_CXX20_TRUE@	unit/experimental/promise
+
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am__append_8 = \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/awaitable_operators \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/cancel \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/exception \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/partial \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/simple_test \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/stack_test \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/use_coro
+
+@HAVE_OPENSSL_TRUE@am__append_9 = \
 @HAVE_OPENSSL_TRUE@	unit/ssl/context_base \
 @HAVE_OPENSSL_TRUE@	unit/ssl/context \
 @HAVE_OPENSSL_TRUE@	unit/ssl/error \
@@ -328,7 +372,16 @@ DIST_COMMON = $(srcdir)/Makefile.am $(noinst_HEADERS) \
 mkinstalldirs = $(install_sh) -d
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-@HAVE_OPENSSL_TRUE@am__EXEEXT_1 = unit/ssl/context_base$(EXEEXT) \
+@HAVE_CXX14_TRUE@am__EXEEXT_1 = unit/experimental/deferred$(EXEEXT)
+@HAVE_CXX20_TRUE@am__EXEEXT_2 = unit/experimental/promise$(EXEEXT)
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am__EXEEXT_3 = unit/experimental/awaitable_operators$(EXEEXT) \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/cancel$(EXEEXT) \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/exception$(EXEEXT) \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/partial$(EXEEXT) \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/simple_test$(EXEEXT) \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/stack_test$(EXEEXT) \
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@	unit/experimental/coro/use_coro$(EXEEXT)
+@HAVE_OPENSSL_TRUE@am__EXEEXT_4 = unit/ssl/context_base$(EXEEXT) \
 @HAVE_OPENSSL_TRUE@	unit/ssl/context$(EXEEXT) \
 @HAVE_OPENSSL_TRUE@	unit/ssl/error$(EXEEXT) \
 @HAVE_OPENSSL_TRUE@	unit/ssl/host_name_verification$(EXEEXT) \
@@ -400,6 +453,13 @@ unit_associated_allocator_OBJECTS =  \
 unit_associated_allocator_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_associated_allocator_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_associated_cancellation_slot_OBJECTS =  \
+	unit/associated_cancellation_slot.$(OBJEXT)
+unit_associated_cancellation_slot_OBJECTS =  \
+	$(am_unit_associated_cancellation_slot_OBJECTS)
+unit_associated_cancellation_slot_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_associated_cancellation_slot_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
 am_unit_associated_executor_OBJECTS =  \
 	unit/associated_executor.$(OBJEXT)
 unit_associated_executor_OBJECTS =  \
@@ -407,6 +467,10 @@ unit_associated_executor_OBJECTS =  \
 unit_associated_executor_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_associated_executor_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_associator_OBJECTS = unit/associator.$(OBJEXT)
+unit_associator_OBJECTS = $(am_unit_associator_OBJECTS)
+unit_associator_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_associator_DEPENDENCIES = libasio.a
 am_unit_async_result_OBJECTS = unit/async_result.$(OBJEXT)
 unit_async_result_OBJECTS = $(am_unit_async_result_OBJECTS)
 unit_async_result_LDADD = $(LDADD)
@@ -481,6 +545,13 @@ unit_basic_waitable_timer_OBJECTS =  \
 unit_basic_waitable_timer_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_basic_waitable_timer_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_bind_cancellation_slot_OBJECTS =  \
+	unit/bind_cancellation_slot.$(OBJEXT)
+unit_bind_cancellation_slot_OBJECTS =  \
+	$(am_unit_bind_cancellation_slot_OBJECTS)
+unit_bind_cancellation_slot_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_bind_cancellation_slot_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
 am_unit_bind_executor_OBJECTS = unit/bind_executor.$(OBJEXT)
 unit_bind_executor_OBJECTS = $(am_unit_bind_executor_OBJECTS)
 unit_bind_executor_LDADD = $(LDADD)
@@ -513,6 +584,25 @@ am_unit_buffers_iterator_OBJECTS = unit/buffers_iterator.$(OBJEXT)
 unit_buffers_iterator_OBJECTS = $(am_unit_buffers_iterator_OBJECTS)
 unit_buffers_iterator_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_buffers_iterator_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_cancellation_signal_OBJECTS =  \
+	unit/cancellation_signal.$(OBJEXT)
+unit_cancellation_signal_OBJECTS =  \
+	$(am_unit_cancellation_signal_OBJECTS)
+unit_cancellation_signal_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_cancellation_signal_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_cancellation_state_OBJECTS =  \
+	unit/cancellation_state.$(OBJEXT)
+unit_cancellation_state_OBJECTS =  \
+	$(am_unit_cancellation_state_OBJECTS)
+unit_cancellation_state_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_cancellation_state_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am_unit_cancellation_type_OBJECTS = unit/cancellation_type.$(OBJEXT)
+unit_cancellation_type_OBJECTS = $(am_unit_cancellation_type_OBJECTS)
+unit_cancellation_type_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_cancellation_type_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
 am_unit_co_spawn_OBJECTS = unit/co_spawn.$(OBJEXT)
 unit_co_spawn_OBJECTS = $(am_unit_co_spawn_OBJECTS)
@@ -729,6 +819,80 @@ unit_executor_work_guard_OBJECTS =  \
 	$(am_unit_executor_work_guard_OBJECTS)
 unit_executor_work_guard_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@unit_executor_work_guard_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_awaitable_operators_SOURCES_DIST =  \
+	unit/experimental/awaitable_operators.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am_unit_experimental_awaitable_operators_OBJECTS = unit/experimental/awaitable_operators.$(OBJEXT)
+unit_experimental_awaitable_operators_OBJECTS =  \
+	$(am_unit_experimental_awaitable_operators_OBJECTS)
+unit_experimental_awaitable_operators_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_awaitable_operators_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_coro_cancel_SOURCES_DIST =  \
+	unit/experimental/coro/cancel.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am_unit_experimental_coro_cancel_OBJECTS = unit/experimental/coro/cancel.$(OBJEXT)
+unit_experimental_coro_cancel_OBJECTS =  \
+	$(am_unit_experimental_coro_cancel_OBJECTS)
+unit_experimental_coro_cancel_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_coro_cancel_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_coro_exception_SOURCES_DIST =  \
+	unit/experimental/coro/exception.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am_unit_experimental_coro_exception_OBJECTS = unit/experimental/coro/exception.$(OBJEXT)
+unit_experimental_coro_exception_OBJECTS =  \
+	$(am_unit_experimental_coro_exception_OBJECTS)
+unit_experimental_coro_exception_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_coro_exception_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_coro_partial_SOURCES_DIST =  \
+	unit/experimental/coro/partial.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am_unit_experimental_coro_partial_OBJECTS = unit/experimental/coro/partial.$(OBJEXT)
+unit_experimental_coro_partial_OBJECTS =  \
+	$(am_unit_experimental_coro_partial_OBJECTS)
+unit_experimental_coro_partial_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_coro_partial_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_coro_simple_test_SOURCES_DIST =  \
+	unit/experimental/coro/simple_test.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am_unit_experimental_coro_simple_test_OBJECTS = unit/experimental/coro/simple_test.$(OBJEXT)
+unit_experimental_coro_simple_test_OBJECTS =  \
+	$(am_unit_experimental_coro_simple_test_OBJECTS)
+unit_experimental_coro_simple_test_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_coro_simple_test_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_coro_stack_test_SOURCES_DIST =  \
+	unit/experimental/coro/stack_test.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am_unit_experimental_coro_stack_test_OBJECTS = unit/experimental/coro/stack_test.$(OBJEXT)
+unit_experimental_coro_stack_test_OBJECTS =  \
+	$(am_unit_experimental_coro_stack_test_OBJECTS)
+unit_experimental_coro_stack_test_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_coro_stack_test_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_coro_use_coro_SOURCES_DIST =  \
+	unit/experimental/coro/use_coro.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@am_unit_experimental_coro_use_coro_OBJECTS = unit/experimental/coro/use_coro.$(OBJEXT)
+unit_experimental_coro_use_coro_OBJECTS =  \
+	$(am_unit_experimental_coro_use_coro_OBJECTS)
+unit_experimental_coro_use_coro_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_coro_use_coro_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_deferred_SOURCES_DIST =  \
+	unit/experimental/deferred.cpp
+@HAVE_CXX14_TRUE@am_unit_experimental_deferred_OBJECTS =  \
+@HAVE_CXX14_TRUE@	unit/experimental/deferred.$(OBJEXT)
+unit_experimental_deferred_OBJECTS =  \
+	$(am_unit_experimental_deferred_OBJECTS)
+unit_experimental_deferred_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_deferred_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
+am__unit_experimental_promise_SOURCES_DIST =  \
+	unit/experimental/promise.cpp
+@HAVE_CXX20_TRUE@am_unit_experimental_promise_OBJECTS =  \
+@HAVE_CXX20_TRUE@	unit/experimental/promise.$(OBJEXT)
+unit_experimental_promise_OBJECTS =  \
+	$(am_unit_experimental_promise_OBJECTS)
+unit_experimental_promise_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@unit_experimental_promise_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
 am_unit_generic_basic_endpoint_OBJECTS =  \
 	unit/generic/basic_endpoint.$(OBJEXT)
@@ -1261,8 +1425,10 @@ am__depfiles_remade = ../$(DEPDIR)/asio.Po ../$(DEPDIR)/asio_ssl.Po \
 	performance/$(DEPDIR)/client.Po \
 	performance/$(DEPDIR)/server.Po \
 	unit/$(DEPDIR)/associated_allocator.Po \
+	unit/$(DEPDIR)/associated_cancellation_slot.Po \
 	unit/$(DEPDIR)/associated_executor.Po \
-	unit/$(DEPDIR)/async_result.Po unit/$(DEPDIR)/awaitable.Po \
+	unit/$(DEPDIR)/associator.Po unit/$(DEPDIR)/async_result.Po \
+	unit/$(DEPDIR)/awaitable.Po \
 	unit/$(DEPDIR)/basic_datagram_socket.Po \
 	unit/$(DEPDIR)/basic_deadline_timer.Po \
 	unit/$(DEPDIR)/basic_raw_socket.Po \
@@ -1274,11 +1440,15 @@ am__depfiles_remade = ../$(DEPDIR)/asio.Po ../$(DEPDIR)/asio_ssl.Po \
 	unit/$(DEPDIR)/basic_stream_socket.Po \
 	unit/$(DEPDIR)/basic_streambuf.Po \
 	unit/$(DEPDIR)/basic_waitable_timer.Po \
+	unit/$(DEPDIR)/bind_cancellation_slot.Po \
 	unit/$(DEPDIR)/bind_executor.Po unit/$(DEPDIR)/buffer.Po \
 	unit/$(DEPDIR)/buffered_read_stream.Po \
 	unit/$(DEPDIR)/buffered_stream.Po \
 	unit/$(DEPDIR)/buffered_write_stream.Po \
-	unit/$(DEPDIR)/buffers_iterator.Po unit/$(DEPDIR)/co_spawn.Po \
+	unit/$(DEPDIR)/buffers_iterator.Po \
+	unit/$(DEPDIR)/cancellation_signal.Po \
+	unit/$(DEPDIR)/cancellation_state.Po \
+	unit/$(DEPDIR)/cancellation_type.Po unit/$(DEPDIR)/co_spawn.Po \
 	unit/$(DEPDIR)/completion_condition.Po \
 	unit/$(DEPDIR)/compose.Po unit/$(DEPDIR)/connect.Po \
 	unit/$(DEPDIR)/coroutine.Po unit/$(DEPDIR)/deadline_timer.Po \
@@ -1331,6 +1501,15 @@ am__depfiles_remade = ../$(DEPDIR)/asio.Po ../$(DEPDIR)/asio_ssl.Po \
 	unit/execution/$(DEPDIR)/set_value.Po \
 	unit/execution/$(DEPDIR)/start.Po \
 	unit/execution/$(DEPDIR)/submit.Po \
+	unit/experimental/$(DEPDIR)/awaitable_operators.Po \
+	unit/experimental/$(DEPDIR)/deferred.Po \
+	unit/experimental/$(DEPDIR)/promise.Po \
+	unit/experimental/coro/$(DEPDIR)/cancel.Po \
+	unit/experimental/coro/$(DEPDIR)/exception.Po \
+	unit/experimental/coro/$(DEPDIR)/partial.Po \
+	unit/experimental/coro/$(DEPDIR)/simple_test.Po \
+	unit/experimental/coro/$(DEPDIR)/stack_test.Po \
+	unit/experimental/coro/$(DEPDIR)/use_coro.Po \
 	unit/generic/$(DEPDIR)/basic_endpoint.Po \
 	unit/generic/$(DEPDIR)/datagram_protocol.Po \
 	unit/generic/$(DEPDIR)/raw_protocol.Po \
@@ -1399,7 +1578,8 @@ SOURCES = $(libasio_a_SOURCES) $(latency_tcp_client_SOURCES) \
 	$(latency_udp_server_SOURCES) $(performance_client_SOURCES) \
 	$(performance_server_SOURCES) \
 	$(unit_associated_allocator_SOURCES) \
-	$(unit_associated_executor_SOURCES) \
+	$(unit_associated_cancellation_slot_SOURCES) \
+	$(unit_associated_executor_SOURCES) $(unit_associator_SOURCES) \
 	$(unit_async_result_SOURCES) $(unit_awaitable_SOURCES) \
 	$(unit_basic_datagram_socket_SOURCES) \
 	$(unit_basic_deadline_timer_SOURCES) \
@@ -1411,11 +1591,15 @@ SOURCES = $(libasio_a_SOURCES) $(latency_tcp_client_SOURCES) \
 	$(unit_basic_stream_socket_SOURCES) \
 	$(unit_basic_streambuf_SOURCES) \
 	$(unit_basic_waitable_timer_SOURCES) \
+	$(unit_bind_cancellation_slot_SOURCES) \
 	$(unit_bind_executor_SOURCES) $(unit_buffer_SOURCES) \
 	$(unit_buffered_read_stream_SOURCES) \
 	$(unit_buffered_stream_SOURCES) \
 	$(unit_buffered_write_stream_SOURCES) \
-	$(unit_buffers_iterator_SOURCES) $(unit_co_spawn_SOURCES) \
+	$(unit_buffers_iterator_SOURCES) \
+	$(unit_cancellation_signal_SOURCES) \
+	$(unit_cancellation_state_SOURCES) \
+	$(unit_cancellation_type_SOURCES) $(unit_co_spawn_SOURCES) \
 	$(unit_completion_condition_SOURCES) $(unit_compose_SOURCES) \
 	$(unit_connect_SOURCES) $(unit_coroutine_SOURCES) \
 	$(unit_deadline_timer_SOURCES) $(unit_defer_SOURCES) \
@@ -1446,6 +1630,15 @@ SOURCES = $(libasio_a_SOURCES) $(latency_tcp_client_SOURCES) \
 	$(unit_execution_submit_SOURCES) \
 	$(unit_execution_context_SOURCES) $(unit_executor_SOURCES) \
 	$(unit_executor_work_guard_SOURCES) \
+	$(unit_experimental_awaitable_operators_SOURCES) \
+	$(unit_experimental_coro_cancel_SOURCES) \
+	$(unit_experimental_coro_exception_SOURCES) \
+	$(unit_experimental_coro_partial_SOURCES) \
+	$(unit_experimental_coro_simple_test_SOURCES) \
+	$(unit_experimental_coro_stack_test_SOURCES) \
+	$(unit_experimental_coro_use_coro_SOURCES) \
+	$(unit_experimental_deferred_SOURCES) \
+	$(unit_experimental_promise_SOURCES) \
 	$(unit_generic_basic_endpoint_SOURCES) \
 	$(unit_generic_datagram_protocol_SOURCES) \
 	$(unit_generic_raw_protocol_SOURCES) \
@@ -1520,7 +1713,8 @@ DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(am__performance_client_SOURCES_DIST) \
 	$(am__performance_server_SOURCES_DIST) \
 	$(unit_associated_allocator_SOURCES) \
-	$(unit_associated_executor_SOURCES) \
+	$(unit_associated_cancellation_slot_SOURCES) \
+	$(unit_associated_executor_SOURCES) $(unit_associator_SOURCES) \
 	$(unit_async_result_SOURCES) $(unit_awaitable_SOURCES) \
 	$(unit_basic_datagram_socket_SOURCES) \
 	$(unit_basic_deadline_timer_SOURCES) \
@@ -1532,11 +1726,15 @@ DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(unit_basic_stream_socket_SOURCES) \
 	$(unit_basic_streambuf_SOURCES) \
 	$(unit_basic_waitable_timer_SOURCES) \
+	$(unit_bind_cancellation_slot_SOURCES) \
 	$(unit_bind_executor_SOURCES) $(unit_buffer_SOURCES) \
 	$(unit_buffered_read_stream_SOURCES) \
 	$(unit_buffered_stream_SOURCES) \
 	$(unit_buffered_write_stream_SOURCES) \
-	$(unit_buffers_iterator_SOURCES) $(unit_co_spawn_SOURCES) \
+	$(unit_buffers_iterator_SOURCES) \
+	$(unit_cancellation_signal_SOURCES) \
+	$(unit_cancellation_state_SOURCES) \
+	$(unit_cancellation_type_SOURCES) $(unit_co_spawn_SOURCES) \
 	$(unit_completion_condition_SOURCES) $(unit_compose_SOURCES) \
 	$(unit_connect_SOURCES) $(unit_coroutine_SOURCES) \
 	$(unit_deadline_timer_SOURCES) $(unit_defer_SOURCES) \
@@ -1567,6 +1765,15 @@ DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(unit_execution_submit_SOURCES) \
 	$(unit_execution_context_SOURCES) $(unit_executor_SOURCES) \
 	$(unit_executor_work_guard_SOURCES) \
+	$(am__unit_experimental_awaitable_operators_SOURCES_DIST) \
+	$(am__unit_experimental_coro_cancel_SOURCES_DIST) \
+	$(am__unit_experimental_coro_exception_SOURCES_DIST) \
+	$(am__unit_experimental_coro_partial_SOURCES_DIST) \
+	$(am__unit_experimental_coro_simple_test_SOURCES_DIST) \
+	$(am__unit_experimental_coro_stack_test_SOURCES_DIST) \
+	$(am__unit_experimental_coro_use_coro_SOURCES_DIST) \
+	$(am__unit_experimental_deferred_SOURCES_DIST) \
+	$(am__unit_experimental_promise_SOURCES_DIST) \
 	$(unit_generic_basic_endpoint_SOURCES) \
 	$(unit_generic_datagram_protocol_SOURCES) \
 	$(unit_generic_raw_protocol_SOURCES) \
@@ -2027,7 +2234,9 @@ AM_CXXFLAGS = -I$(srcdir)/../../include
 @STANDALONE_FALSE@performance_client_SOURCES = performance/client.cpp
 @STANDALONE_FALSE@performance_server_SOURCES = performance/server.cpp
 unit_associated_allocator_SOURCES = unit/associated_allocator.cpp
+unit_associated_cancellation_slot_SOURCES = unit/associated_cancellation_slot.cpp
 unit_associated_executor_SOURCES = unit/associated_executor.cpp
+unit_associator_SOURCES = unit/associator.cpp
 unit_async_result_SOURCES = unit/async_result.cpp
 unit_awaitable_SOURCES = unit/awaitable.cpp
 unit_basic_datagram_socket_SOURCES = unit/basic_datagram_socket.cpp
@@ -2041,12 +2250,16 @@ unit_basic_socket_acceptor_SOURCES = unit/basic_socket_acceptor.cpp
 unit_basic_stream_socket_SOURCES = unit/basic_stream_socket.cpp
 unit_basic_streambuf_SOURCES = unit/basic_streambuf.cpp
 unit_basic_waitable_timer_SOURCES = unit/basic_waitable_timer.cpp
+unit_bind_cancellation_slot_SOURCES = unit/bind_cancellation_slot.cpp
 unit_bind_executor_SOURCES = unit/bind_executor.cpp
 unit_buffer_SOURCES = unit/buffer.cpp
 unit_buffers_iterator_SOURCES = unit/buffers_iterator.cpp
 unit_buffered_read_stream_SOURCES = unit/buffered_read_stream.cpp
 unit_buffered_stream_SOURCES = unit/buffered_stream.cpp
 unit_buffered_write_stream_SOURCES = unit/buffered_write_stream.cpp
+unit_cancellation_signal_SOURCES = unit/cancellation_signal.cpp
+unit_cancellation_state_SOURCES = unit/cancellation_state.cpp
+unit_cancellation_type_SOURCES = unit/cancellation_type.cpp
 unit_co_spawn_SOURCES = unit/co_spawn.cpp
 unit_completion_condition_SOURCES = unit/completion_condition.cpp
 unit_compose_SOURCES = unit/compose.cpp
@@ -2170,6 +2383,15 @@ unit_windows_random_access_handle_SOURCES = unit/windows/random_access_handle.cp
 unit_windows_stream_handle_SOURCES = unit/windows/stream_handle.cpp
 unit_write_SOURCES = unit/write.cpp
 unit_write_at_SOURCES = unit/write_at.cpp
+@HAVE_CXX14_TRUE@unit_experimental_deferred_SOURCES = unit/experimental/deferred.cpp
+@HAVE_CXX20_TRUE@unit_experimental_promise_SOURCES = unit/experimental/promise.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@unit_experimental_awaitable_operators_SOURCES = unit/experimental/awaitable_operators.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@unit_experimental_coro_cancel_SOURCES = unit/experimental/coro/cancel.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@unit_experimental_coro_exception_SOURCES = unit/experimental/coro/exception.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@unit_experimental_coro_partial_SOURCES = unit/experimental/coro/partial.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@unit_experimental_coro_simple_test_SOURCES = unit/experimental/coro/simple_test.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@unit_experimental_coro_stack_test_SOURCES = unit/experimental/coro/stack_test.cpp
+@HAVE_COROUTINES_TRUE@@HAVE_CXX20_TRUE@unit_experimental_coro_use_coro_SOURCES = unit/experimental/coro/use_coro.cpp
 @HAVE_OPENSSL_TRUE@unit_ssl_context_base_SOURCES = unit/ssl/context_base.cpp
 @HAVE_OPENSSL_TRUE@unit_ssl_context_SOURCES = unit/ssl/context.cpp
 @HAVE_OPENSSL_TRUE@unit_ssl_error_SOURCES = unit/ssl/error.cpp
@@ -2304,12 +2526,24 @@ unit/associated_allocator.$(OBJEXT): unit/$(am__dirstamp) \
 unit/associated_allocator$(EXEEXT): $(unit_associated_allocator_OBJECTS) $(unit_associated_allocator_DEPENDENCIES) $(EXTRA_unit_associated_allocator_DEPENDENCIES) unit/$(am__dirstamp)
 	@rm -f unit/associated_allocator$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_associated_allocator_OBJECTS) $(unit_associated_allocator_LDADD) $(LIBS)
+unit/associated_cancellation_slot.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/associated_cancellation_slot$(EXEEXT): $(unit_associated_cancellation_slot_OBJECTS) $(unit_associated_cancellation_slot_DEPENDENCIES) $(EXTRA_unit_associated_cancellation_slot_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/associated_cancellation_slot$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_associated_cancellation_slot_OBJECTS) $(unit_associated_cancellation_slot_LDADD) $(LIBS)
 unit/associated_executor.$(OBJEXT): unit/$(am__dirstamp) \
 	unit/$(DEPDIR)/$(am__dirstamp)
 
 unit/associated_executor$(EXEEXT): $(unit_associated_executor_OBJECTS) $(unit_associated_executor_DEPENDENCIES) $(EXTRA_unit_associated_executor_DEPENDENCIES) unit/$(am__dirstamp)
 	@rm -f unit/associated_executor$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_associated_executor_OBJECTS) $(unit_associated_executor_LDADD) $(LIBS)
+unit/associator.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/associator$(EXEEXT): $(unit_associator_OBJECTS) $(unit_associator_DEPENDENCIES) $(EXTRA_unit_associator_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/associator$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_associator_OBJECTS) $(unit_associator_LDADD) $(LIBS)
 unit/async_result.$(OBJEXT): unit/$(am__dirstamp) \
 	unit/$(DEPDIR)/$(am__dirstamp)
 
@@ -2388,6 +2622,12 @@ unit/basic_waitable_timer.$(OBJEXT): unit/$(am__dirstamp) \
 unit/basic_waitable_timer$(EXEEXT): $(unit_basic_waitable_timer_OBJECTS) $(unit_basic_waitable_timer_DEPENDENCIES) $(EXTRA_unit_basic_waitable_timer_DEPENDENCIES) unit/$(am__dirstamp)
 	@rm -f unit/basic_waitable_timer$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_basic_waitable_timer_OBJECTS) $(unit_basic_waitable_timer_LDADD) $(LIBS)
+unit/bind_cancellation_slot.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/bind_cancellation_slot$(EXEEXT): $(unit_bind_cancellation_slot_OBJECTS) $(unit_bind_cancellation_slot_DEPENDENCIES) $(EXTRA_unit_bind_cancellation_slot_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/bind_cancellation_slot$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_bind_cancellation_slot_OBJECTS) $(unit_bind_cancellation_slot_LDADD) $(LIBS)
 unit/bind_executor.$(OBJEXT): unit/$(am__dirstamp) \
 	unit/$(DEPDIR)/$(am__dirstamp)
 
@@ -2424,6 +2664,24 @@ unit/buffers_iterator.$(OBJEXT): unit/$(am__dirstamp) \
 unit/buffers_iterator$(EXEEXT): $(unit_buffers_iterator_OBJECTS) $(unit_buffers_iterator_DEPENDENCIES) $(EXTRA_unit_buffers_iterator_DEPENDENCIES) unit/$(am__dirstamp)
 	@rm -f unit/buffers_iterator$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_buffers_iterator_OBJECTS) $(unit_buffers_iterator_LDADD) $(LIBS)
+unit/cancellation_signal.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/cancellation_signal$(EXEEXT): $(unit_cancellation_signal_OBJECTS) $(unit_cancellation_signal_DEPENDENCIES) $(EXTRA_unit_cancellation_signal_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/cancellation_signal$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_cancellation_signal_OBJECTS) $(unit_cancellation_signal_LDADD) $(LIBS)
+unit/cancellation_state.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/cancellation_state$(EXEEXT): $(unit_cancellation_state_OBJECTS) $(unit_cancellation_state_DEPENDENCIES) $(EXTRA_unit_cancellation_state_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/cancellation_state$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_cancellation_state_OBJECTS) $(unit_cancellation_state_LDADD) $(LIBS)
+unit/cancellation_type.$(OBJEXT): unit/$(am__dirstamp) \
+	unit/$(DEPDIR)/$(am__dirstamp)
+
+unit/cancellation_type$(EXEEXT): $(unit_cancellation_type_OBJECTS) $(unit_cancellation_type_DEPENDENCIES) $(EXTRA_unit_cancellation_type_DEPENDENCIES) unit/$(am__dirstamp)
+	@rm -f unit/cancellation_type$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_cancellation_type_OBJECTS) $(unit_cancellation_type_LDADD) $(LIBS)
 unit/co_spawn.$(OBJEXT): unit/$(am__dirstamp) \
 	unit/$(DEPDIR)/$(am__dirstamp)
 
@@ -2657,6 +2915,81 @@ unit/executor_work_guard.$(OBJEXT): unit/$(am__dirstamp) \
 unit/executor_work_guard$(EXEEXT): $(unit_executor_work_guard_OBJECTS) $(unit_executor_work_guard_DEPENDENCIES) $(EXTRA_unit_executor_work_guard_DEPENDENCIES) unit/$(am__dirstamp)
 	@rm -f unit/executor_work_guard$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(unit_executor_work_guard_OBJECTS) $(unit_executor_work_guard_LDADD) $(LIBS)
+unit/experimental/$(am__dirstamp):
+	@$(MKDIR_P) unit/experimental
+	@: > unit/experimental/$(am__dirstamp)
+unit/experimental/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) unit/experimental/$(DEPDIR)
+	@: > unit/experimental/$(DEPDIR)/$(am__dirstamp)
+unit/experimental/awaitable_operators.$(OBJEXT):  \
+	unit/experimental/$(am__dirstamp) \
+	unit/experimental/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/awaitable_operators$(EXEEXT): $(unit_experimental_awaitable_operators_OBJECTS) $(unit_experimental_awaitable_operators_DEPENDENCIES) $(EXTRA_unit_experimental_awaitable_operators_DEPENDENCIES) unit/experimental/$(am__dirstamp)
+	@rm -f unit/experimental/awaitable_operators$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_awaitable_operators_OBJECTS) $(unit_experimental_awaitable_operators_LDADD) $(LIBS)
+unit/experimental/coro/$(am__dirstamp):
+	@$(MKDIR_P) unit/experimental/coro
+	@: > unit/experimental/coro/$(am__dirstamp)
+unit/experimental/coro/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) unit/experimental/coro/$(DEPDIR)
+	@: > unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+unit/experimental/coro/cancel.$(OBJEXT):  \
+	unit/experimental/coro/$(am__dirstamp) \
+	unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/coro/cancel$(EXEEXT): $(unit_experimental_coro_cancel_OBJECTS) $(unit_experimental_coro_cancel_DEPENDENCIES) $(EXTRA_unit_experimental_coro_cancel_DEPENDENCIES) unit/experimental/coro/$(am__dirstamp)
+	@rm -f unit/experimental/coro/cancel$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_coro_cancel_OBJECTS) $(unit_experimental_coro_cancel_LDADD) $(LIBS)
+unit/experimental/coro/exception.$(OBJEXT):  \
+	unit/experimental/coro/$(am__dirstamp) \
+	unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/coro/exception$(EXEEXT): $(unit_experimental_coro_exception_OBJECTS) $(unit_experimental_coro_exception_DEPENDENCIES) $(EXTRA_unit_experimental_coro_exception_DEPENDENCIES) unit/experimental/coro/$(am__dirstamp)
+	@rm -f unit/experimental/coro/exception$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_coro_exception_OBJECTS) $(unit_experimental_coro_exception_LDADD) $(LIBS)
+unit/experimental/coro/partial.$(OBJEXT):  \
+	unit/experimental/coro/$(am__dirstamp) \
+	unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/coro/partial$(EXEEXT): $(unit_experimental_coro_partial_OBJECTS) $(unit_experimental_coro_partial_DEPENDENCIES) $(EXTRA_unit_experimental_coro_partial_DEPENDENCIES) unit/experimental/coro/$(am__dirstamp)
+	@rm -f unit/experimental/coro/partial$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_coro_partial_OBJECTS) $(unit_experimental_coro_partial_LDADD) $(LIBS)
+unit/experimental/coro/simple_test.$(OBJEXT):  \
+	unit/experimental/coro/$(am__dirstamp) \
+	unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/coro/simple_test$(EXEEXT): $(unit_experimental_coro_simple_test_OBJECTS) $(unit_experimental_coro_simple_test_DEPENDENCIES) $(EXTRA_unit_experimental_coro_simple_test_DEPENDENCIES) unit/experimental/coro/$(am__dirstamp)
+	@rm -f unit/experimental/coro/simple_test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_coro_simple_test_OBJECTS) $(unit_experimental_coro_simple_test_LDADD) $(LIBS)
+unit/experimental/coro/stack_test.$(OBJEXT):  \
+	unit/experimental/coro/$(am__dirstamp) \
+	unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/coro/stack_test$(EXEEXT): $(unit_experimental_coro_stack_test_OBJECTS) $(unit_experimental_coro_stack_test_DEPENDENCIES) $(EXTRA_unit_experimental_coro_stack_test_DEPENDENCIES) unit/experimental/coro/$(am__dirstamp)
+	@rm -f unit/experimental/coro/stack_test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_coro_stack_test_OBJECTS) $(unit_experimental_coro_stack_test_LDADD) $(LIBS)
+unit/experimental/coro/use_coro.$(OBJEXT):  \
+	unit/experimental/coro/$(am__dirstamp) \
+	unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/coro/use_coro$(EXEEXT): $(unit_experimental_coro_use_coro_OBJECTS) $(unit_experimental_coro_use_coro_DEPENDENCIES) $(EXTRA_unit_experimental_coro_use_coro_DEPENDENCIES) unit/experimental/coro/$(am__dirstamp)
+	@rm -f unit/experimental/coro/use_coro$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_coro_use_coro_OBJECTS) $(unit_experimental_coro_use_coro_LDADD) $(LIBS)
+unit/experimental/deferred.$(OBJEXT):  \
+	unit/experimental/$(am__dirstamp) \
+	unit/experimental/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/deferred$(EXEEXT): $(unit_experimental_deferred_OBJECTS) $(unit_experimental_deferred_DEPENDENCIES) $(EXTRA_unit_experimental_deferred_DEPENDENCIES) unit/experimental/$(am__dirstamp)
+	@rm -f unit/experimental/deferred$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_deferred_OBJECTS) $(unit_experimental_deferred_LDADD) $(LIBS)
+unit/experimental/promise.$(OBJEXT):  \
+	unit/experimental/$(am__dirstamp) \
+	unit/experimental/$(DEPDIR)/$(am__dirstamp)
+
+unit/experimental/promise$(EXEEXT): $(unit_experimental_promise_OBJECTS) $(unit_experimental_promise_DEPENDENCIES) $(EXTRA_unit_experimental_promise_DEPENDENCIES) unit/experimental/$(am__dirstamp)
+	@rm -f unit/experimental/promise$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(unit_experimental_promise_OBJECTS) $(unit_experimental_promise_LDADD) $(LIBS)
 unit/generic/$(am__dirstamp):
 	@$(MKDIR_P) unit/generic
 	@: > unit/generic/$(am__dirstamp)
@@ -3274,6 +3607,8 @@ mostlyclean-compile:
 	-rm -f performance/*.$(OBJEXT)
 	-rm -f unit/*.$(OBJEXT)
 	-rm -f unit/execution/*.$(OBJEXT)
+	-rm -f unit/experimental/*.$(OBJEXT)
+	-rm -f unit/experimental/coro/*.$(OBJEXT)
 	-rm -f unit/generic/*.$(OBJEXT)
 	-rm -f unit/ip/*.$(OBJEXT)
 	-rm -f unit/local/*.$(OBJEXT)
@@ -3294,7 +3629,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@performance/$(DEPDIR)/client.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@performance/$(DEPDIR)/server.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/associated_allocator.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/associated_cancellation_slot.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/associated_executor.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/associator.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/async_result.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/awaitable.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/basic_datagram_socket.Po@am__quote@ # am--include-marker
@@ -3308,12 +3645,16 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/basic_stream_socket.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/basic_streambuf.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/basic_waitable_timer.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/bind_cancellation_slot.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/bind_executor.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/buffer.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/buffered_read_stream.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/buffered_stream.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/buffered_write_stream.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/buffers_iterator.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/cancellation_signal.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/cancellation_state.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/cancellation_type.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/co_spawn.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/completion_condition.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/$(DEPDIR)/compose.Po@am__quote@ # am--include-marker
@@ -3384,6 +3725,15 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/set_value.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/start.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/execution/$(DEPDIR)/submit.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/$(DEPDIR)/awaitable_operators.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/$(DEPDIR)/deferred.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/$(DEPDIR)/promise.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/coro/$(DEPDIR)/cancel.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/coro/$(DEPDIR)/exception.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/coro/$(DEPDIR)/partial.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/coro/$(DEPDIR)/simple_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/coro/$(DEPDIR)/stack_test.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@unit/experimental/coro/$(DEPDIR)/use_coro.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/generic/$(DEPDIR)/basic_endpoint.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/generic/$(DEPDIR)/datagram_protocol.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@unit/generic/$(DEPDIR)/raw_protocol.Po@am__quote@ # am--include-marker
@@ -3714,9 +4064,23 @@ unit/associated_allocator.log: unit/associated_allocator$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/associated_cancellation_slot.log: unit/associated_cancellation_slot$(EXEEXT)
+	@p='unit/associated_cancellation_slot$(EXEEXT)'; \
+	b='unit/associated_cancellation_slot'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 unit/associated_executor.log: unit/associated_executor$(EXEEXT)
 	@p='unit/associated_executor$(EXEEXT)'; \
 	b='unit/associated_executor'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/associator.log: unit/associator$(EXEEXT)
+	@p='unit/associator$(EXEEXT)'; \
+	b='unit/associator'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -3812,6 +4176,13 @@ unit/basic_waitable_timer.log: unit/basic_waitable_timer$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/bind_cancellation_slot.log: unit/bind_cancellation_slot$(EXEEXT)
+	@p='unit/bind_cancellation_slot$(EXEEXT)'; \
+	b='unit/bind_cancellation_slot'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 unit/bind_executor.log: unit/bind_executor$(EXEEXT)
 	@p='unit/bind_executor$(EXEEXT)'; \
 	b='unit/bind_executor'; \
@@ -3850,6 +4221,27 @@ unit/buffer.log: unit/buffer$(EXEEXT)
 unit/buffers_iterator.log: unit/buffers_iterator$(EXEEXT)
 	@p='unit/buffers_iterator$(EXEEXT)'; \
 	b='unit/buffers_iterator'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/cancellation_signal.log: unit/cancellation_signal$(EXEEXT)
+	@p='unit/cancellation_signal$(EXEEXT)'; \
+	b='unit/cancellation_signal'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/cancellation_state.log: unit/cancellation_state$(EXEEXT)
+	@p='unit/cancellation_state$(EXEEXT)'; \
+	b='unit/cancellation_state'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/cancellation_type.log: unit/cancellation_type$(EXEEXT)
+	@p='unit/cancellation_type$(EXEEXT)'; \
+	b='unit/cancellation_type'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -4673,6 +5065,69 @@ unit/write_at.log: unit/write_at$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/deferred.log: unit/experimental/deferred$(EXEEXT)
+	@p='unit/experimental/deferred$(EXEEXT)'; \
+	b='unit/experimental/deferred'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/promise.log: unit/experimental/promise$(EXEEXT)
+	@p='unit/experimental/promise$(EXEEXT)'; \
+	b='unit/experimental/promise'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/awaitable_operators.log: unit/experimental/awaitable_operators$(EXEEXT)
+	@p='unit/experimental/awaitable_operators$(EXEEXT)'; \
+	b='unit/experimental/awaitable_operators'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/coro/cancel.log: unit/experimental/coro/cancel$(EXEEXT)
+	@p='unit/experimental/coro/cancel$(EXEEXT)'; \
+	b='unit/experimental/coro/cancel'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/coro/exception.log: unit/experimental/coro/exception$(EXEEXT)
+	@p='unit/experimental/coro/exception$(EXEEXT)'; \
+	b='unit/experimental/coro/exception'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/coro/partial.log: unit/experimental/coro/partial$(EXEEXT)
+	@p='unit/experimental/coro/partial$(EXEEXT)'; \
+	b='unit/experimental/coro/partial'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/coro/simple_test.log: unit/experimental/coro/simple_test$(EXEEXT)
+	@p='unit/experimental/coro/simple_test$(EXEEXT)'; \
+	b='unit/experimental/coro/simple_test'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/coro/stack_test.log: unit/experimental/coro/stack_test$(EXEEXT)
+	@p='unit/experimental/coro/stack_test$(EXEEXT)'; \
+	b='unit/experimental/coro/stack_test'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+unit/experimental/coro/use_coro.log: unit/experimental/coro/use_coro$(EXEEXT)
+	@p='unit/experimental/coro/use_coro$(EXEEXT)'; \
+	b='unit/experimental/coro/use_coro'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 unit/ssl/context_base.log: unit/ssl/context_base$(EXEEXT)
 	@p='unit/ssl/context_base$(EXEEXT)'; \
 	b='unit/ssl/context_base'; \
@@ -4841,6 +5296,10 @@ distclean-generic:
 	-rm -f unit/$(am__dirstamp)
 	-rm -f unit/execution/$(DEPDIR)/$(am__dirstamp)
 	-rm -f unit/execution/$(am__dirstamp)
+	-rm -f unit/experimental/$(DEPDIR)/$(am__dirstamp)
+	-rm -f unit/experimental/$(am__dirstamp)
+	-rm -f unit/experimental/coro/$(DEPDIR)/$(am__dirstamp)
+	-rm -f unit/experimental/coro/$(am__dirstamp)
 	-rm -f unit/generic/$(DEPDIR)/$(am__dirstamp)
 	-rm -f unit/generic/$(am__dirstamp)
 	-rm -f unit/ip/$(DEPDIR)/$(am__dirstamp)
@@ -4875,7 +5334,9 @@ distclean: distclean-recursive
 	-rm -f performance/$(DEPDIR)/client.Po
 	-rm -f performance/$(DEPDIR)/server.Po
 	-rm -f unit/$(DEPDIR)/associated_allocator.Po
+	-rm -f unit/$(DEPDIR)/associated_cancellation_slot.Po
 	-rm -f unit/$(DEPDIR)/associated_executor.Po
+	-rm -f unit/$(DEPDIR)/associator.Po
 	-rm -f unit/$(DEPDIR)/async_result.Po
 	-rm -f unit/$(DEPDIR)/awaitable.Po
 	-rm -f unit/$(DEPDIR)/basic_datagram_socket.Po
@@ -4889,12 +5350,16 @@ distclean: distclean-recursive
 	-rm -f unit/$(DEPDIR)/basic_stream_socket.Po
 	-rm -f unit/$(DEPDIR)/basic_streambuf.Po
 	-rm -f unit/$(DEPDIR)/basic_waitable_timer.Po
+	-rm -f unit/$(DEPDIR)/bind_cancellation_slot.Po
 	-rm -f unit/$(DEPDIR)/bind_executor.Po
 	-rm -f unit/$(DEPDIR)/buffer.Po
 	-rm -f unit/$(DEPDIR)/buffered_read_stream.Po
 	-rm -f unit/$(DEPDIR)/buffered_stream.Po
 	-rm -f unit/$(DEPDIR)/buffered_write_stream.Po
 	-rm -f unit/$(DEPDIR)/buffers_iterator.Po
+	-rm -f unit/$(DEPDIR)/cancellation_signal.Po
+	-rm -f unit/$(DEPDIR)/cancellation_state.Po
+	-rm -f unit/$(DEPDIR)/cancellation_type.Po
 	-rm -f unit/$(DEPDIR)/co_spawn.Po
 	-rm -f unit/$(DEPDIR)/completion_condition.Po
 	-rm -f unit/$(DEPDIR)/compose.Po
@@ -4965,6 +5430,15 @@ distclean: distclean-recursive
 	-rm -f unit/execution/$(DEPDIR)/set_value.Po
 	-rm -f unit/execution/$(DEPDIR)/start.Po
 	-rm -f unit/execution/$(DEPDIR)/submit.Po
+	-rm -f unit/experimental/$(DEPDIR)/awaitable_operators.Po
+	-rm -f unit/experimental/$(DEPDIR)/deferred.Po
+	-rm -f unit/experimental/$(DEPDIR)/promise.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/cancel.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/exception.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/partial.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/simple_test.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/stack_test.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/use_coro.Po
 	-rm -f unit/generic/$(DEPDIR)/basic_endpoint.Po
 	-rm -f unit/generic/$(DEPDIR)/datagram_protocol.Po
 	-rm -f unit/generic/$(DEPDIR)/raw_protocol.Po
@@ -5079,7 +5553,9 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f performance/$(DEPDIR)/client.Po
 	-rm -f performance/$(DEPDIR)/server.Po
 	-rm -f unit/$(DEPDIR)/associated_allocator.Po
+	-rm -f unit/$(DEPDIR)/associated_cancellation_slot.Po
 	-rm -f unit/$(DEPDIR)/associated_executor.Po
+	-rm -f unit/$(DEPDIR)/associator.Po
 	-rm -f unit/$(DEPDIR)/async_result.Po
 	-rm -f unit/$(DEPDIR)/awaitable.Po
 	-rm -f unit/$(DEPDIR)/basic_datagram_socket.Po
@@ -5093,12 +5569,16 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f unit/$(DEPDIR)/basic_stream_socket.Po
 	-rm -f unit/$(DEPDIR)/basic_streambuf.Po
 	-rm -f unit/$(DEPDIR)/basic_waitable_timer.Po
+	-rm -f unit/$(DEPDIR)/bind_cancellation_slot.Po
 	-rm -f unit/$(DEPDIR)/bind_executor.Po
 	-rm -f unit/$(DEPDIR)/buffer.Po
 	-rm -f unit/$(DEPDIR)/buffered_read_stream.Po
 	-rm -f unit/$(DEPDIR)/buffered_stream.Po
 	-rm -f unit/$(DEPDIR)/buffered_write_stream.Po
 	-rm -f unit/$(DEPDIR)/buffers_iterator.Po
+	-rm -f unit/$(DEPDIR)/cancellation_signal.Po
+	-rm -f unit/$(DEPDIR)/cancellation_state.Po
+	-rm -f unit/$(DEPDIR)/cancellation_type.Po
 	-rm -f unit/$(DEPDIR)/co_spawn.Po
 	-rm -f unit/$(DEPDIR)/completion_condition.Po
 	-rm -f unit/$(DEPDIR)/compose.Po
@@ -5169,6 +5649,15 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f unit/execution/$(DEPDIR)/set_value.Po
 	-rm -f unit/execution/$(DEPDIR)/start.Po
 	-rm -f unit/execution/$(DEPDIR)/submit.Po
+	-rm -f unit/experimental/$(DEPDIR)/awaitable_operators.Po
+	-rm -f unit/experimental/$(DEPDIR)/deferred.Po
+	-rm -f unit/experimental/$(DEPDIR)/promise.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/cancel.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/exception.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/partial.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/simple_test.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/stack_test.Po
+	-rm -f unit/experimental/coro/$(DEPDIR)/use_coro.Po
 	-rm -f unit/generic/$(DEPDIR)/basic_endpoint.Po
 	-rm -f unit/generic/$(DEPDIR)/datagram_protocol.Po
 	-rm -f unit/generic/$(DEPDIR)/raw_protocol.Po

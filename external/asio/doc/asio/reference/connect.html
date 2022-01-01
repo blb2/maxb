@@ -35,7 +35,7 @@ The <code class="computeroutput">connect</code> function is a composed
 Protocol::endpoint <a class="link" href="connect/overload1.html" title="connect (1 of 12 overloads)">connect</a>(
     basic_socket&lt; Protocol, Executor &gt; &amp; s,
     const EndpointSequence &amp; endpoints,
-    typename enable_if&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload1.html" title="connect (1 of 12 overloads)">more...</a></em></span>
 
 template&lt;
@@ -46,7 +46,7 @@ Protocol::endpoint <a class="link" href="connect/overload2.html" title="connect 
     basic_socket&lt; Protocol, Executor &gt; &amp; s,
     const EndpointSequence &amp; endpoints,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload2.html" title="connect (2 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -60,7 +60,7 @@ Protocol::endpoint <a class="link" href="connect/overload2.html" title="connect 
 Iterator <a class="link" href="connect/overload3.html" title="connect (3 of 12 overloads)">connect</a>(
     basic_socket&lt; Protocol, Executor &gt; &amp; s,
     Iterator begin,
-    typename enable_if&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type *  = 0);
+    typename constraint&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload3.html" title="connect (3 of 12 overloads)">more...</a></em></span>
 
 template&lt;
@@ -71,7 +71,7 @@ Iterator <a class="link" href="connect/overload4.html" title="connect (4 of 12 o
     basic_socket&lt; Protocol, Executor &gt; &amp; s,
     Iterator begin,
     asio::error_code &amp; ec,
-    typename enable_if&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type *  = 0);
+    typename constraint&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload4.html" title="connect (4 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -107,7 +107,7 @@ Protocol::endpoint <a class="link" href="connect/overload7.html" title="connect 
     basic_socket&lt; Protocol, Executor &gt; &amp; s,
     const EndpointSequence &amp; endpoints,
     ConnectCondition connect_condition,
-    typename enable_if&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload7.html" title="connect (7 of 12 overloads)">more...</a></em></span>
 
 template&lt;
@@ -120,7 +120,7 @@ Protocol::endpoint <a class="link" href="connect/overload8.html" title="connect 
     const EndpointSequence &amp; endpoints,
     ConnectCondition connect_condition,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload8.html" title="connect (8 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -136,7 +136,7 @@ Iterator <a class="link" href="connect/overload9.html" title="connect (9 of 12 o
     basic_socket&lt; Protocol, Executor &gt; &amp; s,
     Iterator begin,
     ConnectCondition connect_condition,
-    typename enable_if&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type *  = 0);
+    typename constraint&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload9.html" title="connect (9 of 12 overloads)">more...</a></em></span>
 
 template&lt;
@@ -149,7 +149,7 @@ Iterator <a class="link" href="connect/overload10.html" title="connect (10 of 12
     Iterator begin,
     ConnectCondition connect_condition,
     asio::error_code &amp; ec,
-    typename enable_if&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type *  = 0);
+    typename constraint&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="connect/overload10.html" title="connect (10 of 12 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -193,8 +193,8 @@ Iterator <a class="link" href="connect/overload12.html" title="connect (12 of 12
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

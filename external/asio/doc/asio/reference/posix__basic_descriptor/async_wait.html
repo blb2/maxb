@@ -86,11 +86,31 @@ descriptor.async_wait(
     asio::posix::stream_descriptor::wait_read,
     wait_handler);
 </pre>
+<h6>
+<a name="asio.reference.posix__basic_descriptor.async_wait.h2"></a>
+          <span><a name="asio.reference.posix__basic_descriptor.async_wait.per_operation_cancellation"></a></span><a class="link" href="async_wait.html#asio.reference.posix__basic_descriptor.async_wait.per_operation_cancellation">Per-Operation
+          Cancellation</a>
+        </h6>
+<p>
+          This asynchronous operation supports cancellation for the following <a class="link" href="../cancellation_type.html" title="cancellation_type"><code class="computeroutput">cancellation_type</code></a>
+          values:
+        </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+              <code class="computeroutput">cancellation_type::terminal</code>
+            </li>
+<li class="listitem">
+              <code class="computeroutput">cancellation_type::partial</code>
+            </li>
+<li class="listitem">
+              <code class="computeroutput">cancellation_type::total</code>
+            </li>
+</ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

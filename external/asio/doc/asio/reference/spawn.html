@@ -40,7 +40,7 @@ void <a class="link" href="spawn/overload2.html" title="spawn (2 of 7 overloads)
     Handler &amp;&amp; handler,
     Function &amp;&amp; function,
     const boost::coroutines::attributes &amp; attributes = boost::coroutines::attributes(),
-    typename enable_if&lt; !is_executor&lt; typename decay&lt; Handler &gt;::type &gt;::value &amp;&amp;!execution::is_executor&lt; typename decay&lt; Handler &gt;::type &gt;::value &amp;&amp;!is_convertible&lt; Handler &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; !is_executor&lt; typename decay&lt; Handler &gt;::type &gt;::value &amp;&amp;!execution::is_executor&lt; typename decay&lt; Handler &gt;::type &gt;::value &amp;&amp;!is_convertible&lt; Handler &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="spawn/overload2.html" title="spawn (2 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -65,7 +65,7 @@ void <a class="link" href="spawn/overload4.html" title="spawn (4 of 7 overloads)
     const Executor &amp; ex,
     Function &amp;&amp; function,
     const boost::coroutines::attributes &amp; attributes = boost::coroutines::attributes(),
-    typename enable_if&lt; is_executor&lt; Executor &gt;::value||execution::is_executor&lt; Executor &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_executor&lt; Executor &gt;::value||execution::is_executor&lt; Executor &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="spawn/overload4.html" title="spawn (4 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -101,7 +101,7 @@ void <a class="link" href="spawn/overload7.html" title="spawn (7 of 7 overloads)
     ExecutionContext &amp; ctx,
     Function &amp;&amp; function,
     const boost::coroutines::attributes &amp; attributes = boost::coroutines::attributes(),
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="spawn/overload7.html" title="spawn (7 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -147,8 +147,8 @@ void do_echo(asio::yield_context yield)
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -20,6 +20,9 @@
 <a name="asio.reference.posix__basic_stream_descriptor"></a><a class="link" href="posix__basic_stream_descriptor.html" title="posix::basic_stream_descriptor">posix::basic_stream_descriptor</a>
 </h3></div></div></div>
 <p>
+        <a class="indexterm" name="asio.indexterm.posix__basic_stream_descriptor"></a>
+      </p>
+<p>
         Provides stream-oriented descriptor functionality.
       </p>
 <pre class="programlisting">template&lt;
@@ -401,6 +404,13 @@ class basic_stream_descriptor :
 <p>
         <span class="emphasis"><em>Shared</em></span> <span class="emphasis"><em>objects:</em></span> Unsafe.
       </p>
+<p>
+        Synchronous <code class="computeroutput">read_some</code> and <code class="computeroutput">write_some</code> operations
+        are thread safe with respect to each other, if the underlying operating system
+        calls are also thread safe. This means that it is permitted to perform concurrent
+        calls to these synchronous operations on a single descriptor object. Other
+        synchronous operations, such as <code class="computeroutput">close</code>, are not thread safe.
+      </p>
 <h5>
 <a name="asio.reference.posix__basic_stream_descriptor.h3"></a>
         <span><a name="asio.reference.posix__basic_stream_descriptor.requirements"></a></span><a class="link" href="posix__basic_stream_descriptor.html#asio.reference.posix__basic_stream_descriptor.requirements">Requirements</a>
@@ -414,8 +424,8 @@ class basic_stream_descriptor :
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

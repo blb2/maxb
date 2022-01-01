@@ -33,7 +33,7 @@ template&lt;
     typename ExecutionContext&gt;
 explicit <a class="link" href="basic_serial_port/overload2.html" title="basic_serial_port::basic_serial_port (2 of 9 overloads)">basic_serial_port</a>(
     ExecutionContext &amp; context,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value, basic_serial_port &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value, defaulted_constraint &gt;::type  = defaulted_constraint());
   <span class="emphasis"><em>» <a class="link" href="basic_serial_port/overload2.html" title="basic_serial_port::basic_serial_port (2 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -49,7 +49,7 @@ template&lt;
 <a class="link" href="basic_serial_port/overload4.html" title="basic_serial_port::basic_serial_port (4 of 9 overloads)">basic_serial_port</a>(
     ExecutionContext &amp; context,
     const char * device,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_serial_port/overload4.html" title="basic_serial_port::basic_serial_port (4 of 9 overloads)">more...</a></em></span>
 
 <a class="link" href="basic_serial_port/overload5.html" title="basic_serial_port::basic_serial_port (5 of 9 overloads)">basic_serial_port</a>(
@@ -62,7 +62,7 @@ template&lt;
 <a class="link" href="basic_serial_port/overload6.html" title="basic_serial_port::basic_serial_port (6 of 9 overloads)">basic_serial_port</a>(
     ExecutionContext &amp; context,
     const std::string &amp; device,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_serial_port/overload6.html" title="basic_serial_port::basic_serial_port (6 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -79,7 +79,7 @@ template&lt;
 <a class="link" href="basic_serial_port/overload8.html" title="basic_serial_port::basic_serial_port (8 of 9 overloads)">basic_serial_port</a>(
     ExecutionContext &amp; context,
     const native_handle_type &amp; native_serial_port,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_serial_port/overload8.html" title="basic_serial_port::basic_serial_port (8 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -93,8 +93,8 @@ template&lt;
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

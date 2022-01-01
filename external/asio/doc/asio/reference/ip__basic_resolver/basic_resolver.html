@@ -35,7 +35,7 @@ Construct
     typename ExecutionContext&gt;
 explicit <a class="link" href="basic_resolver/overload2.html" title="ip::basic_resolver::basic_resolver (2 of 4 overloads)">basic_resolver</a>(
     ExecutionContext &amp; context,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_resolver/overload2.html" title="ip::basic_resolver::basic_resolver (2 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -50,14 +50,14 @@ template&lt;
     typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>&gt;
 <a class="link" href="basic_resolver/overload4.html" title="ip::basic_resolver::basic_resolver (4 of 4 overloads)">basic_resolver</a>(
     basic_resolver&lt; InternetProtocol, Executor1 &gt; &amp;&amp; other,
-    typename enable_if&lt; is_convertible&lt; Executor1, Executor &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; Executor1, Executor &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_resolver/overload4.html" title="ip::basic_resolver::basic_resolver (4 of 4 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

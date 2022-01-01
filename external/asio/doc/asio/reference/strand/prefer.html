@@ -20,16 +20,31 @@
 <a name="asio.reference.strand.prefer"></a><a class="link" href="prefer.html" title="strand::prefer">strand::prefer</a>
 </h4></div></div></div>
 <p>
-          <a class="indexterm" name="asio.indexterm.strand.prefer"></a>
+          <a class="indexterm" name="asio.indexterm.strand.prefer"></a> 
+Forward a preference to the underlying
+          executor.
         </p>
-<pre class="programlisting">Property strand&lt; typename decay&lt; typename prefer_result&lt; const Executor &amp;, Property &gt;::type &gt;::type &gt;::type prefer(
+<pre class="programlisting">template&lt;
+    typename Property&gt;
+constraint&lt; can_prefer&lt; const Executor &amp;, Property &gt;::value &amp;&amp;!is_convertible&lt; Property, execution::blocking_t::always_t &gt;::value, strand&lt; typename decay&lt; typename prefer_result&lt; const Executor &amp;, Property &gt;::type &gt;::type &gt; &gt;::type prefer(
     const Property &amp; p) const;
+</pre>
+<p>
+          Do not call this function directly. It is intended for use with the <a class="link" href="../prefer.html" title="prefer"><code class="computeroutput">prefer</code></a> customisation
+          point.
+        </p>
+<p>
+          For example:
+        </p>
+<pre class="programlisting">asio::strand&lt;my_executor_type&gt; ex1 = ...;
+auto ex2 = asio::prefer(ex1,
+    asio::execution::blocking.never);
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

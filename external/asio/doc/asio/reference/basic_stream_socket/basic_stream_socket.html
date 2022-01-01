@@ -33,7 +33,7 @@ template&lt;
     typename ExecutionContext&gt;
 explicit <a class="link" href="basic_stream_socket/overload2.html" title="basic_stream_socket::basic_stream_socket (2 of 10 overloads)">basic_stream_socket</a>(
     ExecutionContext &amp; context,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_stream_socket/overload2.html" title="basic_stream_socket::basic_stream_socket (2 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -49,7 +49,7 @@ template&lt;
 <a class="link" href="basic_stream_socket/overload4.html" title="basic_stream_socket::basic_stream_socket (4 of 10 overloads)">basic_stream_socket</a>(
     ExecutionContext &amp; context,
     const protocol_type &amp; protocol,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value, defaulted_constraint &gt;::type  = defaulted_constraint());
   <span class="emphasis"><em>» <a class="link" href="basic_stream_socket/overload4.html" title="basic_stream_socket::basic_stream_socket (4 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -66,7 +66,7 @@ template&lt;
 <a class="link" href="basic_stream_socket/overload6.html" title="basic_stream_socket::basic_stream_socket (6 of 10 overloads)">basic_stream_socket</a>(
     ExecutionContext &amp; context,
     const endpoint_type &amp; endpoint,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_stream_socket/overload6.html" title="basic_stream_socket::basic_stream_socket (6 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -85,7 +85,7 @@ template&lt;
     ExecutionContext &amp; context,
     const protocol_type &amp; protocol,
     const native_handle_type &amp; native_socket,
-    typename enable_if&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_stream_socket/overload8.html" title="basic_stream_socket::basic_stream_socket (8 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -105,14 +105,14 @@ template&lt;
     typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>&gt;
 <a class="link" href="basic_stream_socket/overload10.html" title="basic_stream_socket::basic_stream_socket (10 of 10 overloads)">basic_stream_socket</a>(
     basic_stream_socket&lt; Protocol1, Executor1 &gt; &amp;&amp; other,
-    typename enable_if&lt; is_convertible&lt; Protocol1, Protocol &gt;::value &amp;&amp;is_convertible&lt; Executor1, Executor &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_convertible&lt; Protocol1, Protocol &gt;::value &amp;&amp;is_convertible&lt; Executor1, Executor &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="basic_stream_socket/overload10.html" title="basic_stream_socket::basic_stream_socket (10 of 10 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

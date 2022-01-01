@@ -29,7 +29,7 @@
 <a class="link" href="../../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> async_accept(
     const Executor1 &amp; ex,
     MoveAcceptHandler &amp;&amp; handler = <a class="link" href="../../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename enable_if&lt; is_executor&lt; Executor1 &gt;::value||execution::is_executor&lt; Executor1 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_executor&lt; Executor1 &gt;::value||execution::is_executor&lt; Executor1 &gt;::value &gt;::type  = 0);
 </pre>
 <p>
             This function is used to asynchronously accept a new connection. The
@@ -91,11 +91,32 @@ asio::ip::tcp::acceptor acceptor(my_context);
 ...
 acceptor.async_accept(my_context2, accept_handler);
 </pre>
+<h6>
+<a name="asio.reference.basic_socket_acceptor.async_accept.overload4.h2"></a>
+            <span><a name="asio.reference.basic_socket_acceptor.async_accept.overload4.per_operation_cancellation"></a></span><a class="link" href="overload4.html#asio.reference.basic_socket_acceptor.async_accept.overload4.per_operation_cancellation">Per-Operation
+            Cancellation</a>
+          </h6>
+<p>
+            On POSIX or Windows operating systems, this asynchronous operation supports
+            cancellation for the following <a class="link" href="../../cancellation_type.html" title="cancellation_type"><code class="computeroutput">cancellation_type</code></a>
+            values:
+          </p>
+<div class="itemizedlist"><ul class="itemizedlist" type="disc">
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::terminal</code>
+              </li>
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::partial</code>
+              </li>
+<li class="listitem">
+                <code class="computeroutput">cancellation_type::total</code>
+              </li>
+</ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

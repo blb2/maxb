@@ -95,6 +95,7 @@ host_triplet = @host@
 @HAVE_COROUTINES_TRUE@	coroutines_ts/echo_server$(EXEEXT) \
 @HAVE_COROUTINES_TRUE@	coroutines_ts/echo_server_with_default$(EXEEXT) \
 @HAVE_COROUTINES_TRUE@	coroutines_ts/echo_server_with_as_single_default$(EXEEXT) \
+@HAVE_COROUTINES_TRUE@	coroutines_ts/echo_server_with_as_tuple_default$(EXEEXT) \
 @HAVE_COROUTINES_TRUE@	coroutines_ts/refactored_echo_server$(EXEEXT)
 subdir = src/examples/cpp17
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -147,6 +148,14 @@ coroutines_ts_echo_server_with_as_single_default_OBJECTS = $(am_coroutines_ts_ec
 coroutines_ts_echo_server_with_as_single_default_LDADD = $(LDADD)
 @SEPARATE_COMPILATION_TRUE@coroutines_ts_echo_server_with_as_single_default_DEPENDENCIES =  \
 @SEPARATE_COMPILATION_TRUE@	libasio.a
+am__coroutines_ts_echo_server_with_as_tuple_default_SOURCES_DIST =  \
+	coroutines_ts/echo_server_with_as_tuple_default.cpp
+@HAVE_COROUTINES_TRUE@am_coroutines_ts_echo_server_with_as_tuple_default_OBJECTS = coroutines_ts/echo_server_with_as_tuple_default.$(OBJEXT)
+coroutines_ts_echo_server_with_as_tuple_default_OBJECTS =  \
+	$(am_coroutines_ts_echo_server_with_as_tuple_default_OBJECTS)
+coroutines_ts_echo_server_with_as_tuple_default_LDADD = $(LDADD)
+@SEPARATE_COMPILATION_TRUE@coroutines_ts_echo_server_with_as_tuple_default_DEPENDENCIES =  \
+@SEPARATE_COMPILATION_TRUE@	libasio.a
 am__coroutines_ts_echo_server_with_default_SOURCES_DIST =  \
 	coroutines_ts/echo_server_with_default.cpp
 @HAVE_COROUTINES_TRUE@am_coroutines_ts_echo_server_with_default_OBJECTS = coroutines_ts/echo_server_with_default.$(OBJEXT)
@@ -183,6 +192,7 @@ am__depfiles_remade = ../../$(DEPDIR)/asio.Po \
 	coroutines_ts/$(DEPDIR)/chat_server.Po \
 	coroutines_ts/$(DEPDIR)/echo_server.Po \
 	coroutines_ts/$(DEPDIR)/echo_server_with_as_single_default.Po \
+	coroutines_ts/$(DEPDIR)/echo_server_with_as_tuple_default.Po \
 	coroutines_ts/$(DEPDIR)/echo_server_with_default.Po \
 	coroutines_ts/$(DEPDIR)/refactored_echo_server.Po
 am__mv = mv -f
@@ -202,12 +212,14 @@ am__v_CXXLD_1 =
 SOURCES = $(libasio_a_SOURCES) $(coroutines_ts_chat_server_SOURCES) \
 	$(coroutines_ts_echo_server_SOURCES) \
 	$(coroutines_ts_echo_server_with_as_single_default_SOURCES) \
+	$(coroutines_ts_echo_server_with_as_tuple_default_SOURCES) \
 	$(coroutines_ts_echo_server_with_default_SOURCES) \
 	$(coroutines_ts_refactored_echo_server_SOURCES)
 DIST_SOURCES = $(am__libasio_a_SOURCES_DIST) \
 	$(am__coroutines_ts_chat_server_SOURCES_DIST) \
 	$(am__coroutines_ts_echo_server_SOURCES_DIST) \
 	$(am__coroutines_ts_echo_server_with_as_single_default_SOURCES_DIST) \
+	$(am__coroutines_ts_echo_server_with_as_tuple_default_SOURCES_DIST) \
 	$(am__coroutines_ts_echo_server_with_default_SOURCES_DIST) \
 	$(am__coroutines_ts_refactored_echo_server_SOURCES_DIST)
 am__can_run_installinfo = \
@@ -347,6 +359,7 @@ AM_CXXFLAGS = -I$(srcdir)/../../../include
 @HAVE_COROUTINES_TRUE@coroutines_ts_echo_server_SOURCES = coroutines_ts/echo_server.cpp
 @HAVE_COROUTINES_TRUE@coroutines_ts_echo_server_with_default_SOURCES = coroutines_ts/echo_server_with_default.cpp
 @HAVE_COROUTINES_TRUE@coroutines_ts_echo_server_with_as_single_default_SOURCES = coroutines_ts/echo_server_with_as_single_default.cpp
+@HAVE_COROUTINES_TRUE@coroutines_ts_echo_server_with_as_tuple_default_SOURCES = coroutines_ts/echo_server_with_as_tuple_default.cpp
 @HAVE_COROUTINES_TRUE@coroutines_ts_refactored_echo_server_SOURCES = coroutines_ts/refactored_echo_server.cpp
 EXTRA_DIST = \
 	coroutines_ts/range_based_for.cpp
@@ -433,6 +446,13 @@ coroutines_ts/echo_server_with_as_single_default.$(OBJEXT):  \
 coroutines_ts/echo_server_with_as_single_default$(EXEEXT): $(coroutines_ts_echo_server_with_as_single_default_OBJECTS) $(coroutines_ts_echo_server_with_as_single_default_DEPENDENCIES) $(EXTRA_coroutines_ts_echo_server_with_as_single_default_DEPENDENCIES) coroutines_ts/$(am__dirstamp)
 	@rm -f coroutines_ts/echo_server_with_as_single_default$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(coroutines_ts_echo_server_with_as_single_default_OBJECTS) $(coroutines_ts_echo_server_with_as_single_default_LDADD) $(LIBS)
+coroutines_ts/echo_server_with_as_tuple_default.$(OBJEXT):  \
+	coroutines_ts/$(am__dirstamp) \
+	coroutines_ts/$(DEPDIR)/$(am__dirstamp)
+
+coroutines_ts/echo_server_with_as_tuple_default$(EXEEXT): $(coroutines_ts_echo_server_with_as_tuple_default_OBJECTS) $(coroutines_ts_echo_server_with_as_tuple_default_DEPENDENCIES) $(EXTRA_coroutines_ts_echo_server_with_as_tuple_default_DEPENDENCIES) coroutines_ts/$(am__dirstamp)
+	@rm -f coroutines_ts/echo_server_with_as_tuple_default$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(coroutines_ts_echo_server_with_as_tuple_default_OBJECTS) $(coroutines_ts_echo_server_with_as_tuple_default_LDADD) $(LIBS)
 coroutines_ts/echo_server_with_default.$(OBJEXT):  \
 	coroutines_ts/$(am__dirstamp) \
 	coroutines_ts/$(DEPDIR)/$(am__dirstamp)
@@ -461,6 +481,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@coroutines_ts/$(DEPDIR)/chat_server.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@coroutines_ts/$(DEPDIR)/echo_server.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@coroutines_ts/$(DEPDIR)/echo_server_with_as_single_default.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@coroutines_ts/$(DEPDIR)/echo_server_with_as_tuple_default.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@coroutines_ts/$(DEPDIR)/echo_server_with_default.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@coroutines_ts/$(DEPDIR)/refactored_echo_server.Po@am__quote@ # am--include-marker
 
@@ -621,6 +642,7 @@ distclean: distclean-am
 	-rm -f coroutines_ts/$(DEPDIR)/chat_server.Po
 	-rm -f coroutines_ts/$(DEPDIR)/echo_server.Po
 	-rm -f coroutines_ts/$(DEPDIR)/echo_server_with_as_single_default.Po
+	-rm -f coroutines_ts/$(DEPDIR)/echo_server_with_as_tuple_default.Po
 	-rm -f coroutines_ts/$(DEPDIR)/echo_server_with_default.Po
 	-rm -f coroutines_ts/$(DEPDIR)/refactored_echo_server.Po
 	-rm -f Makefile
@@ -673,6 +695,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f coroutines_ts/$(DEPDIR)/chat_server.Po
 	-rm -f coroutines_ts/$(DEPDIR)/echo_server.Po
 	-rm -f coroutines_ts/$(DEPDIR)/echo_server_with_as_single_default.Po
+	-rm -f coroutines_ts/$(DEPDIR)/echo_server_with_as_tuple_default.Po
 	-rm -f coroutines_ts/$(DEPDIR)/echo_server_with_default.Po
 	-rm -f coroutines_ts/$(DEPDIR)/refactored_echo_server.Po
 	-rm -f Makefile

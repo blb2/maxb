@@ -33,7 +33,7 @@ The <code class="computeroutput">write</code> function is a composed operation
 std::size_t <a class="link" href="write/overload1.html" title="write (1 of 16 overloads)">write</a>(
     SyncWriteStream &amp; s,
     const ConstBufferSequence &amp; buffers,
-    typename enable_if&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload1.html" title="write (1 of 16 overloads)">more...</a></em></span>
 
 template&lt;
@@ -43,7 +43,7 @@ std::size_t <a class="link" href="write/overload2.html" title="write (2 of 16 ov
     SyncWriteStream &amp; s,
     const ConstBufferSequence &amp; buffers,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload2.html" title="write (2 of 16 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -57,7 +57,7 @@ std::size_t <a class="link" href="write/overload3.html" title="write (3 of 16 ov
     SyncWriteStream &amp; s,
     const ConstBufferSequence &amp; buffers,
     CompletionCondition completion_condition,
-    typename enable_if&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload3.html" title="write (3 of 16 overloads)">more...</a></em></span>
 
 template&lt;
@@ -69,7 +69,7 @@ std::size_t <a class="link" href="write/overload4.html" title="write (4 of 16 ov
     const ConstBufferSequence &amp; buffers,
     CompletionCondition completion_condition,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload4.html" title="write (4 of 16 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -81,7 +81,8 @@ std::size_t <a class="link" href="write/overload4.html" title="write (4 of 16 ov
 std::size_t <a class="link" href="write/overload5.html" title="write (5 of 16 overloads)">write</a>(
     SyncWriteStream &amp; s,
     DynamicBuffer_v1 &amp;&amp; buffers,
-    typename enable_if&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload5.html" title="write (5 of 16 overloads)">more...</a></em></span>
 
 template&lt;
@@ -91,7 +92,8 @@ std::size_t <a class="link" href="write/overload6.html" title="write (6 of 16 ov
     SyncWriteStream &amp; s,
     DynamicBuffer_v1 &amp;&amp; buffers,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload6.html" title="write (6 of 16 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -105,7 +107,8 @@ std::size_t <a class="link" href="write/overload7.html" title="write (7 of 16 ov
     SyncWriteStream &amp; s,
     DynamicBuffer_v1 &amp;&amp; buffers,
     CompletionCondition completion_condition,
-    typename enable_if&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload7.html" title="write (7 of 16 overloads)">more...</a></em></span>
 
 template&lt;
@@ -117,7 +120,8 @@ std::size_t <a class="link" href="write/overload8.html" title="write (8 of 16 ov
     DynamicBuffer_v1 &amp;&amp; buffers,
     CompletionCondition completion_condition,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &amp;&amp;!is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
+    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload8.html" title="write (8 of 16 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -173,7 +177,7 @@ std::size_t <a class="link" href="write/overload12.html" title="write (12 of 16 
 std::size_t <a class="link" href="write/overload13.html" title="write (13 of 16 overloads)">write</a>(
     SyncWriteStream &amp; s,
     DynamicBuffer_v2 buffers,
-    typename enable_if&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload13.html" title="write (13 of 16 overloads)">more...</a></em></span>
 
 template&lt;
@@ -183,7 +187,7 @@ std::size_t <a class="link" href="write/overload14.html" title="write (14 of 16 
     SyncWriteStream &amp; s,
     DynamicBuffer_v2 buffers,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload14.html" title="write (14 of 16 overloads)">more...</a></em></span>
 </pre>
 <p>
@@ -197,7 +201,7 @@ std::size_t <a class="link" href="write/overload15.html" title="write (15 of 16 
     SyncWriteStream &amp; s,
     DynamicBuffer_v2 buffers,
     CompletionCondition completion_condition,
-    typename enable_if&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload15.html" title="write (15 of 16 overloads)">more...</a></em></span>
 
 template&lt;
@@ -209,7 +213,7 @@ std::size_t <a class="link" href="write/overload16.html" title="write (16 of 16 
     DynamicBuffer_v2 buffers,
     CompletionCondition completion_condition,
     asio::error_code &amp; ec,
-    typename enable_if&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type *  = 0);
+    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
   <span class="emphasis"><em>» <a class="link" href="write/overload16.html" title="write (16 of 16 overloads)">more...</a></em></span>
 </pre>
 <h5>
@@ -225,8 +229,8 @@ std::size_t <a class="link" href="write/overload16.html" title="write (16 of 16 
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2020 Christopher M.
-      Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
+      M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
