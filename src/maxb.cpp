@@ -32,7 +32,7 @@ struct sender_data {
 	int pkt_size;
 
 	std::thread       thread;
-	std::promise<int> nsends;
+	std::promise<int> num_sends;
 };
 
 static bool parse_addr(const char* str, asio::ip::udp::endpoint& endpoint)
@@ -58,39 +58,39 @@ static void send(asio::ip::udp::socket& sock, const uint8_t* p_buf, int buf_size
 	asio::error_code ec;
 
 	while (p_buf != p_buf_end) {
-		size_t nbytes_send = std::min<size_t>(p_buf_end - p_buf, pkt_size);
-		size_t nbytes_sent = (p_endpoint ? sock.send_to(asio::buffer(p_buf, nbytes_send), *p_endpoint, 0, ec) :
-		                                   sock.send(asio::buffer(p_buf, nbytes_send), 0, ec));
+		size_t num_send = std::min<size_t>(p_buf_end - p_buf, pkt_size);
+		size_t num_sent = p_endpoint ? sock.send_to(asio::buffer(p_buf, num_send), *p_endpoint, 0, ec) :
+		                               sock.send(asio::buffer(p_buf, num_send), 0, ec);
 
 		if (ec) {
 			fprintf(stderr, "send error: %s\n", ec.message().c_str());
 			break;
 		}
 
-		if (nbytes_sent != nbytes_send) {
+		if (num_sent != num_send) {
 			fprintf(stderr, "send incomplete\n");
-			if (nbytes_sent == 0)
+			if (num_sent == 0)
 				break;
 		}
 
-		p_buf += nbytes_sent;
+		p_buf += num_sent;
 	}
 }
 
 static void send(sender_data* p_sender)
 {
-	int nsends;
+	int num_sends;
 
-	for (nsends = 0; std::chrono::high_resolution_clock::now() - p_sender->reftime < p_sender->duration; nsends++)
+	for (num_sends = 0; std::chrono::high_resolution_clock::now() - p_sender->reftime < p_sender->duration; num_sends++)
 		send(*p_sender->p_socket, p_sender->p_buf, p_sender->buf_size, p_sender->pkt_size, p_sender->p_endpoint);
 
-	p_sender->nsends.set_value(nsends);
+	p_sender->num_sends.set_value(num_sends);
 }
 
 int main(int argc, char* argv[])
 {
-	const int buf_size  = 1024 * 1024; // 1 MiB
-	const int pkt_size  = 8000;
+	const int buf_size = 1024 * 1024; // 1 MiB
+	const int pkt_size = 8000;
 
 	if (argc != 3) {
 		fprintf(stderr, "Usage: %s ip time\n", argv[0]);
@@ -155,9 +155,9 @@ int main(int argc, char* argv[])
 		p_sender->thread  = std::thread([i, p_sender]() { set_thread_affinity((int)i); send(p_sender); });
 	}
 
-	int nsends = 0;
+	int num_sends = 0;
 	for (auto& sender : senders) {
-		nsends += sender.nsends.get_future().get();
+		num_sends += sender.num_sends.get_future().get();
 		sender.thread.join();
 	}
 
@@ -168,6 +168,5 @@ int main(int argc, char* argv[])
 	for (auto& thread : io_threads)
 		thread.join();
 
-	printf("%f Mbps over %f seconds\n", ((8.0 * nsends * buf_size) / elapsed) / (1000.0 * 1000.0), elapsed);
-	return 0;
+	printf("%f Mbps over %f seconds\n", ((8.0 * num_sends * buf_size) / elapsed) / (1000.0 * 1000.0), elapsed);
 }

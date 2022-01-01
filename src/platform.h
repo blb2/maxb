@@ -19,6 +19,4 @@
  * along with maxb.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <thread>
-
 void set_thread_affinity(unsigned int cpu_num);
