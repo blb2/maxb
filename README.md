@@ -6,7 +6,7 @@ The current project page is located here: <https://github.com/blb2/maxb>
 
 Building
 --------
-A Visual Studio 2019 project is provided for building on Windows, a Makefile is
+A Visual Studio 2022 project is provided for building on Windows, a Makefile is
 provided for building on GNU-compatible systems, and an Xcode project is
 provided for Apple.
 
