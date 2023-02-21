@@ -1,7 +1,8 @@
 # Max Bandwidth (maxb)
 
-A utility for testing maximum bandwidth between systems. For the most part, this
-project is developed by **blb** and hosted at <https://github.com/blb2/maxb>.
+A utility for testing maximum bandwidth between systems.
+
+The current project page is located here: <https://github.com/blb2/maxb>.
 
 
 ## Building
