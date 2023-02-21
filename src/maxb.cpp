@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018-2022, Brian Brice. All rights reserved.
+ * Copyright (C) 2018-2023, Brian Brice. All rights reserved.
  *
  * This file is part of maxb.
  *
