@@ -20,14 +20,16 @@
 <a name="asio.reference.Protocol"></a><a class="link" href="Protocol.html" title="Protocol requirements">Protocol requirements</a>
 </h3></div></div></div>
 <p>
-        A type <code class="computeroutput">X</code> meets the <code class="computeroutput">Protocol</code> requirements if it
-        satisfies the requirements of <code class="computeroutput">Destructible</code> (C++Std [destructible]),
-        <code class="computeroutput">CopyConstructible</code> (C++Std [copyconstructible]), and <code class="computeroutput">CopyAssignable</code>
+        A type <code class="computeroutput"><span class="identifier">X</span></code> meets the <code class="computeroutput"><span class="identifier">Protocol</span></code> requirements if it satisfies the
+        requirements of <code class="computeroutput"><span class="identifier">Destructible</span></code>
+        (C++Std [destructible]), <code class="computeroutput"><span class="identifier">CopyConstructible</span></code>
+        (C++Std [copyconstructible]), and <code class="computeroutput"><span class="identifier">CopyAssignable</span></code>
         (C++Std [copyassignable]), as well as the additional requirements listed
         below.
       </p>
 <p>
-        No copy or move operation of the type <code class="computeroutput">X</code> shall exit via an exception.
+        No copy or move operation of the type <code class="computeroutput"><span class="identifier">X</span></code>
+        shall exit via an exception.
       </p>
 <div class="table">
 <a name="asio.reference.Protocol.t0"></a><p class="title"><b>Table 25. Protocol requirements</b></p>
@@ -57,7 +59,7 @@
 <tbody><tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::endpoint</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">endpoint</span></code>
                 </p>
               </td>
 <td>
@@ -72,8 +74,8 @@
 </table></div>
 </div>
 <br class="table-break"><p>
-        In the table below, <code class="computeroutput">a</code> denotes a (possibly const) value of type
-        <code class="computeroutput">X</code>.
+        In the table below, <code class="computeroutput"><span class="identifier">a</span></code> denotes
+        a (possibly const) value of type <code class="computeroutput"><span class="identifier">X</span></code>.
       </p>
 <div class="table">
 <a name="asio.reference.Protocol.t1"></a><p class="title"><b>Table 26. Protocol requirements for extensible implementations</b></p>
@@ -104,12 +106,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.family()</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">family</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">int</code>
+                  <code class="computeroutput"><span class="keyword">int</span></code>
                 </p>
               </td>
 <td>
@@ -123,12 +125,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.type()</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">type</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">int</code>
+                  <code class="computeroutput"><span class="keyword">int</span></code>
                 </p>
               </td>
 <td>
@@ -142,12 +144,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.protocol()</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">protocol</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">int</code>
+                  <code class="computeroutput"><span class="keyword">int</span></code>
                 </p>
               </td>
 <td>
@@ -165,8 +167,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -22,14 +22,14 @@
 <p>
           Write all of the supplied data to a stream before returning.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../SyncWriteStream.html" title="Buffer-oriented synchronous write stream requirements">SyncWriteStream</a>,
-    typename <a class="link" href="../ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a>&gt;
-std::size_t write(
-    SyncWriteStream &amp; s,
-    const ConstBufferSequence &amp; buffers,
-    asio::error_code &amp; ec,
-    typename constraint&lt; is_const_buffer_sequence&lt; ConstBufferSequence &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../SyncWriteStream.html" title="Buffer-oriented synchronous write stream requirements">SyncWriteStream</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">write</span><span class="special">(</span>
+    <span class="identifier">SyncWriteStream</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">ConstBufferSequence</span> <span class="special">&amp;</span> <span class="identifier">buffers</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_const_buffer_sequence</span><span class="special">&lt;</span> <span class="identifier">ConstBufferSequence</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to write a certain number of bytes of data to a stream.
@@ -85,13 +85,12 @@ std::size_t write(
           <span><a name="asio.reference.write.overload2.example"></a></span><a class="link" href="overload2.html#asio.reference.write.overload2.example">Example</a>
         </h6>
 <p>
-          To write a single data buffer use the <a class="link" href="../buffer.html" title="buffer"><code class="computeroutput">buffer</code></a>
-          function as follows:
+          To write a single data buffer use the <a class="link" href="../buffer.html" title="buffer"><code class="computeroutput"><span class="identifier">buffer</span></code></a> function as follows:
         </p>
-<pre class="programlisting">asio::write(s, asio::buffer(data, size), ec);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">write</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">buffer</span><span class="special">(</span><span class="identifier">data</span><span class="special">,</span> <span class="identifier">size</span><span class="special">),</span> <span class="identifier">ec</span><span class="special">);</span>
 </pre>
 <p>
-          See the <a class="link" href="../buffer.html" title="buffer"><code class="computeroutput">buffer</code></a>
+          See the <a class="link" href="../buffer.html" title="buffer"><code class="computeroutput"><span class="identifier">buffer</span></code></a>
           documentation for information on writing multiple buffers in one go, and
           how to use it with arrays, boost::array or std::vector.
         </p>
@@ -102,15 +101,14 @@ std::size_t write(
 <p>
           This overload is equivalent to calling:
         </p>
-<pre class="programlisting">asio::write(
-    s, buffers,
-    asio::transfer_all(), ec);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">write</span><span class="special">(</span>
+    <span class="identifier">s</span><span class="special">,</span> <span class="identifier">buffers</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">transfer_all</span><span class="special">(),</span> <span class="identifier">ec</span><span class="special">);</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -24,21 +24,21 @@
 Installs
           a handler into the slot, constructing the new object directly.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../CancellationHandler.html" title="Cancellation handler requirements">CancellationHandler</a>,
-    typename... Args&gt;
-CancellationHandler &amp; emplace(
-    Args &amp;&amp;... args);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../CancellationHandler.html" title="Cancellation handler requirements">CancellationHandler</a><span class="special">,</span>
+    <span class="keyword">typename</span><span class="special">...</span> <span class="identifier">Args</span><span class="special">&gt;</span>
+<span class="identifier">CancellationHandler</span> <span class="special">&amp;</span> <span class="identifier">emplace</span><span class="special">(</span>
+    <span class="identifier">Args</span> <span class="special">&amp;&amp;...</span> <span class="identifier">args</span><span class="special">);</span>
 </pre>
 <p>
           Destroys any existing handler in the slot, then installs the new handler,
-          constructing it with the supplied <code class="computeroutput">args</code>.
+          constructing it with the supplied <code class="computeroutput"><span class="identifier">args</span></code>.
         </p>
 <p>
           The handler is a function object to be called when the signal is emitted.
           The signature of the handler must be
         </p>
-<pre class="programlisting">void handler(asio::cancellation_type_t);
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">cancellation_type_t</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.cancellation_slot.emplace.h0"></a>
@@ -49,8 +49,8 @@ CancellationHandler &amp; emplace(
 <dl>
 <dt><span class="term">args</span></dt>
 <dd><p>
-                Arguments to be passed to the <code class="computeroutput">CancellationHandler</code> object's
-                constructor.
+                Arguments to be passed to the <code class="computeroutput"><span class="identifier">CancellationHandler</span></code>
+                object's constructor.
               </p></dd>
 </dl>
 </div>
@@ -67,14 +67,13 @@ CancellationHandler &amp; emplace(
           <span><a name="asio.reference.cancellation_slot.emplace.remarks"></a></span><a class="link" href="emplace.html#asio.reference.cancellation_slot.emplace.remarks">Remarks</a>
         </h6>
 <p>
-          Handlers installed into the slot via <code class="computeroutput">emplace</code> are not required
-          to be copy constructible or move constructible.
+          Handlers installed into the slot via <code class="computeroutput"><span class="identifier">emplace</span></code>
+          are not required to be copy constructible or move constructible.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

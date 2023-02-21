@@ -22,9 +22,10 @@
 <p>
           <a class="indexterm" name="asio.indexterm.use_awaitable_t__executor_with_default.default_completion_token_type"></a> 
 Specify
-          <code class="computeroutput">use_awaitable_t</code> as the default completion token type.
+          <code class="computeroutput"><span class="identifier">use_awaitable_t</span></code> as the
+          default completion token type.
         </p>
-<pre class="programlisting">typedef use_awaitable_t default_completion_token_type;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">use_awaitable_t</span> <span class="identifier">default_completion_token_type</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.use_awaitable_t__executor_with_default.default_completion_token_type.h0"></a>
@@ -113,18 +114,19 @@ Specify
 </tbody>
 </table></div>
 <p>
-          The <code class="computeroutput">use_awaitable_t</code> class, with its value <code class="computeroutput">use_awaitable</code>,
+          The <code class="computeroutput"><span class="identifier">use_awaitable_t</span></code> class,
+          with its value <code class="computeroutput"><span class="identifier">use_awaitable</span></code>,
           is used to represent the currently executing coroutine. This completion
           token may be passed as a handler to an asynchronous operation. For example:
         </p>
-<pre class="programlisting">awaitable&lt;void&gt; my_coroutine()
-{
-  std::size_t n = co_await my_socket.async_read_some(buffer, use_awaitable);
-  ...
-}
+<pre class="programlisting"><span class="identifier">awaitable</span><span class="special">&lt;</span><span class="keyword">void</span><span class="special">&gt;</span> <span class="identifier">my_coroutine</span><span class="special">()</span>
+<span class="special">{</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span> <span class="special">=</span> <span class="identifier">co_await</span> <span class="identifier">my_socket</span><span class="special">.</span><span class="identifier">async_read_some</span><span class="special">(</span><span class="identifier">buffer</span><span class="special">,</span> <span class="identifier">use_awaitable</span><span class="special">);</span>
+  <span class="special">...</span>
+<span class="special">}</span>
 </pre>
 <p>
-          When used with co_await, the initiating function (<code class="computeroutput">async_read_some</code>
+          When used with co_await, the initiating function (<code class="computeroutput"><span class="identifier">async_read_some</span></code>
           in the above example) suspends the current coroutine. The coroutine is
           resumed when the asynchronous operation completes, and the result of the
           operation is returned.
@@ -142,8 +144,7 @@ Specify
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

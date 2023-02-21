@@ -22,13 +22,13 @@
 <p>
           Write all of the supplied data to a stream before returning.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../SyncWriteStream.html" title="Buffer-oriented synchronous write stream requirements">SyncWriteStream</a>,
-    typename Allocator&gt;
-std::size_t write(
-    SyncWriteStream &amp; s,
-    basic_streambuf&lt; Allocator &gt; &amp; b,
-    asio::error_code &amp; ec);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../SyncWriteStream.html" title="Buffer-oriented synchronous write stream requirements">SyncWriteStream</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">write</span><span class="special">(</span>
+    <span class="identifier">SyncWriteStream</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">basic_streambuf</span><span class="special">&lt;</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">b</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to write a certain number of bytes of data to a stream.
@@ -36,8 +36,7 @@ std::size_t write(
         </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-              All of the data in the supplied <a class="link" href="../basic_streambuf.html" title="basic_streambuf"><code class="computeroutput">basic_streambuf</code></a>
-              has been written.
+              All of the data in the supplied <a class="link" href="../basic_streambuf.html" title="basic_streambuf"><code class="computeroutput"><span class="identifier">basic_streambuf</span></code></a> has been written.
             </li>
 <li class="listitem">
               An error occurred.
@@ -61,8 +60,8 @@ std::size_t write(
               </p></dd>
 <dt><span class="term">b</span></dt>
 <dd><p>
-                The <a class="link" href="../basic_streambuf.html" title="basic_streambuf"><code class="computeroutput">basic_streambuf</code></a>
-                object from which data will be written.
+                The <a class="link" href="../basic_streambuf.html" title="basic_streambuf"><code class="computeroutput"><span class="identifier">basic_streambuf</span></code></a> object from
+                which data will be written.
               </p></dd>
 <dt><span class="term">ec</span></dt>
 <dd><p>
@@ -85,15 +84,14 @@ std::size_t write(
 <p>
           This overload is equivalent to calling:
         </p>
-<pre class="programlisting">asio::write(
-    s, b,
-    asio::transfer_all(), ec);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">write</span><span class="special">(</span>
+    <span class="identifier">s</span><span class="special">,</span> <span class="identifier">b</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">transfer_all</span><span class="special">(),</span> <span class="identifier">ec</span><span class="special">);</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

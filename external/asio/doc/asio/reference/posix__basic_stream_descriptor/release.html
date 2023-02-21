@@ -27,23 +27,21 @@
 Release
           ownership of the native descriptor implementation.
         </p>
-<pre class="programlisting">native_handle_type release();
+<pre class="programlisting"><span class="identifier">native_handle_type</span> <span class="identifier">release</span><span class="special">();</span>
 </pre>
 <p>
           This function may be used to obtain the underlying representation of the
-          descriptor. After calling this function, <code class="computeroutput">is_open()</code> returns
-          false. The caller is responsible for closing the descriptor.
+          descriptor. After calling this function, <code class="computeroutput"><span class="identifier">is_open</span><span class="special">()</span></code> returns false. The caller is responsible
+          for closing the descriptor.
         </p>
 <p>
           All outstanding asynchronous read or write operations will finish immediately,
-          and the handlers for cancelled operations will be passed the <code class="computeroutput">asio::error::operation_aborted</code>
-          error.
+          and the handlers for cancelled operations will be passed the <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">error</span><span class="special">::</span><span class="identifier">operation_aborted</span></code> error.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

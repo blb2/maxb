@@ -20,27 +20,28 @@
 <a name="asio.reference.experimental__coro.async_resume"></a><a class="link" href="async_resume.html" title="experimental::coro::async_resume">experimental::coro::async_resume</a>
 </h4></div></div></div>
 <p>
-          <a class="indexterm" name="asio.indexterm.experimental__coro.async_resume"></a>
+          <a class="indexterm" name="asio.indexterm.experimental__coro.async_resume"></a> 
+Resume
+          the coroutine.
         </p>
-<pre class="programlisting">template&lt;
-    typename CompletionToken&gt;
-requires std::is_void_v&lt; input_type &gt; auto <a class="link" href="async_resume/overload1.html" title="experimental::coro::async_resume (1 of 2 overloads)">async_resume</a>(
-    CompletionToken &amp;&amp; token);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">CompletionToken</span><span class="special">&gt;</span>
+<span class="identifier">requires</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">is_void_v</span><span class="special">&lt;</span> <span class="identifier">input_type</span> <span class="special">&gt;</span> <span class="keyword">auto</span> <a class="link" href="async_resume/overload1.html" title="experimental::coro::async_resume (1 of 2 overloads)">async_resume</a><span class="special">(</span>
+    <span class="identifier">CompletionToken</span> <span class="special">&amp;&amp;</span> <span class="identifier">token</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="async_resume/overload1.html" title="experimental::coro::async_resume (1 of 2 overloads)">more...</a></em></span>
 
-template&lt;
-    typename CompletionToken,
-    detail::convertible_to&lt; input_type &gt; T&gt;
-auto <a class="link" href="async_resume/overload2.html" title="experimental::coro::async_resume (2 of 2 overloads)">async_resume</a>(
-    T &amp;&amp; ip,
-    CompletionToken &amp;&amp; token);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">CompletionToken</span><span class="special">,</span>
+    <span class="identifier">detail</span><span class="special">::</span><span class="identifier">convertible_to</span><span class="special">&lt;</span> <span class="identifier">input_type</span> <span class="special">&gt;</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="keyword">auto</span> <a class="link" href="async_resume/overload2.html" title="experimental::coro::async_resume (2 of 2 overloads)">async_resume</a><span class="special">(</span>
+    <span class="identifier">T</span> <span class="special">&amp;&amp;</span> <span class="identifier">ip</span><span class="special">,</span>
+    <span class="identifier">CompletionToken</span> <span class="special">&amp;&amp;</span> <span class="identifier">token</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="async_resume/overload2.html" title="experimental::coro::async_resume (2 of 2 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

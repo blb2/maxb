@@ -20,38 +20,44 @@
 <a name="asio.reference.execution__execute"></a><a class="link" href="execution__execute.html" title="execution::execute">execution::execute</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.execution__execute"></a> 
-A customisation point
-        that executes a function on an executor.
+        <a class="indexterm" name="asio.indexterm.execution__execute"></a>
       </p>
-<pre class="programlisting">constexpr unspecified execute = unspecified;
+<p>
+        A customisation point that executes a function on an executor.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">execute</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">execution::execute</code> denotes a customisation point object.
+        The name <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">execute</span></code> denotes a customisation point object.
       </p>
 <p>
-        For some subexpressions <code class="computeroutput">e</code> and <code class="computeroutput">f</code>, let <code class="computeroutput">E</code>
-        be a type such that <code class="computeroutput">decltype((e))</code> is <code class="computeroutput">E</code> and let
-        <code class="computeroutput">F</code> be a type such that <code class="computeroutput">decltype((f))</code> is <code class="computeroutput">F</code>.
-        The expression <code class="computeroutput">execution::execute(e, f)</code> is ill-formed if <code class="computeroutput">F</code>
-        does not model <code class="computeroutput">invocable</code>, or if <code class="computeroutput">E</code> does not model
-        either <code class="computeroutput">executor</code> or <code class="computeroutput">sender</code>. Otherwise, it is expression-equivalent
+        For some subexpressions <code class="computeroutput"><span class="identifier">e</span></code>
+        and <code class="computeroutput"><span class="identifier">f</span></code>, let <code class="computeroutput"><span class="identifier">E</span></code> be a type such that <code class="computeroutput"><span class="keyword">decltype</span><span class="special">((</span><span class="identifier">e</span><span class="special">))</span></code>
+        is <code class="computeroutput"><span class="identifier">E</span></code> and let <code class="computeroutput"><span class="identifier">F</span></code> be a type such that <code class="computeroutput"><span class="keyword">decltype</span><span class="special">((</span><span class="identifier">f</span><span class="special">))</span></code>
+        is <code class="computeroutput"><span class="identifier">F</span></code>. The expression <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">execute</span><span class="special">(</span><span class="identifier">e</span><span class="special">,</span> <span class="identifier">f</span><span class="special">)</span></code> is ill-formed if <code class="computeroutput"><span class="identifier">F</span></code>
+        does not model <code class="computeroutput"><span class="identifier">invocable</span></code>,
+        or if <code class="computeroutput"><span class="identifier">E</span></code> does not model either
+        <code class="computeroutput"><span class="identifier">executor</span></code> or <code class="computeroutput"><span class="identifier">sender</span></code>. Otherwise, it is expression-equivalent
         to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">e.execute(f)</code>, if that expression is valid. If the function
-            selected does not execute the function object <code class="computeroutput">f</code> on the executor
-            <code class="computeroutput">e</code>, the program is ill-formed with no diagnostic required.
+            <code class="computeroutput"><span class="identifier">e</span><span class="special">.</span><span class="identifier">execute</span><span class="special">(</span><span class="identifier">f</span><span class="special">)</span></code>,
+            if that expression is valid. If the function selected does not execute
+            the function object <code class="computeroutput"><span class="identifier">f</span></code>
+            on the executor <code class="computeroutput"><span class="identifier">e</span></code>, the
+            program is ill-formed with no diagnostic required.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">execute(e, f)</code>, if that expression is valid, with
-            overload resolution performed in a context that includes the declaration
-            <code class="computeroutput">void execute();</code> and that does not include a declaration
-            of <code class="computeroutput">execution::execute</code>. If the function selected by overload
-            resolution does not execute the function object <code class="computeroutput">f</code> on the
-            executor <code class="computeroutput">e</code>, the program is ill-formed with no diagnostic
-            required.
+            Otherwise, <code class="computeroutput"><span class="identifier">execute</span><span class="special">(</span><span class="identifier">e</span><span class="special">,</span> <span class="identifier">f</span><span class="special">)</span></code>,
+            if that expression is valid, with overload resolution performed in a
+            context that includes the declaration <code class="computeroutput"><span class="keyword">void</span>
+            <span class="identifier">execute</span><span class="special">();</span></code>
+            and that does not include a declaration of <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">execute</span></code>.
+            If the function selected by overload resolution does not execute the
+            function object <code class="computeroutput"><span class="identifier">f</span></code> on
+            the executor <code class="computeroutput"><span class="identifier">e</span></code>, the program
+            is ill-formed with no diagnostic required.
           </li>
 </ul></div>
 <h5>
@@ -67,8 +73,7 @@ A customisation point
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

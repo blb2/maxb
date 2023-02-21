@@ -22,24 +22,23 @@
 <p>
           <a class="indexterm" name="asio.indexterm.ip__basic_resolver.operator_eq_"></a> 
 Move-assign
-          a <a class="link" href="../ip__basic_resolver.html" title="ip::basic_resolver"><code class="computeroutput">ip::basic_resolver</code></a>
+          a <a class="link" href="../ip__basic_resolver.html" title="ip::basic_resolver"><code class="computeroutput"><span class="identifier">ip</span><span class="special">::</span><span class="identifier">basic_resolver</span></code></a>
           from another.
         </p>
-<pre class="programlisting">basic_resolver &amp; <a class="link" href="operator_eq_/overload1.html" title="ip::basic_resolver::operator= (1 of 2 overloads)">operator=</a>(
-    basic_resolver &amp;&amp; other);
+<pre class="programlisting"><span class="identifier">basic_resolver</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload1.html" title="ip::basic_resolver::operator= (1 of 2 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">basic_resolver</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload1.html" title="ip::basic_resolver::operator= (1 of 2 overloads)">more...</a></em></span>
 
-template&lt;
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>&gt;
-constraint&lt; is_convertible&lt; Executor1, Executor &gt;::value, basic_resolver &amp; &gt;::type <a class="link" href="operator_eq_/overload2.html" title="ip::basic_resolver::operator= (2 of 2 overloads)">operator=</a>(
-    basic_resolver&lt; InternetProtocol, Executor1 &gt; &amp;&amp; other);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a><span class="special">&gt;</span>
+<span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Executor1</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span> <span class="identifier">basic_resolver</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">type</span> <a class="link" href="operator_eq_/overload2.html" title="ip::basic_resolver::operator= (2 of 2 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">basic_resolver</span><span class="special">&lt;</span> <span class="identifier">InternetProtocol</span><span class="special">,</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload2.html" title="ip::basic_resolver::operator= (2 of 2 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

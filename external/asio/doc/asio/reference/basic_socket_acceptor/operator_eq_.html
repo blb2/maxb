@@ -22,29 +22,28 @@
 <p>
           <a class="indexterm" name="asio.indexterm.basic_socket_acceptor.operator_eq_"></a> 
 Move-assign
-          a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput">basic_socket_acceptor</code></a>
+          a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput"><span class="identifier">basic_socket_acceptor</span></code></a>
           from another.
         </p>
-<pre class="programlisting">basic_socket_acceptor &amp; <a class="link" href="operator_eq_/overload1.html" title="basic_socket_acceptor::operator= (1 of 2 overloads)">operator=</a>(
-    basic_socket_acceptor &amp;&amp; other);
+<pre class="programlisting"><span class="identifier">basic_socket_acceptor</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload1.html" title="basic_socket_acceptor::operator= (1 of 2 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">basic_socket_acceptor</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload1.html" title="basic_socket_acceptor::operator= (1 of 2 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Move-assign a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput">basic_socket_acceptor</code></a>
-          from an acceptor of another protocol type.
+          Move-assign a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput"><span class="identifier">basic_socket_acceptor</span></code></a> from an
+          acceptor of another protocol type.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol1</a>,
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>&gt;
-constraint&lt; is_convertible&lt; Protocol1, Protocol &gt;::value &amp;&amp;is_convertible&lt; Executor1, Executor &gt;::value, basic_socket_acceptor &amp; &gt;::type <a class="link" href="operator_eq_/overload2.html" title="basic_socket_acceptor::operator= (2 of 2 overloads)">operator=</a>(
-    basic_socket_acceptor&lt; Protocol1, Executor1 &gt; &amp;&amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol1</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a><span class="special">&gt;</span>
+<span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Protocol1</span><span class="special">,</span> <span class="identifier">Protocol</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&amp;&amp;</span><span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Executor1</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span> <span class="identifier">basic_socket_acceptor</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">type</span> <a class="link" href="operator_eq_/overload2.html" title="basic_socket_acceptor::operator= (2 of 2 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">basic_socket_acceptor</span><span class="special">&lt;</span> <span class="identifier">Protocol1</span><span class="special">,</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload2.html" title="basic_socket_acceptor::operator= (2 of 2 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

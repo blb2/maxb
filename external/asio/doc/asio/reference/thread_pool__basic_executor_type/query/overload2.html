@@ -21,29 +21,29 @@
           (2 of 6 overloads)</a>
 </h5></div></div></div>
 <p>
-            Query the current value of the <code class="computeroutput">blocking</code> property.
+            Query the current value of the <code class="computeroutput"><span class="identifier">blocking</span></code>
+            property.
           </p>
-<pre class="programlisting">constexpr execution::blocking_t query(
-    execution::blocking_t ) const;
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span> <span class="identifier">query</span><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <p>
             Do not call this function directly. It is intended for use with the
-            <a class="link" href="../../query.html" title="query"><code class="computeroutput">query</code></a> customisation
-            point.
+            <a class="link" href="../../query.html" title="query"><code class="computeroutput"><span class="identifier">query</span></code></a>
+            customisation point.
           </p>
 <p>
             For example:
           </p>
-<pre class="programlisting">auto ex = my_thread_pool.executor();
-if (asio::query(ex, asio::execution::blocking)
-      == asio::execution::blocking.always)
-  ...
+<pre class="programlisting"><span class="keyword">auto</span> <span class="identifier">ex</span> <span class="special">=</span> <span class="identifier">my_thread_pool</span><span class="special">.</span><span class="identifier">executor</span><span class="special">();</span>
+<span class="keyword">if</span> <span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">query</span><span class="special">(</span><span class="identifier">ex</span><span class="special">,</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking</span><span class="special">)</span>
+      <span class="special">==</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking</span><span class="special">.</span><span class="identifier">always</span><span class="special">)</span>
+  <span class="special">...</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

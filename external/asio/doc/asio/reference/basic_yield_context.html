@@ -6,14 +6,14 @@
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="../../index.html" title="Asio">
 <link rel="up" href="../reference.html" title="Reference">
-<link rel="prev" href="basic_waitable_timer__rebind_executor/other.html" title="basic_waitable_timer::rebind_executor::other">
+<link rel="prev" href="basic_writable_pipe__rebind_executor/other.html" title="basic_writable_pipe::rebind_executor::other">
 <link rel="next" href="basic_yield_context/basic_yield_context.html" title="basic_yield_context::basic_yield_context">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="asio C++ library" width="250" height="60" src="../../asio.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="basic_waitable_timer__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_yield_context/basic_yield_context.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="basic_writable_pipe__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_yield_context/basic_yield_context.html"><img src="../../next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -23,11 +23,12 @@
         <a class="indexterm" name="asio.indexterm.basic_yield_context"></a>
       </p>
 <p>
-        Context object the represents the currently executing coroutine.
+        A <a class="link" href="../overview/model/completion_tokens.html" title="Completion Tokens">completion token</a>
+        that represents the currently executing coroutine.
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="Handler.html" title="Handlers">Handler</a>&gt;
-class basic_yield_context
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="Executor1.html" title="Executor requirements">Executor</a><span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">basic_yield_context</span>
 </pre>
 <h5>
 <a name="asio.reference.basic_yield_context.h0"></a>
@@ -54,24 +55,24 @@ class basic_yield_context
 <tr>
 <td>
                 <p>
-                  <a class="link" href="basic_yield_context/callee_type.html" title="basic_yield_context::callee_type"><span class="bold"><strong>callee_type</strong></span></a>
+                  <a class="link" href="basic_yield_context/cancellation_slot_type.html" title="basic_yield_context::cancellation_slot_type"><span class="bold"><strong>cancellation_slot_type</strong></span></a>
                 </p>
               </td>
 <td>
                 <p>
-                  The coroutine callee type, used by the implementation.
+                  The cancellation slot type associated with the yield context.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <a class="link" href="basic_yield_context/caller_type.html" title="basic_yield_context::caller_type"><span class="bold"><strong>caller_type</strong></span></a>
+                  <a class="link" href="basic_yield_context/executor_type.html" title="basic_yield_context::executor_type"><span class="bold"><strong>executor_type</strong></span></a>
                 </p>
               </td>
 <td>
                 <p>
-                  The coroutine caller type, used by the implementation.
+                  The executor type associated with the yield context.
                 </p>
               </td>
 </tr>
@@ -108,9 +109,55 @@ class basic_yield_context
               </td>
 <td>
                 <p>
-                  Construct a yield context to represent the specified coroutine.
-                  <br> <span class="silver"> —</span><br> Construct a yield context from another yield context
-                  type.
+                  Construct a yield context from another yield context type.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_yield_context/cancelled.html" title="basic_yield_context::cancelled"><span class="bold"><strong>cancelled</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Determine whether the current coroutine has been cancelled.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_yield_context/get_cancellation_slot.html" title="basic_yield_context::get_cancellation_slot"><span class="bold"><strong>get_cancellation_slot</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Get the cancellation slot associated with the coroutine.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_yield_context/get_cancellation_state.html" title="basic_yield_context::get_cancellation_state"><span class="bold"><strong>get_cancellation_state</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Get the cancellation state associated with the coroutine.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_yield_context/get_executor.html" title="basic_yield_context::get_executor"><span class="bold"><strong>get_executor</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Get the executor associated with the yield context.
                 </p>
               </td>
 </tr>
@@ -126,21 +173,47 @@ class basic_yield_context
                 </p>
               </td>
 </tr>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_yield_context/reset_cancellation_state.html" title="basic_yield_context::reset_cancellation_state"><span class="bold"><strong>reset_cancellation_state</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Reset the cancellation state associated with the coroutine.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <a class="link" href="basic_yield_context/throw_if_cancelled.html" title="basic_yield_context::throw_if_cancelled"><span class="bold"><strong>throw_if_cancelled</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Determine whether the coroutine throws if trying to suspend when
+                  it has been cancelled. <br> <span class="silver"> —</span><br> Set whether the coroutine
+                  throws if trying to suspend when it has been cancelled.
+                </p>
+              </td>
+</tr>
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="basic_yield_context.html" title="basic_yield_context"><code class="computeroutput">basic_yield_context</code></a>
-        class is used to represent the currently executing stackful coroutine. A
-        <a class="link" href="basic_yield_context.html" title="basic_yield_context"><code class="computeroutput">basic_yield_context</code></a>
-        may be passed as a handler to an asynchronous operation. For example:
+        The <a class="link" href="basic_yield_context.html" title="basic_yield_context"><code class="computeroutput"><span class="identifier">basic_yield_context</span></code></a>
+        class is a completion token type that is used to represent the currently
+        executing stackful coroutine. A <a class="link" href="basic_yield_context.html" title="basic_yield_context"><code class="computeroutput"><span class="identifier">basic_yield_context</span></code></a> object may be
+        passed as a completion token to an asynchronous operation. For example:
       </p>
-<pre class="programlisting">template &lt;typename Handler&gt;
-void my_coroutine(basic_yield_context&lt;Handler&gt; yield)
-{
-  ...
-  std::size_t n = my_socket.async_read_some(buffer, yield);
-  ...
-}
+<pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">Executor</span><span class="special">&gt;</span>
+<span class="keyword">void</span> <span class="identifier">my_coroutine</span><span class="special">(</span><span class="identifier">basic_yield_context</span><span class="special">&lt;</span><span class="identifier">Executor</span><span class="special">&gt;</span> <span class="identifier">yield</span><span class="special">)</span>
+<span class="special">{</span>
+  <span class="special">...</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span> <span class="special">=</span> <span class="identifier">my_socket</span><span class="special">.</span><span class="identifier">async_read_some</span><span class="special">(</span><span class="identifier">buffer</span><span class="special">,</span> <span class="identifier">yield</span><span class="special">);</span>
+  <span class="special">...</span>
+<span class="special">}</span>
 </pre>
 <p>
         The initiating function (async_read_some in the above example) suspends the
@@ -160,8 +233,7 @@ void my_coroutine(basic_yield_context&lt;Handler&gt; yield)
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -169,7 +241,7 @@ void my_coroutine(basic_yield_context&lt;Handler&gt; yield)
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="basic_waitable_timer__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_yield_context/basic_yield_context.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="basic_writable_pipe__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_yield_context/basic_yield_context.html"><img src="../../next.png" alt="Next"></a>
 </div>
 </body>
 </html>

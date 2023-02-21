@@ -23,20 +23,20 @@
 <p>
           Establishes a socket connection by trying each endpoint in a sequence.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol</a>,
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>,
-    typename Iterator&gt;
-Iterator connect(
-    basic_socket&lt; Protocol, Executor &gt; &amp; s,
-    Iterator begin,
-    Iterator end);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Iterator</span><span class="special">&gt;</span>
+<span class="identifier">Iterator</span> <span class="identifier">connect</span><span class="special">(</span>
+    <span class="identifier">basic_socket</span><span class="special">&lt;</span> <span class="identifier">Protocol</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">Iterator</span> <span class="identifier">begin</span><span class="special">,</span>
+    <span class="identifier">Iterator</span> <span class="identifier">end</span><span class="special">);</span>
 </pre>
 <p>
           This function attempts to connect a socket to one of a sequence of endpoints.
-          It does this by repeated calls to the socket's <code class="computeroutput">connect</code> member
-          function, once for each endpoint in the sequence, until a connection is
-          successfully established.
+          It does this by repeated calls to the socket's <code class="computeroutput"><span class="identifier">connect</span></code>
+          member function, once for each endpoint in the sequence, until a connection
+          is successfully established.
         </p>
 <h6>
 <a name="asio.reference.connect.overload5.h0"></a>
@@ -77,9 +77,8 @@ Iterator connect(
 <dl>
 <dt><span class="term">asio::system_error</span></dt>
 <dd><p>
-                Thrown on failure. If the sequence is empty, the associated <code class="computeroutput">error_code</code>
-                is <code class="computeroutput">asio::error::not_found</code>. Otherwise, contains the error
-                from the last connection attempt.
+                Thrown on failure. If the sequence is empty, the associated <code class="computeroutput"><span class="identifier">error_code</span></code> is <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">error</span><span class="special">::</span><span class="identifier">not_found</span></code>.
+                Otherwise, contains the error from the last connection attempt.
               </p></dd>
 </dl>
 </div>
@@ -87,17 +86,16 @@ Iterator connect(
 <a name="asio.reference.connect.overload5.h3"></a>
           <span><a name="asio.reference.connect.overload5.example"></a></span><a class="link" href="overload5.html#asio.reference.connect.overload5.example">Example</a>
         </h6>
-<pre class="programlisting">tcp::resolver r(my_context);
-tcp::resolver::query q("host", "service");
-tcp::resolver::results_type e = r.resolve(q);
-tcp::socket s(my_context);
-asio::connect(s, e.begin(), e.end());
+<pre class="programlisting"><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">resolver</span> <span class="identifier">r</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="identifier">tcp</span><span class="special">::</span><span class="identifier">resolver</span><span class="special">::</span><span class="identifier">query</span> <span class="identifier">q</span><span class="special">(</span><span class="string">"host"</span><span class="special">,</span> <span class="string">"service"</span><span class="special">);</span>
+<span class="identifier">tcp</span><span class="special">::</span><span class="identifier">resolver</span><span class="special">::</span><span class="identifier">results_type</span> <span class="identifier">e</span> <span class="special">=</span> <span class="identifier">r</span><span class="special">.</span><span class="identifier">resolve</span><span class="special">(</span><span class="identifier">q</span><span class="special">);</span>
+<span class="identifier">tcp</span><span class="special">::</span><span class="identifier">socket</span> <span class="identifier">s</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">connect</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">e</span><span class="special">.</span><span class="identifier">begin</span><span class="special">(),</span> <span class="identifier">e</span><span class="special">.</span><span class="identifier">end</span><span class="special">());</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

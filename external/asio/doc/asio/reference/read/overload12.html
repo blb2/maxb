@@ -22,15 +22,15 @@
 <p>
           Attempt to read a certain amount of data from a stream before returning.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a>,
-    typename Allocator,
-    typename <a class="link" href="../CompletionCondition.html" title="Completion condition requirements">CompletionCondition</a>&gt;
-std::size_t read(
-    SyncReadStream &amp; s,
-    basic_streambuf&lt; Allocator &gt; &amp; b,
-    CompletionCondition completion_condition,
-    asio::error_code &amp; ec);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../CompletionCondition.html" title="Completion condition requirements">CompletionCondition</a><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">read</span><span class="special">(</span>
+    <span class="identifier">SyncReadStream</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">basic_streambuf</span><span class="special">&lt;</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">b</span><span class="special">,</span>
+    <span class="identifier">CompletionCondition</span> <span class="identifier">completion_condition</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to read a certain number of bytes of data from a
@@ -62,22 +62,22 @@ std::size_t read(
               </p></dd>
 <dt><span class="term">b</span></dt>
 <dd><p>
-                The <a class="link" href="../basic_streambuf.html" title="basic_streambuf"><code class="computeroutput">basic_streambuf</code></a>
-                object into which the data will be read.
+                The <a class="link" href="../basic_streambuf.html" title="basic_streambuf"><code class="computeroutput"><span class="identifier">basic_streambuf</span></code></a> object into
+                which the data will be read.
               </p></dd>
 <dt><span class="term">completion_condition</span></dt>
 <dd>
 <p>
                 The function object to be called to determine whether the read operation
                 is complete. The signature of the function object must be:
-</p>
-<pre class="programlisting">std::size_t completion_condition(
-  // Result of latest read_some operation.
-  const asio::error_code&amp; error,
+              </p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">completion_condition</span><span class="special">(</span>
+  <span class="comment">// Result of latest read_some operation.</span>
+  <span class="keyword">const</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">error</span><span class="special">,</span>
 
-  // Number of bytes transferred so far.
-  std::size_t bytes_transferred
-);
+  <span class="comment">// Number of bytes transferred so far.</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">bytes_transferred</span>
+<span class="special">);</span>
 </pre>
 <p>
                 A return value of 0 indicates that the read operation is complete.
@@ -103,8 +103,7 @@ std::size_t read(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

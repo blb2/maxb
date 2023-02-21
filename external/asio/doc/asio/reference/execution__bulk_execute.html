@@ -20,63 +20,70 @@
 <a name="asio.reference.execution__bulk_execute"></a><a class="link" href="execution__bulk_execute.html" title="execution::bulk_execute">execution::bulk_execute</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.execution__bulk_execute"></a> 
-A customisation
-        point that creates a bulk sender.
+        <a class="indexterm" name="asio.indexterm.execution__bulk_execute"></a>
       </p>
-<pre class="programlisting">constexpr unspecified bulk_execute = unspecified;
+<p>
+        A customisation point that creates a bulk sender.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">bulk_execute</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">execution::bulk_execute</code> denotes a customisation point
-        object. If <code class="computeroutput">is_convertible_v&lt;N, size_t&gt;</code> is true, then the
-        expression <code class="computeroutput">execution::bulk_execute(S, F, N)</code> for some subexpressions
-        <code class="computeroutput">S</code>, <code class="computeroutput">F</code>, and <code class="computeroutput">N</code> is expression-equivalent
-        to:
+        The name <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_execute</span></code> denotes a customisation point
+        object. If <code class="computeroutput"><span class="identifier">is_convertible_v</span><span class="special">&lt;</span><span class="identifier">N</span><span class="special">,</span>
+        <span class="identifier">size_t</span><span class="special">&gt;</span></code>
+        is true, then the expression <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_execute</span><span class="special">(</span><span class="identifier">S</span><span class="special">,</span>
+        <span class="identifier">F</span><span class="special">,</span> <span class="identifier">N</span><span class="special">)</span></code> for
+        some subexpressions <code class="computeroutput"><span class="identifier">S</span></code>, <code class="computeroutput"><span class="identifier">F</span></code>, and <code class="computeroutput"><span class="identifier">N</span></code>
+        is expression-equivalent to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">S.bulk_execute(F, N)</code>, if that expression is valid. If the
-            function selected does not execute <code class="computeroutput">N</code> invocations of the
-            function object <code class="computeroutput">F</code> on the executor <code class="computeroutput">S</code> in bulk
-            with forward progress guarantee <code class="computeroutput">asio::query(S, execution::bulk_guarantee)</code>,
-            and the result of that function does not model <code class="computeroutput">sender&lt;void&gt;</code>,
+            <code class="computeroutput"><span class="identifier">S</span><span class="special">.</span><span class="identifier">bulk_execute</span><span class="special">(</span><span class="identifier">F</span><span class="special">,</span> <span class="identifier">N</span><span class="special">)</span></code>,
+            if that expression is valid. If the function selected does not execute
+            <code class="computeroutput"><span class="identifier">N</span></code> invocations of the
+            function object <code class="computeroutput"><span class="identifier">F</span></code> on
+            the executor <code class="computeroutput"><span class="identifier">S</span></code> in bulk
+            with forward progress guarantee <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">query</span><span class="special">(</span><span class="identifier">S</span><span class="special">,</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_guarantee</span><span class="special">)</span></code>, and the result of that function does
+            not model <code class="computeroutput"><span class="identifier">sender</span><span class="special">&lt;</span><span class="keyword">void</span><span class="special">&gt;</span></code>,
             the program is ill-formed with no diagnostic required.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">bulk_execute(S, F, N)</code>, if that expression is
-            valid, with overload resolution performed in a context that includes
-            the declaration <code class="computeroutput">void bulk_execute();</code> and that does not include
-            a declaration of <code class="computeroutput">execution::bulk_execute</code>. If the function
-            selected by overload resolution does not execute <code class="computeroutput">N</code> invocations
-            of the function object <code class="computeroutput">F</code> on the executor <code class="computeroutput">S</code>
-            in bulk with forward progress guarantee <code class="computeroutput">asio::query(E, execution::bulk_guarantee)</code>,
-            and the result of that function does not model <code class="computeroutput">sender&lt;void&gt;</code>,
+            Otherwise, <code class="computeroutput"><span class="identifier">bulk_execute</span><span class="special">(</span><span class="identifier">S</span><span class="special">,</span> <span class="identifier">F</span><span class="special">,</span> <span class="identifier">N</span><span class="special">)</span></code>, if that expression is valid, with overload
+            resolution performed in a context that includes the declaration <code class="computeroutput"><span class="keyword">void</span> <span class="identifier">bulk_execute</span><span class="special">();</span></code> and that does not include a declaration
+            of <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_execute</span></code>. If the function selected
+            by overload resolution does not execute <code class="computeroutput"><span class="identifier">N</span></code>
+            invocations of the function object <code class="computeroutput"><span class="identifier">F</span></code>
+            on the executor <code class="computeroutput"><span class="identifier">S</span></code> in
+            bulk with forward progress guarantee <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">query</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_guarantee</span><span class="special">)</span></code>, and the result of that function does
+            not model <code class="computeroutput"><span class="identifier">sender</span><span class="special">&lt;</span><span class="keyword">void</span><span class="special">&gt;</span></code>,
             the program is ill-formed with no diagnostic required.
           </li>
 <li class="listitem">
-            Otherwise, if the types <code class="computeroutput">F</code> and <code class="computeroutput">executor_index_t&lt;remove_cvref_t&lt;S&gt;&gt;</code>
-            model <code class="computeroutput">invocable</code> and if <code class="computeroutput">asio::query(S, execution::bulk_guarantee)</code>
-            equals <code class="computeroutput">execution::bulk_guarantee.unsequenced</code>, then
+            Otherwise, if the types <code class="computeroutput"><span class="identifier">F</span></code>
+            and <code class="computeroutput"><span class="identifier">executor_index_t</span><span class="special">&lt;</span><span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;&gt;</span></code> model <code class="computeroutput"><span class="identifier">invocable</span></code>
+            and if <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">query</span><span class="special">(</span><span class="identifier">S</span><span class="special">,</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_guarantee</span><span class="special">)</span></code>
+            equals <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_guarantee</span><span class="special">.</span><span class="identifier">unsequenced</span></code>, then
           </li>
 <li class="listitem">
-            Evaluates <code class="computeroutput">DECAY_COPY(std::forward&lt;decltype(F)&gt;(F))</code>
-            on the calling thread to create a function object <code class="computeroutput">cf</code>. [Note:
-            Additional copies of <code class="computeroutput">cf</code> may subsequently be created. --end
-            note.]
+            Evaluates <code class="computeroutput"><span class="identifier">DECAY_COPY</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">forward</span><span class="special">&lt;</span><span class="keyword">decltype</span><span class="special">(</span><span class="identifier">F</span><span class="special">)&gt;(</span><span class="identifier">F</span><span class="special">))</span></code> on the calling thread to create a function
+            object <code class="computeroutput"><span class="identifier">cf</span></code>. [Note: Additional
+            copies of <code class="computeroutput"><span class="identifier">cf</span></code> may subsequently
+            be created. --end note.]
           </li>
 <li class="listitem">
-            For each value of <code class="computeroutput">i</code> in <code class="computeroutput">N</code>, <code class="computeroutput">cf(i)</code>
-            (or copy of <code class="computeroutput">cf</code>)) will be invoked at most once by an execution
-            agent that is unique for each value of <code class="computeroutput">i</code>.
+            For each value of <code class="computeroutput"><span class="identifier">i</span></code> in
+            <code class="computeroutput"><span class="identifier">N</span></code>, <code class="computeroutput"><span class="identifier">cf</span><span class="special">(</span><span class="identifier">i</span><span class="special">)</span></code> (or copy of <code class="computeroutput"><span class="identifier">cf</span></code>))
+            will be invoked at most once by an execution agent that is unique for
+            each value of <code class="computeroutput"><span class="identifier">i</span></code>.
           </li>
 <li class="listitem">
-            May block pending completion of one or more invocations of <code class="computeroutput">cf</code>.
+            May block pending completion of one or more invocations of <code class="computeroutput"><span class="identifier">cf</span></code>.
           </li>
 <li class="listitem">
-            Synchronizes with (C++Std [intro.multithread]) the invocations of <code class="computeroutput">cf</code>.
+            Synchronizes with (C++Std [intro.multithread]) the invocations of <code class="computeroutput"><span class="identifier">cf</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">execution::bulk_execute(S, F, N)</code> is ill-formed.
+            Otherwise, <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">bulk_execute</span><span class="special">(</span><span class="identifier">S</span><span class="special">,</span> <span class="identifier">F</span><span class="special">,</span> <span class="identifier">N</span><span class="special">)</span></code> is ill-formed.
           </li>
 </ul></div>
 <h5>
@@ -92,8 +99,7 @@ A customisation
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

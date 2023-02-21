@@ -21,20 +21,39 @@
         (1 of 5 overloads)</a>
 </h4></div></div></div>
 <p>
-          Create an <a class="link" href="../executor_work_guard.html" title="executor_work_guard"><code class="computeroutput">executor_work_guard</code></a>
-          object.
+          Create an <a class="link" href="../executor_work_guard.html" title="executor_work_guard"><code class="computeroutput"><span class="identifier">executor_work_guard</span></code></a> object.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>&gt;
-executor_work_guard&lt; Executor &gt; make_work_guard(
-    const Executor &amp; ex,
-    typename constraint&lt; is_executor&lt; Executor &gt;::value||execution::is_executor&lt; Executor &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a><span class="special">&gt;</span>
+<span class="identifier">executor_work_guard</span><span class="special">&lt;</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <span class="identifier">make_work_guard</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">Executor</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_executor</span><span class="special">&lt;</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">||</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">is_executor</span><span class="special">&lt;</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
+<h6>
+<a name="asio.reference.make_work_guard.overload1.h0"></a>
+          <span><a name="asio.reference.make_work_guard.overload1.parameters"></a></span><a class="link" href="overload1.html#asio.reference.make_work_guard.overload1.parameters">Parameters</a>
+        </h6>
+<div class="variablelist">
+<p class="title"><b></b></p>
+<dl>
+<dt><span class="term">ex</span></dt>
+<dd><p>
+                An executor.
+              </p></dd>
+</dl>
+</div>
+<h6>
+<a name="asio.reference.make_work_guard.overload1.h1"></a>
+          <span><a name="asio.reference.make_work_guard.overload1.return_value"></a></span><a class="link" href="overload1.html#asio.reference.make_work_guard.overload1.return_value">Return
+          Value</a>
+        </h6>
+<p>
+          A work guard constructed with the specified executor.
+        </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

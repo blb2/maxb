@@ -23,20 +23,19 @@
 <p>
             Converting move assignment operator.
           </p>
-<pre class="programlisting">template&lt;
-    class <a class="link" href="../../Executor1.html" title="Executor requirements">OtherExecutor</a>&gt;
-strand &amp; operator=(
-    strand&lt; OtherExecutor &gt; &amp;&amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">class</span> <a class="link" href="../../Executor1.html" title="Executor requirements">OtherExecutor</a><span class="special">&gt;</span>
+<span class="identifier">strand</span> <span class="special">&amp;</span> <span class="keyword">operator</span><span class="special">=(</span>
+    <span class="identifier">strand</span><span class="special">&lt;</span> <span class="identifier">OtherExecutor</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
 </pre>
 <p>
-            This assignment operator is only valid if the <code class="computeroutput">OtherExecutor</code>
-            type is convertible to <code class="computeroutput">Executor</code>.
+            This assignment operator is only valid if the <code class="computeroutput"><span class="identifier">OtherExecutor</span></code>
+            type is convertible to <code class="computeroutput"><span class="identifier">Executor</span></code>.
           </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

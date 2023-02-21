@@ -24,12 +24,12 @@
 Initiate
           an asynchronous wait for the group of operations.
         </p>
-<pre class="programlisting">template&lt;
-    typename CancellationCondition,
-    typename CompletionToken&gt;
-auto async_wait(
-    CancellationCondition cancellation_condition,
-    CompletionToken &amp;&amp; token);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">CancellationCondition</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">CompletionToken</span><span class="special">&gt;</span>
+<a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <span class="identifier">async_wait</span><span class="special">(</span>
+    <span class="identifier">CancellationCondition</span> <span class="identifier">cancellation_condition</span><span class="special">,</span>
+    <span class="identifier">CompletionToken</span> <span class="special">&amp;&amp;</span> <span class="identifier">token</span><span class="special">);</span>
 </pre>
 <p>
           Launches the group and asynchronously waits for completion.
@@ -47,40 +47,40 @@ auto async_wait(
                 group, that is used to determine whether to cancel the remaining
                 operations. The function object is passed the arguments of the completed
                 operation's handler. To trigger cancellation of the remaining operations,
-                it must return a <a class="link" href="../cancellation_type.html" title="cancellation_type"><code class="computeroutput">cancellation_type</code></a>
-                value other than <code class="computeroutput">asio::cancellation_type::none</code>.
+                it must return a <a class="link" href="../cancellation_type.html" title="cancellation_type"><code class="computeroutput"><span class="identifier">cancellation_type</span></code></a> value
+                other than <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">cancellation_type</span><span class="special">::</span><span class="identifier">none</span></code>.
               </p></dd>
 <dt><span class="term">token</span></dt>
 <dd><p>
-                A completion token whose signature is comprised of a <code class="computeroutput">std::array&lt;std::size_t,
-                N&gt;</code> indicating the completion order of the operations, followed
-                by all operations' completion handler arguments.
+                A <a class="link" href="../../overview/model/completion_tokens.html" title="Completion Tokens">completion
+                token</a> whose signature is comprised of a <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">array</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">,</span> <span class="identifier">N</span><span class="special">&gt;</span></code> indicating the completion order
+                of the operations, followed by all operations' completion handler
+                arguments.
               </p></dd>
 </dl>
 </div>
 <p>
-          The library provides the following <code class="computeroutput">cancellation_condition</code>
+          The library provides the following <code class="computeroutput"><span class="identifier">cancellation_condition</span></code>
           types:
         </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-              <a class="link" href="../experimental__wait_for_all.html" title="experimental::wait_for_all"><code class="computeroutput">experimental::wait_for_all</code></a>
+              <a class="link" href="../experimental__wait_for_all.html" title="experimental::wait_for_all"><code class="computeroutput"><span class="identifier">experimental</span><span class="special">::</span><span class="identifier">wait_for_all</span></code></a>
             </li>
 <li class="listitem">
-              <a class="link" href="../experimental__wait_for_one.html" title="experimental::wait_for_one"><code class="computeroutput">experimental::wait_for_one</code></a>
+              <a class="link" href="../experimental__wait_for_one.html" title="experimental::wait_for_one"><code class="computeroutput"><span class="identifier">experimental</span><span class="special">::</span><span class="identifier">wait_for_one</span></code></a>
             </li>
 <li class="listitem">
-              <a class="link" href="../experimental__wait_for_one_error.html" title="experimental::wait_for_one_error"><code class="computeroutput">experimental::wait_for_one_error</code></a>
+              <a class="link" href="../experimental__wait_for_one_error.html" title="experimental::wait_for_one_error"><code class="computeroutput"><span class="identifier">experimental</span><span class="special">::</span><span class="identifier">wait_for_one_error</span></code></a>
             </li>
 <li class="listitem">
-              <a class="link" href="../experimental__wait_for_one_success.html" title="experimental::wait_for_one_success"><code class="computeroutput">experimental::wait_for_one_success</code></a>
+              <a class="link" href="../experimental__wait_for_one_success.html" title="experimental::wait_for_one_success"><code class="computeroutput"><span class="identifier">experimental</span><span class="special">::</span><span class="identifier">wait_for_one_success</span></code></a>
             </li>
 </ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

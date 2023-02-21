@@ -23,29 +23,31 @@
 <p>
         In this section, <span class="emphasis"><em>synchronous socket operations</em></span> are those
         member functions specified as two overloads, with and without an argument
-        of type <code class="computeroutput">error_code&amp;</code>:
+        of type <code class="computeroutput"><span class="identifier">error_code</span><span class="special">&amp;</span></code>:
       </p>
-<pre class="programlisting"><span class="bold"><strong><span class="emphasis"><em>R f</em></span></strong></span>(<span class="emphasis"><em><span class="bold"><strong>A1</strong></span></em></span> a1, <span class="emphasis"><em><span class="bold"><strong>A2</strong></span></em></span> a2, ..., <span class="emphasis"><em><span class="bold"><strong>AN</strong></span></em></span> aN);
-<span class="bold"><strong><span class="emphasis"><em>R f</em></span></strong></span>(<span class="emphasis"><em><span class="bold"><strong>A1</strong></span></em></span> a1, <span class="emphasis"><em><span class="bold"><strong>A2</strong></span></em></span> a2, ..., <span class="emphasis"><em><span class="bold"><strong>AN</strong></span></em></span> aN, error_code&amp; ec);
+<pre class="programlisting"><span class="bold"><strong><span class="emphasis"><em>R f</em></span></strong></span><span class="special">(</span><span class="emphasis"><em><span class="bold"><strong>A1</strong></span></em></span> <span class="identifier">a1</span><span class="special">,</span> <span class="emphasis"><em><span class="bold"><strong>A2</strong></span></em></span> <span class="identifier">a2</span><span class="special">,</span> <span class="special">...,</span> <span class="emphasis"><em><span class="bold"><strong>AN</strong></span></em></span> <span class="identifier">aN</span><span class="special">);</span>
+<span class="bold"><strong><span class="emphasis"><em>R f</em></span></strong></span><span class="special">(</span><span class="emphasis"><em><span class="bold"><strong>A1</strong></span></em></span> <span class="identifier">a1</span><span class="special">,</span> <span class="emphasis"><em><span class="bold"><strong>A2</strong></span></em></span> <span class="identifier">a2</span><span class="special">,</span> <span class="special">...,</span> <span class="emphasis"><em><span class="bold"><strong>AN</strong></span></em></span> <span class="identifier">aN</span><span class="special">,</span> <span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">);</span>
 </pre>
 <p>
-        For an object <code class="computeroutput">s</code>, the conditions under which its synchronous
-        socket operations may block the calling thread (C++Std [defns.block]) are
-        determined as follows.
+        For an object <code class="computeroutput"><span class="identifier">s</span></code>, the conditions
+        under which its synchronous socket operations may block the calling thread
+        (C++Std [defns.block]) are determined as follows.
       </p>
 <p>
         If:
       </p>
 <p>
-        — <code class="computeroutput">s.non_blocking() == true</code>,
+        — <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">non_blocking</span><span class="special">()</span>
+        <span class="special">==</span> <span class="keyword">true</span></code>,
       </p>
 <p>
         — the synchronous socket operation is specified in terms of a <span class="emphasis"><em>POSIX</em></span>
         function other than <code class="computeroutput"><a href="http://www.opengroup.org/onlinepubs/9699919799/functions/poll.html" target="_top"><code class="computeroutput"><span class="identifier">poll</span><span class="special">()</span></code></a></code>,
       </p>
 <p>
-        — that <span class="emphasis"><em>POSIX</em></span> function lists <code class="computeroutput">EWOULDBLOCK</code> or
-        <code class="computeroutput">EAGAIN</code> in its failure conditions, and
+        — that <span class="emphasis"><em>POSIX</em></span> function lists <code class="computeroutput"><span class="identifier">EWOULDBLOCK</span></code>
+        or <code class="computeroutput"><span class="identifier">EAGAIN</span></code> in its failure
+        conditions, and
       </p>
 <p>
         — the effects of the operation cannot be established immediately
@@ -62,8 +64,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

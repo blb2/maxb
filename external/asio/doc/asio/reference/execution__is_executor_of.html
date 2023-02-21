@@ -23,20 +23,21 @@
         <a class="indexterm" name="asio.indexterm.execution__is_executor_of"></a>
       </p>
 <p>
-        The <a class="link" href="execution__is_executor_of.html" title="execution::is_executor_of"><code class="computeroutput">execution::is_executor_of</code></a>
-        trait detects whether a type T satisfies the execution::executor_of concept
-        for some set of value arguments.
+        The <a class="link" href="execution__is_executor_of.html" title="execution::is_executor_of"><code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">is_executor_of</span></code></a> trait detects whether
+        a type T satisfies the execution::executor_of concept for some set of value
+        arguments.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename F&gt;
-struct is_executor_of
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">F</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">is_executor_of</span>
 </pre>
 <p>
-        Class template <code class="computeroutput">is_executor_of</code> is a type trait that is derived
-        from <code class="computeroutput">true_type</code> if the type <code class="computeroutput">T</code> meets the concept
+        Class template <code class="computeroutput"><span class="identifier">is_executor_of</span></code>
+        is a type trait that is derived from <code class="computeroutput"><span class="identifier">true_type</span></code>
+        if the type <code class="computeroutput"><span class="identifier">T</span></code> meets the concept
         definition for an executor that is invocable with a function object of type
-        <code class="computeroutput">F</code>, otherwise <code class="computeroutput">false_type</code>.
+        <code class="computeroutput"><span class="identifier">F</span></code>, otherwise <code class="computeroutput"><span class="identifier">false_type</span></code>.
       </p>
 <h5>
 <a name="asio.reference.execution__is_executor_of.h0"></a>
@@ -51,8 +52,7 @@ struct is_executor_of
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

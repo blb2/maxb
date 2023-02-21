@@ -23,9 +23,9 @@
 <p>
             Construct a dynamic buffer from a string.
           </p>
-<pre class="programlisting">dynamic_string_buffer(
-    std::basic_string&lt; Elem, Traits, Allocator &gt; &amp; s,
-    std::size_t maximum_size = (std::numeric_limits&lt; std::size_t &gt;::max)());
+<pre class="programlisting"><span class="identifier">dynamic_string_buffer</span><span class="special">(</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">basic_string</span><span class="special">&lt;</span> <span class="identifier">Elem</span><span class="special">,</span> <span class="identifier">Traits</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">maximum_size</span> <span class="special">=</span> <span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">numeric_limits</span><span class="special">&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="special">&gt;::</span><span class="identifier">max</span><span class="special">)());</span>
 </pre>
 <h6>
 <a name="asio.reference.dynamic_string_buffer.dynamic_string_buffer.overload1.h0"></a>
@@ -38,7 +38,7 @@
 <dd><p>
                   The string to be used as backing storage for the dynamic buffer.
                   The object stores a reference to the string and the user is responsible
-                  for ensuring that the string object remains valid while the <a class="link" href="../../dynamic_string_buffer.html" title="dynamic_string_buffer"><code class="computeroutput">dynamic_string_buffer</code></a>
+                  for ensuring that the string object remains valid while the <a class="link" href="../../dynamic_string_buffer.html" title="dynamic_string_buffer"><code class="computeroutput"><span class="identifier">dynamic_string_buffer</span></code></a>
                   object, and copies of the object, are in use.
                 </p></dd>
 </dl>
@@ -63,8 +63,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

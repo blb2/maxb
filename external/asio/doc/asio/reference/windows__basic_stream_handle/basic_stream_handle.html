@@ -7,7 +7,7 @@
 <link rel="home" href="../../../index.html" title="Asio">
 <link rel="up" href="../windows__basic_stream_handle.html" title="windows::basic_stream_handle">
 <link rel="prev" href="async_write_some.html" title="windows::basic_stream_handle::async_write_some">
-<link rel="next" href="basic_stream_handle/overload1.html" title="windows::basic_stream_handle::basic_stream_handle (1 of 5 overloads)">
+<link rel="next" href="basic_stream_handle/overload1.html" title="windows::basic_stream_handle::basic_stream_handle (1 of 6 overloads)">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="asio C++ library" width="250" height="60" src="../../../asio.png"></td></tr></table>
@@ -24,45 +24,54 @@
 Construct
           a stream handle without opening it.
         </p>
-<pre class="programlisting">explicit <a class="link" href="basic_stream_handle/overload1.html" title="windows::basic_stream_handle::basic_stream_handle (1 of 5 overloads)">basic_stream_handle</a>(
-    const executor_type &amp; ex);
-  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload1.html" title="windows::basic_stream_handle::basic_stream_handle (1 of 5 overloads)">more...</a></em></span>
+<pre class="programlisting"><span class="keyword">explicit</span> <a class="link" href="basic_stream_handle/overload1.html" title="windows::basic_stream_handle::basic_stream_handle (1 of 6 overloads)">basic_stream_handle</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">);</span>
+  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload1.html" title="windows::basic_stream_handle::basic_stream_handle (1 of 6 overloads)">more...</a></em></span>
 
-template&lt;
-    typename ExecutionContext&gt;
-explicit <a class="link" href="basic_stream_handle/overload2.html" title="windows::basic_stream_handle::basic_stream_handle (2 of 5 overloads)">basic_stream_handle</a>(
-    ExecutionContext &amp; context,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value, defaulted_constraint &gt;::type  = defaulted_constraint());
-  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload2.html" title="windows::basic_stream_handle::basic_stream_handle (2 of 5 overloads)">more...</a></em></span>
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<span class="keyword">explicit</span> <a class="link" href="basic_stream_handle/overload2.html" title="windows::basic_stream_handle::basic_stream_handle (2 of 6 overloads)">basic_stream_handle</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span> <span class="identifier">defaulted_constraint</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="identifier">defaulted_constraint</span><span class="special">());</span>
+  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload2.html" title="windows::basic_stream_handle::basic_stream_handle (2 of 6 overloads)">more...</a></em></span>
 </pre>
 <p>
           Construct a stream handle on an existing native handle.
         </p>
-<pre class="programlisting"><a class="link" href="basic_stream_handle/overload3.html" title="windows::basic_stream_handle::basic_stream_handle (3 of 5 overloads)">basic_stream_handle</a>(
-    const executor_type &amp; ex,
-    const native_handle_type &amp; handle);
-  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload3.html" title="windows::basic_stream_handle::basic_stream_handle (3 of 5 overloads)">more...</a></em></span>
+<pre class="programlisting"><a class="link" href="basic_stream_handle/overload3.html" title="windows::basic_stream_handle::basic_stream_handle (3 of 6 overloads)">basic_stream_handle</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">native_handle_type</span> <span class="special">&amp;</span> <span class="identifier">handle</span><span class="special">);</span>
+  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload3.html" title="windows::basic_stream_handle::basic_stream_handle (3 of 6 overloads)">more...</a></em></span>
 
-template&lt;
-    typename ExecutionContext&gt;
-<a class="link" href="basic_stream_handle/overload4.html" title="windows::basic_stream_handle::basic_stream_handle (4 of 5 overloads)">basic_stream_handle</a>(
-    ExecutionContext &amp; context,
-    const native_handle_type &amp; handle,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
-  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload4.html" title="windows::basic_stream_handle::basic_stream_handle (4 of 5 overloads)">more...</a></em></span>
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<a class="link" href="basic_stream_handle/overload4.html" title="windows::basic_stream_handle::basic_stream_handle (4 of 6 overloads)">basic_stream_handle</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">native_handle_type</span> <span class="special">&amp;</span> <span class="identifier">handle</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
+  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload4.html" title="windows::basic_stream_handle::basic_stream_handle (4 of 6 overloads)">more...</a></em></span>
 </pre>
 <p>
           Move-construct a stream handle from another.
         </p>
-<pre class="programlisting"><a class="link" href="basic_stream_handle/overload5.html" title="windows::basic_stream_handle::basic_stream_handle (5 of 5 overloads)">basic_stream_handle</a>(
-    basic_stream_handle &amp;&amp; other);
-  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload5.html" title="windows::basic_stream_handle::basic_stream_handle (5 of 5 overloads)">more...</a></em></span>
+<pre class="programlisting"><a class="link" href="basic_stream_handle/overload5.html" title="windows::basic_stream_handle::basic_stream_handle (5 of 6 overloads)">basic_stream_handle</a><span class="special">(</span>
+    <span class="identifier">basic_stream_handle</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
+  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload5.html" title="windows::basic_stream_handle::basic_stream_handle (5 of 6 overloads)">more...</a></em></span>
+</pre>
+<p>
+          Move-construct a stream handle from a handle of another executor type.
+        </p>
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a><span class="special">&gt;</span>
+<a class="link" href="basic_stream_handle/overload6.html" title="windows::basic_stream_handle::basic_stream_handle (6 of 6 overloads)">basic_stream_handle</a><span class="special">(</span>
+    <span class="identifier">basic_stream_handle</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Executor1</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span> <span class="identifier">defaulted_constraint</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="identifier">defaulted_constraint</span><span class="special">());</span>
+  <span class="emphasis"><em>» <a class="link" href="basic_stream_handle/overload6.html" title="windows::basic_stream_handle::basic_stream_handle (6 of 6 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

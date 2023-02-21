@@ -22,7 +22,7 @@
 <p>
         <a class="indexterm" name="asio.indexterm.static_thread_pool"></a>
       </p>
-<pre class="programlisting">typedef thread_pool static_thread_pool;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">thread_pool</span> <span class="identifier">static_thread_pool</span><span class="special">;</span>
 </pre>
 <h5>
 <a name="asio.reference.static_thread_pool.h0"></a>
@@ -375,35 +375,33 @@
         tasks to the pool</a>
       </h5>
 <p>
-        To submit functions to the thread pool, use the <a class="link" href="dispatch.html" title="dispatch"><code class="computeroutput">dispatch</code></a>
-        , <a class="link" href="post.html" title="post"><code class="computeroutput">post</code></a> or <a class="link" href="defer.html" title="defer"><code class="computeroutput">defer</code></a>
-        free functions.
+        To submit functions to the thread pool, use the <a class="link" href="dispatch.html" title="dispatch"><code class="computeroutput"><span class="identifier">dispatch</span></code></a>, <a class="link" href="post.html" title="post"><code class="computeroutput"><span class="identifier">post</span></code></a> or <a class="link" href="defer.html" title="defer"><code class="computeroutput"><span class="identifier">defer</span></code></a> free functions.
       </p>
 <p>
         For example:
       </p>
-<pre class="programlisting">void my_task()
-{
-  ...
-}
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">my_task</span><span class="special">()</span>
+<span class="special">{</span>
+  <span class="special">...</span>
+<span class="special">}</span>
 
-...
+<span class="special">...</span>
 
-// Launch the pool with four threads.
-asio::thread_pool pool(4);
+<span class="comment">// Launch the pool with four threads.</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">thread_pool</span> <span class="identifier">pool</span><span class="special">(</span><span class="number">4</span><span class="special">);</span>
 
-// Submit a function to the pool.
-asio::post(pool, my_task);
+<span class="comment">// Submit a function to the pool.</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">post</span><span class="special">(</span><span class="identifier">pool</span><span class="special">,</span> <span class="identifier">my_task</span><span class="special">);</span>
 
-// Submit a lambda object to the pool.
-asio::post(pool,
-    []()
-    {
-      ...
-    });
+<span class="comment">// Submit a lambda object to the pool.</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">post</span><span class="special">(</span><span class="identifier">pool</span><span class="special">,</span>
+    <span class="special">[]()</span>
+    <span class="special">{</span>
+      <span class="special">...</span>
+    <span class="special">});</span>
 
-// Wait for all tasks in the pool to complete.
-pool.join();
+<span class="comment">// Wait for all tasks in the pool to complete.</span>
+<span class="identifier">pool</span><span class="special">.</span><span class="identifier">join</span><span class="special">();</span>
 </pre>
 <h5>
 <a name="asio.reference.static_thread_pool.h5"></a>
@@ -418,8 +416,7 @@ pool.join();
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

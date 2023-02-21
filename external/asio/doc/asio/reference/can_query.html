@@ -23,17 +23,20 @@
         <a class="indexterm" name="asio.indexterm.can_query"></a>
       </p>
 <p>
-        A type trait that determines whether a <code class="computeroutput">query</code> expression is well-formed.
+        A type trait that determines whether a <code class="computeroutput"><span class="identifier">query</span></code>
+        expression is well-formed.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename Property&gt;
-struct can_query
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Property</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">can_query</span>
 </pre>
 <p>
-        Class template <code class="computeroutput">can_query</code> is a trait that is derived from <code class="computeroutput">true_type</code>
-        if the expression <code class="computeroutput">asio::query(std::declval&lt;T&gt;(), std::declval&lt;Property&gt;())</code>
-        is well formed; otherwise <code class="computeroutput">false_type</code>.
+        Class template <code class="computeroutput"><span class="identifier">can_query</span></code>
+        is a trait that is derived from <code class="computeroutput"><span class="identifier">true_type</span></code>
+        if the expression <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">query</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;(),</span>
+        <span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">Property</span><span class="special">&gt;())</span></code>
+        is well formed; otherwise <code class="computeroutput"><span class="identifier">false_type</span></code>.
       </p>
 <h5>
 <a name="asio.reference.can_query.h0"></a>
@@ -48,8 +51,7 @@ struct can_query
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

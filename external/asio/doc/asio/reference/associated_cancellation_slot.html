@@ -23,13 +23,13 @@
         <a class="indexterm" name="asio.indexterm.associated_cancellation_slot"></a>
       </p>
 <p>
-        Traits type used to obtain the <a class="link" href="cancellation_slot.html" title="cancellation_slot"><code class="computeroutput">cancellation_slot</code></a>
-        associated with an object.
+        Traits type used to obtain the <a class="link" href="cancellation_slot.html" title="cancellation_slot"><code class="computeroutput"><span class="identifier">cancellation_slot</span></code></a> associated with
+        an object.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename <a class="link" href="CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a> = cancellation_slot&gt;
-struct associated_cancellation_slot
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a> <span class="special">=</span> <span class="identifier">cancellation_slot</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">associated_cancellation_slot</span>
 </pre>
 <h5>
 <a name="asio.reference.associated_cancellation_slot.h0"></a>
@@ -103,28 +103,29 @@ struct associated_cancellation_slot
 </tr></tbody>
 </table></div>
 <p>
-        A program may specialise this traits type if the <code class="computeroutput">T</code> template
-        parameter in the specialisation is a user-defined type. The template parameter
-        <code class="computeroutput">CancellationSlot</code> shall be a type meeting the CancellationSlot
-        requirements.
+        A program may specialise this traits type if the <code class="computeroutput"><span class="identifier">T</span></code>
+        template parameter in the specialisation is a user-defined type. The template
+        parameter <code class="computeroutput"><span class="identifier">CancellationSlot</span></code>
+        shall be a type meeting the CancellationSlot requirements.
       </p>
 <p>
-        Specialisations shall meet the following requirements, where <code class="computeroutput">t</code>
-        is a const reference to an object of type <code class="computeroutput">T</code>, and <code class="computeroutput">s</code>
-        is an object of type <code class="computeroutput">CancellationSlot</code>.
+        Specialisations shall meet the following requirements, where <code class="computeroutput"><span class="identifier">t</span></code> is a const reference to an object of
+        type <code class="computeroutput"><span class="identifier">T</span></code>, and <code class="computeroutput"><span class="identifier">s</span></code> is an object of type <code class="computeroutput"><span class="identifier">CancellationSlot</span></code>.
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            Provide a nested typedef <code class="computeroutput">type</code> that identifies a type meeting
-            the CancellationSlot requirements.
+            Provide a nested typedef <code class="computeroutput"><span class="identifier">type</span></code>
+            that identifies a type meeting the CancellationSlot requirements.
           </li>
 <li class="listitem">
-            Provide a noexcept static member function named <code class="computeroutput">get</code>, callable
-            as <code class="computeroutput">get(t)</code> and with return type <code class="computeroutput">type</code>.
+            Provide a noexcept static member function named <code class="computeroutput"><span class="identifier">get</span></code>,
+            callable as <code class="computeroutput"><span class="identifier">get</span><span class="special">(</span><span class="identifier">t</span><span class="special">)</span></code>
+            and with return type <code class="computeroutput"><span class="identifier">type</span></code>.
           </li>
 <li class="listitem">
-            Provide a noexcept static member function named <code class="computeroutput">get</code>, callable
-            as <code class="computeroutput">get(t,s)</code> and with return type <code class="computeroutput">type</code>.
+            Provide a noexcept static member function named <code class="computeroutput"><span class="identifier">get</span></code>,
+            callable as <code class="computeroutput"><span class="identifier">get</span><span class="special">(</span><span class="identifier">t</span><span class="special">,</span><span class="identifier">s</span><span class="special">)</span></code>
+            and with return type <code class="computeroutput"><span class="identifier">type</span></code>.
           </li>
 </ul></div>
 <h5>
@@ -140,8 +141,7 @@ struct associated_cancellation_slot
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -20,36 +20,39 @@
 <a name="asio.reference.execution__set_value"></a><a class="link" href="execution__set_value.html" title="execution::set_value">execution::set_value</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.execution__set_value"></a> 
-A customisation point
-        that delivers a value to a receiver.
+        <a class="indexterm" name="asio.indexterm.execution__set_value"></a>
       </p>
-<pre class="programlisting">constexpr unspecified set_value = unspecified;
+<p>
+        A customisation point that delivers a value to a receiver.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">set_value</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">execution::set_value</code> denotes a customisation point
-        object. The expression <code class="computeroutput">execution::set_value(R, Vs...)</code> for some
-        subexpressions <code class="computeroutput">R</code> and <code class="computeroutput">Vs...</code> is expression-equivalent
-        to:
+        The name <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_value</span></code> denotes a customisation point
+        object. The expression <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_value</span><span class="special">(</span><span class="identifier">R</span><span class="special">,</span>
+        <span class="identifier">Vs</span><span class="special">...)</span></code>
+        for some subexpressions <code class="computeroutput"><span class="identifier">R</span></code>
+        and <code class="computeroutput"><span class="identifier">Vs</span><span class="special">...</span></code>
+        is expression-equivalent to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">R.set_value(Vs...)</code>, if that expression is valid. If the
-            function selected does not send the value(s) <code class="computeroutput">Vs...</code> to the
-            receiver <code class="computeroutput">R</code>'s value channel, the program is ill-formed with
-            no diagnostic required.
+            <code class="computeroutput"><span class="identifier">R</span><span class="special">.</span><span class="identifier">set_value</span><span class="special">(</span><span class="identifier">Vs</span><span class="special">...)</span></code>,
+            if that expression is valid. If the function selected does not send the
+            value(s) <code class="computeroutput"><span class="identifier">Vs</span><span class="special">...</span></code>
+            to the receiver <code class="computeroutput"><span class="identifier">R</span></code>'s value
+            channel, the program is ill-formed with no diagnostic required.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">set_value(R, Vs...)</code>, if that expression is valid,
-            with overload resolution performed in a context that includes the declaration
-            <code class="computeroutput">void set_value();</code> and that does not include a declaration
-            of <code class="computeroutput">execution::set_value</code>. If the function selected by overload
-            resolution does not send the value(s) <code class="computeroutput">Vs...</code> to the receiver
-            <code class="computeroutput">R</code>'s value channel, the program is ill-formed with no diagnostic
-            required.
+            Otherwise, <code class="computeroutput"><span class="identifier">set_value</span><span class="special">(</span><span class="identifier">R</span><span class="special">,</span> <span class="identifier">Vs</span><span class="special">...)</span></code>, if that expression is valid, with
+            overload resolution performed in a context that includes the declaration
+            <code class="computeroutput"><span class="keyword">void</span> <span class="identifier">set_value</span><span class="special">();</span></code> and that does not include a declaration
+            of <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_value</span></code>. If the function selected
+            by overload resolution does not send the value(s) <code class="computeroutput"><span class="identifier">Vs</span><span class="special">...</span></code> to the receiver <code class="computeroutput"><span class="identifier">R</span></code>'s
+            value channel, the program is ill-formed with no diagnostic required.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">execution::set_value(R, Vs...)</code> is ill-formed.
+            Otherwise, <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_value</span><span class="special">(</span><span class="identifier">R</span><span class="special">,</span> <span class="identifier">Vs</span><span class="special">...)</span></code> is ill-formed.
           </li>
 </ul></div>
 <h5>
@@ -65,8 +68,7 @@ A customisation point
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

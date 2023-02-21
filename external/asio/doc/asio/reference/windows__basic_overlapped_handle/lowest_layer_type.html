@@ -24,7 +24,7 @@
 An
           overlapped_handle is always the lowest layer.
         </p>
-<pre class="programlisting">typedef basic_overlapped_handle lowest_layer_type;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_overlapped_handle</span> <span class="identifier">lowest_layer_type</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.windows__basic_overlapped_handle.lowest_layer_type.h0"></a>
@@ -144,6 +144,8 @@ An
                     Construct an overlapped handle without opening it. <br> <span class="silver"> —</span><br>
                     Construct an overlapped handle on an existing native handle.
                     <br> <span class="silver"> —</span><br> Move-construct an overlapped handle from another.
+                    <br> <span class="silver"> —</span><br> Move-construct an overlapped handle from a handle
+                    of another executor type.
                   </p>
                 </td>
 </tr>
@@ -228,7 +230,21 @@ An
                 </td>
 <td>
                   <p>
-                    Move-assign an overlapped handle from another.
+                    Move-assign an overlapped handle from another. <br> <span class="silver"> —</span><br>
+                    Move-assign an overlapped handle from a handle of another executor
+                    type.
+                  </p>
+                </td>
+</tr>
+<tr>
+<td>
+                  <p>
+                    <a class="link" href="release.html" title="windows::basic_overlapped_handle::release"><span class="bold"><strong>release</strong></span></a>
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Release ownership of the underlying native handle.
                   </p>
                 </td>
 </tr>
@@ -270,9 +286,9 @@ An
 </tr></tbody>
 </table></div>
 <p>
-          The <a class="link" href="../windows__overlapped_handle.html" title="windows::overlapped_handle"><code class="computeroutput">windows::overlapped_handle</code></a>
-          class provides the ability to wrap a Windows handle. The underlying object
-          referred to by the handle must support overlapped I/O.
+          The <a class="link" href="../windows__overlapped_handle.html" title="windows::overlapped_handle"><code class="computeroutput"><span class="identifier">windows</span><span class="special">::</span><span class="identifier">overlapped_handle</span></code></a> class provides
+          the ability to wrap a Windows handle. The underlying object referred to
+          by the handle must support overlapped I/O.
         </p>
 <h6>
 <a name="asio.reference.windows__basic_overlapped_handle.lowest_layer_type.h3"></a>
@@ -298,8 +314,7 @@ An
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -23,18 +23,20 @@
         <a class="indexterm" name="asio.indexterm.can_require"></a>
       </p>
 <p>
-        A type trait that determines whether a <code class="computeroutput">require</code> expression is
-        well-formed.
+        A type trait that determines whether a <code class="computeroutput"><span class="identifier">require</span></code>
+        expression is well-formed.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename... Properties&gt;
-struct can_require
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span><span class="special">...</span> <span class="identifier">Properties</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">can_require</span>
 </pre>
 <p>
-        Class template <code class="computeroutput">can_require</code> is a trait that is derived from
-        <code class="computeroutput">true_type</code> if the expression <code class="computeroutput">asio::require(std::declval&lt;T&gt;(),
-        std::declval&lt;Properties&gt;()...)</code> is well formed; otherwise <code class="computeroutput">false_type</code>.
+        Class template <code class="computeroutput"><span class="identifier">can_require</span></code>
+        is a trait that is derived from <code class="computeroutput"><span class="identifier">true_type</span></code>
+        if the expression <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">require</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;(),</span>
+        <span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">Properties</span><span class="special">&gt;()...)</span></code>
+        is well formed; otherwise <code class="computeroutput"><span class="identifier">false_type</span></code>.
       </p>
 <h5>
 <a name="asio.reference.can_require.h0"></a>
@@ -49,8 +51,7 @@ struct can_require
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

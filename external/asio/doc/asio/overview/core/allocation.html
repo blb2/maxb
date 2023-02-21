@@ -99,12 +99,18 @@
         </p>
 <p>
           The custom memory allocation functions may be called from any user-created
-          thread that is calling a library function. The implementation guarantees
-          that, for the asynchronous operations included the library, the implementation
-          will not make concurrent calls to the memory allocation functions for that
-          handler. The implementation will insert appropriate memory barriers to
-          ensure correct memory visibility should allocation functions need to be
-          called from different threads.
+          thread that is calling an Asio library function. The implementation guarantees,
+          for the asynchronous operations included with the library, that within
+          the context of an individual operation the implementation will not make
+          concurrent calls to the memory allocation functions for that handler. The
+          implementation will insert appropriate memory barriers to ensure correct
+          memory visibility should an asynchronous operation need to call the allocation
+          functions from different threads. (Note: If the same allocator is shared
+          across multiple concurrent asynchronous operations, this can result in
+          concurrent calls to the memory allocation functions. Use of a <a class="link" href="strands.html" title="Strands: Use Threads Without Explicit Locking">strand</a>
+          does not prevent these concurrent calls, as an operation may need to allocate
+          memory from outside the strand. In this case, the shared allocator is responsible
+          for providing the necessary thread safety guarantees.)
         </p>
 <h6>
 <a name="asio.overview.core.allocation.h0"></a>
@@ -121,8 +127,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

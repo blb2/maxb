@@ -23,17 +23,19 @@
         <a class="indexterm" name="asio.indexterm.execution__is_operation_state"></a>
       </p>
 <p>
-        The <a class="link" href="execution__is_operation_state.html" title="execution::is_operation_state"><code class="computeroutput">execution::is_operation_state</code></a>
-        trait detects whether a type T satisfies the execution::operation_state concept.
+        The <a class="link" href="execution__is_operation_state.html" title="execution::is_operation_state"><code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">is_operation_state</span></code></a> trait detects
+        whether a type T satisfies the execution::operation_state concept.
       </p>
-<pre class="programlisting">template&lt;
-    typename T&gt;
-struct is_operation_state
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">is_operation_state</span>
 </pre>
 <p>
-        Class template <code class="computeroutput">is_operation_state</code> is a type trait that is derived
-        from <code class="computeroutput">true_type</code> if the type <code class="computeroutput">T</code> meets the concept
-        definition for an <code class="computeroutput">operation_state</code>, otherwise <code class="computeroutput">false_type</code>.
+        Class template <code class="computeroutput"><span class="identifier">is_operation_state</span></code>
+        is a type trait that is derived from <code class="computeroutput"><span class="identifier">true_type</span></code>
+        if the type <code class="computeroutput"><span class="identifier">T</span></code> meets the concept
+        definition for an <code class="computeroutput"><span class="identifier">operation_state</span></code>,
+        otherwise <code class="computeroutput"><span class="identifier">false_type</span></code>.
       </p>
 <h5>
 <a name="asio.reference.execution__is_operation_state.h0"></a>
@@ -48,8 +50,7 @@ struct is_operation_state
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

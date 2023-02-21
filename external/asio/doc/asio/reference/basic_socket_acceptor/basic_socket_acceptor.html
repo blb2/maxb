@@ -24,95 +24,93 @@
 Construct
           an acceptor without opening it.
         </p>
-<pre class="programlisting">explicit <a class="link" href="basic_socket_acceptor/overload1.html" title="basic_socket_acceptor::basic_socket_acceptor (1 of 10 overloads)">basic_socket_acceptor</a>(
-    const executor_type &amp; ex);
+<pre class="programlisting"><span class="keyword">explicit</span> <a class="link" href="basic_socket_acceptor/overload1.html" title="basic_socket_acceptor::basic_socket_acceptor (1 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload1.html" title="basic_socket_acceptor::basic_socket_acceptor (1 of 10 overloads)">more...</a></em></span>
 
-template&lt;
-    typename ExecutionContext&gt;
-explicit <a class="link" href="basic_socket_acceptor/overload2.html" title="basic_socket_acceptor::basic_socket_acceptor (2 of 10 overloads)">basic_socket_acceptor</a>(
-    ExecutionContext &amp; context,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<span class="keyword">explicit</span> <a class="link" href="basic_socket_acceptor/overload2.html" title="basic_socket_acceptor::basic_socket_acceptor (2 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload2.html" title="basic_socket_acceptor::basic_socket_acceptor (2 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
           Construct an open acceptor.
         </p>
-<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload3.html" title="basic_socket_acceptor::basic_socket_acceptor (3 of 10 overloads)">basic_socket_acceptor</a>(
-    const executor_type &amp; ex,
-    const protocol_type &amp; protocol);
+<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload3.html" title="basic_socket_acceptor::basic_socket_acceptor (3 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">protocol_type</span> <span class="special">&amp;</span> <span class="identifier">protocol</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload3.html" title="basic_socket_acceptor::basic_socket_acceptor (3 of 10 overloads)">more...</a></em></span>
 
-template&lt;
-    typename ExecutionContext&gt;
-<a class="link" href="basic_socket_acceptor/overload4.html" title="basic_socket_acceptor::basic_socket_acceptor (4 of 10 overloads)">basic_socket_acceptor</a>(
-    ExecutionContext &amp; context,
-    const protocol_type &amp; protocol,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value, defaulted_constraint &gt;::type  = defaulted_constraint());
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<a class="link" href="basic_socket_acceptor/overload4.html" title="basic_socket_acceptor::basic_socket_acceptor (4 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">protocol_type</span> <span class="special">&amp;</span> <span class="identifier">protocol</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span> <span class="identifier">defaulted_constraint</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="identifier">defaulted_constraint</span><span class="special">());</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload4.html" title="basic_socket_acceptor::basic_socket_acceptor (4 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
           Construct an acceptor opened on the given endpoint.
         </p>
-<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload5.html" title="basic_socket_acceptor::basic_socket_acceptor (5 of 10 overloads)">basic_socket_acceptor</a>(
-    const executor_type &amp; ex,
-    const endpoint_type &amp; endpoint,
-    bool reuse_addr = true);
+<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload5.html" title="basic_socket_acceptor::basic_socket_acceptor (5 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">endpoint_type</span> <span class="special">&amp;</span> <span class="identifier">endpoint</span><span class="special">,</span>
+    <span class="keyword">bool</span> <span class="identifier">reuse_addr</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload5.html" title="basic_socket_acceptor::basic_socket_acceptor (5 of 10 overloads)">more...</a></em></span>
 
-template&lt;
-    typename ExecutionContext&gt;
-<a class="link" href="basic_socket_acceptor/overload6.html" title="basic_socket_acceptor::basic_socket_acceptor (6 of 10 overloads)">basic_socket_acceptor</a>(
-    ExecutionContext &amp; context,
-    const endpoint_type &amp; endpoint,
-    bool reuse_addr = true,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<a class="link" href="basic_socket_acceptor/overload6.html" title="basic_socket_acceptor::basic_socket_acceptor (6 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">endpoint_type</span> <span class="special">&amp;</span> <span class="identifier">endpoint</span><span class="special">,</span>
+    <span class="keyword">bool</span> <span class="identifier">reuse_addr</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload6.html" title="basic_socket_acceptor::basic_socket_acceptor (6 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Construct a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput">basic_socket_acceptor</code></a>
-          on an existing native acceptor.
+          Construct a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput"><span class="identifier">basic_socket_acceptor</span></code></a> on an existing
+          native acceptor.
         </p>
-<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload7.html" title="basic_socket_acceptor::basic_socket_acceptor (7 of 10 overloads)">basic_socket_acceptor</a>(
-    const executor_type &amp; ex,
-    const protocol_type &amp; protocol,
-    const native_handle_type &amp; native_acceptor);
+<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload7.html" title="basic_socket_acceptor::basic_socket_acceptor (7 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">protocol_type</span> <span class="special">&amp;</span> <span class="identifier">protocol</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">native_handle_type</span> <span class="special">&amp;</span> <span class="identifier">native_acceptor</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload7.html" title="basic_socket_acceptor::basic_socket_acceptor (7 of 10 overloads)">more...</a></em></span>
 
-template&lt;
-    typename ExecutionContext&gt;
-<a class="link" href="basic_socket_acceptor/overload8.html" title="basic_socket_acceptor::basic_socket_acceptor (8 of 10 overloads)">basic_socket_acceptor</a>(
-    ExecutionContext &amp; context,
-    const protocol_type &amp; protocol,
-    const native_handle_type &amp; native_acceptor,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<a class="link" href="basic_socket_acceptor/overload8.html" title="basic_socket_acceptor::basic_socket_acceptor (8 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">protocol_type</span> <span class="special">&amp;</span> <span class="identifier">protocol</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">native_handle_type</span> <span class="special">&amp;</span> <span class="identifier">native_acceptor</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload8.html" title="basic_socket_acceptor::basic_socket_acceptor (8 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Move-construct a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput">basic_socket_acceptor</code></a>
-          from another.
+          Move-construct a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput"><span class="identifier">basic_socket_acceptor</span></code></a> from another.
         </p>
-<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload9.html" title="basic_socket_acceptor::basic_socket_acceptor (9 of 10 overloads)">basic_socket_acceptor</a>(
-    basic_socket_acceptor &amp;&amp; other);
+<pre class="programlisting"><a class="link" href="basic_socket_acceptor/overload9.html" title="basic_socket_acceptor::basic_socket_acceptor (9 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="identifier">basic_socket_acceptor</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload9.html" title="basic_socket_acceptor::basic_socket_acceptor (9 of 10 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Move-construct a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput">basic_socket_acceptor</code></a>
-          from an acceptor of another protocol type.
+          Move-construct a <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput"><span class="identifier">basic_socket_acceptor</span></code></a> from an
+          acceptor of another protocol type.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol1</a>,
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>&gt;
-<a class="link" href="basic_socket_acceptor/overload10.html" title="basic_socket_acceptor::basic_socket_acceptor (10 of 10 overloads)">basic_socket_acceptor</a>(
-    basic_socket_acceptor&lt; Protocol1, Executor1 &gt; &amp;&amp; other,
-    typename constraint&lt; is_convertible&lt; Protocol1, Protocol &gt;::value &amp;&amp;is_convertible&lt; Executor1, Executor &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol1</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a><span class="special">&gt;</span>
+<a class="link" href="basic_socket_acceptor/overload10.html" title="basic_socket_acceptor::basic_socket_acceptor (10 of 10 overloads)">basic_socket_acceptor</a><span class="special">(</span>
+    <span class="identifier">basic_socket_acceptor</span><span class="special">&lt;</span> <span class="identifier">Protocol1</span><span class="special">,</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Protocol1</span><span class="special">,</span> <span class="identifier">Protocol</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&amp;&amp;</span><span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Executor1</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_socket_acceptor/overload10.html" title="basic_socket_acceptor::basic_socket_acceptor (10 of 10 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

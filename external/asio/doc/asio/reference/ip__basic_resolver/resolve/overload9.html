@@ -23,11 +23,11 @@
 <p>
             Perform forward resolution of a query to a list of entries.
           </p>
-<pre class="programlisting">results_type resolve(
-    const protocol_type &amp; protocol,
-    string_view host,
-    string_view service,
-    resolver_base::flags resolve_flags);
+<pre class="programlisting"><span class="identifier">results_type</span> <span class="identifier">resolve</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">protocol_type</span> <span class="special">&amp;</span> <span class="identifier">protocol</span><span class="special">,</span>
+    <span class="identifier">string_view</span> <span class="identifier">host</span><span class="special">,</span>
+    <span class="identifier">string_view</span> <span class="identifier">service</span><span class="special">,</span>
+    <span class="identifier">resolver_base</span><span class="special">::</span><span class="identifier">flags</span> <span class="identifier">resolve_flags</span><span class="special">);</span>
 </pre>
 <p>
             This function is used to resolve host and service names into a list of
@@ -64,8 +64,8 @@
 <dd><p>
                   A set of flags that determine how name resolution should be performed.
                   The default flags are suitable for communication with remote hosts.
-                  See the <a class="link" href="../../ip__resolver_base.html" title="ip::resolver_base"><code class="computeroutput">ip::resolver_base</code></a>
-                  documentation for the set of available flags.
+                  See the <a class="link" href="../../ip__resolver_base.html" title="ip::resolver_base"><code class="computeroutput"><span class="identifier">ip</span><span class="special">::</span><span class="identifier">resolver_base</span></code></a> documentation
+                  for the set of available flags.
                 </p></dd>
 </dl>
 </div>
@@ -96,23 +96,22 @@
             <span><a name="asio.reference.ip__basic_resolver.resolve.overload9.remarks"></a></span><a class="link" href="overload9.html#asio.reference.ip__basic_resolver.resolve.overload9.remarks">Remarks</a>
           </h6>
 <p>
-            On POSIX systems, host names may be locally defined in the file <code class="computeroutput">/etc/hosts</code>.
-            On Windows, host names may be defined in the file <code class="computeroutput">c:\windows\system32\drivers\etc\hosts</code>.
+            On POSIX systems, host names may be locally defined in the file <code class="computeroutput"><span class="special">/</span><span class="identifier">etc</span><span class="special">/</span><span class="identifier">hosts</span></code>.
+            On Windows, host names may be defined in the file <code class="computeroutput"><span class="identifier">c</span><span class="special">:\</span><span class="identifier">windows</span><span class="special">\</span><span class="identifier">system32</span><span class="special">\</span><span class="identifier">drivers</span><span class="special">\</span><span class="identifier">etc</span><span class="special">\</span><span class="identifier">hosts</span></code>.
             Remote host name resolution is performed using DNS. Operating systems
             may use additional locations when resolving host names (such as NETBIOS
             names on Windows).
           </p>
 <p>
-            On POSIX systems, service names are typically defined in the file <code class="computeroutput">/etc/services</code>.
-            On Windows, service names may be found in the file <code class="computeroutput">c:\windows\system32\drivers\etc\services</code>.
+            On POSIX systems, service names are typically defined in the file <code class="computeroutput"><span class="special">/</span><span class="identifier">etc</span><span class="special">/</span><span class="identifier">services</span></code>.
+            On Windows, service names may be found in the file <code class="computeroutput"><span class="identifier">c</span><span class="special">:\</span><span class="identifier">windows</span><span class="special">\</span><span class="identifier">system32</span><span class="special">\</span><span class="identifier">drivers</span><span class="special">\</span><span class="identifier">etc</span><span class="special">\</span><span class="identifier">services</span></code>.
             Operating systems may use additional locations when resolving service
             names.
           </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

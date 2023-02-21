@@ -20,44 +20,46 @@
 <a name="asio.reference.buffer_copy"></a><a class="link" href="buffer_copy.html" title="buffer_copy">buffer_copy</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.buffer_copy"></a> 
-The <code class="computeroutput">asio::buffer_copy</code> function
-        is used to copy bytes from a source buffer (or buffer sequence) to a target
-        buffer (or buffer sequence).
+        <a class="indexterm" name="asio.indexterm.buffer_copy"></a>
+      </p>
+<p>
+        The <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">buffer_copy</span></code> function is used to copy bytes
+        from a source buffer (or buffer sequence) to a target buffer (or buffer sequence).
       </p>
 <p>
         Copies bytes from a source buffer sequence to a target buffer sequence.
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="MutableBufferSequence.html" title="Mutable buffer sequence requirements">MutableBufferSequence</a>,
-    typename <a class="link" href="ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a>&gt;
-std::size_t <a class="link" href="buffer_copy/overload1.html" title="buffer_copy (1 of 2 overloads)">buffer_copy</a>(
-    const MutableBufferSequence &amp; target,
-    const ConstBufferSequence &amp; source);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="MutableBufferSequence.html" title="Mutable buffer sequence requirements">MutableBufferSequence</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="buffer_copy/overload1.html" title="buffer_copy (1 of 2 overloads)">buffer_copy</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">MutableBufferSequence</span> <span class="special">&amp;</span> <span class="identifier">target</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">ConstBufferSequence</span> <span class="special">&amp;</span> <span class="identifier">source</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="buffer_copy/overload1.html" title="buffer_copy (1 of 2 overloads)">more...</a></em></span>
 </pre>
 <p>
         Copies a limited number of bytes from a source buffer sequence to a target
         buffer sequence.
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="MutableBufferSequence.html" title="Mutable buffer sequence requirements">MutableBufferSequence</a>,
-    typename <a class="link" href="ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a>&gt;
-std::size_t <a class="link" href="buffer_copy/overload2.html" title="buffer_copy (2 of 2 overloads)">buffer_copy</a>(
-    const MutableBufferSequence &amp; target,
-    const ConstBufferSequence &amp; source,
-    std::size_t max_bytes_to_copy);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="MutableBufferSequence.html" title="Mutable buffer sequence requirements">MutableBufferSequence</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <a class="link" href="buffer_copy/overload2.html" title="buffer_copy (2 of 2 overloads)">buffer_copy</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">MutableBufferSequence</span> <span class="special">&amp;</span> <span class="identifier">target</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">ConstBufferSequence</span> <span class="special">&amp;</span> <span class="identifier">source</span><span class="special">,</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">max_bytes_to_copy</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="buffer_copy/overload2.html" title="buffer_copy (2 of 2 overloads)">more...</a></em></span>
 </pre>
 <p>
-        The <code class="computeroutput">buffer_copy</code> function is available in two forms:
+        The <code class="computeroutput"><span class="identifier">buffer_copy</span></code> function
+        is available in two forms:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            A 2-argument form: <code class="computeroutput">buffer_copy(target, source)</code>
+            A 2-argument form: <code class="computeroutput"><span class="identifier">buffer_copy</span><span class="special">(</span><span class="identifier">target</span><span class="special">,</span> <span class="identifier">source</span><span class="special">)</span></code>
           </li>
 <li class="listitem">
-            A 3-argument form: <code class="computeroutput">buffer_copy(target, source, max_bytes_to_copy)</code>
+            A 3-argument form: <code class="computeroutput"><span class="identifier">buffer_copy</span><span class="special">(</span><span class="identifier">target</span><span class="special">,</span> <span class="identifier">source</span><span class="special">,</span> <span class="identifier">max_bytes_to_copy</span><span class="special">)</span></code>
           </li>
 </ul></div>
 <p>
@@ -66,13 +68,13 @@ std::size_t <a class="link" href="buffer_copy/overload2.html" title="buffer_copy
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">buffer_size(target)</code>
+            <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">target</span><span class="special">)</span></code>
           </li>
 <li class="listitem">
-            <code class="computeroutput">buffer_size(source)</code>
+            <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">source</span><span class="special">)</span></code>
           </li>
 <li class="listitem">
-            <code class="computeroutput">If</code> specified, <code class="computeroutput">max_bytes_to_copy</code>.
+            <code class="computeroutput"><span class="identifier">If</span></code> specified, <code class="computeroutput"><span class="identifier">max_bytes_to_copy</span></code>.
           </li>
 </ul></div>
 <p>
@@ -80,9 +82,9 @@ std::size_t <a class="link" href="buffer_copy/overload2.html" title="buffer_copy
         copy operation.
       </p>
 <p>
-        Note that <a class="link" href="buffer_copy.html" title="buffer_copy"><code class="computeroutput">buffer_copy</code></a>
-        is implemented in terms of <code class="computeroutput">memcpy</code>, and consequently it cannot
-        be used to copy between overlapping memory regions.
+        Note that <a class="link" href="buffer_copy.html" title="buffer_copy"><code class="computeroutput"><span class="identifier">buffer_copy</span></code></a>
+        is implemented in terms of <code class="computeroutput"><span class="identifier">memcpy</span></code>,
+        and consequently it cannot be used to copy between overlapping memory regions.
       </p>
 <h5>
 <a name="asio.reference.buffer_copy.h0"></a>
@@ -97,8 +99,7 @@ std::size_t <a class="link" href="buffer_copy/overload2.html" title="buffer_copy
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

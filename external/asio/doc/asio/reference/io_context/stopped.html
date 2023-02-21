@@ -22,18 +22,17 @@
 <p>
           <a class="indexterm" name="asio.indexterm.io_context.stopped"></a> 
 Determine whether the
-          <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+          <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
           object has been stopped.
         </p>
-<pre class="programlisting">bool stopped() const;
+<pre class="programlisting"><span class="keyword">bool</span> <span class="identifier">stopped</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <p>
-          This function is used to determine whether an <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          object has been stopped, either through an explicit call to <code class="computeroutput">stop()</code>,
-          or due to running out of work. When an <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          object is stopped, calls to <code class="computeroutput">run()</code>, <code class="computeroutput">run_one()</code>,
-          <code class="computeroutput">poll()</code> or <code class="computeroutput">poll_one()</code> will return immediately
-          without invoking any handlers.
+          This function is used to determine whether an <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> object has been stopped,
+          either through an explicit call to <code class="computeroutput"><span class="identifier">stop</span><span class="special">()</span></code>, or due to running out of work. When
+          an <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
+          object is stopped, calls to <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>, <code class="computeroutput"><span class="identifier">run_one</span><span class="special">()</span></code>, <code class="computeroutput"><span class="identifier">poll</span><span class="special">()</span></code> or <code class="computeroutput"><span class="identifier">poll_one</span><span class="special">()</span></code> will return immediately without invoking
+          any handlers.
         </p>
 <h6>
 <a name="asio.reference.io_context.stopped.h0"></a>
@@ -41,14 +40,13 @@ Determine whether the
           Value</a>
         </h6>
 <p>
-          <code class="computeroutput">true</code> if the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          object is stopped, otherwise <code class="computeroutput">false</code>.
+          <code class="computeroutput"><span class="keyword">true</span></code> if the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> object is stopped,
+          otherwise <code class="computeroutput"><span class="keyword">false</span></code>.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

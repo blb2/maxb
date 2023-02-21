@@ -24,10 +24,10 @@
 Start a new thread that executes
           the supplied function.
         </p>
-<pre class="programlisting">template&lt;
-    typename Function&gt;
-thread(
-    Function f);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Function</span><span class="special">&gt;</span>
+<span class="identifier">thread</span><span class="special">(</span>
+    <span class="identifier">Function</span> <span class="identifier">f</span><span class="special">);</span>
 </pre>
 <p>
           This constructor creates a new thread that will execute the given function
@@ -45,19 +45,16 @@ thread(
 <p>
                 The function or function object to be run in the thread. The function
                 signature must be:
-</p>
-<pre class="programlisting">void f();
-</pre>
-<p>
               </p>
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">f</span><span class="special">();</span>
+</pre>
 </dd>
 </dl>
 </div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

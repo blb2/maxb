@@ -23,27 +23,29 @@
           <a class="indexterm" name="asio.indexterm.io_context._io_context"></a> 
 Destructor.
         </p>
-<pre class="programlisting">~io_context();
+<pre class="programlisting"><span class="special">~</span><span class="identifier">io_context</span><span class="special">();</span>
 </pre>
 <p>
-          On destruction, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          performs the following sequence of operations:
+          On destruction, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> performs the following
+          sequence of operations:
         </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-              For each service object <code class="computeroutput">svc</code> in the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+              For each service object <code class="computeroutput"><span class="identifier">svc</span></code>
+              in the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
               set, in reverse order of the beginning of service object lifetime,
-              performs <code class="computeroutput">svc-&gt;shutdown()</code>.
+              performs <code class="computeroutput"><span class="identifier">svc</span><span class="special">-&gt;</span><span class="identifier">shutdown</span><span class="special">()</span></code>.
             </li>
 <li class="listitem">
               Uninvoked handler objects that were scheduled for deferred invocation
-              on the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>,
+              on the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>,
               or any associated strand, are destroyed.
             </li>
 <li class="listitem">
-              For each service object <code class="computeroutput">svc</code> in the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+              For each service object <code class="computeroutput"><span class="identifier">svc</span></code>
+              in the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
               set, in reverse order of the beginning of service object lifetime,
-              performs <code class="computeroutput">delete static_cast&lt;io_context::service*&gt;(svc)</code>.
+              performs <code class="computeroutput"><span class="keyword">delete</span> <span class="keyword">static_cast</span><span class="special">&lt;</span><span class="identifier">io_context</span><span class="special">::</span><span class="identifier">service</span><span class="special">*&gt;(</span><span class="identifier">svc</span><span class="special">)</span></code>.
             </li>
 </ul></div>
 <h6>
@@ -52,31 +54,30 @@ Destructor.
         </h6>
 <p>
           The destruction sequence described above permits programs to simplify their
-          resource management by using <code class="computeroutput">shared_ptr&lt;&gt;</code>. Where an
-          object's lifetime is tied to the lifetime of a connection (or some other
-          sequence of asynchronous operations), a <code class="computeroutput">shared_ptr</code> to the
-          object would be bound into the handlers for all asynchronous operations
+          resource management by using <code class="computeroutput"><span class="identifier">shared_ptr</span><span class="special">&lt;&gt;</span></code>. Where an object's lifetime is
+          tied to the lifetime of a connection (or some other sequence of asynchronous
+          operations), a <code class="computeroutput"><span class="identifier">shared_ptr</span></code>
+          to the object would be bound into the handlers for all asynchronous operations
           associated with it. This works as follows:
         </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
               When a single connection ends, all associated asynchronous operations
               complete. The corresponding handler objects are destroyed, and all
-              <code class="computeroutput">shared_ptr</code> references to the objects are destroyed.
+              <code class="computeroutput"><span class="identifier">shared_ptr</span></code> references
+              to the objects are destroyed.
             </li>
 <li class="listitem">
-              To shut down the whole program, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-              function <code class="computeroutput">stop()</code> is called to terminate any <code class="computeroutput">run()</code>
-              calls as soon as possible. The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-              destructor defined above destroys all handlers, causing all <code class="computeroutput">shared_ptr</code>
-              references to all connection objects to be destroyed.
+              To shut down the whole program, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> function <code class="computeroutput"><span class="identifier">stop</span><span class="special">()</span></code>
+              is called to terminate any <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code> calls as soon as possible. The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
+              destructor defined above destroys all handlers, causing all <code class="computeroutput"><span class="identifier">shared_ptr</span></code> references to all connection
+              objects to be destroyed.
             </li>
 </ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

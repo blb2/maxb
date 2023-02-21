@@ -25,10 +25,10 @@
 <p>
         A range of entries produced by a resolver.
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="InternetProtocol.html" title="Internet protocol requirements">InternetProtocol</a>&gt;
-class basic_resolver_results :
-  public ip::basic_resolver_iterator&lt; InternetProtocol &gt;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="InternetProtocol.html" title="Internet protocol requirements">InternetProtocol</a><span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">basic_resolver_results</span> <span class="special">:</span>
+  <span class="keyword">public</span> <span class="identifier">ip</span><span class="special">::</span><span class="identifier">basic_resolver_iterator</span><span class="special">&lt;</span> <span class="identifier">InternetProtocol</span> <span class="special">&gt;</span>
 </pre>
 <h5>
 <a name="asio.reference.ip__basic_resolver_results.h0"></a>
@@ -513,22 +513,22 @@ class basic_resolver_results :
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="ip__basic_resolver_results.html" title="ip::basic_resolver_results"><code class="computeroutput">ip::basic_resolver_results</code></a>
+        The <a class="link" href="ip__basic_resolver_results.html" title="ip::basic_resolver_results"><code class="computeroutput"><span class="identifier">ip</span><span class="special">::</span><span class="identifier">basic_resolver_results</span></code></a>
         class template is used to define a range over the results returned by a resolver.
       </p>
 <p>
         The iterator's value_type, obtained when a results iterator is dereferenced,
         is:
       </p>
-<pre class="programlisting">const basic_resolver_entry&lt;InternetProtocol&gt;
+<pre class="programlisting"><span class="keyword">const</span> <span class="identifier">basic_resolver_entry</span><span class="special">&lt;</span><span class="identifier">InternetProtocol</span><span class="special">&gt;</span>
 </pre>
 <h5>
 <a name="asio.reference.ip__basic_resolver_results.h5"></a>
         <span><a name="asio.reference.ip__basic_resolver_results.remarks"></a></span><a class="link" href="ip__basic_resolver_results.html#asio.reference.ip__basic_resolver_results.remarks">Remarks</a>
       </h5>
 <p>
-        For backward compatibility, <a class="link" href="ip__basic_resolver_results.html" title="ip::basic_resolver_results"><code class="computeroutput">ip::basic_resolver_results</code></a>
-        is derived from <a class="link" href="ip__basic_resolver_iterator.html" title="ip::basic_resolver_iterator"><code class="computeroutput">ip::basic_resolver_iterator</code></a>.
+        For backward compatibility, <a class="link" href="ip__basic_resolver_results.html" title="ip::basic_resolver_results"><code class="computeroutput"><span class="identifier">ip</span><span class="special">::</span><span class="identifier">basic_resolver_results</span></code></a>
+        is derived from <a class="link" href="ip__basic_resolver_iterator.html" title="ip::basic_resolver_iterator"><code class="computeroutput"><span class="identifier">ip</span><span class="special">::</span><span class="identifier">basic_resolver_iterator</span></code></a>.
         This derivation is deprecated.
       </p>
 <h5>
@@ -555,8 +555,7 @@ class basic_resolver_results :
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

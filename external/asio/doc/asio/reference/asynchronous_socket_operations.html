@@ -22,48 +22,51 @@
 </h3></div></div></div>
 <p>
         In this library, <span class="emphasis"><em>asynchronous socket operations</em></span> are
-        those member functions having prefix <code class="computeroutput">async_</code>.
+        those member functions having prefix <code class="computeroutput"><span class="identifier">async_</span></code>.
       </p>
 <p>
-        For an object <code class="computeroutput">s</code>, a program may initiate asynchronous socket
-        operations such that there are multiple simultaneously outstanding asynchronous
-        operations.
-      </p>
-<p>
-        When there are multiple outstanding asynchronous <a class="link" href="read_write_operations.html" title="Requirements on read and write operations">read
-        operations</a> on <code class="computeroutput">s</code>:
-      </p>
-<p>
-        — having no argument <code class="computeroutput">flags</code> of type <code class="computeroutput">socket_base::message_flags</code>,
-        or
-      </p>
-<p>
-        — having an argument <code class="computeroutput">flags</code> of type <code class="computeroutput">socket_base::message_flags</code>
-        but where <code class="computeroutput">(flags &amp; socket_base::message_out_of_band) == 0</code>
-      </p>
-<p>
-        then the <code class="computeroutput">buffers</code> are filled in the order in which these operations
-        were issued. The order of invocation of the completion handlers for these
-        operations is unspecified.
+        For an object <code class="computeroutput"><span class="identifier">s</span></code>, a program
+        may initiate asynchronous socket operations such that there are multiple
+        simultaneously outstanding asynchronous operations.
       </p>
 <p>
         When there are multiple outstanding asynchronous <a class="link" href="read_write_operations.html" title="Requirements on read and write operations">read
-        operations</a> on <code class="computeroutput">s</code> having an argument <code class="computeroutput">flags</code>
-        of type <code class="computeroutput">socket_base::message_flags</code> where <code class="computeroutput">(flags &amp;
-        socket_base::message_out_of_band) != 0</code> then the <code class="computeroutput">buffers</code>
-        are filled in the order in which these operations were issued.
+        operations</a> on <code class="computeroutput"><span class="identifier">s</span></code>:
+      </p>
+<p>
+        — having no argument <code class="computeroutput"><span class="identifier">flags</span></code>
+        of type <code class="computeroutput"><span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">message_flags</span></code>, or
+      </p>
+<p>
+        — having an argument <code class="computeroutput"><span class="identifier">flags</span></code>
+        of type <code class="computeroutput"><span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">message_flags</span></code> but where <code class="computeroutput"><span class="special">(</span><span class="identifier">flags</span> <span class="special">&amp;</span> <span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">message_out_of_band</span><span class="special">)</span>
+        <span class="special">==</span> <span class="number">0</span></code>
+      </p>
+<p>
+        then the <code class="computeroutput"><span class="identifier">buffers</span></code> are filled
+        in the order in which these operations were issued. The order of invocation
+        of the completion handlers for these operations is unspecified.
+      </p>
+<p>
+        When there are multiple outstanding asynchronous <a class="link" href="read_write_operations.html" title="Requirements on read and write operations">read
+        operations</a> on <code class="computeroutput"><span class="identifier">s</span></code> having
+        an argument <code class="computeroutput"><span class="identifier">flags</span></code> of type
+        <code class="computeroutput"><span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">message_flags</span></code> where <code class="computeroutput"><span class="special">(</span><span class="identifier">flags</span> <span class="special">&amp;</span> <span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">message_out_of_band</span><span class="special">)</span>
+        <span class="special">!=</span> <span class="number">0</span></code>
+        then the <code class="computeroutput"><span class="identifier">buffers</span></code> are filled
+        in the order in which these operations were issued.
       </p>
 <p>
         When there are multiple outstanding asynchronous <a class="link" href="read_write_operations.html" title="Requirements on read and write operations">write
-        operations</a> on <code class="computeroutput">s</code>, the <code class="computeroutput">buffers</code> are transmitted
-        in the order in which these operations were issued. The order of invocation
+        operations</a> on <code class="computeroutput"><span class="identifier">s</span></code>, the
+        <code class="computeroutput"><span class="identifier">buffers</span></code> are transmitted in
+        the order in which these operations were issued. The order of invocation
         of the completion handlers for these operations is unspecified.
       </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

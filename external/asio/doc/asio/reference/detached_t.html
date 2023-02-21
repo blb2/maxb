@@ -23,9 +23,10 @@
         <a class="indexterm" name="asio.indexterm.detached_t"></a>
       </p>
 <p>
-        Class used to specify that an asynchronous operation is detached.
+        A <a class="link" href="../overview/model/completion_tokens.html" title="Completion Tokens">completion token</a>
+        type used to specify that an asynchronous operation is detached.
       </p>
-<pre class="programlisting">class detached_t
+<pre class="programlisting"><span class="keyword">class</span> <span class="identifier">detached_t</span>
 </pre>
 <h5>
 <a name="asio.reference.detached_t.h0"></a>
@@ -113,14 +114,15 @@
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="detached_t.html" title="detached_t"><code class="computeroutput">detached_t</code></a>
+        The <a class="link" href="detached_t.html" title="detached_t"><code class="computeroutput"><span class="identifier">detached_t</span></code></a>
         class is used to indicate that an asynchronous operation is detached. That
         is, there is no completion handler waiting for the operation's result. A
-        <a class="link" href="detached_t.html" title="detached_t"><code class="computeroutput">detached_t</code></a>
+        <a class="link" href="detached_t.html" title="detached_t"><code class="computeroutput"><span class="identifier">detached_t</span></code></a>
         object may be passed as a handler to an asynchronous operation, typically
-        using the special value <code class="computeroutput">asio::detached</code>. For example:
+        using the special value <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">detached</span></code>.
+        For example:
       </p>
-<pre class="programlisting">my_socket.async_send(my_buffer, asio::detached);
+<pre class="programlisting"><span class="identifier">my_socket</span><span class="special">.</span><span class="identifier">async_send</span><span class="special">(</span><span class="identifier">my_buffer</span><span class="special">,</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">detached</span><span class="special">);</span>
 </pre>
 <h5>
 <a name="asio.reference.detached_t.h2"></a>
@@ -135,8 +137,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

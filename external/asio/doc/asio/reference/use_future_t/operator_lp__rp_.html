@@ -24,35 +24,34 @@
 Wrap
           a function object in a packaged task.
         </p>
-<pre class="programlisting">template&lt;
-    typename Function&gt;
-unspecified operator()(
-    Function &amp;&amp; f) const;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Function</span><span class="special">&gt;</span>
+<span class="identifier">unspecified</span> <span class="keyword">operator</span><span class="special">()(</span>
+    <span class="identifier">Function</span> <span class="special">&amp;&amp;</span> <span class="identifier">f</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <p>
-          The <code class="computeroutput">package</code> function is used to adapt a function object as
-          a packaged task. When this adapter is passed as a completion token to an
-          asynchronous operation, the result of the function object is retuned via
-          a std::future.
+          The <code class="computeroutput"><span class="identifier">package</span></code> function is
+          used to adapt a function object as a packaged task. When this adapter is
+          passed as a completion token to an asynchronous operation, the result of
+          the function object is retuned via a std::future.
         </p>
 <h6>
 <a name="asio.reference.use_future_t.operator_lp__rp_.h0"></a>
           <span><a name="asio.reference.use_future_t.operator_lp__rp_.example"></a></span><a class="link" href="operator_lp__rp_.html#asio.reference.use_future_t.operator_lp__rp_.example">Example</a>
         </h6>
-<pre class="programlisting">std::future&lt;std::size_t&gt; fut =
-  my_socket.async_read_some(buffer,
-    use_future([](asio::error_code ec, std::size_t n)
-      {
-        return ec ? 0 : n;
-      }));
-...
-std::size_t n = fut.get();
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">future</span><span class="special">&lt;</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">&gt;</span> <span class="identifier">fut</span> <span class="special">=</span>
+  <span class="identifier">my_socket</span><span class="special">.</span><span class="identifier">async_read_some</span><span class="special">(</span><span class="identifier">buffer</span><span class="special">,</span>
+    <span class="identifier">use_future</span><span class="special">([](</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="identifier">ec</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span><span class="special">)</span>
+      <span class="special">{</span>
+        <span class="keyword">return</span> <span class="identifier">ec</span> <span class="special">?</span> <span class="number">0</span> <span class="special">:</span> <span class="identifier">n</span><span class="special">;</span>
+      <span class="special">}));</span>
+<span class="special">...</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span> <span class="special">=</span> <span class="identifier">fut</span><span class="special">.</span><span class="identifier">get</span><span class="special">();</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

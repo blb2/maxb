@@ -24,7 +24,7 @@
 The
           descriptor type when rebound to the specified executor.
         </p>
-<pre class="programlisting">typedef basic_descriptor&lt; Executor1 &gt; other;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_descriptor</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="identifier">other</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.posix__basic_descriptor__rebind_executor.other.h0"></a>
@@ -181,7 +181,8 @@ The
                   <p>
                     Construct a descriptor without opening it. <br> <span class="silver"> —</span><br> Construct
                     a descriptor on an existing native descriptor. <br> <span class="silver"> —</span><br>
-                    Move-construct a descriptor from another.
+                    Move-construct a descriptor from another. <br> <span class="silver"> —</span><br> Move-construct
+                    a basic_descriptor from a descriptor of another executor type.
                   </p>
                 </td>
 </tr>
@@ -305,7 +306,8 @@ The
                 </td>
 <td>
                   <p>
-                    Move-assign a descriptor from another.
+                    Move-assign a descriptor from another. <br> <span class="silver"> —</span><br> Move-assign
+                    a basic_descriptor from a descriptor of another executor type.
                   </p>
                 </td>
 </tr>
@@ -372,8 +374,8 @@ The
 </tr></tbody>
 </table></div>
 <p>
-          The <a class="link" href="../posix__basic_descriptor.html" title="posix::basic_descriptor"><code class="computeroutput">posix::basic_descriptor</code></a>
-          class template provides the ability to wrap a POSIX descriptor.
+          The <a class="link" href="../posix__basic_descriptor.html" title="posix::basic_descriptor"><code class="computeroutput"><span class="identifier">posix</span><span class="special">::</span><span class="identifier">basic_descriptor</span></code></a> class template
+          provides the ability to wrap a POSIX descriptor.
         </p>
 <h6>
 <a name="asio.reference.posix__basic_descriptor__rebind_executor.other.h3"></a>
@@ -399,8 +401,7 @@ The
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -22,16 +22,16 @@
 <p>
           Write a certain amount of data to a stream before returning.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../SyncWriteStream.html" title="Buffer-oriented synchronous write stream requirements">SyncWriteStream</a>,
-    typename <a class="link" href="../DynamicBuffer_v2.html" title="Dynamic buffer requirements (version 2)">DynamicBuffer_v2</a>,
-    typename <a class="link" href="../CompletionCondition.html" title="Completion condition requirements">CompletionCondition</a>&gt;
-std::size_t write(
-    SyncWriteStream &amp; s,
-    DynamicBuffer_v2 buffers,
-    CompletionCondition completion_condition,
-    asio::error_code &amp; ec,
-    typename constraint&lt; is_dynamic_buffer_v2&lt; DynamicBuffer_v2 &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../SyncWriteStream.html" title="Buffer-oriented synchronous write stream requirements">SyncWriteStream</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../DynamicBuffer_v2.html" title="Dynamic buffer requirements (version 2)">DynamicBuffer_v2</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../CompletionCondition.html" title="Completion condition requirements">CompletionCondition</a><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">write</span><span class="special">(</span>
+    <span class="identifier">SyncWriteStream</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">DynamicBuffer_v2</span> <span class="identifier">buffers</span><span class="special">,</span>
+    <span class="identifier">CompletionCondition</span> <span class="identifier">completion_condition</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_dynamic_buffer_v2</span><span class="special">&lt;</span> <span class="identifier">DynamicBuffer_v2</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to write a certain number of bytes of data to a stream.
@@ -71,14 +71,14 @@ std::size_t write(
 <p>
                 The function object to be called to determine whether the write operation
                 is complete. The signature of the function object must be:
-</p>
-<pre class="programlisting">std::size_t completion_condition(
-  // Result of latest write_some operation.
-  const asio::error_code&amp; error,
+              </p>
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">completion_condition</span><span class="special">(</span>
+  <span class="comment">// Result of latest write_some operation.</span>
+  <span class="keyword">const</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">error</span><span class="special">,</span>
 
-  // Number of bytes transferred so far.
-  std::size_t bytes_transferred
-);
+  <span class="comment">// Number of bytes transferred so far.</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">bytes_transferred</span>
+<span class="special">);</span>
 </pre>
 <p>
                 A return value of 0 indicates that the write operation is complete.
@@ -104,8 +104,7 @@ std::size_t write(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

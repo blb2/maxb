@@ -25,9 +25,9 @@
             order. The IP address will be the any address (i.e. INADDR_ANY or in6addr_any).
             This constructor would typically be used for accepting new connections.
           </p>
-<pre class="programlisting">basic_endpoint(
-    const InternetProtocol &amp; internet_protocol,
-    port_type port_num);
+<pre class="programlisting"><span class="identifier">basic_endpoint</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">InternetProtocol</span> <span class="special">&amp;</span> <span class="identifier">internet_protocol</span><span class="special">,</span>
+    <span class="identifier">port_type</span> <span class="identifier">port_num</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.ip__basic_endpoint.basic_endpoint.overload2.h0"></a>
@@ -36,18 +36,17 @@
 <p>
             To initialise an IPv4 TCP endpoint for port 1234, use:
           </p>
-<pre class="programlisting">asio::ip::tcp::endpoint ep(asio::ip::tcp::v4(), 1234);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">endpoint</span> <span class="identifier">ep</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">v4</span><span class="special">(),</span> <span class="number">1234</span><span class="special">);</span>
 </pre>
 <p>
             To specify an IPv6 UDP endpoint for port 9876, use:
           </p>
-<pre class="programlisting">asio::ip::udp::endpoint ep(asio::ip::udp::v6(), 9876);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">udp</span><span class="special">::</span><span class="identifier">endpoint</span> <span class="identifier">ep</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">udp</span><span class="special">::</span><span class="identifier">v6</span><span class="special">(),</span> <span class="number">9876</span><span class="special">);</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

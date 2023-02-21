@@ -24,8 +24,8 @@
 <span class="bold"><strong>DynamicBuffer_v1:</strong></span> Move bytes from the output sequence
           to the input sequence.
         </p>
-<pre class="programlisting">void commit(
-    std::size_t n);
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">commit</span><span class="special">(</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.dynamic_string_buffer.commit.h0"></a>
@@ -43,22 +43,24 @@
 </dl>
 </div>
 <p>
-          Requires a preceding call <code class="computeroutput">prepare(x)</code> where <code class="computeroutput">x &gt;= n</code>,
-          and no intervening operations that modify the input or output sequence.
+          Requires a preceding call <code class="computeroutput"><span class="identifier">prepare</span><span class="special">(</span><span class="identifier">x</span><span class="special">)</span></code>
+          where <code class="computeroutput"><span class="identifier">x</span> <span class="special">&gt;=</span>
+          <span class="identifier">n</span></code>, and no intervening operations
+          that modify the input or output sequence.
         </p>
 <h6>
 <a name="asio.reference.dynamic_string_buffer.commit.h1"></a>
           <span><a name="asio.reference.dynamic_string_buffer.commit.remarks"></a></span><a class="link" href="commit.html#asio.reference.dynamic_string_buffer.commit.remarks">Remarks</a>
         </h6>
 <p>
-          If <code class="computeroutput">n</code> is greater than the size of the output sequence, the
-          entire output sequence is moved to the input sequence and no error is issued.
+          If <code class="computeroutput"><span class="identifier">n</span></code> is greater than the
+          size of the output sequence, the entire output sequence is moved to the
+          input sequence and no error is issued.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

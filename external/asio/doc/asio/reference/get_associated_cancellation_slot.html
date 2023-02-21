@@ -20,22 +20,23 @@
 <a name="asio.reference.get_associated_cancellation_slot"></a><a class="link" href="get_associated_cancellation_slot.html" title="get_associated_cancellation_slot">get_associated_cancellation_slot</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.get_associated_cancellation_slot"></a> 
-Helper
-        function to obtain an object's associated <a class="link" href="cancellation_slot.html" title="cancellation_slot"><code class="computeroutput">cancellation_slot</code></a>.
+        <a class="indexterm" name="asio.indexterm.get_associated_cancellation_slot"></a>
       </p>
-<pre class="programlisting">template&lt;
-    typename T&gt;
-associated_cancellation_slot&lt; T &gt;::type <a class="link" href="get_associated_cancellation_slot/overload1.html" title="get_associated_cancellation_slot (1 of 2 overloads)">get_associated_cancellation_slot</a>(
-    const T &amp; t);
+<p>
+        Helper function to obtain an object's associated <a class="link" href="cancellation_slot.html" title="cancellation_slot"><code class="computeroutput"><span class="identifier">cancellation_slot</span></code></a>.
+      </p>
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">associated_cancellation_slot</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;::</span><span class="identifier">type</span> <a class="link" href="get_associated_cancellation_slot/overload1.html" title="get_associated_cancellation_slot (1 of 2 overloads)">get_associated_cancellation_slot</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> <span class="identifier">t</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="get_associated_cancellation_slot/overload1.html" title="get_associated_cancellation_slot (1 of 2 overloads)">more...</a></em></span>
 
-template&lt;
-    typename T,
-    typename <a class="link" href="CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a>&gt;
-associated_cancellation_slot&lt; T, CancellationSlot &gt;::type <a class="link" href="get_associated_cancellation_slot/overload2.html" title="get_associated_cancellation_slot (2 of 2 overloads)">get_associated_cancellation_slot</a>(
-    const T &amp; t,
-    const CancellationSlot &amp; st);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a><span class="special">&gt;</span>
+<span class="identifier">associated_cancellation_slot</span><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">CancellationSlot</span> <span class="special">&gt;::</span><span class="identifier">type</span> <a class="link" href="get_associated_cancellation_slot/overload2.html" title="get_associated_cancellation_slot (2 of 2 overloads)">get_associated_cancellation_slot</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> <span class="identifier">t</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">CancellationSlot</span> <span class="special">&amp;</span> <span class="identifier">st</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="get_associated_cancellation_slot/overload2.html" title="get_associated_cancellation_slot (2 of 2 overloads)">more...</a></em></span>
 </pre>
 <h5>
@@ -51,8 +52,7 @@ associated_cancellation_slot&lt; T, CancellationSlot &gt;::type <a class="link" 
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

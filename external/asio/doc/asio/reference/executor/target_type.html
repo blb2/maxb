@@ -24,7 +24,7 @@
 Obtain type information
           for the target executor object.
         </p>
-<pre class="programlisting">const std::type_info &amp; target_type() const;
+<pre class="programlisting"><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">type_info</span> <span class="special">&amp;</span> <span class="identifier">target_type</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.executor.target_type.h0"></a>
@@ -32,14 +32,15 @@ Obtain type information
           Value</a>
         </h6>
 <p>
-          If <code class="computeroutput">*this</code> has a target type of type <code class="computeroutput">T</code>, <code class="computeroutput">typeid(T)</code>;
-          otherwise, <code class="computeroutput">typeid(void)</code>.
+          If <code class="computeroutput"><span class="special">*</span><span class="keyword">this</span></code>
+          has a target type of type <code class="computeroutput"><span class="identifier">T</span></code>,
+          <code class="computeroutput"><span class="keyword">typeid</span><span class="special">(</span><span class="identifier">T</span><span class="special">)</span></code>; otherwise,
+          <code class="computeroutput"><span class="keyword">typeid</span><span class="special">(</span><span class="keyword">void</span><span class="special">)</span></code>.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

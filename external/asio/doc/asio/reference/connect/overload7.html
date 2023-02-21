@@ -23,22 +23,22 @@
 <p>
           Establishes a socket connection by trying each endpoint in a sequence.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol</a>,
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>,
-    typename <a class="link" href="../EndpointSequence.html" title="Endpoint sequence requirements">EndpointSequence</a>,
-    typename <a class="link" href="../ConnectCondition.html" title="Connect condition requirements">ConnectCondition</a>&gt;
-Protocol::endpoint connect(
-    basic_socket&lt; Protocol, Executor &gt; &amp; s,
-    const EndpointSequence &amp; endpoints,
-    ConnectCondition connect_condition,
-    typename constraint&lt; is_endpoint_sequence&lt; EndpointSequence &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../EndpointSequence.html" title="Endpoint sequence requirements">EndpointSequence</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../ConnectCondition.html" title="Connect condition requirements">ConnectCondition</a><span class="special">&gt;</span>
+<span class="identifier">Protocol</span><span class="special">::</span><span class="identifier">endpoint</span> <span class="identifier">connect</span><span class="special">(</span>
+    <span class="identifier">basic_socket</span><span class="special">&lt;</span> <span class="identifier">Protocol</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">EndpointSequence</span> <span class="special">&amp;</span> <span class="identifier">endpoints</span><span class="special">,</span>
+    <span class="identifier">ConnectCondition</span> <span class="identifier">connect_condition</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_endpoint_sequence</span><span class="special">&lt;</span> <span class="identifier">EndpointSequence</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
           This function attempts to connect a socket to one of a sequence of endpoints.
-          It does this by repeated calls to the socket's <code class="computeroutput">connect</code> member
-          function, once for each endpoint in the sequence, until a connection is
-          successfully established.
+          It does this by repeated calls to the socket's <code class="computeroutput"><span class="identifier">connect</span></code>
+          member function, once for each endpoint in the sequence, until a connection
+          is successfully established.
         </p>
 <h6>
 <a name="asio.reference.connect.overload7.h0"></a>
@@ -61,18 +61,19 @@ Protocol::endpoint connect(
 <p>
                 A function object that is called prior to each connection attempt.
                 The signature of the function object must be:
-</p>
-<pre class="programlisting">bool connect_condition(
-    const asio::error_code&amp; ec,
-    const typename Protocol::endpoint&amp; next);
+              </p>
+<pre class="programlisting"><span class="keyword">bool</span> <span class="identifier">connect_condition</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="keyword">typename</span> <span class="identifier">Protocol</span><span class="special">::</span><span class="identifier">endpoint</span><span class="special">&amp;</span> <span class="identifier">next</span><span class="special">);</span>
 </pre>
 <p>
-                The <code class="computeroutput">ec</code> parameter contains the result from the most recent
-                connect operation. Before the first connection attempt, <code class="computeroutput">ec</code>
-                is always set to indicate success. The <code class="computeroutput">next</code> parameter
-                is the next endpoint to be tried. The function object should return
-                true if the next endpoint should be tried, and false if it should
-                be skipped.
+                The <code class="computeroutput"><span class="identifier">ec</span></code> parameter
+                contains the result from the most recent connect operation. Before
+                the first connection attempt, <code class="computeroutput"><span class="identifier">ec</span></code>
+                is always set to indicate success. The <code class="computeroutput"><span class="identifier">next</span></code>
+                parameter is the next endpoint to be tried. The function object should
+                return true if the next endpoint should be tried, and false if it
+                should be skipped.
               </p>
 </dd>
 </dl>
@@ -94,9 +95,8 @@ Protocol::endpoint connect(
 <dl>
 <dt><span class="term">asio::system_error</span></dt>
 <dd><p>
-                Thrown on failure. If the sequence is empty, the associated <code class="computeroutput">error_code</code>
-                is <code class="computeroutput">asio::error::not_found</code>. Otherwise, contains the error
-                from the last connection attempt.
+                Thrown on failure. If the sequence is empty, the associated <code class="computeroutput"><span class="identifier">error_code</span></code> is <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">error</span><span class="special">::</span><span class="identifier">not_found</span></code>.
+                Otherwise, contains the error from the last connection attempt.
               </p></dd>
 </dl>
 </div>
@@ -108,33 +108,33 @@ Protocol::endpoint connect(
           The following connect condition function object can be used to output information
           about the individual connection attempts:
         </p>
-<pre class="programlisting">struct my_connect_condition
-{
-  bool operator()(
-      const asio::error_code&amp; ec,
-      const::tcp::endpoint&amp; next)
-  {
-    if (ec) std::cout &lt;&lt; "Error: " &lt;&lt; ec.message() &lt;&lt; std::endl;
-    std::cout &lt;&lt; "Trying: " &lt;&lt; next &lt;&lt; std::endl;
-    return true;
-  }
-};
+<pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">my_connect_condition</span>
+<span class="special">{</span>
+  <span class="keyword">bool</span> <span class="keyword">operator</span><span class="special">()(</span>
+      <span class="keyword">const</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">,</span>
+      <span class="keyword">const</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">endpoint</span><span class="special">&amp;</span> <span class="identifier">next</span><span class="special">)</span>
+  <span class="special">{</span>
+    <span class="keyword">if</span> <span class="special">(</span><span class="identifier">ec</span><span class="special">)</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Error: "</span> <span class="special">&lt;&lt;</span> <span class="identifier">ec</span><span class="special">.</span><span class="identifier">message</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Trying: "</span> <span class="special">&lt;&lt;</span> <span class="identifier">next</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+    <span class="keyword">return</span> <span class="keyword">true</span><span class="special">;</span>
+  <span class="special">}</span>
+<span class="special">};</span>
 </pre>
 <p>
-          It would be used with the <code class="computeroutput">asio::connect</code> function as follows:
+          It would be used with the <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">connect</span></code>
+          function as follows:
         </p>
-<pre class="programlisting">tcp::resolver r(my_context);
-tcp::resolver::query q("host", "service");
-tcp::socket s(my_context);
-tcp::endpoint e = asio::connect(s,
-    r.resolve(q), my_connect_condition());
-std::cout &lt;&lt; "Connected to: " &lt;&lt; e &lt;&lt; std::endl;
+<pre class="programlisting"><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">resolver</span> <span class="identifier">r</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="identifier">tcp</span><span class="special">::</span><span class="identifier">resolver</span><span class="special">::</span><span class="identifier">query</span> <span class="identifier">q</span><span class="special">(</span><span class="string">"host"</span><span class="special">,</span> <span class="string">"service"</span><span class="special">);</span>
+<span class="identifier">tcp</span><span class="special">::</span><span class="identifier">socket</span> <span class="identifier">s</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="identifier">tcp</span><span class="special">::</span><span class="identifier">endpoint</span> <span class="identifier">e</span> <span class="special">=</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">connect</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">r</span><span class="special">.</span><span class="identifier">resolve</span><span class="special">(</span><span class="identifier">q</span><span class="special">),</span> <span class="identifier">my_connect_condition</span><span class="special">());</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Connected to: "</span> <span class="special">&lt;&lt;</span> <span class="identifier">e</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

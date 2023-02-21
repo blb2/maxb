@@ -25,8 +25,8 @@
 <p>
         A context for function object execution.
       </p>
-<pre class="programlisting">class execution_context :
-  noncopyable
+<pre class="programlisting"><span class="keyword">class</span> <span class="identifier">execution_context</span> <span class="special">:</span>
+  <span class="identifier">noncopyable</span>
 </pre>
 <h5>
 <a name="asio.reference.execution_context.h0"></a>
@@ -273,7 +273,8 @@
 </table></div>
 <p>
         An execution context represents a place where function objects will be executed.
-        An <code class="computeroutput">io_context</code> is an example of an execution context.
+        An <code class="computeroutput"><span class="identifier">io_context</span></code> is an example
+        of an execution context.
       </p>
 <h5>
 <a name="asio.reference.execution_context.h4"></a>
@@ -281,7 +282,7 @@
         execution_context class and services</a>
       </h5>
 <p>
-        Class <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
+        Class <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>
         implements an extensible, type-safe, polymorphic set of services, indexed
         by service type.
       </p>
@@ -291,37 +292,38 @@
         queue, and this queue would be stored in a service.
       </p>
 <p>
-        Access to the services of an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-        is via three function templates, <code class="computeroutput">use_service()</code>, <code class="computeroutput">add_service()</code>
-        and <code class="computeroutput">has_service()</code>.
+        Access to the services of an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> is via three function
+        templates, <code class="computeroutput"><span class="identifier">use_service</span><span class="special">()</span></code>,
+        <code class="computeroutput"><span class="identifier">add_service</span><span class="special">()</span></code>
+        and <code class="computeroutput"><span class="identifier">has_service</span><span class="special">()</span></code>.
       </p>
 <p>
-        In a call to <code class="computeroutput">use_service&lt;Service&gt;()</code>, the type argument
-        chooses a service, making available all members of the named type. If <code class="computeroutput">Service</code>
-        is not present in an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>,
-        an object of type <code class="computeroutput">Service</code> is created and added to the <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>.
-        A C++ program can check if an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-        implements a particular service with the function template <code class="computeroutput">has_service&lt;Service&gt;()</code>.
+        In a call to <code class="computeroutput"><span class="identifier">use_service</span><span class="special">&lt;</span><span class="identifier">Service</span><span class="special">&gt;()</span></code>, the type argument chooses a service,
+        making available all members of the named type. If <code class="computeroutput"><span class="identifier">Service</span></code>
+        is not present in an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>, an object of
+        type <code class="computeroutput"><span class="identifier">Service</span></code> is created and
+        added to the <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>. A C++ program
+        can check if an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> implements a particular
+        service with the function template <code class="computeroutput"><span class="identifier">has_service</span><span class="special">&lt;</span><span class="identifier">Service</span><span class="special">&gt;()</span></code>.
       </p>
 <p>
-        Service objects may be explicitly added to an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-        using the function template <code class="computeroutput">add_service&lt;Service&gt;()</code>. If
-        the <code class="computeroutput">Service</code> is already present, the <a class="link" href="service_already_exists.html" title="service_already_exists"><code class="computeroutput">service_already_exists</code></a>
-        exception is thrown. If the owner of the service is not the same object as
-        the <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-        parameter, the <a class="link" href="invalid_service_owner.html" title="invalid_service_owner"><code class="computeroutput">invalid_service_owner</code></a>
-        exception is thrown.
+        Service objects may be explicitly added to an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> using the function
+        template <code class="computeroutput"><span class="identifier">add_service</span><span class="special">&lt;</span><span class="identifier">Service</span><span class="special">&gt;()</span></code>.
+        If the <code class="computeroutput"><span class="identifier">Service</span></code> is already
+        present, the <a class="link" href="service_already_exists.html" title="service_already_exists"><code class="computeroutput"><span class="identifier">service_already_exists</span></code></a> exception
+        is thrown. If the owner of the service is not the same object as the <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>
+        parameter, the <a class="link" href="invalid_service_owner.html" title="invalid_service_owner"><code class="computeroutput"><span class="identifier">invalid_service_owner</span></code></a> exception
+        is thrown.
       </p>
 <p>
-        Once a service reference is obtained from an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-        object by calling <code class="computeroutput">use_service()</code>, that reference remains usable
-        as long as the owning <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-        object exists.
+        Once a service reference is obtained from an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> object by calling
+        <code class="computeroutput"><span class="identifier">use_service</span><span class="special">()</span></code>,
+        that reference remains usable as long as the owning <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> object exists.
       </p>
 <p>
-        All service implementations have <a class="link" href="execution_context__service.html" title="execution_context::service"><code class="computeroutput">execution_context::service</code></a>
-        as a public base class. Custom services may be implemented by deriving from
-        this class and then added to an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
+        All service implementations have <a class="link" href="execution_context__service.html" title="execution_context::service"><code class="computeroutput"><span class="identifier">execution_context</span><span class="special">::</span><span class="identifier">service</span></code></a> as a public base class.
+        Custom services may be implemented by deriving from this class and then added
+        to an <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>
         using the facilities described above.
       </p>
 <h5>
@@ -330,34 +332,37 @@
         execution_context as a base class</a>
       </h5>
 <p>
-        Class <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
+        Class <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>
         may be used only as a base class for concrete execution context types. The
-        <code class="computeroutput">io_context</code> is an example of such a derived type.
+        <code class="computeroutput"><span class="identifier">io_context</span></code> is an example
+        of such a derived type.
       </p>
 <p>
-        On destruction, a class that is derived from <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-        must perform <code class="computeroutput">execution_context::shutdown()</code> followed by <code class="computeroutput">execution_context::destroy()</code>.
+        On destruction, a class that is derived from <a class="link" href="execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> must perform
+        <code class="computeroutput"><span class="identifier">execution_context</span><span class="special">::</span><span class="identifier">shutdown</span><span class="special">()</span></code>
+        followed by <code class="computeroutput"><span class="identifier">execution_context</span><span class="special">::</span><span class="identifier">destroy</span><span class="special">()</span></code>.
       </p>
 <p>
         This destruction sequence permits programs to simplify their resource management
-        by using <code class="computeroutput">shared_ptr&lt;&gt;</code>. Where an object's lifetime is tied
-        to the lifetime of a connection (or some other sequence of asynchronous operations),
-        a <code class="computeroutput">shared_ptr</code> to the object would be bound into the handlers
-        for all asynchronous operations associated with it. This works as follows:
+        by using <code class="computeroutput"><span class="identifier">shared_ptr</span><span class="special">&lt;&gt;</span></code>.
+        Where an object's lifetime is tied to the lifetime of a connection (or some
+        other sequence of asynchronous operations), a <code class="computeroutput"><span class="identifier">shared_ptr</span></code>
+        to the object would be bound into the handlers for all asynchronous operations
+        associated with it. This works as follows:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
             When a single connection ends, all associated asynchronous operations
-            complete. The corresponding handler objects are destroyed, and all <code class="computeroutput">shared_ptr</code>
-            references to the objects are destroyed.
+            complete. The corresponding handler objects are destroyed, and all <code class="computeroutput"><span class="identifier">shared_ptr</span></code> references to the objects
+            are destroyed.
           </li>
 <li class="listitem">
-            To shut down the whole program, the <a class="link" href="io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-            function stop() is called to terminate any run() calls as soon as possible.
-            The <a class="link" href="io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-            destructor calls <code class="computeroutput">shutdown()</code> and <code class="computeroutput">destroy()</code> to
-            destroy all pending handlers, causing all <code class="computeroutput">shared_ptr</code> references
-            to all connection objects to be destroyed.
+            To shut down the whole program, the <a class="link" href="io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> function stop() is
+            called to terminate any run() calls as soon as possible. The <a class="link" href="io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> destructor calls
+            <code class="computeroutput"><span class="identifier">shutdown</span><span class="special">()</span></code>
+            and <code class="computeroutput"><span class="identifier">destroy</span><span class="special">()</span></code>
+            to destroy all pending handlers, causing all <code class="computeroutput"><span class="identifier">shared_ptr</span></code>
+            references to all connection objects to be destroyed.
           </li>
 </ul></div>
 <h5>
@@ -373,8 +378,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

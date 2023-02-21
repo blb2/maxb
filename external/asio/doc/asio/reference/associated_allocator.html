@@ -25,10 +25,10 @@
 <p>
         Traits type used to obtain the allocator associated with an object.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename Allocator = std::allocator&lt;void&gt;&gt;
-struct associated_allocator
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span> <span class="special">=</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">allocator</span><span class="special">&lt;</span><span class="keyword">void</span><span class="special">&gt;&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">associated_allocator</span>
 </pre>
 <h5>
 <a name="asio.reference.associated_allocator.h0"></a>
@@ -101,27 +101,29 @@ struct associated_allocator
 </tr></tbody>
 </table></div>
 <p>
-        A program may specialise this traits type if the <code class="computeroutput">T</code> template
-        parameter in the specialisation is a user-defined type. The template parameter
-        <code class="computeroutput">Allocator</code> shall be a type meeting the Allocator requirements.
+        A program may specialise this traits type if the <code class="computeroutput"><span class="identifier">T</span></code>
+        template parameter in the specialisation is a user-defined type. The template
+        parameter <code class="computeroutput"><span class="identifier">Allocator</span></code> shall
+        be a type meeting the Allocator requirements.
       </p>
 <p>
-        Specialisations shall meet the following requirements, where <code class="computeroutput">t</code>
-        is a const reference to an object of type <code class="computeroutput">T</code>, and <code class="computeroutput">a</code>
-        is an object of type <code class="computeroutput">Allocator</code>.
+        Specialisations shall meet the following requirements, where <code class="computeroutput"><span class="identifier">t</span></code> is a const reference to an object of
+        type <code class="computeroutput"><span class="identifier">T</span></code>, and <code class="computeroutput"><span class="identifier">a</span></code> is an object of type <code class="computeroutput"><span class="identifier">Allocator</span></code>.
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            Provide a nested typedef <code class="computeroutput">type</code> that identifies a type meeting
-            the Allocator requirements.
+            Provide a nested typedef <code class="computeroutput"><span class="identifier">type</span></code>
+            that identifies a type meeting the Allocator requirements.
           </li>
 <li class="listitem">
-            Provide a noexcept static member function named <code class="computeroutput">get</code>, callable
-            as <code class="computeroutput">get(t)</code> and with return type <code class="computeroutput">type</code>.
+            Provide a noexcept static member function named <code class="computeroutput"><span class="identifier">get</span></code>,
+            callable as <code class="computeroutput"><span class="identifier">get</span><span class="special">(</span><span class="identifier">t</span><span class="special">)</span></code>
+            and with return type <code class="computeroutput"><span class="identifier">type</span></code>.
           </li>
 <li class="listitem">
-            Provide a noexcept static member function named <code class="computeroutput">get</code>, callable
-            as <code class="computeroutput">get(t,a)</code> and with return type <code class="computeroutput">type</code>.
+            Provide a noexcept static member function named <code class="computeroutput"><span class="identifier">get</span></code>,
+            callable as <code class="computeroutput"><span class="identifier">get</span><span class="special">(</span><span class="identifier">t</span><span class="special">,</span><span class="identifier">a</span><span class="special">)</span></code>
+            and with return type <code class="computeroutput"><span class="identifier">type</span></code>.
           </li>
 </ul></div>
 <h5>
@@ -137,8 +139,7 @@ struct associated_allocator
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

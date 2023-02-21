@@ -23,11 +23,11 @@
 <p>
           Wait for both operations to succeed.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>&gt;
-awaitable&lt; void, Executor &gt; operator &amp;&amp;(
-    awaitable&lt; void, Executor &gt; t,
-    awaitable&lt; void, Executor &gt; u);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a><span class="special">&gt;</span>
+<span class="identifier">awaitable</span><span class="special">&lt;</span> <span class="keyword">void</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <span class="keyword">operator</span> <span class="special">&amp;&amp;(</span>
+    <span class="identifier">awaitable</span><span class="special">&lt;</span> <span class="keyword">void</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <span class="identifier">t</span><span class="special">,</span>
+    <span class="identifier">awaitable</span><span class="special">&lt;</span> <span class="keyword">void</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <span class="identifier">u</span><span class="special">);</span>
 </pre>
 <p>
           If one operations fails, the other is cancelled as the AND-condition can
@@ -36,8 +36,7 @@ awaitable&lt; void, Executor &gt; operator &amp;&amp;(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -20,34 +20,38 @@
 <a name="asio.reference.execution__schedule"></a><a class="link" href="execution__schedule.html" title="execution::schedule">execution::schedule</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.execution__schedule"></a> 
-A customisation point
-        that is used to obtain a sender from a scheduler.
+        <a class="indexterm" name="asio.indexterm.execution__schedule"></a>
       </p>
-<pre class="programlisting">constexpr unspecified schedule = unspecified;
+<p>
+        A customisation point that is used to obtain a sender from a scheduler.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">schedule</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">execution::schedule</code> denotes a customisation point object.
-        For some subexpression <code class="computeroutput">s</code>, let <code class="computeroutput">S</code> be a type such
-        that <code class="computeroutput">decltype((s))</code> is <code class="computeroutput">S</code>. The expression <code class="computeroutput">execution::schedule(s)</code>
-        is expression-equivalent to:
+        The name <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">schedule</span></code> denotes a customisation point
+        object. For some subexpression <code class="computeroutput"><span class="identifier">s</span></code>,
+        let <code class="computeroutput"><span class="identifier">S</span></code> be a type such that
+        <code class="computeroutput"><span class="keyword">decltype</span><span class="special">((</span><span class="identifier">s</span><span class="special">))</span></code> is
+        <code class="computeroutput"><span class="identifier">S</span></code>. The expression <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">schedule</span><span class="special">(</span><span class="identifier">s</span><span class="special">)</span></code> is expression-equivalent
+        to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">s.schedule()</code>, if that expression is valid and its type models
-            <code class="computeroutput">sender</code>.
+            <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">schedule</span><span class="special">()</span></code>,
+            if that expression is valid and its type models <code class="computeroutput"><span class="identifier">sender</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">schedule(s)</code>, if that expression is valid and
-            its type models <code class="computeroutput">sender</code> with overload resolution performed
-            in a context that includes the declaration <code class="computeroutput">void schedule();</code>
-            and that does not include a declaration of <code class="computeroutput">execution::schedule</code>.
+            Otherwise, <code class="computeroutput"><span class="identifier">schedule</span><span class="special">(</span><span class="identifier">s</span><span class="special">)</span></code>,
+            if that expression is valid and its type models <code class="computeroutput"><span class="identifier">sender</span></code>
+            with overload resolution performed in a context that includes the declaration
+            <code class="computeroutput"><span class="keyword">void</span> <span class="identifier">schedule</span><span class="special">();</span></code> and that does not include a declaration
+            of <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">schedule</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">S</code> if <code class="computeroutput">S</code> satisfies <code class="computeroutput">executor</code>.
+            Otherwise, <code class="computeroutput"><span class="identifier">S</span></code> if <code class="computeroutput"><span class="identifier">S</span></code> satisfies <code class="computeroutput"><span class="identifier">executor</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">execution::schedule(s)</code> is ill-formed.
+            Otherwise, <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">schedule</span><span class="special">(</span><span class="identifier">s</span><span class="special">)</span></code> is ill-formed.
           </li>
 </ul></div>
 <h5>
@@ -63,8 +67,7 @@ A customisation point
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

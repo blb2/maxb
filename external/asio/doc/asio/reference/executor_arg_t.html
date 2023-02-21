@@ -26,7 +26,7 @@
         A special type, similar to std::nothrow_t, used to disambiguate constructors
         that accept executor arguments.
       </p>
-<pre class="programlisting">struct executor_arg_t
+<pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">executor_arg_t</span>
 </pre>
 <h5>
 <a name="asio.reference.executor_arg_t.h0"></a>
@@ -64,10 +64,10 @@
 </tr></tbody>
 </table></div>
 <p>
-        The <a class="link" href="executor_arg_t.html" title="executor_arg_t"><code class="computeroutput">executor_arg_t</code></a>
+        The <a class="link" href="executor_arg_t.html" title="executor_arg_t"><code class="computeroutput"><span class="identifier">executor_arg_t</span></code></a>
         struct is an empty structure type used as a unique type to disambiguate constructor
         and function overloading. Specifically, some types have constructors with
-        <a class="link" href="executor_arg_t.html" title="executor_arg_t"><code class="computeroutput">executor_arg_t</code></a>
+        <a class="link" href="executor_arg_t.html" title="executor_arg_t"><code class="computeroutput"><span class="identifier">executor_arg_t</span></code></a>
         as the first argument, immediately followed by an argument of a type that
         satisfies the Executor type requirements.
       </p>
@@ -84,8 +84,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -22,11 +22,11 @@
 <p>
           <a class="indexterm" name="asio.indexterm.basic_deadline_timer.operator_eq_"></a> 
 Move-assign
-          a <a class="link" href="../basic_deadline_timer.html" title="basic_deadline_timer"><code class="computeroutput">basic_deadline_timer</code></a>
+          a <a class="link" href="../basic_deadline_timer.html" title="basic_deadline_timer"><code class="computeroutput"><span class="identifier">basic_deadline_timer</span></code></a>
           from another.
         </p>
-<pre class="programlisting">basic_deadline_timer &amp; operator=(
-    basic_deadline_timer &amp;&amp; other);
+<pre class="programlisting"><span class="identifier">basic_deadline_timer</span> <span class="special">&amp;</span> <span class="keyword">operator</span><span class="special">=(</span>
+    <span class="identifier">basic_deadline_timer</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
 </pre>
 <p>
           This assignment operator moves a timer from one object to another. Cancels
@@ -41,8 +41,8 @@ Move-assign
 <dl>
 <dt><span class="term">other</span></dt>
 <dd><p>
-                The other <a class="link" href="../basic_deadline_timer.html" title="basic_deadline_timer"><code class="computeroutput">basic_deadline_timer</code></a>
-                object from which the move will occur.
+                The other <a class="link" href="../basic_deadline_timer.html" title="basic_deadline_timer"><code class="computeroutput"><span class="identifier">basic_deadline_timer</span></code></a> object
+                from which the move will occur.
               </p></dd>
 </dl>
 </div>
@@ -52,13 +52,13 @@ Move-assign
         </h6>
 <p>
           Following the move, the moved-from object is in the same state as if constructed
-          using the <code class="computeroutput">basic_deadline_timer(const executor_type&amp;)</code> constructor.
+          using the <code class="computeroutput"><span class="identifier">basic_deadline_timer</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">executor_type</span><span class="special">&amp;)</span></code>
+          constructor.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

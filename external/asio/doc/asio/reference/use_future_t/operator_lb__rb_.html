@@ -22,18 +22,18 @@
 <p>
           <a class="indexterm" name="asio.indexterm.use_future_t.operator_lb__rb_"></a> 
 (Deprecated:
-          Use <code class="computeroutput">rebind()</code>.) Specify an alternate allocator.
+          Use <code class="computeroutput"><span class="identifier">rebind</span><span class="special">()</span></code>.)
+          Specify an alternate allocator.
         </p>
-<pre class="programlisting">template&lt;
-    typename OtherAllocator&gt;
-use_future_t&lt; OtherAllocator &gt; operator[](
-    const OtherAllocator &amp; allocator) const;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">OtherAllocator</span><span class="special">&gt;</span>
+<span class="identifier">use_future_t</span><span class="special">&lt;</span> <span class="identifier">OtherAllocator</span> <span class="special">&gt;</span> <span class="keyword">operator</span><span class="special">[](</span>
+    <span class="keyword">const</span> <span class="identifier">OtherAllocator</span> <span class="special">&amp;</span> <span class="identifier">allocator</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

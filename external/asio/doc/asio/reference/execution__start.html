@@ -20,28 +20,34 @@
 <a name="asio.reference.execution__start"></a><a class="link" href="execution__start.html" title="execution::start">execution::start</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.execution__start"></a> 
-A customisation point that
-        notifies an operation state object to start its associated operation.
+        <a class="indexterm" name="asio.indexterm.execution__start"></a>
       </p>
-<pre class="programlisting">constexpr unspecified start = unspecified;
+<p>
+        A customisation point that notifies an operation state object to start its
+        associated operation.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">start</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">execution::start</code> denotes a customisation point object.
-        The expression <code class="computeroutput">execution::start(R)</code> for some subexpression <code class="computeroutput">R</code>
+        The name <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">start</span></code> denotes a customisation point object.
+        The expression <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">start</span><span class="special">(</span><span class="identifier">R</span><span class="special">)</span></code>
+        for some subexpression <code class="computeroutput"><span class="identifier">R</span></code>
         is expression-equivalent to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">R.start()</code>, if that expression is valid.
+            <code class="computeroutput"><span class="identifier">R</span><span class="special">.</span><span class="identifier">start</span><span class="special">()</span></code>,
+            if that expression is valid.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">start(R)</code>, if that expression is valid, with overload
-            resolution performed in a context that includes the declaration <code class="computeroutput">void
-            start();</code> and that does not include a declaration of <code class="computeroutput">execution::start</code>.
+            Otherwise, <code class="computeroutput"><span class="identifier">start</span><span class="special">(</span><span class="identifier">R</span><span class="special">)</span></code>,
+            if that expression is valid, with overload resolution performed in a
+            context that includes the declaration <code class="computeroutput"><span class="keyword">void</span>
+            <span class="identifier">start</span><span class="special">();</span></code>
+            and that does not include a declaration of <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">start</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">execution::start(R)</code> is ill-formed.
+            Otherwise, <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">start</span><span class="special">(</span><span class="identifier">R</span><span class="special">)</span></code> is ill-formed.
           </li>
 </ul></div>
 <h5>
@@ -57,8 +63,7 @@ A customisation point that
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

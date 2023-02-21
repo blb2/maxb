@@ -20,22 +20,25 @@
 <a name="asio.reference.Endpoint"></a><a class="link" href="Endpoint.html" title="Endpoint requirements">Endpoint requirements</a>
 </h3></div></div></div>
 <p>
-        A type <code class="computeroutput">X</code> meets the <code class="computeroutput">Endpoint</code> requirements if it
-        satisfies the requirements of <code class="computeroutput">Destructible</code> (C++Std [destructible]),
-        <code class="computeroutput">DefaultConstructible</code> (C++Std [defaultconstructible]), <code class="computeroutput">CopyConstructible</code>
-        (C++Std [copyconstructible]), and <code class="computeroutput">CopyAssignable</code> (C++Std [copyassignable]),
-        as well as the additional requirements listed below.
+        A type <code class="computeroutput"><span class="identifier">X</span></code> meets the <code class="computeroutput"><span class="identifier">Endpoint</span></code> requirements if it satisfies the
+        requirements of <code class="computeroutput"><span class="identifier">Destructible</span></code>
+        (C++Std [destructible]), <code class="computeroutput"><span class="identifier">DefaultConstructible</span></code>
+        (C++Std [defaultconstructible]), <code class="computeroutput"><span class="identifier">CopyConstructible</span></code>
+        (C++Std [copyconstructible]), and <code class="computeroutput"><span class="identifier">CopyAssignable</span></code>
+        (C++Std [copyassignable]), as well as the additional requirements listed
+        below.
       </p>
 <p>
-        The default constructor and move operations of the type <code class="computeroutput">X</code> shall
-        not exit via an exception.
+        The default constructor and move operations of the type <code class="computeroutput"><span class="identifier">X</span></code>
+        shall not exit via an exception.
       </p>
 <p>
-        In the table below, <code class="computeroutput">a</code> denotes a (possibly const) value of type
-        <code class="computeroutput">X</code>, and <code class="computeroutput">u</code> denotes an identifier.
+        In the table below, <code class="computeroutput"><span class="identifier">a</span></code> denotes
+        a (possibly const) value of type <code class="computeroutput"><span class="identifier">X</span></code>,
+        and <code class="computeroutput"><span class="identifier">u</span></code> denotes an identifier.
       </p>
 <div class="table">
-<a name="asio.reference.Endpoint.t0"></a><p class="title"><b>Table 13. Endpoint requirements</b></p>
+<a name="asio.reference.Endpoint.t0"></a><p class="title"><b>Table 14. Endpoint requirements</b></p>
 <div class="table-contents"><table class="table" summary="Endpoint requirements">
 <colgroup>
 <col>
@@ -63,13 +66,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::protocol_type</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">protocol_type</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  type meeting <a class="link" href="Protocol.html" title="Protocol requirements"><code class="computeroutput">Protocol</code></a>
-                  requirements
+                  type meeting <a class="link" href="Protocol.html" title="Protocol requirements"><code class="computeroutput"><span class="identifier">Protocol</span></code></a> requirements
                 </p>
               </td>
 <td>
@@ -78,12 +80,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.protocol()</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">protocol</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">protocol_type</code>
+                  <code class="computeroutput"><span class="identifier">protocol_type</span></code>
                 </p>
               </td>
 <td>
@@ -93,13 +95,14 @@
 </table></div>
 </div>
 <br class="table-break"><p>
-        In the table below, <code class="computeroutput">a</code> denotes a (possibly const) value of type
-        <code class="computeroutput">X</code>, <code class="computeroutput">b</code> denotes a value of type <code class="computeroutput">X</code>, and
-        <code class="computeroutput">s</code> denotes a (possibly const) value of a type that is convertible
-        to <code class="computeroutput">size_t</code> and denotes a size in bytes.
+        In the table below, <code class="computeroutput"><span class="identifier">a</span></code> denotes
+        a (possibly const) value of type <code class="computeroutput"><span class="identifier">X</span></code>,
+        <code class="computeroutput"><span class="identifier">b</span></code> denotes a value of type
+        <code class="computeroutput"><span class="identifier">X</span></code>, and <code class="computeroutput"><span class="identifier">s</span></code>
+        denotes a (possibly const) value of a type that is convertible to <code class="computeroutput"><span class="identifier">size_t</span></code> and denotes a size in bytes.
       </p>
 <div class="table">
-<a name="asio.reference.Endpoint.t1"></a><p class="title"><b>Table 14. Endpoint requirements for extensible implementations</b></p>
+<a name="asio.reference.Endpoint.t1"></a><p class="title"><b>Table 15. Endpoint requirements for extensible implementations</b></p>
 <div class="table-contents"><table class="table" summary="Endpoint requirements for extensible implementations">
 <colgroup>
 <col>
@@ -127,12 +130,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.data()</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">data</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">const void*</code>
+                  <code class="computeroutput"><span class="keyword">const</span> <span class="keyword">void</span><span class="special">*</span></code>
                 </p>
               </td>
 <td>
@@ -141,20 +144,21 @@
                   argument to functions such as <span class="emphasis"><em>POSIX</em></span> <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/connect.html" target="_top"><code class="computeroutput"><span class="identifier">connect</span><span class="special">()</span></code></a>,
                   or as the <span class="emphasis"><em>dest_addr</em></span> argument to functions
                   such as <span class="emphasis"><em>POSIX</em></span> <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/sendto.html" target="_top"><code class="computeroutput"><span class="identifier">sendto</span><span class="special">()</span></code></a>.
-                  The implementation shall perform a <code class="computeroutput">static_cast</code> on
-                  the pointer to convert it to <code class="computeroutput">const sockaddr*</code>.
+                  The implementation shall perform a <code class="computeroutput"><span class="keyword">static_cast</span></code>
+                  on the pointer to convert it to <code class="computeroutput"><span class="keyword">const</span>
+                  <span class="identifier">sockaddr</span><span class="special">*</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">b.data()</code>
+                  <code class="computeroutput"><span class="identifier">b</span><span class="special">.</span><span class="identifier">data</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">void*</code>
+                  <code class="computeroutput"><span class="keyword">void</span><span class="special">*</span></code>
                 </p>
               </td>
 <td>
@@ -164,20 +168,20 @@
                   <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/getpeername.html" target="_top"><code class="computeroutput"><span class="identifier">getpeername</span><span class="special">()</span></code></a>,
                   <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/getsockname.html" target="_top"><code class="computeroutput"><span class="identifier">getsockname</span><span class="special">()</span></code></a>
                   and <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/recvfrom.html" target="_top"><code class="computeroutput"><span class="identifier">recvfrom</span><span class="special">()</span></code></a>.
-                  The implementation shall perform a <code class="computeroutput">static_cast</code> on
-                  the pointer to convert it to <code class="computeroutput">sockaddr*</code>.
+                  The implementation shall perform a <code class="computeroutput"><span class="keyword">static_cast</span></code>
+                  on the pointer to convert it to <code class="computeroutput"><span class="identifier">sockaddr</span><span class="special">*</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.size()</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">size</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">size_t</code>
+                  <code class="computeroutput"><span class="identifier">size_t</span></code>
                 </p>
               </td>
 <td>
@@ -193,14 +197,16 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">b.resize(s)</code>
+                  <code class="computeroutput"><span class="identifier">b</span><span class="special">.</span><span class="identifier">resize</span><span class="special">(</span><span class="identifier">s</span><span class="special">)</span></code>
                 </p>
               </td>
 <td>
               </td>
 <td>
                 <p>
-                  pre: <code class="computeroutput">s &gt;= 0</code><br> post: <code class="computeroutput">a.size() == s</code><br>
+                  pre: <code class="computeroutput"><span class="identifier">s</span> <span class="special">&gt;=</span>
+                  <span class="number">0</span></code><br> post: <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">size</span><span class="special">()</span>
+                  <span class="special">==</span> <span class="identifier">s</span></code><br>
                   Passed the value contained in the <span class="emphasis"><em>address_len</em></span>
                   argument to functions such as <span class="emphasis"><em>POSIX</em></span> <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/accept.html" target="_top"><code class="computeroutput"><span class="identifier">accept</span><span class="special">()</span></code></a>,
                   <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/getpeername.html" target="_top"><code class="computeroutput"><span class="identifier">getpeername</span><span class="special">()</span></code></a>,
@@ -208,19 +214,20 @@
                   and <a href="http://www.opengroup.org/onlinepubs/9699919799/functions/recvfrom.html" target="_top"><code class="computeroutput"><span class="identifier">recvfrom</span><span class="special">()</span></code></a>,
                   after successful completion of the function. Permitted to throw
                   an exception if the protocol associated with the endpoint object
-                  <code class="computeroutput">a</code> does not support the specified size.
+                  <code class="computeroutput"><span class="identifier">a</span></code> does not support
+                  the specified size.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.capacity()</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">capacity</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">size_t</code>
+                  <code class="computeroutput"><span class="identifier">size_t</span></code>
                 </p>
               </td>
 <td>
@@ -241,8 +248,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -24,7 +24,7 @@
             <span class="bold"><strong>DynamicBuffer_v1:</strong></span> Get a list of buffers
             that represents the input sequence.
           </p>
-<pre class="programlisting">const_buffers_type data() const;
+<pre class="programlisting"><span class="identifier">const_buffers_type</span> <span class="identifier">data</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.dynamic_string_buffer.data.overload1.h0"></a>
@@ -32,23 +32,23 @@
             Value</a>
           </h6>
 <p>
-            An object of type <code class="computeroutput">const_buffers_type</code> that satisfies ConstBufferSequence
-            requirements, representing the basic_string memory in the input sequence.
+            An object of type <code class="computeroutput"><span class="identifier">const_buffers_type</span></code>
+            that satisfies ConstBufferSequence requirements, representing the basic_string
+            memory in the input sequence.
           </p>
 <h6>
 <a name="asio.reference.dynamic_string_buffer.data.overload1.h1"></a>
             <span><a name="asio.reference.dynamic_string_buffer.data.overload1.remarks"></a></span><a class="link" href="overload1.html#asio.reference.dynamic_string_buffer.data.overload1.remarks">Remarks</a>
           </h6>
 <p>
-            The returned object is invalidated by any <code class="computeroutput">dynamic_string_buffer</code>
-            or <code class="computeroutput">basic_string</code> member function that resizes or erases the
-            string.
+            The returned object is invalidated by any <code class="computeroutput"><span class="identifier">dynamic_string_buffer</span></code>
+            or <code class="computeroutput"><span class="identifier">basic_string</span></code> member
+            function that resizes or erases the string.
           </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

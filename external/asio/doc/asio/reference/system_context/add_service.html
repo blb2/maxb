@@ -25,16 +25,17 @@
 <p>
           <a class="indexterm" name="asio.indexterm.system_context.add_service"></a> 
 (Deprecated:
-          Use <code class="computeroutput">make_service()</code>.) Add a service object to the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>.
+          Use <code class="computeroutput"><span class="identifier">make_service</span><span class="special">()</span></code>.)
+          Add a service object to the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Service.html" title="Service requirements">Service</a>&gt;
-friend void add_service(
-    execution_context &amp; e,
-    Service * svc);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Service.html" title="Service requirements">Service</a><span class="special">&gt;</span>
+<span class="keyword">friend</span> <span class="keyword">void</span> <span class="identifier">add_service</span><span class="special">(</span>
+    <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="identifier">e</span><span class="special">,</span>
+    <span class="identifier">Service</span> <span class="special">*</span> <span class="identifier">svc</span><span class="special">);</span>
 </pre>
 <p>
-          This function is used to add a service to the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>.
+          This function is used to add a service to the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>.
         </p>
 <h6>
 <a name="asio.reference.system_context.add_service.h0"></a>
@@ -45,21 +46,19 @@ friend void add_service(
 <dl>
 <dt><span class="term">e</span></dt>
 <dd><p>
-                The <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-                object that owns the service.
+                The <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> object
+                that owns the service.
               </p></dd>
 <dt><span class="term">svc</span></dt>
 <dd>
 <p>
                 The service object. On success, ownership of the service object is
-                transferred to the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>.
-                When the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-                object is destroyed, it will destroy the service object by performing:
-</p>
-<pre class="programlisting">delete static_cast&lt;execution_context::service*&gt;(svc)
-</pre>
-<p>
+                transferred to the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>. When
+                the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> object
+                is destroyed, it will destroy the service object by performing:
               </p>
+<pre class="programlisting"><span class="keyword">delete</span> <span class="keyword">static_cast</span><span class="special">&lt;</span><span class="identifier">execution_context</span><span class="special">::</span><span class="identifier">service</span><span class="special">*&gt;(</span><span class="identifier">svc</span><span class="special">)</span>
+</pre>
 </dd>
 </dl>
 </div>
@@ -73,13 +72,14 @@ friend void add_service(
 <dt><span class="term">asio::service_already_exists</span></dt>
 <dd><p>
                 Thrown if a service of the given type is already present in the
-                <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>.
+                <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a>.
               </p></dd>
 <dt><span class="term">asio::invalid_service_owner</span></dt>
 <dd><p>
-                Thrown if the service's owning <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-                is not the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput">execution_context</code></a>
-                object specified by the <code class="computeroutput">e</code> parameter.
+                Thrown if the service's owning <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> is not
+                the <a class="link" href="../execution_context.html" title="execution_context"><code class="computeroutput"><span class="identifier">execution_context</span></code></a> object
+                specified by the <code class="computeroutput"><span class="identifier">e</span></code>
+                parameter.
               </p></dd>
 </dl>
 </div>
@@ -96,8 +96,7 @@ friend void add_service(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

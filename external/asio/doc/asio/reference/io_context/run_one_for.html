@@ -21,18 +21,19 @@
 </h4></div></div></div>
 <p>
           <a class="indexterm" name="asio.indexterm.io_context.run_one_for"></a> 
-Run the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a> object's
-          event processing loop for a specified duration to execute at most one handler.
+Run the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
+          object's event processing loop for a specified duration to execute at most
+          one handler.
         </p>
-<pre class="programlisting">template&lt;
-    typename Rep,
-    typename Period&gt;
-std::size_t run_one_for(
-    const chrono::duration&lt; Rep, Period &gt; &amp; rel_time);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Rep</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Period</span><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">run_one_for</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">chrono</span><span class="special">::</span><span class="identifier">duration</span><span class="special">&lt;</span> <span class="identifier">Rep</span><span class="special">,</span> <span class="identifier">Period</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">rel_time</span><span class="special">);</span>
 </pre>
 <p>
-          The <code class="computeroutput">run_one_for()</code> function blocks until one handler has been
-          dispatched, until the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+          The <code class="computeroutput"><span class="identifier">run_one_for</span><span class="special">()</span></code>
+          function blocks until one handler has been dispatched, until the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
           has been stopped, or until the specified duration has elapsed.
         </p>
 <h6>
@@ -58,8 +59,7 @@ std::size_t run_one_for(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

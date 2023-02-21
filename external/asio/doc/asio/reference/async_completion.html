@@ -24,13 +24,12 @@
       </p>
 <p>
         Helper template to deduce the handler type from a CompletionToken, capture
-        a local copy of the handler, and then create an <a class="link" href="async_result.html" title="async_result"><code class="computeroutput">async_result</code></a>
-        for the handler.
+        a local copy of the handler, and then create an <a class="link" href="async_result.html" title="async_result"><code class="computeroutput"><span class="identifier">async_result</span></code></a> for the handler.
       </p>
-<pre class="programlisting">template&lt;
-    typename CompletionToken,
-    typename... Signatures&gt;
-struct async_completion
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">CompletionToken</span><span class="special">,</span>
+    <span class="keyword">typename</span><span class="special">...</span> <span class="identifier">Signatures</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">async_completion</span>
 </pre>
 <h5>
 <a name="asio.reference.async_completion.h0"></a>
@@ -163,8 +162,7 @@ struct async_completion
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

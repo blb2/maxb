@@ -24,7 +24,7 @@
 The
           signal set type when rebound to the specified executor.
         </p>
-<pre class="programlisting">typedef basic_signal_set&lt; Executor1 &gt; other;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_signal_set</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="identifier">other</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.basic_signal_set__rebind_executor.other.h0"></a>
@@ -199,7 +199,7 @@ The
 </tbody>
 </table></div>
 <p>
-          The <a class="link" href="../basic_signal_set.html" title="basic_signal_set"><code class="computeroutput">basic_signal_set</code></a>
+          The <a class="link" href="../basic_signal_set.html" title="basic_signal_set"><code class="computeroutput"><span class="identifier">basic_signal_set</span></code></a>
           class provides the ability to perform an asynchronous wait for one or more
           signals to occur.
         </p>
@@ -221,23 +221,23 @@ The
 <p>
           Performing an asynchronous wait:
         </p>
-<pre class="programlisting">void handler(
-    const asio::error_code&amp; error,
-    int signal_number)
-{
-  if (!error)
-  {
-    // A signal occurred.
-  }
-}
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">&amp;</span> <span class="identifier">error</span><span class="special">,</span>
+    <span class="keyword">int</span> <span class="identifier">signal_number</span><span class="special">)</span>
+<span class="special">{</span>
+  <span class="keyword">if</span> <span class="special">(!</span><span class="identifier">error</span><span class="special">)</span>
+  <span class="special">{</span>
+    <span class="comment">// A signal occurred.</span>
+  <span class="special">}</span>
+<span class="special">}</span>
 
-...
+<span class="special">...</span>
 
-// Construct a signal set registered for process termination.
-asio::signal_set signals(my_context, SIGINT, SIGTERM);
+<span class="comment">// Construct a signal set registered for process termination.</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">signal_set</span> <span class="identifier">signals</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">,</span> <span class="identifier">SIGINT</span><span class="special">,</span> <span class="identifier">SIGTERM</span><span class="special">);</span>
 
-// Start an asynchronous wait for one of the signals to occur.
-signals.async_wait(handler);
+<span class="comment">// Start an asynchronous wait for one of the signals to occur.</span>
+<span class="identifier">signals</span><span class="special">.</span><span class="identifier">async_wait</span><span class="special">(</span><span class="identifier">handler</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.basic_signal_set__rebind_executor.other.h4"></a>
@@ -253,9 +253,8 @@ signals.async_wait(handler);
           of ascending signal number.
         </p>
 <p>
-          If a signal number is removed from a signal_set (using the <code class="computeroutput">remove</code>
-          or <code class="computeroutput">erase</code> member functions) then any queued notifications for
-          that signal are discarded.
+          If a signal number is removed from a signal_set (using the <code class="computeroutput"><span class="identifier">remove</span></code> or <code class="computeroutput"><span class="identifier">erase</span></code>
+          member functions) then any queued notifications for that signal are discarded.
         </p>
 <h6>
 <a name="asio.reference.basic_signal_set__rebind_executor.other.h5"></a>
@@ -269,7 +268,7 @@ signals.async_wait(handler);
 <p>
           Note that multiple registration only works for signals that are registered
           using Asio. The application must not also register a signal handler using
-          functions such as <code class="computeroutput">signal()</code> or <code class="computeroutput">sigaction()</code>.
+          functions such as <code class="computeroutput"><span class="identifier">signal</span><span class="special">()</span></code> or <code class="computeroutput"><span class="identifier">sigaction</span><span class="special">()</span></code>.
         </p>
 <h6>
 <a name="asio.reference.basic_signal_set__rebind_executor.other.h6"></a>
@@ -277,10 +276,10 @@ signals.async_wait(handler);
           masking on POSIX platforms</a>
         </h6>
 <p>
-          POSIX allows signals to be blocked using functions such as <code class="computeroutput">sigprocmask()</code>
-          and <code class="computeroutput">pthread_sigmask()</code>. For signals to be delivered, programs
-          must ensure that any signals registered using signal_set objects are unblocked
-          in at least one thread.
+          POSIX allows signals to be blocked using functions such as <code class="computeroutput"><span class="identifier">sigprocmask</span><span class="special">()</span></code>
+          and <code class="computeroutput"><span class="identifier">pthread_sigmask</span><span class="special">()</span></code>.
+          For signals to be delivered, programs must ensure that any signals registered
+          using signal_set objects are unblocked in at least one thread.
         </p>
 <h6>
 <a name="asio.reference.basic_signal_set__rebind_executor.other.h7"></a>
@@ -295,8 +294,7 @@ signals.async_wait(handler);
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

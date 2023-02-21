@@ -23,15 +23,15 @@
 <p>
           Read data into a streambuf until a function object indicates a match.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a>,
-    typename Allocator,
-    typename MatchCondition&gt;
-std::size_t read_until(
-    SyncReadStream &amp; s,
-    asio::basic_streambuf&lt; Allocator &gt; &amp; b,
-    MatchCondition match_condition,
-    typename constraint&lt; is_match_condition&lt; MatchCondition &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">MatchCondition</span><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">read_until</span><span class="special">(</span>
+    <span class="identifier">SyncReadStream</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">basic_streambuf</span><span class="special">&lt;</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">b</span><span class="special">,</span>
+    <span class="identifier">MatchCondition</span> <span class="identifier">match_condition</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_match_condition</span><span class="special">&lt;</span> <span class="identifier">MatchCondition</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to read data into the specified streambuf until a
@@ -74,23 +74,26 @@ std::size_t read_until(
 <p>
                 The function object to be called to determine whether a match exists.
                 The signature of the function object must be:
-</p>
-<pre class="programlisting">pair&lt;iterator, bool&gt; match_condition(iterator begin, iterator end);
+              </p>
+<pre class="programlisting"><span class="identifier">pair</span><span class="special">&lt;</span><span class="identifier">iterator</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">&gt;</span> <span class="identifier">match_condition</span><span class="special">(</span><span class="identifier">iterator</span> <span class="identifier">begin</span><span class="special">,</span> <span class="identifier">iterator</span> <span class="identifier">end</span><span class="special">);</span>
 </pre>
 <p>
-                where <code class="computeroutput">iterator</code> represents the type:
-</p>
-<pre class="programlisting">buffers_iterator&lt;basic_streambuf&lt;Allocator&gt;::const_buffers_type&gt;
+                where <code class="computeroutput"><span class="identifier">iterator</span></code> represents
+                the type:
+              </p>
+<pre class="programlisting"><span class="identifier">buffers_iterator</span><span class="special">&lt;</span><span class="identifier">basic_streambuf</span><span class="special">&lt;</span><span class="identifier">Allocator</span><span class="special">&gt;::</span><span class="identifier">const_buffers_type</span><span class="special">&gt;</span>
 </pre>
 <p>
-                The iterator parameters <code class="computeroutput">begin</code> and <code class="computeroutput">end</code> define
-                the range of bytes to be scanned to determine whether there is a
-                match. The <code class="computeroutput">first</code> member of the return value is an iterator
-                marking one-past-the-end of the bytes that have been consumed by
-                the match function. This iterator is used to calculate the <code class="computeroutput">begin</code>
+                The iterator parameters <code class="computeroutput"><span class="identifier">begin</span></code>
+                and <code class="computeroutput"><span class="identifier">end</span></code> define the
+                range of bytes to be scanned to determine whether there is a match.
+                The <code class="computeroutput"><span class="identifier">first</span></code> member
+                of the return value is an iterator marking one-past-the-end of the
+                bytes that have been consumed by the match function. This iterator
+                is used to calculate the <code class="computeroutput"><span class="identifier">begin</span></code>
                 parameter for any subsequent invocation of the match condition. The
-                <code class="computeroutput">second</code> member of the return value is true if a match
-                has been found, false otherwise.
+                <code class="computeroutput"><span class="identifier">second</span></code> member of
+                the return value is true if a match has been found, false otherwise.
               </p>
 </dd>
 </dl>
@@ -128,10 +131,10 @@ std::size_t read_until(
           operation to examine.
         </p>
 <p>
-          The default implementation of the <code class="computeroutput">is_match_condition</code> type
-          trait evaluates to true for function pointers and function objects with
-          a <code class="computeroutput">result_type</code> typedef. It must be specialised for other user-defined
-          function objects.
+          The default implementation of the <code class="computeroutput"><span class="identifier">is_match_condition</span></code>
+          type trait evaluates to true for function pointers and function objects
+          with a <code class="computeroutput"><span class="identifier">result_type</span></code> typedef.
+          It must be specialised for other user-defined function objects.
         </p>
 <h6>
 <a name="asio.reference.read_until.overload15.h4"></a>
@@ -140,58 +143,57 @@ std::size_t read_until(
 <p>
           To read data into a streambuf until whitespace is encountered:
         </p>
-<pre class="programlisting">typedef asio::buffers_iterator&lt;
-    asio::streambuf::const_buffers_type&gt; iterator;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">buffers_iterator</span><span class="special">&lt;</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">streambuf</span><span class="special">::</span><span class="identifier">const_buffers_type</span><span class="special">&gt;</span> <span class="identifier">iterator</span><span class="special">;</span>
 
-std::pair&lt;iterator, bool&gt;
-match_whitespace(iterator begin, iterator end)
-{
-  iterator i = begin;
-  while (i != end)
-    if (std::isspace(*i++))
-      return std::make_pair(i, true);
-  return std::make_pair(i, false);
-}
-...
-asio::streambuf b;
-asio::read_until(s, b, match_whitespace);
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span><span class="identifier">iterator</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">&gt;</span>
+<span class="identifier">match_whitespace</span><span class="special">(</span><span class="identifier">iterator</span> <span class="identifier">begin</span><span class="special">,</span> <span class="identifier">iterator</span> <span class="identifier">end</span><span class="special">)</span>
+<span class="special">{</span>
+  <span class="identifier">iterator</span> <span class="identifier">i</span> <span class="special">=</span> <span class="identifier">begin</span><span class="special">;</span>
+  <span class="keyword">while</span> <span class="special">(</span><span class="identifier">i</span> <span class="special">!=</span> <span class="identifier">end</span><span class="special">)</span>
+    <span class="keyword">if</span> <span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">isspace</span><span class="special">(*</span><span class="identifier">i</span><span class="special">++))</span>
+      <span class="keyword">return</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">i</span><span class="special">,</span> <span class="keyword">true</span><span class="special">);</span>
+  <span class="keyword">return</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">i</span><span class="special">,</span> <span class="keyword">false</span><span class="special">);</span>
+<span class="special">}</span>
+<span class="special">...</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">streambuf</span> <span class="identifier">b</span><span class="special">;</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">read_until</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">b</span><span class="special">,</span> <span class="identifier">match_whitespace</span><span class="special">);</span>
 </pre>
 <p>
           To read data into a streambuf until a matching character is found:
         </p>
-<pre class="programlisting">class match_char
-{
-public:
-  explicit match_char(char c) : c_(c) {}
+<pre class="programlisting"><span class="keyword">class</span> <span class="identifier">match_char</span>
+<span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+  <span class="keyword">explicit</span> <span class="identifier">match_char</span><span class="special">(</span><span class="keyword">char</span> <span class="identifier">c</span><span class="special">)</span> <span class="special">:</span> <span class="identifier">c_</span><span class="special">(</span><span class="identifier">c</span><span class="special">)</span> <span class="special">{}</span>
 
-  template &lt;typename Iterator&gt;
-  std::pair&lt;Iterator, bool&gt; operator()(
-      Iterator begin, Iterator end) const
-  {
-    Iterator i = begin;
-    while (i != end)
-      if (c_ == *i++)
-        return std::make_pair(i, true);
-    return std::make_pair(i, false);
-  }
+  <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">Iterator</span><span class="special">&gt;</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">pair</span><span class="special">&lt;</span><span class="identifier">Iterator</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">&gt;</span> <span class="keyword">operator</span><span class="special">()(</span>
+      <span class="identifier">Iterator</span> <span class="identifier">begin</span><span class="special">,</span> <span class="identifier">Iterator</span> <span class="identifier">end</span><span class="special">)</span> <span class="keyword">const</span>
+  <span class="special">{</span>
+    <span class="identifier">Iterator</span> <span class="identifier">i</span> <span class="special">=</span> <span class="identifier">begin</span><span class="special">;</span>
+    <span class="keyword">while</span> <span class="special">(</span><span class="identifier">i</span> <span class="special">!=</span> <span class="identifier">end</span><span class="special">)</span>
+      <span class="keyword">if</span> <span class="special">(</span><span class="identifier">c_</span> <span class="special">==</span> <span class="special">*</span><span class="identifier">i</span><span class="special">++)</span>
+        <span class="keyword">return</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">i</span><span class="special">,</span> <span class="keyword">true</span><span class="special">);</span>
+    <span class="keyword">return</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">make_pair</span><span class="special">(</span><span class="identifier">i</span><span class="special">,</span> <span class="keyword">false</span><span class="special">);</span>
+  <span class="special">}</span>
 
-private:
-  char c_;
-};
+<span class="keyword">private</span><span class="special">:</span>
+  <span class="keyword">char</span> <span class="identifier">c_</span><span class="special">;</span>
+<span class="special">};</span>
 
-namespace asio {
-  template &lt;&gt; struct is_match_condition&lt;match_char&gt;
-    : public boost::true_type {};
-} // namespace asio
-...
-asio::streambuf b;
-asio::read_until(s, b, match_char('a'));
+<span class="keyword">namespace</span> <span class="identifier">asio</span> <span class="special">{</span>
+  <span class="keyword">template</span> <span class="special">&lt;&gt;</span> <span class="keyword">struct</span> <span class="identifier">is_match_condition</span><span class="special">&lt;</span><span class="identifier">match_char</span><span class="special">&gt;</span>
+    <span class="special">:</span> <span class="keyword">public</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">true_type</span> <span class="special">{};</span>
+<span class="special">}</span> <span class="comment">// namespace asio</span>
+<span class="special">...</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">streambuf</span> <span class="identifier">b</span><span class="special">;</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">read_until</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">b</span><span class="special">,</span> <span class="identifier">match_char</span><span class="special">(</span><span class="char">'a'</span><span class="special">));</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

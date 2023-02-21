@@ -20,12 +20,13 @@
 <a name="asio.reference.asio_handler_is_continuation"></a><a class="link" href="asio_handler_is_continuation.html" title="asio_handler_is_continuation">asio_handler_is_continuation</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.asio_handler_is_continuation"></a> 
-Default
-        continuation function for handlers.
+        <a class="indexterm" name="asio.indexterm.asio_handler_is_continuation"></a>
       </p>
-<pre class="programlisting">bool asio_handler_is_continuation(
-    ... );
+<p>
+        Default continuation function for handlers.
+      </p>
+<pre class="programlisting"><span class="keyword">bool</span> <span class="identifier">asio_handler_is_continuation</span><span class="special">(</span>
+    <span class="special">...</span> <span class="special">);</span>
 </pre>
 <p>
         Asynchronous operations may represent a continuation of the asynchronous
@@ -37,18 +38,18 @@ Default
         when a handler represents a continuation.
       </p>
 <p>
-        The default implementation of the continuation hook returns <code class="computeroutput">false</code>.
+        The default implementation of the continuation hook returns <code class="computeroutput"><span class="keyword">false</span></code>.
       </p>
 <h5>
 <a name="asio.reference.asio_handler_is_continuation.h0"></a>
         <span><a name="asio.reference.asio_handler_is_continuation.example"></a></span><a class="link" href="asio_handler_is_continuation.html#asio.reference.asio_handler_is_continuation.example">Example</a>
       </h5>
-<pre class="programlisting">class my_handler;
+<pre class="programlisting"><span class="keyword">class</span> <span class="identifier">my_handler</span><span class="special">;</span>
 
-bool asio_handler_is_continuation(my_handler* context)
-{
-  return true;
-}
+<span class="keyword">bool</span> <span class="identifier">asio_handler_is_continuation</span><span class="special">(</span><span class="identifier">my_handler</span><span class="special">*</span> <span class="identifier">context</span><span class="special">)</span>
+<span class="special">{</span>
+  <span class="keyword">return</span> <span class="keyword">true</span><span class="special">;</span>
+<span class="special">}</span>
 </pre>
 <h5>
 <a name="asio.reference.asio_handler_is_continuation.h1"></a>
@@ -63,8 +64,7 @@ bool asio_handler_is_continuation(my_handler* context)
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

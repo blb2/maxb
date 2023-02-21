@@ -20,80 +20,84 @@
 <a name="asio.reference.execution__connect"></a><a class="link" href="execution__connect.html" title="execution::connect">execution::connect</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.execution__connect"></a> 
-A customisation point
-        that connects a sender to a receiver.
+        <a class="indexterm" name="asio.indexterm.execution__connect"></a>
       </p>
-<pre class="programlisting">constexpr unspecified connect = unspecified;
+<p>
+        A customisation point that connects a sender to a receiver.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">connect</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">execution::connect</code> denotes a customisation point object.
-        For some subexpressions <code class="computeroutput">s</code> and <code class="computeroutput">r</code>, let <code class="computeroutput">S</code>
-        be a type such that <code class="computeroutput">decltype((s))</code> is <code class="computeroutput">S</code> and let
-        <code class="computeroutput">R</code> be a type such that <code class="computeroutput">decltype((r))</code> is <code class="computeroutput">R</code>.
-        The expression <code class="computeroutput">execution::connect(s, r)</code> is expression-equivalent
-        to:
+        The name <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">connect</span></code> denotes a customisation point object.
+        For some subexpressions <code class="computeroutput"><span class="identifier">s</span></code>
+        and <code class="computeroutput"><span class="identifier">r</span></code>, let <code class="computeroutput"><span class="identifier">S</span></code> be a type such that <code class="computeroutput"><span class="keyword">decltype</span><span class="special">((</span><span class="identifier">s</span><span class="special">))</span></code>
+        is <code class="computeroutput"><span class="identifier">S</span></code> and let <code class="computeroutput"><span class="identifier">R</span></code> be a type such that <code class="computeroutput"><span class="keyword">decltype</span><span class="special">((</span><span class="identifier">r</span><span class="special">))</span></code>
+        is <code class="computeroutput"><span class="identifier">R</span></code>. The expression <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">connect</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">r</span><span class="special">)</span></code> is expression-equivalent to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">s.connect(r)</code>, if that expression is valid, if its type satisfies
-            <code class="computeroutput">operation_state</code>, and if <code class="computeroutput">S</code> satisfies <code class="computeroutput">sender</code>.
+            <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">connect</span><span class="special">(</span><span class="identifier">r</span><span class="special">)</span></code>,
+            if that expression is valid, if its type satisfies <code class="computeroutput"><span class="identifier">operation_state</span></code>,
+            and if <code class="computeroutput"><span class="identifier">S</span></code> satisfies <code class="computeroutput"><span class="identifier">sender</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">connect(s, r)</code>, if that expression is valid, if
-            its type satisfies <code class="computeroutput">operation_state</code>, and if <code class="computeroutput">S</code>
-            satisfies <code class="computeroutput">sender</code>, with overload resolution performed in
-            a context that includes the declaration <code class="computeroutput">void connect();</code>
-            and that does not include a declaration of <code class="computeroutput">execution::connect</code>.
+            Otherwise, <code class="computeroutput"><span class="identifier">connect</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">r</span><span class="special">)</span></code>,
+            if that expression is valid, if its type satisfies <code class="computeroutput"><span class="identifier">operation_state</span></code>,
+            and if <code class="computeroutput"><span class="identifier">S</span></code> satisfies <code class="computeroutput"><span class="identifier">sender</span></code>, with overload resolution performed
+            in a context that includes the declaration <code class="computeroutput"><span class="keyword">void</span>
+            <span class="identifier">connect</span><span class="special">();</span></code>
+            and that does not include a declaration of <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">connect</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">as_operation{s, r}</code>, if <code class="computeroutput">r</code> is not
-            an instance of <code class="computeroutput">as_receiver&lt;F, S&gt;</code> for some type <code class="computeroutput">F</code>,
-            and if <code class="computeroutput">receiver_of&lt;R&gt; &amp;&amp; executor_of&lt;remove_cvref_t&lt;S&gt;,
-            as_invocable&lt;remove_cvref_t&lt;R&gt;, S&gt;&gt;</code> is <code class="computeroutput">true</code>,
-            where <code class="computeroutput">as_operation</code> is an implementation-defined class equivalent
-            to
-          </li>
-</ul></div>
-<pre class="programlisting">template &lt;class S, class R&gt;
- struct as_operation
- {
-   remove_cvref_t&lt;S&gt; e_;
-   remove_cvref_t&lt;R&gt; r_;
-   void start() noexcept try {
-     execution::execute(std::move(e_),
-         as_invocable&lt;remove_cvref_t&lt;R&gt;, S&gt;{r_});
-   } catch(...) {
-     execution::set_error(std::move(r_), current_exception());
-   }
- };
+<p class="simpara">
+            Otherwise, <code class="computeroutput"><span class="identifier">as_operation</span><span class="special">{</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">r</span><span class="special">}</span></code>, if <code class="computeroutput"><span class="identifier">r</span></code>
+            is not an instance of <code class="computeroutput"><span class="identifier">as_receiver</span><span class="special">&lt;</span><span class="identifier">F</span><span class="special">,</span> <span class="identifier">S</span><span class="special">&gt;</span></code> for some type <code class="computeroutput"><span class="identifier">F</span></code>,
+            and if <code class="computeroutput"><span class="identifier">receiver_of</span><span class="special">&lt;</span><span class="identifier">R</span><span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">executor_of</span><span class="special">&lt;</span><span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;,</span> <span class="identifier">as_invocable</span><span class="special">&lt;</span><span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">R</span><span class="special">&gt;,</span> <span class="identifier">S</span><span class="special">&gt;&gt;</span></code> is <code class="computeroutput"><span class="keyword">true</span></code>,
+            where <code class="computeroutput"><span class="identifier">as_operation</span></code> is
+            an implementation-defined class equivalent to
+          </p>
+<pre class="programlisting"><span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">S</span><span class="special">,</span> <span class="keyword">class</span> <span class="identifier">R</span><span class="special">&gt;</span>
+ <span class="keyword">struct</span> <span class="identifier">as_operation</span>
+ <span class="special">{</span>
+   <span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;</span> <span class="identifier">e_</span><span class="special">;</span>
+   <span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">R</span><span class="special">&gt;</span> <span class="identifier">r_</span><span class="special">;</span>
+   <span class="keyword">void</span> <span class="identifier">start</span><span class="special">()</span> <span class="keyword">noexcept</span> <span class="keyword">try</span> <span class="special">{</span>
+     <span class="identifier">execution</span><span class="special">::</span><span class="identifier">execute</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">e_</span><span class="special">),</span>
+         <span class="identifier">as_invocable</span><span class="special">&lt;</span><span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">R</span><span class="special">&gt;,</span> <span class="identifier">S</span><span class="special">&gt;{</span><span class="identifier">r_</span><span class="special">});</span>
+   <span class="special">}</span> <span class="keyword">catch</span><span class="special">(...)</span> <span class="special">{</span>
+     <span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_error</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">r_</span><span class="special">),</span> <span class="identifier">current_exception</span><span class="special">());</span>
+   <span class="special">}</span>
+ <span class="special">};</span>
 </pre>
+</li>
+</ul></div>
 <p>
-        and <code class="computeroutput">as_invocable</code> is a class template equivalent to the following:
+        and <code class="computeroutput"><span class="identifier">as_invocable</span></code> is a class
+        template equivalent to the following:
       </p>
-<pre class="programlisting">template&lt;class R&gt;
- struct as_invocable
- {
-   R* r_;
-   explicit as_invocable(R&amp; r) noexcept
-     : r_(std::addressof(r)) {}
-   as_invocable(as_invocable &amp;&amp; other) noexcept
-     : r_(std::exchange(other.r_, nullptr)) {}
-   ~as_invocable() {
-     if(r_)
-       execution::set_done(std::move(*r_));
-   }
-   void operator()() &amp; noexcept try {
-     execution::set_value(std::move(*r_));
-     r_ = nullptr;
-   } catch(...) {
-     execution::set_error(std::move(*r_), current_exception());
-     r_ = nullptr;
-   }
- };
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">R</span><span class="special">&gt;</span>
+ <span class="keyword">struct</span> <span class="identifier">as_invocable</span>
+ <span class="special">{</span>
+   <span class="identifier">R</span><span class="special">*</span> <span class="identifier">r_</span><span class="special">;</span>
+   <span class="keyword">explicit</span> <span class="identifier">as_invocable</span><span class="special">(</span><span class="identifier">R</span><span class="special">&amp;</span> <span class="identifier">r</span><span class="special">)</span> <span class="keyword">noexcept</span>
+     <span class="special">:</span> <span class="identifier">r_</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">addressof</span><span class="special">(</span><span class="identifier">r</span><span class="special">))</span> <span class="special">{}</span>
+   <span class="identifier">as_invocable</span><span class="special">(</span><span class="identifier">as_invocable</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">)</span> <span class="keyword">noexcept</span>
+     <span class="special">:</span> <span class="identifier">r_</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">exchange</span><span class="special">(</span><span class="identifier">other</span><span class="special">.</span><span class="identifier">r_</span><span class="special">,</span> <span class="keyword">nullptr</span><span class="special">))</span> <span class="special">{}</span>
+   <span class="special">~</span><span class="identifier">as_invocable</span><span class="special">()</span> <span class="special">{</span>
+     <span class="keyword">if</span><span class="special">(</span><span class="identifier">r_</span><span class="special">)</span>
+       <span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_done</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(*</span><span class="identifier">r_</span><span class="special">));</span>
+   <span class="special">}</span>
+   <span class="keyword">void</span> <span class="keyword">operator</span><span class="special">()()</span> <span class="special">&amp;</span> <span class="keyword">noexcept</span> <span class="keyword">try</span> <span class="special">{</span>
+     <span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_value</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(*</span><span class="identifier">r_</span><span class="special">));</span>
+     <span class="identifier">r_</span> <span class="special">=</span> <span class="keyword">nullptr</span><span class="special">;</span>
+   <span class="special">}</span> <span class="keyword">catch</span><span class="special">(...)</span> <span class="special">{</span>
+     <span class="identifier">execution</span><span class="special">::</span><span class="identifier">set_error</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(*</span><span class="identifier">r_</span><span class="special">),</span> <span class="identifier">current_exception</span><span class="special">());</span>
+     <span class="identifier">r_</span> <span class="special">=</span> <span class="keyword">nullptr</span><span class="special">;</span>
+   <span class="special">}</span>
+ <span class="special">};</span>
 </pre>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-            Otherwise, <code class="computeroutput">execution::connect(s, r)</code> is ill-formed.
+            Otherwise, <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">connect</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">r</span><span class="special">)</span></code> is ill-formed.
           </li></ul></div>
 <h5>
 <a name="asio.reference.execution__connect.h0"></a>
@@ -108,8 +112,7 @@ A customisation point
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

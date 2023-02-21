@@ -20,20 +20,22 @@
 <a name="asio.reference.CancellationSlot"></a><a class="link" href="CancellationSlot.html" title="Cancellation slot requirements">Cancellation slot requirements</a>
 </h3></div></div></div>
 <p>
-        A type <code class="computeroutput">X</code> meets the <code class="computeroutput">CancellationSlot</code> requirements
-        if it satisfies the requirements of <code class="computeroutput">CopyConstructible</code> (C++Std
-        [copyconstructible]) and <code class="computeroutput">Destructible</code> (C++Std [destructible]),
-        as well as the additional requirements listed below.
+        A type <code class="computeroutput"><span class="identifier">X</span></code> meets the <code class="computeroutput"><span class="identifier">CancellationSlot</span></code> requirements if it satisfies
+        the requirements of <code class="computeroutput"><span class="identifier">CopyConstructible</span></code>
+        (C++Std [copyconstructible]) and <code class="computeroutput"><span class="identifier">Destructible</span></code>
+        (C++Std [destructible]), as well as the additional requirements listed below.
       </p>
 <p>
-        In the table below, <code class="computeroutput">x1</code> and <code class="computeroutput">x2</code> denote (possibly
-        const) values of type <code class="computeroutput">X</code>, <code class="computeroutput">mx1</code> denotes an xvalue
-        of type <code class="computeroutput">X</code>, <code class="computeroutput">H</code> denotes a type that satisfies <code class="computeroutput">CancellationHandler</code>,
-        <code class="computeroutput">h</code> denotes an xvalue of type <code class="computeroutput">H</code>, and <code class="computeroutput">u0</code>
-        to <code class="computeroutput">uN</code> denote identifiers.
+        In the table below, <code class="computeroutput"><span class="identifier">x1</span></code> and
+        <code class="computeroutput"><span class="identifier">x2</span></code> denote (possibly const)
+        values of type <code class="computeroutput"><span class="identifier">X</span></code>, <code class="computeroutput"><span class="identifier">mx1</span></code> denotes an xvalue of type <code class="computeroutput"><span class="identifier">X</span></code>, <code class="computeroutput"><span class="identifier">H</span></code>
+        denotes a type that satisfies <code class="computeroutput"><span class="identifier">CancellationHandler</span></code>,
+        <code class="computeroutput"><span class="identifier">h</span></code> denotes an xvalue of type
+        <code class="computeroutput"><span class="identifier">H</span></code>, and <code class="computeroutput"><span class="identifier">u0</span></code>
+        to <code class="computeroutput"><span class="identifier">uN</span></code> denote identifiers.
       </p>
 <div class="table">
-<a name="asio.reference.CancellationSlot.t0"></a><p class="title"><b>Table 7. CancellationSlot requirements</b></p>
+<a name="asio.reference.CancellationSlot.t0"></a><p class="title"><b>Table 8. CancellationSlot requirements</b></p>
 <div class="table-contents"><table class="table" summary="CancellationSlot requirements">
 <colgroup>
 <col>
@@ -61,79 +63,82 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X u(x1);</code>
+                  <code class="computeroutput"><span class="identifier">X</span> <span class="identifier">u</span><span class="special">(</span><span class="identifier">x1</span><span class="special">);</span></code>
                 </p>
               </td>
 <td>
               </td>
 <td>
                 <p>
-                  Shall not exit via an exception.<br> <br> post: <code class="computeroutput">u ==
-                  x1</code>.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <code class="computeroutput">X u(mx1);</code>
-                </p>
-              </td>
-<td>
-              </td>
-<td>
-                <p>
-                  Shall not exit via an exception.<br> <br> post: <code class="computeroutput">u</code>
-                  equals the prior value of <code class="computeroutput">mx1</code>.
+                  Shall not exit via an exception.<br> <br> post: <code class="computeroutput"><span class="identifier">u</span> <span class="special">==</span>
+                  <span class="identifier">x1</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1 == x2</code>
+                  <code class="computeroutput"><span class="identifier">X</span> <span class="identifier">u</span><span class="special">(</span><span class="identifier">mx1</span><span class="special">);</span></code>
                 </p>
               </td>
 <td>
-                <p>
-                  <code class="computeroutput">bool</code>
-                </p>
               </td>
 <td>
                 <p>
-                  Returns <code class="computeroutput">true</code> only if <code class="computeroutput">x1</code> and <code class="computeroutput">x2</code>
-                  can be interchanged with identical effects. <br> <code class="computeroutput">operator==</code>
-                  shall be reflexive, symmetric, and transitive, and shall not exit
-                  via an exception.
+                  Shall not exit via an exception.<br> <br> post: <code class="computeroutput"><span class="identifier">u</span></code> equals the prior value of
+                  <code class="computeroutput"><span class="identifier">mx1</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1 != x2</code>
+                  <code class="computeroutput"><span class="identifier">x1</span> <span class="special">==</span>
+                  <span class="identifier">x2</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">bool</code>
+                  <code class="computeroutput"><span class="keyword">bool</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  Same as <code class="computeroutput">!(x1 == x2)</code>.
+                  Returns <code class="computeroutput"><span class="keyword">true</span></code> only
+                  if <code class="computeroutput"><span class="identifier">x1</span></code> and <code class="computeroutput"><span class="identifier">x2</span></code> can be interchanged with identical
+                  effects. <br> <code class="computeroutput"><span class="keyword">operator</span><span class="special">==</span></code> shall be reflexive, symmetric,
+                  and transitive, and shall not exit via an exception.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1.assign(h)</code>
+                  <code class="computeroutput"><span class="identifier">x1</span> <span class="special">!=</span>
+                  <span class="identifier">x2</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">H&amp;</code>
+                  <code class="computeroutput"><span class="keyword">bool</span></code>
+                </p>
+              </td>
+<td>
+                <p>
+                  Same as <code class="computeroutput"><span class="special">!(</span><span class="identifier">x1</span>
+                  <span class="special">==</span> <span class="identifier">x2</span><span class="special">)</span></code>.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <code class="computeroutput"><span class="identifier">x1</span><span class="special">.</span><span class="identifier">assign</span><span class="special">(</span><span class="identifier">h</span><span class="special">)</span></code>
+                </p>
+              </td>
+<td>
+                <p>
+                  <code class="computeroutput"><span class="identifier">H</span><span class="special">&amp;</span></code>
                 </p>
               </td>
 <td>
@@ -142,18 +147,19 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1.emplace&lt;H&gt;(u0, ..., uN)</code>
+                  <code class="computeroutput"><span class="identifier">x1</span><span class="special">.</span><span class="identifier">emplace</span><span class="special">&lt;</span><span class="identifier">H</span><span class="special">&gt;(</span><span class="identifier">u0</span><span class="special">,</span>
+                  <span class="special">...,</span> <span class="identifier">uN</span><span class="special">)</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">H&amp;</code>
+                  <code class="computeroutput"><span class="identifier">H</span><span class="special">&amp;</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  Requires that <code class="computeroutput">is_constructible&lt;H, decltype(u0), ..., decltype(u0)&gt;::value</code>
-                  be true.
+                  Requires that <code class="computeroutput"><span class="identifier">is_constructible</span><span class="special">&lt;</span><span class="identifier">H</span><span class="special">,</span> <span class="keyword">decltype</span><span class="special">(</span><span class="identifier">u0</span><span class="special">),</span> <span class="special">...,</span>
+                  <span class="keyword">decltype</span><span class="special">(</span><span class="identifier">u0</span><span class="special">)&gt;::</span><span class="identifier">value</span></code> be true.
                 </p>
               </td>
 </tr>
@@ -164,8 +170,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

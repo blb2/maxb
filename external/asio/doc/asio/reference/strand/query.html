@@ -24,28 +24,27 @@
 Forward a query to the underlying
           executor.
         </p>
-<pre class="programlisting">template&lt;
-    typename Property&gt;
-constraint&lt; can_query&lt; const Executor &amp;, Property &gt;::value, typename conditional&lt; is_convertible&lt; Property, execution::blocking_t &gt;::value, execution::blocking_t, typename query_result&lt; const Executor &amp;, Property &gt;::type &gt;::type &gt;::type query(
-    const Property &amp; p) const;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Property</span><span class="special">&gt;</span>
+<span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">can_query</span><span class="special">&lt;</span> <span class="keyword">const</span> <span class="identifier">Executor</span> <span class="special">&amp;,</span> <span class="identifier">Property</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">conditional</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Property</span><span class="special">,</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">,</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">query_result</span><span class="special">&lt;</span> <span class="keyword">const</span> <span class="identifier">Executor</span> <span class="special">&amp;,</span> <span class="identifier">Property</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">query</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">Property</span> <span class="special">&amp;</span> <span class="identifier">p</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <p>
-          Do not call this function directly. It is intended for use with the <a class="link" href="../query.html" title="query"><code class="computeroutput">query</code></a> customisation
-          point.
+          Do not call this function directly. It is intended for use with the <a class="link" href="../query.html" title="query"><code class="computeroutput"><span class="identifier">query</span></code></a>
+          customisation point.
         </p>
 <p>
           For example:
         </p>
-<pre class="programlisting">asio::strand&lt;my_executor_type&gt; ex = ...;
-if (asio::query(ex, asio::execution::blocking)
-      == asio::execution::blocking.never)
-  ...
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">strand</span><span class="special">&lt;</span><span class="identifier">my_executor_type</span><span class="special">&gt;</span> <span class="identifier">ex</span> <span class="special">=</span> <span class="special">...;</span>
+<span class="keyword">if</span> <span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">query</span><span class="special">(</span><span class="identifier">ex</span><span class="special">,</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking</span><span class="special">)</span>
+      <span class="special">==</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking</span><span class="special">.</span><span class="identifier">never</span><span class="special">)</span>
+  <span class="special">...</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

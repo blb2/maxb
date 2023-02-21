@@ -24,7 +24,7 @@
 The
           serial port type when rebound to the specified executor.
         </p>
-<pre class="programlisting">typedef basic_serial_port&lt; Executor1 &gt; other;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_serial_port</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="identifier">other</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.basic_serial_port__rebind_executor.other.h0"></a>
@@ -168,7 +168,9 @@ The
                     Construct a basic_serial_port without opening it. <br> <span class="silver"> —</span><br>
                     Construct and open a basic_serial_port. <br> <span class="silver"> —</span><br> Construct
                     a basic_serial_port on an existing native serial port. <br>
-                    <span class="silver"> —</span><br> Move-construct a basic_serial_port from another.
+                    <span class="silver"> —</span><br> Move-construct a basic_serial_port from another. <br>
+                    <span class="silver"> —</span><br> Move-construct a basic_serial_port from a serial port
+                    of another executor type.
                   </p>
                 </td>
 </tr>
@@ -278,7 +280,8 @@ The
                 </td>
 <td>
                   <p>
-                    Move-assign a basic_serial_port from another.
+                    Move-assign a basic_serial_port from another. <br> <span class="silver"> —</span><br> Move-assign
+                    a basic_serial_port from a serial port of another executor type.
                   </p>
                 </td>
 </tr>
@@ -345,7 +348,7 @@ The
 </tbody>
 </table></div>
 <p>
-          The <a class="link" href="../basic_serial_port.html" title="basic_serial_port"><code class="computeroutput">basic_serial_port</code></a>
+          The <a class="link" href="../basic_serial_port.html" title="basic_serial_port"><code class="computeroutput"><span class="identifier">basic_serial_port</span></code></a>
           class provides a wrapper over serial port functionality.
         </p>
 <h6>
@@ -372,8 +375,7 @@ The
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

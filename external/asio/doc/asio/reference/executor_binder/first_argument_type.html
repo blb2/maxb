@@ -24,24 +24,28 @@
 The
           type of the function's first argument.
         </p>
-<pre class="programlisting">typedef see_below first_argument_type;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">see_below</span> <span class="identifier">first_argument_type</span><span class="special">;</span>
 </pre>
 <p>
-          The type of <code class="computeroutput">first_argument_type</code> is based on the type <code class="computeroutput">T</code>
+          The type of <code class="computeroutput"><span class="identifier">first_argument_type</span></code>
+          is based on the type <code class="computeroutput"><span class="identifier">T</span></code>
           of the wrapper's target object:
         </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-              if <code class="computeroutput">T</code> is a pointer to a function type accepting two arguments,
-              <code class="computeroutput">first_argument_type</code> is a synonym for the return type of
-              <code class="computeroutput">T</code>;
+              if <code class="computeroutput"><span class="identifier">T</span></code> is a pointer to
+              a function type accepting two arguments, <code class="computeroutput"><span class="identifier">first_argument_type</span></code>
+              is a synonym for the return type of <code class="computeroutput"><span class="identifier">T</span></code>;
             </li>
 <li class="listitem">
-              if <code class="computeroutput">T</code> is a class type with a member type <code class="computeroutput">first_argument_type</code>,
-              then <code class="computeroutput">first_argument_type</code> is a synonym for <code class="computeroutput">T::first_argument_type</code>;
+              if <code class="computeroutput"><span class="identifier">T</span></code> is a class type
+              with a member type <code class="computeroutput"><span class="identifier">first_argument_type</span></code>,
+              then <code class="computeroutput"><span class="identifier">first_argument_type</span></code>
+              is a synonym for <code class="computeroutput"><span class="identifier">T</span><span class="special">::</span><span class="identifier">first_argument_type</span></code>;
             </li>
 <li class="listitem">
-              otherwise <code class="computeroutput">first_argument_type</code> is not defined.
+              otherwise <code class="computeroutput"><span class="identifier">first_argument_type</span></code>
+              is not defined.
             </li>
 </ul></div>
 <h6>
@@ -57,8 +61,7 @@ The
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

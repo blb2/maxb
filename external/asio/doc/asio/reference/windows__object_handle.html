@@ -20,11 +20,12 @@
 <a name="asio.reference.windows__object_handle"></a><a class="link" href="windows__object_handle.html" title="windows::object_handle">windows::object_handle</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.windows__object_handle"></a> 
-Typedef for the
-        typical usage of an object handle.
+        <a class="indexterm" name="asio.indexterm.windows__object_handle"></a>
       </p>
-<pre class="programlisting">typedef basic_object_handle object_handle;
+<p>
+        Typedef for the typical usage of an object handle.
+      </p>
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_object_handle</span> <span class="identifier">object_handle</span><span class="special">;</span>
 </pre>
 <h5>
 <a name="asio.reference.windows__object_handle.h0"></a>
@@ -154,7 +155,8 @@ Typedef for the
                 <p>
                   Construct an object handle without opening it. <br> <span class="silver"> —</span><br> Construct
                   an object handle on an existing native handle. <br> <span class="silver"> —</span><br> Move-construct
-                  an object handle from another.
+                  an object handle from another. <br> <span class="silver"> —</span><br> Move-construct an
+                  object handle from a handle of another executor type.
                 </p>
               </td>
 </tr>
@@ -239,7 +241,8 @@ Typedef for the
               </td>
 <td>
                 <p>
-                  Move-assign an object handle from another.
+                  Move-assign an object handle from another. <br> <span class="silver"> —</span><br> Move-assign
+                  an object handle from a handle of another executor type.
                 </p>
               </td>
 </tr>
@@ -258,8 +261,8 @@ Typedef for the
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="windows__basic_object_handle.html" title="windows::basic_object_handle"><code class="computeroutput">windows::basic_object_handle</code></a>
-        class provides asynchronous and blocking object-oriented handle functionality.
+        The <a class="link" href="windows__basic_object_handle.html" title="windows::basic_object_handle"><code class="computeroutput"><span class="identifier">windows</span><span class="special">::</span><span class="identifier">basic_object_handle</span></code></a> class provides
+        asynchronous and blocking object-oriented handle functionality.
       </p>
 <h5>
 <a name="asio.reference.windows__object_handle.h2"></a>
@@ -285,8 +288,7 @@ Typedef for the
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

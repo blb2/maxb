@@ -25,10 +25,10 @@
 <p>
         Provides random-access handle functionality.
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="Executor1.html" title="Executor requirements">Executor</a> = any_io_executor&gt;
-class basic_random_access_handle :
-  public windows::basic_overlapped_handle&lt; Executor &gt;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="Executor1.html" title="Executor requirements">Executor</a> <span class="special">=</span> <span class="identifier">any_io_executor</span><span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">basic_random_access_handle</span> <span class="special">:</span>
+  <span class="keyword">public</span> <span class="identifier">windows</span><span class="special">::</span><span class="identifier">basic_overlapped_handle</span><span class="special">&lt;</span> <span class="identifier">Executor</span> <span class="special">&gt;</span>
 </pre>
 <h5>
 <a name="asio.reference.windows__basic_random_access_handle.h0"></a>
@@ -172,6 +172,8 @@ class basic_random_access_handle :
                   Construct a random-access handle without opening it. <br> <span class="silver"> —</span><br>
                   Construct a random-access handle on an existing native handle.
                   <br> <span class="silver"> —</span><br> Move-construct a random-access handle from another.
+                  <br> <span class="silver"> —</span><br> Move-construct a random-access handle from a handle
+                  of another executor type.
                 </p>
               </td>
 </tr>
@@ -256,7 +258,9 @@ class basic_random_access_handle :
               </td>
 <td>
                 <p>
-                  Move-assign a random-access handle from another.
+                  Move-assign a random-access handle from another. <br> <span class="silver"> —</span><br>
+                  Move-assign a random-access handle from a handle of another executor
+                  type.
                 </p>
               </td>
 </tr>
@@ -275,6 +279,18 @@ class basic_random_access_handle :
 <tr>
 <td>
                 <p>
+                  <a class="link" href="windows__basic_random_access_handle/release.html" title="windows::basic_random_access_handle::release"><span class="bold"><strong>release</strong></span></a>
+                </p>
+              </td>
+<td>
+                <p>
+                  Release ownership of the underlying native handle.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
                   <a class="link" href="windows__basic_random_access_handle/write_some_at.html" title="windows::basic_random_access_handle::write_some_at"><span class="bold"><strong>write_some_at</strong></span></a>
                 </p>
               </td>
@@ -287,8 +303,8 @@ class basic_random_access_handle :
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="windows__basic_random_access_handle.html" title="windows::basic_random_access_handle"><code class="computeroutput">windows::basic_random_access_handle</code></a>
-        class provides asynchronous and blocking random-access handle functionality.
+        The <a class="link" href="windows__basic_random_access_handle.html" title="windows::basic_random_access_handle"><code class="computeroutput"><span class="identifier">windows</span><span class="special">::</span><span class="identifier">basic_random_access_handle</span></code></a> class
+        provides asynchronous and blocking random-access handle functionality.
       </p>
 <h5>
 <a name="asio.reference.windows__basic_random_access_handle.h2"></a>
@@ -314,8 +330,7 @@ class basic_random_access_handle :
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

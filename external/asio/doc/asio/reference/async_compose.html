@@ -20,19 +20,20 @@
 <a name="asio.reference.async_compose"></a><a class="link" href="async_compose.html" title="async_compose">async_compose</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.async_compose"></a> 
-Launch an asynchronous operation
-        with a stateful implementation.
+        <a class="indexterm" name="asio.indexterm.async_compose"></a>
       </p>
-<pre class="programlisting">template&lt;
-    typename CompletionToken,
-    typename Signature,
-    typename Implementation,
-    typename... IoObjectsOrExecutors&gt;
-<a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> async_compose(
-    Implementation &amp;&amp; implementation,
-    CompletionToken &amp; token,
-    IoObjectsOrExecutors &amp;&amp;... io_objects_or_executors);
+<p>
+        Launch an asynchronous operation with a stateful implementation.
+      </p>
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">CompletionToken</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Signature</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Implementation</span><span class="special">,</span>
+    <span class="keyword">typename</span><span class="special">...</span> <span class="identifier">IoObjectsOrExecutors</span><span class="special">&gt;</span>
+<a class="link" href="asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <span class="identifier">async_compose</span><span class="special">(</span>
+    <span class="identifier">Implementation</span> <span class="special">&amp;&amp;</span> <span class="identifier">implementation</span><span class="special">,</span>
+    <span class="identifier">CompletionToken</span> <span class="special">&amp;</span> <span class="identifier">token</span><span class="special">,</span>
+    <span class="identifier">IoObjectsOrExecutors</span> <span class="special">&amp;&amp;...</span> <span class="identifier">io_objects_or_executors</span><span class="special">);</span>
 </pre>
 <p>
         The async_compose function simplifies the implementation of composed asynchronous
@@ -69,58 +70,60 @@ Launch an asynchronous operation
 <a name="asio.reference.async_compose.h1"></a>
         <span><a name="asio.reference.async_compose.example_"></a></span><a class="link" href="async_compose.html#asio.reference.async_compose.example_">Example:</a>
       </h5>
-<pre class="programlisting">struct async_echo_implementation
-{
-  tcp::socket&amp; socket_;
-  asio::mutable_buffer buffer_;
-  enum { starting, reading, writing } state_;
+<pre class="programlisting"><span class="keyword">struct</span> <span class="identifier">async_echo_implementation</span>
+<span class="special">{</span>
+  <span class="identifier">tcp</span><span class="special">::</span><span class="identifier">socket</span><span class="special">&amp;</span> <span class="identifier">socket_</span><span class="special">;</span>
+  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">mutable_buffer</span> <span class="identifier">buffer_</span><span class="special">;</span>
+  <span class="keyword">enum</span> <span class="special">{</span> <span class="identifier">starting</span><span class="special">,</span> <span class="identifier">reading</span><span class="special">,</span> <span class="identifier">writing</span> <span class="special">}</span> <span class="identifier">state_</span><span class="special">;</span>
 
-  template &lt;typename Self&gt;
-  void operator()(Self&amp; self,
-      asio::error_code error = {},
-      std::size_t n = 0)
-  {
-    switch (state_)
-    {
-    case starting:
-      state_ = reading;
-      socket_.async_read_some(
-          buffer_, std::move(self));
-      break;
-    case reading:
-      if (error)
-      {
-        self.complete(error, 0);
-      }
-      else
-      {
-        state_ = writing;
-        asio::async_write(socket_, buffer_,
-            asio::transfer_exactly(n),
-            std::move(self));
-      }
-      break;
-    case writing:
-      self.complete(error, n);
-      break;
-    }
-  }
-};
+  <span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">Self</span><span class="special">&gt;</span>
+  <span class="keyword">void</span> <span class="keyword">operator</span><span class="special">()(</span><span class="identifier">Self</span><span class="special">&amp;</span> <span class="identifier">self</span><span class="special">,</span>
+      <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="identifier">error</span> <span class="special">=</span> <span class="special">{},</span>
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">n</span> <span class="special">=</span> <span class="number">0</span><span class="special">)</span>
+  <span class="special">{</span>
+    <span class="keyword">switch</span> <span class="special">(</span><span class="identifier">state_</span><span class="special">)</span>
+    <span class="special">{</span>
+    <span class="keyword">case</span> <span class="identifier">starting</span><span class="special">:</span>
+      <span class="identifier">state_</span> <span class="special">=</span> <span class="identifier">reading</span><span class="special">;</span>
+      <span class="identifier">socket_</span><span class="special">.</span><span class="identifier">async_read_some</span><span class="special">(</span>
+          <span class="identifier">buffer_</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">self</span><span class="special">));</span>
+      <span class="keyword">break</span><span class="special">;</span>
+    <span class="keyword">case</span> <span class="identifier">reading</span><span class="special">:</span>
+      <span class="keyword">if</span> <span class="special">(</span><span class="identifier">error</span><span class="special">)</span>
+      <span class="special">{</span>
+        <span class="identifier">self</span><span class="special">.</span><span class="identifier">complete</span><span class="special">(</span><span class="identifier">error</span><span class="special">,</span> <span class="number">0</span><span class="special">);</span>
+      <span class="special">}</span>
+      <span class="keyword">else</span>
+      <span class="special">{</span>
+        <span class="identifier">state_</span> <span class="special">=</span> <span class="identifier">writing</span><span class="special">;</span>
+        <span class="identifier">asio</span><span class="special">::</span><span class="identifier">async_write</span><span class="special">(</span><span class="identifier">socket_</span><span class="special">,</span> <span class="identifier">buffer_</span><span class="special">,</span>
+            <span class="identifier">asio</span><span class="special">::</span><span class="identifier">transfer_exactly</span><span class="special">(</span><span class="identifier">n</span><span class="special">),</span>
+            <span class="identifier">std</span><span class="special">::</span><span class="identifier">move</span><span class="special">(</span><span class="identifier">self</span><span class="special">));</span>
+      <span class="special">}</span>
+      <span class="keyword">break</span><span class="special">;</span>
+    <span class="keyword">case</span> <span class="identifier">writing</span><span class="special">:</span>
+      <span class="identifier">self</span><span class="special">.</span><span class="identifier">complete</span><span class="special">(</span><span class="identifier">error</span><span class="special">,</span> <span class="identifier">n</span><span class="special">);</span>
+      <span class="keyword">break</span><span class="special">;</span>
+    <span class="special">}</span>
+  <span class="special">}</span>
+<span class="special">};</span>
 
-template &lt;typename CompletionToken&gt;
-auto async_echo(tcp::socket&amp; socket,
-    asio::mutable_buffer buffer,
-    CompletionToken&amp;&amp; token) -&gt;
-  typename asio::async_result&lt;
-    typename std::decay&lt;CompletionToken&gt;::type,
-      void(asio::error_code, std::size_t)&gt;::return_type
-{
-  return asio::async_compose&lt;CompletionToken,
-    void(asio::error_code, std::size_t)&gt;(
-      async_echo_implementation{socket, buffer,
-        async_echo_implementation::starting},
-      token, socket);
-}
+<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">CompletionToken</span><span class="special">&gt;</span>
+<span class="keyword">auto</span> <span class="identifier">async_echo</span><span class="special">(</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">socket</span><span class="special">&amp;</span> <span class="identifier">socket</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">mutable_buffer</span> <span class="identifier">buffer</span><span class="special">,</span>
+    <span class="identifier">CompletionToken</span><span class="special">&amp;&amp;</span> <span class="identifier">token</span><span class="special">)</span> <span class="special">-&gt;</span>
+  <span class="keyword">decltype</span><span class="special">(</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">async_compose</span><span class="special">&lt;</span><span class="identifier">CompletionToken</span><span class="special">,</span>
+      <span class="keyword">void</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)&gt;(</span>
+        <span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">async_echo_implementation</span><span class="special">&gt;(),</span>
+        <span class="identifier">token</span><span class="special">,</span> <span class="identifier">socket</span><span class="special">))</span>
+<span class="special">{</span>
+  <span class="keyword">return</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">async_compose</span><span class="special">&lt;</span><span class="identifier">CompletionToken</span><span class="special">,</span>
+    <span class="keyword">void</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span><span class="special">)&gt;(</span>
+      <span class="identifier">async_echo_implementation</span><span class="special">{</span><span class="identifier">socket</span><span class="special">,</span> <span class="identifier">buffer</span><span class="special">,</span>
+        <span class="identifier">async_echo_implementation</span><span class="special">::</span><span class="identifier">starting</span><span class="special">},</span>
+      <span class="identifier">token</span><span class="special">,</span> <span class="identifier">socket</span><span class="special">);</span>
+<span class="special">}</span>
 </pre>
 <h5>
 <a name="asio.reference.async_compose.h2"></a>
@@ -135,8 +138,7 @@ auto async_echo(tcp::socket&amp; socket,
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

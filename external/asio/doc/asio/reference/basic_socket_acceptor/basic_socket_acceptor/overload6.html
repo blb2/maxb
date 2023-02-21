@@ -23,13 +23,13 @@
 <p>
             Construct an acceptor opened on the given endpoint.
           </p>
-<pre class="programlisting">template&lt;
-    typename ExecutionContext&gt;
-basic_socket_acceptor(
-    ExecutionContext &amp; context,
-    const endpoint_type &amp; endpoint,
-    bool reuse_addr = true,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<span class="identifier">basic_socket_acceptor</span><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">endpoint_type</span> <span class="special">&amp;</span> <span class="identifier">endpoint</span><span class="special">,</span>
+    <span class="keyword">bool</span> <span class="identifier">reuse_addr</span> <span class="special">=</span> <span class="keyword">true</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
             This constructor creates an acceptor and automatically opens it to listen
@@ -55,7 +55,7 @@ basic_socket_acceptor(
                 </p></dd>
 <dt><span class="term">reuse_addr</span></dt>
 <dd><p>
-                  Whether the constructor should set the socket option <code class="computeroutput">socket_base::reuse_address</code>.
+                  Whether the constructor should set the socket option <code class="computeroutput"><span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">reuse_address</span></code>.
                 </p></dd>
 </dl>
 </div>
@@ -79,18 +79,17 @@ basic_socket_acceptor(
 <p>
             This constructor is equivalent to the following code:
           </p>
-<pre class="programlisting">basic_socket_acceptor&lt;Protocol&gt; acceptor(my_context);
-acceptor.open(endpoint.protocol());
-if (reuse_addr)
-  acceptor.set_option(socket_base::reuse_address(true));
-acceptor.bind(endpoint);
-acceptor.listen();
+<pre class="programlisting"><span class="identifier">basic_socket_acceptor</span><span class="special">&lt;</span><span class="identifier">Protocol</span><span class="special">&gt;</span> <span class="identifier">acceptor</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">open</span><span class="special">(</span><span class="identifier">endpoint</span><span class="special">.</span><span class="identifier">protocol</span><span class="special">());</span>
+<span class="keyword">if</span> <span class="special">(</span><span class="identifier">reuse_addr</span><span class="special">)</span>
+  <span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">set_option</span><span class="special">(</span><span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">reuse_address</span><span class="special">(</span><span class="keyword">true</span><span class="special">));</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">bind</span><span class="special">(</span><span class="identifier">endpoint</span><span class="special">);</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">listen</span><span class="special">();</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

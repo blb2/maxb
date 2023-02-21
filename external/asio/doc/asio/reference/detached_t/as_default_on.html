@@ -22,19 +22,18 @@
 <p>
           <a class="indexterm" name="asio.indexterm.detached_t.as_default_on"></a> 
 Function
-          helper to adapt an I/O object to use <code class="computeroutput">detached_t</code> as its default
-          completion token type.
+          helper to adapt an I/O object to use <code class="computeroutput"><span class="identifier">detached_t</span></code>
+          as its default completion token type.
         </p>
-<pre class="programlisting">template&lt;
-    typename T&gt;
-static decay&lt; T &gt;::type::template rebind_executor&lt; executor_with_default&lt; typename decay&lt; T &gt;::type::executor_type &gt; &gt;::other as_default_on(
-    T &amp;&amp; object);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="keyword">static</span> <span class="identifier">decay</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;::</span><span class="identifier">type</span><span class="special">::</span><span class="keyword">template</span> <span class="identifier">rebind_executor</span><span class="special">&lt;</span> <span class="identifier">executor_with_default</span><span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">decay</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;::</span><span class="identifier">type</span><span class="special">::</span><span class="identifier">executor_type</span> <span class="special">&gt;</span> <span class="special">&gt;::</span><span class="identifier">other</span> <span class="identifier">as_default_on</span><span class="special">(</span>
+    <span class="identifier">T</span> <span class="special">&amp;&amp;</span> <span class="identifier">object</span><span class="special">);</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

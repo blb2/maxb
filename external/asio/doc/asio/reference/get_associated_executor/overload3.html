@@ -23,13 +23,13 @@
 <p>
           Helper function to obtain an object's associated executor.
         </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename ExecutionContext&gt;
-associated_executor&lt; T, typename ExecutionContext::executor_type &gt;::type get_associated_executor(
-    const T &amp; t,
-    ExecutionContext &amp; ctx,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<span class="identifier">associated_executor</span><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">::</span><span class="identifier">executor_type</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="identifier">get_associated_executor</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> <span class="identifier">t</span><span class="special">,</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">ctx</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.get_associated_executor.overload3.h0"></a>
@@ -37,14 +37,13 @@ associated_executor&lt; T, typename ExecutionContext::executor_type &gt;::type g
           Value</a>
         </h6>
 <p>
-          <code class="computeroutput">associated_executor&lt;T, typename ExecutionContext::executor_type&gt;get(t,
-          ctx.get_executor())</code>
+          <code class="computeroutput"><span class="identifier">associated_executor</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">,</span> <span class="keyword">typename</span>
+          <span class="identifier">ExecutionContext</span><span class="special">::</span><span class="identifier">executor_type</span><span class="special">&gt;</span><span class="identifier">get</span><span class="special">(</span><span class="identifier">t</span><span class="special">,</span> <span class="identifier">ctx</span><span class="special">.</span><span class="identifier">get_executor</span><span class="special">())</span></code>
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

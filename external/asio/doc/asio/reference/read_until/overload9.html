@@ -23,13 +23,13 @@
 <p>
           Read data into a streambuf until it contains a specified delimiter.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a>,
-    typename Allocator&gt;
-std::size_t read_until(
-    SyncReadStream &amp; s,
-    asio::basic_streambuf&lt; Allocator &gt; &amp; b,
-    char delim);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">read_until</span><span class="special">(</span>
+    <span class="identifier">SyncReadStream</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">basic_streambuf</span><span class="special">&lt;</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">b</span><span class="special">,</span>
+    <span class="keyword">char</span> <span class="identifier">delim</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to read data into the specified streambuf until the
@@ -109,39 +109,39 @@ std::size_t read_until(
 <p>
           To read data into a streambuf until a newline is encountered:
         </p>
-<pre class="programlisting">asio::streambuf b;
-asio::read_until(s, b, '\n');
-std::istream is(&amp;b);
-std::string line;
-std::getline(is, line);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">streambuf</span> <span class="identifier">b</span><span class="special">;</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">read_until</span><span class="special">(</span><span class="identifier">s</span><span class="special">,</span> <span class="identifier">b</span><span class="special">,</span> <span class="char">'\n'</span><span class="special">);</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">istream</span> <span class="identifier">is</span><span class="special">(&amp;</span><span class="identifier">b</span><span class="special">);</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">string</span> <span class="identifier">line</span><span class="special">;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">getline</span><span class="special">(</span><span class="identifier">is</span><span class="special">,</span> <span class="identifier">line</span><span class="special">);</span>
 </pre>
 <p>
-          After the <code class="computeroutput">read_until</code> operation completes successfully, the
-          buffer <code class="computeroutput">b</code> contains the delimiter:
+          After the <code class="computeroutput"><span class="identifier">read_until</span></code> operation
+          completes successfully, the buffer <code class="computeroutput"><span class="identifier">b</span></code>
+          contains the delimiter:
         </p>
-<pre class="programlisting">{ 'a', 'b', ..., 'c', '\n', 'd', 'e', ... }
+<pre class="programlisting"><span class="special">{</span> <span class="char">'a'</span><span class="special">,</span> <span class="char">'b'</span><span class="special">,</span> <span class="special">...,</span> <span class="char">'c'</span><span class="special">,</span> <span class="char">'\n'</span><span class="special">,</span> <span class="char">'d'</span><span class="special">,</span> <span class="char">'e'</span><span class="special">,</span> <span class="special">...</span> <span class="special">}</span>
 </pre>
 <p>
-          The call to <code class="computeroutput">std::getline</code> then extracts the data up to and
-          including the newline (which is discarded), so that the string <code class="computeroutput">line</code>
-          contains:
+          The call to <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">getline</span></code> then extracts the data up to
+          and including the newline (which is discarded), so that the string <code class="computeroutput"><span class="identifier">line</span></code> contains:
         </p>
-<pre class="programlisting">{ 'a', 'b', ..., 'c' }
+<pre class="programlisting"><span class="special">{</span> <span class="char">'a'</span><span class="special">,</span> <span class="char">'b'</span><span class="special">,</span> <span class="special">...,</span> <span class="char">'c'</span> <span class="special">}</span>
 </pre>
 <p>
-          The remaining data is left in the buffer <code class="computeroutput">b</code> as follows:
+          The remaining data is left in the buffer <code class="computeroutput"><span class="identifier">b</span></code>
+          as follows:
         </p>
-<pre class="programlisting">{ 'd', 'e', ... }
+<pre class="programlisting"><span class="special">{</span> <span class="char">'d'</span><span class="special">,</span> <span class="char">'e'</span><span class="special">,</span> <span class="special">...</span> <span class="special">}</span>
 </pre>
 <p>
           This data may be the start of a new line, to be extracted by a subsequent
-          <code class="computeroutput">read_until</code> operation.
+          <code class="computeroutput"><span class="identifier">read_until</span></code> operation.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

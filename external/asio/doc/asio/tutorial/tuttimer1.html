@@ -27,11 +27,10 @@
         We start by including the necessary header files.
       </p>
 <p>
-        All of the asio classes can be used by simply including the <code class="computeroutput">"asio.hpp"</code>
-        header file.
+        All of the asio classes can be used by simply including the <code class="computeroutput"><span class="string">"asio.hpp"</span></code> header file.
       </p>
-<pre class="programlisting">#include &lt;iostream&gt;
-#include &lt;asio.hpp&gt;
+<pre class="programlisting"><span class="special">#</span><span class="identifier">include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
+<span class="special">#</span><span class="identifier">include</span> <span class="special">&lt;</span><span class="identifier">asio</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 </pre>
 <p>
         All programs that use asio need to have at least one I/O execution context,
@@ -41,18 +40,18 @@
         object of type <a class="link" href="../reference/io_context.html" title="io_context">io_context</a>
         first thing in the main function.
       </p>
-<pre class="programlisting">int main()
-{
-  asio::io_context io;
+<pre class="programlisting"><span class="keyword">int</span> <span class="identifier">main</span><span class="special">()</span>
+<span class="special">{</span>
+  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">io_context</span> <span class="identifier">io</span><span class="special">;</span>
 </pre>
 <p>
         Next we declare an object of type asio::steady_timer. The core asio classes
         that provide I/O functionality (or as in this case timer functionality) always
-        take a reference to an io_context as their first constructor argument. The
-        second argument to the constructor sets the timer to expire 5 seconds from
-        now.
+        take an executor, or a reference to an execution context (such as <a class="link" href="../reference/io_context.html" title="io_context">io_context</a>),
+        as their first constructor argument. The second argument to the constructor
+        sets the timer to expire 5 seconds from now.
       </p>
-<pre class="programlisting">  asio::steady_timer t(io, asio::chrono::seconds(5));
+<pre class="programlisting">  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">steady_timer</span> <span class="identifier">t</span><span class="special">(</span><span class="identifier">io</span><span class="special">,</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">chrono</span><span class="special">::</span><span class="identifier">seconds</span><span class="special">(</span><span class="number">5</span><span class="special">));</span>
 </pre>
 <p>
         In this simple example we perform a blocking wait on the timer. That is,
@@ -65,16 +64,16 @@
         expired". If the <a class="link" href="../reference/basic_waitable_timer/wait.html" title="basic_waitable_timer::wait">steady_timer::wait()</a>
         function is called on an expired timer, it will return immediately.
       </p>
-<pre class="programlisting">  t.wait();
+<pre class="programlisting">  <span class="identifier">t</span><span class="special">.</span><span class="identifier">wait</span><span class="special">();</span>
 </pre>
 <p>
-        Finally we print the obligatory <code class="computeroutput">"Hello, world!"</code> message
-        to show when the timer has expired.
+        Finally we print the obligatory <code class="computeroutput"><span class="string">"Hello,
+        world!"</span></code> message to show when the timer has expired.
       </p>
-<pre class="programlisting">  std::cout &lt;&lt; "Hello, world!" &lt;&lt; std::endl;
+<pre class="programlisting">  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Hello, world!"</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
 
-  return 0;
-}
+  <span class="keyword">return</span> <span class="number">0</span><span class="special">;</span>
+<span class="special">}</span>
 </pre>
 <p>
         See the <a class="link" href="tuttimer1/src.html" title="Source listing for Timer.1">full source listing</a>
@@ -88,8 +87,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

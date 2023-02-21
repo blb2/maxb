@@ -22,23 +22,22 @@
 <p>
           <a class="indexterm" name="asio.indexterm.io_context__basic_executor_type.on_work_finished"></a> 
 Inform
-          the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+          the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
           that some work is no longer outstanding.
         </p>
-<pre class="programlisting">void on_work_finished() const;
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">on_work_finished</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <p>
-          This function is used to inform the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          that some work has finished. Once the count of unfinished work reaches
-          zero, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          is stopped and the <code class="computeroutput">run()</code> and <code class="computeroutput">run_one()</code> functions
-          may exit.
+          This function is used to inform the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> that some work has
+          finished. Once the count of unfinished work reaches zero, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> is stopped and the
+          <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>
+          and <code class="computeroutput"><span class="identifier">run_one</span><span class="special">()</span></code>
+          functions may exit.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

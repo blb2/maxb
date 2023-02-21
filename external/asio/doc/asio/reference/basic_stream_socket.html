@@ -6,14 +6,14 @@
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="../../index.html" title="Asio">
 <link rel="up" href="../reference.html" title="Reference">
-<link rel="prev" href="basic_socket_streambuf/_basic_socket_streambuf.html" title="basic_socket_streambuf::~basic_socket_streambuf">
+<link rel="prev" href="basic_stream_file__rebind_executor/other.html" title="basic_stream_file::rebind_executor::other">
 <link rel="next" href="basic_stream_socket/assign.html" title="basic_stream_socket::assign">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="asio C++ library" width="250" height="60" src="../../asio.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="basic_socket_streambuf/_basic_socket_streambuf.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_stream_socket/assign.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="basic_stream_file__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_stream_socket/assign.html"><img src="../../next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -25,11 +25,11 @@
 <p>
         Provides stream-oriented socket functionality.
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="Protocol.html" title="Protocol requirements">Protocol</a>,
-    typename <a class="link" href="Executor1.html" title="Executor requirements">Executor</a>&gt;
-class basic_stream_socket :
-  public basic_socket&lt; Protocol, Executor &gt;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="Protocol.html" title="Protocol requirements">Protocol</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="Executor1.html" title="Executor requirements">Executor</a><span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">basic_stream_socket</span> <span class="special">:</span>
+  <span class="keyword">public</span> <span class="identifier">basic_socket</span><span class="special">&lt;</span> <span class="identifier">Protocol</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span>
 </pre>
 <h5>
 <a name="asio.reference.basic_stream_socket.h0"></a>
@@ -879,7 +879,7 @@ class basic_stream_socket :
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="basic_stream_socket.html" title="basic_stream_socket"><code class="computeroutput">basic_stream_socket</code></a>
+        The <a class="link" href="basic_stream_socket.html" title="basic_stream_socket"><code class="computeroutput"><span class="identifier">basic_stream_socket</span></code></a>
         class template provides asynchronous and blocking stream-oriented socket
         functionality.
       </p>
@@ -895,12 +895,14 @@ class basic_stream_socket :
         <span class="emphasis"><em>Shared</em></span> <span class="emphasis"><em>objects:</em></span> Unsafe.
       </p>
 <p>
-        Synchronous <code class="computeroutput">send</code>, <code class="computeroutput">receive</code>, and <code class="computeroutput">connect</code>
-        operations are thread safe with respect to each other, if the underlying
-        operating system calls are also thread safe. This means that it is permitted
-        to perform concurrent calls to these synchronous operations on a single socket
-        object. Other synchronous operations, such as <code class="computeroutput">open</code> or <code class="computeroutput">close</code>,
-        are not thread safe.
+        Synchronous <code class="computeroutput"><span class="identifier">send</span></code>, <code class="computeroutput"><span class="identifier">receive</span></code>, <code class="computeroutput"><span class="identifier">connect</span></code>,
+        and <code class="computeroutput"><span class="identifier">shutdown</span></code> operations are
+        thread safe with respect to each other, if the underlying operating system
+        calls are also thread safe. This means that it is permitted to perform concurrent
+        calls to these synchronous operations on a single socket object. Other synchronous
+        operations, such as <code class="computeroutput"><span class="identifier">open</span></code>
+        or <code class="computeroutput"><span class="identifier">close</span></code>, are not thread
+        safe.
       </p>
 <h5>
 <a name="asio.reference.basic_stream_socket.h4"></a>
@@ -915,8 +917,7 @@ class basic_stream_socket :
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -924,7 +925,7 @@ class basic_stream_socket :
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="basic_socket_streambuf/_basic_socket_streambuf.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_stream_socket/assign.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="basic_stream_file__rebind_executor/other.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="basic_stream_socket/assign.html"><img src="../../next.png" alt="Next"></a>
 </div>
 </body>
 </html>

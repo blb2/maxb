@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="../../../boostbook.css" type="text/css">
 <meta name="generator" content="DocBook XSL Stylesheets V1.75.2">
 <link rel="home" href="../../../index.html" title="Asio">
-<link rel="up" href="../tuttimer5.html" title="Timer.5 - Synchronising handlers in multithreaded programs">
-<link rel="prev" href="../tuttimer5.html" title="Timer.5 - Synchronising handlers in multithreaded programs">
+<link rel="up" href="../tuttimer5.html" title="Timer.5 - Synchronising completion handlers in multithreaded programs">
+<link rel="prev" href="../tuttimer5.html" title="Timer.5 - Synchronising completion handlers in multithreaded programs">
 <link rel="next" href="../tutdaytime1.html" title="Daytime.1 - A synchronous TCP daytime client">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
@@ -19,96 +19,95 @@
 <div class="titlepage"><div><div><h4 class="title">
 <a name="asio.tutorial.tuttimer5.src"></a><a class="link" href="src.html" title="Source listing for Timer.5">Source listing for Timer.5</a>
 </h4></div></div></div>
-<pre class="programlisting">//
-// timer.cpp
-// ~~~~~~~~~
-//
-// Copyright (c) 2003-2021 Christopher M. Kohlhoff (chris at kohlhoff dot com)
-//
-// Distributed under the Boost Software License, Version 1.0. (See accompanying
-// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-//
+<pre class="programlisting"><span class="comment">//</span>
+<span class="comment">// timer.cpp</span>
+<span class="comment">// ~~~~~~~~~</span>
+<span class="comment">//</span>
+<span class="comment">// Copyright (c) 2003-2022 Christopher M. Kohlhoff (chris at kohlhoff dot com)</span>
+<span class="comment">//</span>
+<span class="comment">// Distributed under the Boost Software License, Version 1.0. (See accompanying</span>
+<span class="comment">// file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)</span>
+<span class="comment">//</span>
 
-#include &lt;iostream&gt;
-#include &lt;asio.hpp&gt;
-#include &lt;boost/bind/bind.hpp&gt;
+<span class="special">#</span><span class="identifier">include</span> <span class="special">&lt;</span><span class="identifier">iostream</span><span class="special">&gt;</span>
+<span class="special">#</span><span class="identifier">include</span> <span class="special">&lt;</span><span class="identifier">asio</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="special">#</span><span class="identifier">include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">bind</span><span class="special">/</span><span class="identifier">bind</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
 
-class printer
-{
-public:
-  printer(asio::io_context&amp; io)
-    : strand_(asio::make_strand(io)),
-      timer1_(io, asio::chrono::seconds(1)),
-      timer2_(io, asio::chrono::seconds(1)),
-      count_(0)
-  {
-    timer1_.async_wait(asio::bind_executor(strand_,
-          boost::bind(&amp;printer::print1, this)));
+<span class="keyword">class</span> <span class="identifier">printer</span>
+<span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+  <span class="identifier">printer</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">io_context</span><span class="special">&amp;</span> <span class="identifier">io</span><span class="special">)</span>
+    <span class="special">:</span> <span class="identifier">strand_</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">make_strand</span><span class="special">(</span><span class="identifier">io</span><span class="special">)),</span>
+      <span class="identifier">timer1_</span><span class="special">(</span><span class="identifier">io</span><span class="special">,</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">chrono</span><span class="special">::</span><span class="identifier">seconds</span><span class="special">(</span><span class="number">1</span><span class="special">)),</span>
+      <span class="identifier">timer2_</span><span class="special">(</span><span class="identifier">io</span><span class="special">,</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">chrono</span><span class="special">::</span><span class="identifier">seconds</span><span class="special">(</span><span class="number">1</span><span class="special">)),</span>
+      <span class="identifier">count_</span><span class="special">(</span><span class="number">0</span><span class="special">)</span>
+  <span class="special">{</span>
+    <span class="identifier">timer1_</span><span class="special">.</span><span class="identifier">async_wait</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">bind_executor</span><span class="special">(</span><span class="identifier">strand_</span><span class="special">,</span>
+          <span class="identifier">boost</span><span class="special">::</span><span class="identifier">bind</span><span class="special">(&amp;</span><span class="identifier">printer</span><span class="special">::</span><span class="identifier">print1</span><span class="special">,</span> <span class="keyword">this</span><span class="special">)));</span>
 
-    timer2_.async_wait(asio::bind_executor(strand_,
-          boost::bind(&amp;printer::print2, this)));
-  }
+    <span class="identifier">timer2_</span><span class="special">.</span><span class="identifier">async_wait</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">bind_executor</span><span class="special">(</span><span class="identifier">strand_</span><span class="special">,</span>
+          <span class="identifier">boost</span><span class="special">::</span><span class="identifier">bind</span><span class="special">(&amp;</span><span class="identifier">printer</span><span class="special">::</span><span class="identifier">print2</span><span class="special">,</span> <span class="keyword">this</span><span class="special">)));</span>
+  <span class="special">}</span>
 
-  ~printer()
-  {
-    std::cout &lt;&lt; "Final count is " &lt;&lt; count_ &lt;&lt; std::endl;
-  }
+  <span class="special">~</span><span class="identifier">printer</span><span class="special">()</span>
+  <span class="special">{</span>
+    <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Final count is "</span> <span class="special">&lt;&lt;</span> <span class="identifier">count_</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+  <span class="special">}</span>
 
-  void print1()
-  {
-    if (count_ &lt; 10)
-    {
-      std::cout &lt;&lt; "Timer 1: " &lt;&lt; count_ &lt;&lt; std::endl;
-      ++count_;
+  <span class="keyword">void</span> <span class="identifier">print1</span><span class="special">()</span>
+  <span class="special">{</span>
+    <span class="keyword">if</span> <span class="special">(</span><span class="identifier">count_</span> <span class="special">&lt;</span> <span class="number">10</span><span class="special">)</span>
+    <span class="special">{</span>
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Timer 1: "</span> <span class="special">&lt;&lt;</span> <span class="identifier">count_</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+      <span class="special">++</span><span class="identifier">count_</span><span class="special">;</span>
 
-      timer1_.expires_at(timer1_.expiry() + asio::chrono::seconds(1));
+      <span class="identifier">timer1_</span><span class="special">.</span><span class="identifier">expires_at</span><span class="special">(</span><span class="identifier">timer1_</span><span class="special">.</span><span class="identifier">expiry</span><span class="special">()</span> <span class="special">+</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">chrono</span><span class="special">::</span><span class="identifier">seconds</span><span class="special">(</span><span class="number">1</span><span class="special">));</span>
 
-      timer1_.async_wait(asio::bind_executor(strand_,
-            boost::bind(&amp;printer::print1, this)));
-    }
-  }
+      <span class="identifier">timer1_</span><span class="special">.</span><span class="identifier">async_wait</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">bind_executor</span><span class="special">(</span><span class="identifier">strand_</span><span class="special">,</span>
+            <span class="identifier">boost</span><span class="special">::</span><span class="identifier">bind</span><span class="special">(&amp;</span><span class="identifier">printer</span><span class="special">::</span><span class="identifier">print1</span><span class="special">,</span> <span class="keyword">this</span><span class="special">)));</span>
+    <span class="special">}</span>
+  <span class="special">}</span>
 
-  void print2()
-  {
-    if (count_ &lt; 10)
-    {
-      std::cout &lt;&lt; "Timer 2: " &lt;&lt; count_ &lt;&lt; std::endl;
-      ++count_;
+  <span class="keyword">void</span> <span class="identifier">print2</span><span class="special">()</span>
+  <span class="special">{</span>
+    <span class="keyword">if</span> <span class="special">(</span><span class="identifier">count_</span> <span class="special">&lt;</span> <span class="number">10</span><span class="special">)</span>
+    <span class="special">{</span>
+      <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Timer 2: "</span> <span class="special">&lt;&lt;</span> <span class="identifier">count_</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+      <span class="special">++</span><span class="identifier">count_</span><span class="special">;</span>
 
-      timer2_.expires_at(timer2_.expiry() + asio::chrono::seconds(1));
+      <span class="identifier">timer2_</span><span class="special">.</span><span class="identifier">expires_at</span><span class="special">(</span><span class="identifier">timer2_</span><span class="special">.</span><span class="identifier">expiry</span><span class="special">()</span> <span class="special">+</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">chrono</span><span class="special">::</span><span class="identifier">seconds</span><span class="special">(</span><span class="number">1</span><span class="special">));</span>
 
-      timer2_.async_wait(asio::bind_executor(strand_,
-            boost::bind(&amp;printer::print2, this)));
-    }
-  }
+      <span class="identifier">timer2_</span><span class="special">.</span><span class="identifier">async_wait</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">bind_executor</span><span class="special">(</span><span class="identifier">strand_</span><span class="special">,</span>
+            <span class="identifier">boost</span><span class="special">::</span><span class="identifier">bind</span><span class="special">(&amp;</span><span class="identifier">printer</span><span class="special">::</span><span class="identifier">print2</span><span class="special">,</span> <span class="keyword">this</span><span class="special">)));</span>
+    <span class="special">}</span>
+  <span class="special">}</span>
 
-private:
-  asio::strand&lt;asio::io_context::executor_type&gt; strand_;
-  asio::steady_timer timer1_;
-  asio::steady_timer timer2_;
-  int count_;
-};
+<span class="keyword">private</span><span class="special">:</span>
+  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">strand</span><span class="special">&lt;</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">io_context</span><span class="special">::</span><span class="identifier">executor_type</span><span class="special">&gt;</span> <span class="identifier">strand_</span><span class="special">;</span>
+  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">steady_timer</span> <span class="identifier">timer1_</span><span class="special">;</span>
+  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">steady_timer</span> <span class="identifier">timer2_</span><span class="special">;</span>
+  <span class="keyword">int</span> <span class="identifier">count_</span><span class="special">;</span>
+<span class="special">};</span>
 
-int main()
-{
-  asio::io_context io;
-  printer p(io);
-  asio::thread t(boost::bind(&amp;asio::io_context::run, &amp;io));
-  io.run();
-  t.join();
+<span class="keyword">int</span> <span class="identifier">main</span><span class="special">()</span>
+<span class="special">{</span>
+  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">io_context</span> <span class="identifier">io</span><span class="special">;</span>
+  <span class="identifier">printer</span> <span class="identifier">p</span><span class="special">(</span><span class="identifier">io</span><span class="special">);</span>
+  <span class="identifier">asio</span><span class="special">::</span><span class="identifier">thread</span> <span class="identifier">t</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">bind</span><span class="special">(&amp;</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">io_context</span><span class="special">::</span><span class="identifier">run</span><span class="special">,</span> <span class="special">&amp;</span><span class="identifier">io</span><span class="special">));</span>
+  <span class="identifier">io</span><span class="special">.</span><span class="identifier">run</span><span class="special">();</span>
+  <span class="identifier">t</span><span class="special">.</span><span class="identifier">join</span><span class="special">();</span>
 
-  return 0;
-}
+  <span class="keyword">return</span> <span class="number">0</span><span class="special">;</span>
+<span class="special">}</span>
 </pre>
 <p>
-          Return to <a class="link" href="../tuttimer5.html" title="Timer.5 - Synchronising handlers in multithreaded programs">Timer.5 - Synchronising
-          handlers in multithreaded programs</a>
+          Return to <a class="link" href="../tuttimer5.html" title="Timer.5 - Synchronising completion handlers in multithreaded programs">Timer.5 - Synchronising
+          completion handlers in multithreaded programs</a>
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

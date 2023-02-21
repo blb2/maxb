@@ -21,30 +21,35 @@
 </h4></div></div></div>
 <p>
           <a class="indexterm" name="asio.indexterm.io_context.restart"></a> 
-Restart the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          in preparation for a subsequent <code class="computeroutput">run()</code> invocation.
+Restart the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> in preparation for
+          a subsequent <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>
+          invocation.
         </p>
-<pre class="programlisting">void restart();
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">restart</span><span class="special">();</span>
 </pre>
 <p>
           This function must be called prior to any second or later set of invocations
-          of the <code class="computeroutput">run()</code>, <code class="computeroutput">run_one()</code>, <code class="computeroutput">poll()</code>
-          or <code class="computeroutput">poll_one()</code> functions when a previous invocation of these
-          functions returned due to the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          being stopped or running out of work. After a call to <code class="computeroutput">restart()</code>,
-          the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          object's <code class="computeroutput">stopped()</code> function will return <code class="computeroutput">false</code>.
+          of the <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">run_one</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">poll</span><span class="special">()</span></code>
+          or <code class="computeroutput"><span class="identifier">poll_one</span><span class="special">()</span></code>
+          functions when a previous invocation of these functions returned due to
+          the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
+          being stopped or running out of work. After a call to <code class="computeroutput"><span class="identifier">restart</span><span class="special">()</span></code>, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> object's <code class="computeroutput"><span class="identifier">stopped</span><span class="special">()</span></code>
+          function will return <code class="computeroutput"><span class="keyword">false</span></code>.
         </p>
 <p>
           This function must not be called while there are any unfinished calls to
-          the <code class="computeroutput">run()</code>, <code class="computeroutput">run_one()</code>, <code class="computeroutput">poll()</code> or
-          <code class="computeroutput">poll_one()</code> functions.
+          the <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">run_one</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">poll</span><span class="special">()</span></code>
+          or <code class="computeroutput"><span class="identifier">poll_one</span><span class="special">()</span></code>
+          functions.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

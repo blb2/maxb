@@ -23,18 +23,19 @@
         <a class="indexterm" name="asio.indexterm.execution__can_connect"></a>
       </p>
 <p>
-        A type trait that determines whether a <code class="computeroutput">connect</code> expression is
-        well-formed.
+        A type trait that determines whether a <code class="computeroutput"><span class="identifier">connect</span></code>
+        expression is well-formed.
       </p>
-<pre class="programlisting">template&lt;
-    typename S,
-    typename R&gt;
-struct can_connect
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">S</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">R</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">can_connect</span>
 </pre>
 <p>
-        Class template <code class="computeroutput">can_connect</code> is a trait that is derived from
-        <code class="computeroutput">true_type</code> if the expression <code class="computeroutput">execution::connect(std::declval&lt;S&gt;(),
-        std::declval&lt;R&gt;())</code> is well formed; otherwise <code class="computeroutput">false_type</code>.
+        Class template <code class="computeroutput"><span class="identifier">can_connect</span></code>
+        is a trait that is derived from <code class="computeroutput"><span class="identifier">true_type</span></code>
+        if the expression <code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">connect</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;(),</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">R</span><span class="special">&gt;())</span></code>
+        is well formed; otherwise <code class="computeroutput"><span class="identifier">false_type</span></code>.
       </p>
 <h5>
 <a name="asio.reference.execution__can_connect.h0"></a>
@@ -49,8 +50,7 @@ struct can_connect
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

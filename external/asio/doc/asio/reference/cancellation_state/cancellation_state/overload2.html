@@ -23,14 +23,14 @@
 <p>
             Construct and attach to a parent slot to create a new child slot.
           </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../../CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a>&gt;
-constexpr cancellation_state(
-    CancellationSlot slot);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../../CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a><span class="special">&gt;</span>
+<span class="keyword">constexpr</span> <span class="identifier">cancellation_state</span><span class="special">(</span>
+    <span class="identifier">CancellationSlot</span> <span class="identifier">slot</span><span class="special">);</span>
 </pre>
 <p>
             Initialises the cancellation state so that it allows terminal cancellation
-            only. Equivalent to <code class="computeroutput">cancellation_state(slot, enable_terminal_cancellation())</code>.
+            only. Equivalent to <code class="computeroutput"><span class="identifier">cancellation_state</span><span class="special">(</span><span class="identifier">slot</span><span class="special">,</span> <span class="identifier">enable_terminal_cancellation</span><span class="special">())</span></code>.
           </p>
 <h6>
 <a name="asio.reference.cancellation_state.cancellation_state.overload2.h0"></a>
@@ -48,8 +48,7 @@ constexpr cancellation_state(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

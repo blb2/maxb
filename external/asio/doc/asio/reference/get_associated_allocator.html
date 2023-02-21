@@ -20,22 +20,23 @@
 <a name="asio.reference.get_associated_allocator"></a><a class="link" href="get_associated_allocator.html" title="get_associated_allocator">get_associated_allocator</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.get_associated_allocator"></a> 
-Helper function
-        to obtain an object's associated allocator.
+        <a class="indexterm" name="asio.indexterm.get_associated_allocator"></a>
       </p>
-<pre class="programlisting">template&lt;
-    typename T&gt;
-associated_allocator&lt; T &gt;::type <a class="link" href="get_associated_allocator/overload1.html" title="get_associated_allocator (1 of 2 overloads)">get_associated_allocator</a>(
-    const T &amp; t);
+<p>
+        Helper function to obtain an object's associated allocator.
+      </p>
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">associated_allocator</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;::</span><span class="identifier">type</span> <a class="link" href="get_associated_allocator/overload1.html" title="get_associated_allocator (1 of 2 overloads)">get_associated_allocator</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> <span class="identifier">t</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="get_associated_allocator/overload1.html" title="get_associated_allocator (1 of 2 overloads)">more...</a></em></span>
 
-template&lt;
-    typename T,
-    typename Allocator&gt;
-associated_allocator&lt; T, Allocator &gt;::type <a class="link" href="get_associated_allocator/overload2.html" title="get_associated_allocator (2 of 2 overloads)">get_associated_allocator</a>(
-    const T &amp; t,
-    const Allocator &amp; a);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span><span class="special">&gt;</span>
+<span class="identifier">associated_allocator</span><span class="special">&lt;</span> <span class="identifier">T</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;::</span><span class="identifier">type</span> <a class="link" href="get_associated_allocator/overload2.html" title="get_associated_allocator (2 of 2 overloads)">get_associated_allocator</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> <span class="identifier">t</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">Allocator</span> <span class="special">&amp;</span> <span class="identifier">a</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="get_associated_allocator/overload2.html" title="get_associated_allocator (2 of 2 overloads)">more...</a></em></span>
 </pre>
 <h5>
@@ -51,8 +52,7 @@ associated_allocator&lt; T, Allocator &gt;::type <a class="link" href="get_assoc
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

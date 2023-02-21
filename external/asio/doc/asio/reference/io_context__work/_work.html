@@ -22,22 +22,20 @@
 <p>
           <a class="indexterm" name="asio.indexterm.io_context__work._work"></a> 
 Destructor notifies
-          the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+          the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
           that the work is complete.
         </p>
-<pre class="programlisting">~work();
+<pre class="programlisting"><span class="special">~</span><span class="identifier">work</span><span class="special">();</span>
 </pre>
 <p>
-          The destructor is used to inform the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          that some work has finished. Once the count of unfinished work reaches
-          zero, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          object's <code class="computeroutput">run()</code> function is permitted to exit.
+          The destructor is used to inform the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> that some work has
+          finished. Once the count of unfinished work reaches zero, the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> object's <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>
+          function is permitted to exit.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

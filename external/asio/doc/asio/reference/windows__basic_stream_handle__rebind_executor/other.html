@@ -24,7 +24,7 @@
 The
           handle type when rebound to the specified executor.
         </p>
-<pre class="programlisting">typedef basic_stream_handle&lt; Executor1 &gt; other;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_stream_handle</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="identifier">other</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.windows__basic_stream_handle__rebind_executor.other.h0"></a>
@@ -167,7 +167,8 @@ The
                   <p>
                     Construct a stream handle without opening it. <br> <span class="silver"> —</span><br> Construct
                     a stream handle on an existing native handle. <br> <span class="silver"> —</span><br> Move-construct
-                    a stream handle from another.
+                    a stream handle from another. <br> <span class="silver"> —</span><br> Move-construct a
+                    stream handle from a handle of another executor type.
                   </p>
                 </td>
 </tr>
@@ -252,7 +253,8 @@ The
                 </td>
 <td>
                   <p>
-                    Move-assign a stream handle from another.
+                    Move-assign a stream handle from another. <br> <span class="silver"> —</span><br> Move-assign
+                    a stream handle from a handle of another executor type.
                   </p>
                 </td>
 </tr>
@@ -271,6 +273,18 @@ The
 <tr>
 <td>
                   <p>
+                    <a class="link" href="../windows__basic_stream_handle/release.html" title="windows::basic_stream_handle::release"><span class="bold"><strong>release</strong></span></a>
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Release ownership of the underlying native handle.
+                  </p>
+                </td>
+</tr>
+<tr>
+<td>
+                  <p>
                     <a class="link" href="../windows__basic_stream_handle/write_some.html" title="windows::basic_stream_handle::write_some"><span class="bold"><strong>write_some</strong></span></a>
                   </p>
                 </td>
@@ -283,8 +297,8 @@ The
 </tbody>
 </table></div>
 <p>
-          The <a class="link" href="../windows__basic_stream_handle.html" title="windows::basic_stream_handle"><code class="computeroutput">windows::basic_stream_handle</code></a>
-          class provides asynchronous and blocking stream-oriented handle functionality.
+          The <a class="link" href="../windows__basic_stream_handle.html" title="windows::basic_stream_handle"><code class="computeroutput"><span class="identifier">windows</span><span class="special">::</span><span class="identifier">basic_stream_handle</span></code></a> class provides
+          asynchronous and blocking stream-oriented handle functionality.
         </p>
 <h6>
 <a name="asio.reference.windows__basic_stream_handle__rebind_executor.other.h2"></a>
@@ -310,8 +324,7 @@ The
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

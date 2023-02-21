@@ -24,7 +24,7 @@
 The
           handle type when rebound to the specified executor.
         </p>
-<pre class="programlisting">typedef basic_random_access_handle&lt; Executor1 &gt; other;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_random_access_handle</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="identifier">other</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.windows__basic_random_access_handle__rebind_executor.other.h0"></a>
@@ -168,7 +168,8 @@ The
                     Construct a random-access handle without opening it. <br> <span class="silver"> —</span>
                     <br> Construct a random-access handle on an existing native
                     handle. <br> <span class="silver"> —</span><br> Move-construct a random-access handle from
-                    another.
+                    another. <br> <span class="silver"> —</span><br> Move-construct a random-access handle
+                    from a handle of another executor type.
                   </p>
                 </td>
 </tr>
@@ -253,7 +254,9 @@ The
                 </td>
 <td>
                   <p>
-                    Move-assign a random-access handle from another.
+                    Move-assign a random-access handle from another. <br> <span class="silver"> —</span><br>
+                    Move-assign a random-access handle from a handle of another executor
+                    type.
                   </p>
                 </td>
 </tr>
@@ -272,6 +275,18 @@ The
 <tr>
 <td>
                   <p>
+                    <a class="link" href="../windows__basic_random_access_handle/release.html" title="windows::basic_random_access_handle::release"><span class="bold"><strong>release</strong></span></a>
+                  </p>
+                </td>
+<td>
+                  <p>
+                    Release ownership of the underlying native handle.
+                  </p>
+                </td>
+</tr>
+<tr>
+<td>
+                  <p>
                     <a class="link" href="../windows__basic_random_access_handle/write_some_at.html" title="windows::basic_random_access_handle::write_some_at"><span class="bold"><strong>write_some_at</strong></span></a>
                   </p>
                 </td>
@@ -284,8 +299,8 @@ The
 </tbody>
 </table></div>
 <p>
-          The <a class="link" href="../windows__basic_random_access_handle.html" title="windows::basic_random_access_handle"><code class="computeroutput">windows::basic_random_access_handle</code></a>
-          class provides asynchronous and blocking random-access handle functionality.
+          The <a class="link" href="../windows__basic_random_access_handle.html" title="windows::basic_random_access_handle"><code class="computeroutput"><span class="identifier">windows</span><span class="special">::</span><span class="identifier">basic_random_access_handle</span></code></a> class
+          provides asynchronous and blocking random-access handle functionality.
         </p>
 <h6>
 <a name="asio.reference.windows__basic_random_access_handle__rebind_executor.other.h2"></a>
@@ -311,8 +326,7 @@ The
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

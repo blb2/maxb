@@ -24,28 +24,30 @@
           Returns an awaitable object that may be used to reset the cancellation
           state of the current coroutine.
         </p>
-<pre class="programlisting">template&lt;
-    typename Filter&gt;
-constexpr unspecified reset_cancellation_state(
-    Filter &amp;&amp; filter);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Filter</span><span class="special">&gt;</span>
+<span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">reset_cancellation_state</span><span class="special">(</span>
+    <span class="identifier">Filter</span> <span class="special">&amp;&amp;</span> <span class="identifier">filter</span><span class="special">);</span>
 </pre>
 <p>
-          Let <code class="computeroutput">P</code> be the cancellation slot associated with the current
-          coroutine's <code class="computeroutput">co\_spawn</code> completion handler. Assigns a new <a class="link" href="../cancellation_state.html" title="cancellation_state"><code class="computeroutput">cancellation_state</code></a>
-          object <code class="computeroutput">S</code>, constructed as <code class="computeroutput">S(P, std::forward&lt;Filter&gt;(filter))</code>,
-          into the current coroutine's cancellation state object.
+          Let <code class="computeroutput"><span class="identifier">P</span></code> be the cancellation
+          slot associated with the current coroutine's <a class="link" href="../co_spawn.html" title="co_spawn"><code class="computeroutput"><span class="identifier">co_spawn</span></code></a> completion handler. Assigns
+          a new <a class="link" href="../cancellation_state.html" title="cancellation_state"><code class="computeroutput"><span class="identifier">cancellation_state</span></code></a>
+          object <code class="computeroutput"><span class="identifier">S</span></code>, constructed as
+          <code class="computeroutput"><span class="identifier">S</span><span class="special">(</span><span class="identifier">P</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">forward</span><span class="special">&lt;</span><span class="identifier">Filter</span><span class="special">&gt;(</span><span class="identifier">filter</span><span class="special">))</span></code>, into the current coroutine's cancellation
+          state object.
         </p>
 <h6>
 <a name="asio.reference.this_coro__reset_cancellation_state.overload2.h0"></a>
           <span><a name="asio.reference.this_coro__reset_cancellation_state.overload2.example"></a></span><a class="link" href="overload2.html#asio.reference.this_coro__reset_cancellation_state.overload2.example">Example</a>
         </h6>
-<pre class="programlisting">asio::awaitable&lt;void&gt; my_coroutine()
-{
-  co_await asio::this_coro::reset_cancellation_state(
-      asio::enable_partial_cancellation());
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">awaitable</span><span class="special">&lt;</span><span class="keyword">void</span><span class="special">&gt;</span> <span class="identifier">my_coroutine</span><span class="special">()</span>
+<span class="special">{</span>
+  <span class="identifier">co_await</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">this_coro</span><span class="special">::</span><span class="identifier">reset_cancellation_state</span><span class="special">(</span>
+      <span class="identifier">asio</span><span class="special">::</span><span class="identifier">enable_partial_cancellation</span><span class="special">());</span>
 
-  // ...
-}
+  <span class="comment">// ...</span>
+<span class="special">}</span>
 </pre>
 <h6>
 <a name="asio.reference.this_coro__reset_cancellation_state.overload2.h1"></a>
@@ -53,13 +55,12 @@ constexpr unspecified reset_cancellation_state(
         </h6>
 <p>
           The cancellation state is shared by all coroutines in the same "thread
-          of execution" that was created using <a class="link" href="../co_spawn.html" title="co_spawn"><code class="computeroutput">co_spawn</code></a>.
+          of execution" that was created using <a class="link" href="../co_spawn.html" title="co_spawn"><code class="computeroutput"><span class="identifier">co_spawn</span></code></a>.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

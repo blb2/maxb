@@ -25,7 +25,7 @@ The
           type used to represent a sequence of constant buffers that refers to the
           underlying memory.
         </p>
-<pre class="programlisting">typedef const_buffer const_buffers_type;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">const_buffer</span> <span class="identifier">const_buffers_type</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.dynamic_string_buffer.const_buffers_type.h0"></a>
@@ -139,7 +139,7 @@ The
 </tr></tbody>
 </table></div>
 <p>
-          The <a class="link" href="../const_buffer.html" title="const_buffer"><code class="computeroutput">const_buffer</code></a>
+          The <a class="link" href="../const_buffer.html" title="const_buffer"><code class="computeroutput"><span class="identifier">const_buffer</span></code></a>
           class provides a safe representation of a buffer that cannot be modified.
           It does not own the underlying data, and so is cheap to copy or assign.
         </p>
@@ -149,16 +149,16 @@ The
           Buffer Contents</a>
         </h6>
 <p>
-          The contents of a buffer may be accessed using the <code class="computeroutput">data()</code>
-          and <code class="computeroutput">size()</code> member functions:
+          The contents of a buffer may be accessed using the <code class="computeroutput"><span class="identifier">data</span><span class="special">()</span></code> and <code class="computeroutput"><span class="identifier">size</span><span class="special">()</span></code> member functions:
         </p>
-<pre class="programlisting">asio::const_buffer b1 = ...;
-std::size_t s1 = b1.size();
-const unsigned char* p1 = static_cast&lt;const unsigned char*&gt;(b1.data());
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">const_buffer</span> <span class="identifier">b1</span> <span class="special">=</span> <span class="special">...;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">s1</span> <span class="special">=</span> <span class="identifier">b1</span><span class="special">.</span><span class="identifier">size</span><span class="special">();</span>
+<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span><span class="special">*</span> <span class="identifier">p1</span> <span class="special">=</span> <span class="keyword">static_cast</span><span class="special">&lt;</span><span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span><span class="special">*&gt;(</span><span class="identifier">b1</span><span class="special">.</span><span class="identifier">data</span><span class="special">());</span>
 </pre>
 <p>
-          The <code class="computeroutput">data()</code> member function permits violations of type safety,
-          so uses of it in application code should be carefully considered.
+          The <code class="computeroutput"><span class="identifier">data</span><span class="special">()</span></code>
+          member function permits violations of type safety, so uses of it in application
+          code should be carefully considered.
         </p>
 <h6>
 <a name="asio.reference.dynamic_string_buffer.const_buffers_type.h3"></a>
@@ -173,8 +173,7 @@ const unsigned char* p1 = static_cast&lt;const unsigned char*&gt;(b1.data());
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

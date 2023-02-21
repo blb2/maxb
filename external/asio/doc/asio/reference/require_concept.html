@@ -20,42 +20,49 @@
 <a name="asio.reference.require_concept"></a><a class="link" href="require_concept.html" title="require_concept">require_concept</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.require_concept"></a> 
-A customisation point that applies
-        a concept-enforcing property to an object.
+        <a class="indexterm" name="asio.indexterm.require_concept"></a>
       </p>
-<pre class="programlisting">constexpr unspecified require_concept = unspecified;
+<p>
+        A customisation point that applies a concept-enforcing property to an object.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">require_concept</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">require_concept</code> denotes a customization point object.
-        The expression <code class="computeroutput">asio::require_concept(E, P)</code> for some subexpressions
-        <code class="computeroutput">E</code> and <code class="computeroutput">P</code> (with types <code class="computeroutput">T = decay_t&lt;decltype(E)&gt;</code>
-        and <code class="computeroutput">Prop = decay_t&lt;decltype(P)&gt;</code>) is expression-equivalent
-        to:
+        The name <code class="computeroutput"><span class="identifier">require_concept</span></code>
+        denotes a customization point object. The expression <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span>
+        <span class="identifier">P</span><span class="special">)</span></code>
+        for some subexpressions <code class="computeroutput"><span class="identifier">E</span></code>
+        and <code class="computeroutput"><span class="identifier">P</span></code> (with types <code class="computeroutput"><span class="identifier">T</span> <span class="special">=</span> <span class="identifier">decay_t</span><span class="special">&lt;</span><span class="keyword">decltype</span><span class="special">(</span><span class="identifier">E</span><span class="special">)&gt;</span></code>
+        and <code class="computeroutput"><span class="identifier">Prop</span> <span class="special">=</span>
+        <span class="identifier">decay_t</span><span class="special">&lt;</span><span class="keyword">decltype</span><span class="special">(</span><span class="identifier">P</span><span class="special">)&gt;</span></code>)
+        is expression-equivalent to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            If <code class="computeroutput">is_applicable_property_v&lt;T, Prop&gt; &amp;&amp; Prop::is_requirable_concept</code>
-            is not a well-formed constant expression with value <code class="computeroutput">true</code>,
-            <code class="computeroutput">asio::require_concept(E, P)</code> is ill-formed.
+            If <code class="computeroutput"><span class="identifier">is_applicable_property_v</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">Prop</span><span class="special">&gt;</span> <span class="special">&amp;&amp;</span>
+            <span class="identifier">Prop</span><span class="special">::</span><span class="identifier">is_requirable_concept</span></code> is not a well-formed
+            constant expression with value <code class="computeroutput"><span class="keyword">true</span></code>,
+            <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P</span><span class="special">)</span></code>
+            is ill-formed.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">E</code> if the expression <code class="computeroutput">Prop::template static_query_v&lt;T&gt;
-            == Prop::value()</code> is a well-formed constant expression with value
-            <code class="computeroutput">true</code>.
+            Otherwise, <code class="computeroutput"><span class="identifier">E</span></code> if the expression
+            <code class="computeroutput"><span class="identifier">Prop</span><span class="special">::</span><span class="keyword">template</span> <span class="identifier">static_query_v</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="special">==</span> <span class="identifier">Prop</span><span class="special">::</span><span class="identifier">value</span><span class="special">()</span></code>
+            is a well-formed constant expression with value <code class="computeroutput"><span class="keyword">true</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">(E).require_concept(P)</code> if the expression <code class="computeroutput">(E).require_concept(P)</code>
+            Otherwise, <code class="computeroutput"><span class="special">(</span><span class="identifier">E</span><span class="special">).</span><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">P</span><span class="special">)</span></code> if the expression <code class="computeroutput"><span class="special">(</span><span class="identifier">E</span><span class="special">).</span><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">P</span><span class="special">)</span></code>
             is well-formed.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">require_concept(E, P)</code> if the expression <code class="computeroutput">require_concept(E,
-            P)</code> is a valid expression with overload resolution performed in
-            a context that does not include the declaration of the <code class="computeroutput">require_concept</code>
+            Otherwise, <code class="computeroutput"><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P</span><span class="special">)</span></code> if the expression <code class="computeroutput"><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P</span><span class="special">)</span></code> is a valid expression with overload
+            resolution performed in a context that does not include the declaration
+            of the <code class="computeroutput"><span class="identifier">require_concept</span></code>
             customization point object.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">asio::require_concept(E, P)</code> is ill-formed.
+            Otherwise, <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P</span><span class="special">)</span></code>
+            is ill-formed.
           </li>
 </ul></div>
 <h5>
@@ -71,8 +78,7 @@ A customisation point that applies
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

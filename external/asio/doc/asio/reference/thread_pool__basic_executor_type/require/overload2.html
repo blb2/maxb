@@ -21,28 +21,28 @@
           (2 of 9 overloads)</a>
 </h5></div></div></div>
 <p>
-            Obtain an executor with the <code class="computeroutput">blocking.always</code> property.
+            Obtain an executor with the <code class="computeroutput"><span class="identifier">blocking</span><span class="special">.</span><span class="identifier">always</span></code>
+            property.
           </p>
-<pre class="programlisting">constexpr basic_executor_type&lt; Allocator, unspecified &gt; require(
-    execution::blocking_t::always_t ) const;
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">basic_executor_type</span><span class="special">&lt;</span> <span class="identifier">Allocator</span><span class="special">,</span> <span class="identifier">unspecified</span> <span class="special">&gt;</span> <span class="identifier">require</span><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">::</span><span class="identifier">always_t</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <p>
             Do not call this function directly. It is intended for use with the
-            <a class="link" href="../../require.html" title="require"><code class="computeroutput">require</code></a> customisation
-            point.
+            <a class="link" href="../../require.html" title="require"><code class="computeroutput"><span class="identifier">require</span></code></a>
+            customisation point.
           </p>
 <p>
             For example:
           </p>
-<pre class="programlisting">auto ex1 = my_thread_pool.executor();
-auto ex2 = asio::require(ex1,
-    asio::execution::blocking.always);
+<pre class="programlisting"><span class="keyword">auto</span> <span class="identifier">ex1</span> <span class="special">=</span> <span class="identifier">my_thread_pool</span><span class="special">.</span><span class="identifier">executor</span><span class="special">();</span>
+<span class="keyword">auto</span> <span class="identifier">ex2</span> <span class="special">=</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">require</span><span class="special">(</span><span class="identifier">ex1</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking</span><span class="special">.</span><span class="identifier">always</span><span class="special">);</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

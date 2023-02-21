@@ -24,10 +24,12 @@
         as well as the requirements listed below.
       </p>
 <p>
-        In the table below, <code class="computeroutput">X</code> denotes an I/O object service class,
-        <code class="computeroutput">a</code> and <code class="computeroutput">ao</code> denote values of type <code class="computeroutput">X</code>,
-        <code class="computeroutput">b</code> and <code class="computeroutput">c</code> denote values of type <code class="computeroutput">X::implementation_type</code>,
-        and <code class="computeroutput">u</code> denotes an identifier.
+        In the table below, <code class="computeroutput"><span class="identifier">X</span></code> denotes
+        an I/O object service class, <code class="computeroutput"><span class="identifier">a</span></code>
+        and <code class="computeroutput"><span class="identifier">ao</span></code> denote values of type
+        <code class="computeroutput"><span class="identifier">X</span></code>, <code class="computeroutput"><span class="identifier">b</span></code>
+        and <code class="computeroutput"><span class="identifier">c</span></code> denote values of type
+        <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">implementation_type</span></code>, and <code class="computeroutput"><span class="identifier">u</span></code> denotes an identifier.
       </p>
 <div class="table">
 <a name="asio.reference.IoObjectService.t0"></a><p class="title"><b>Table 23. IoObjectService requirements</b></p>
@@ -58,7 +60,7 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::implementation_type</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">implementation_type</span></code>
                 </p>
               </td>
 <td>
@@ -69,26 +71,22 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::implementation_type u;</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">implementation_type</span> <span class="identifier">u</span><span class="special">;</span></code>
                 </p>
               </td>
 <td>
               </td>
 <td>
                 <p>
-                  note: <code class="computeroutput">X::implementation_type</code> has a public default
-                  constructor and destructor.
+                  note: <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">implementation_type</span></code> has a public
+                  default constructor and destructor.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
-                <p>
-</p>
-<pre class="programlisting">a.construct(b);
+<pre class="programlisting"><span class="identifier">a</span><span class="special">.</span><span class="identifier">construct</span><span class="special">(</span><span class="identifier">b</span><span class="special">);</span>
 </pre>
-<p>
-                </p>
               </td>
 <td>
               </td>
@@ -97,31 +95,23 @@
 </tr>
 <tr>
 <td>
-                <p>
-</p>
-<pre class="programlisting">a.destroy(b);
+<pre class="programlisting"><span class="identifier">a</span><span class="special">.</span><span class="identifier">destroy</span><span class="special">(</span><span class="identifier">b</span><span class="special">);</span>
 </pre>
-<p>
-                </p>
               </td>
 <td>
               </td>
 <td>
                 <p>
-                  note: <code class="computeroutput">destroy()</code> will only be called on a value that
-                  has previously been initialised with <code class="computeroutput">construct()</code> or
-                  <code class="computeroutput">move_construct()</code>.
+                  note: <code class="computeroutput"><span class="identifier">destroy</span><span class="special">()</span></code>
+                  will only be called on a value that has previously been initialised
+                  with <code class="computeroutput"><span class="identifier">construct</span><span class="special">()</span></code> or <code class="computeroutput"><span class="identifier">move_construct</span><span class="special">()</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
-                <p>
-</p>
-<pre class="programlisting">a.move_construct(b, c);
+<pre class="programlisting"><span class="identifier">a</span><span class="special">.</span><span class="identifier">move_construct</span><span class="special">(</span><span class="identifier">b</span><span class="special">,</span> <span class="identifier">c</span><span class="special">);</span>
 </pre>
-<p>
-                </p>
               </td>
 <td>
               </td>
@@ -133,12 +123,8 @@
 </tr>
 <tr>
 <td>
-                <p>
-</p>
-<pre class="programlisting">a.move_assign(b, ao, c);
+<pre class="programlisting"><span class="identifier">a</span><span class="special">.</span><span class="identifier">move_assign</span><span class="special">(</span><span class="identifier">b</span><span class="special">,</span> <span class="identifier">ao</span><span class="special">,</span> <span class="identifier">c</span><span class="special">);</span>
 </pre>
-<p>
-                </p>
               </td>
 <td>
               </td>
@@ -155,8 +141,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

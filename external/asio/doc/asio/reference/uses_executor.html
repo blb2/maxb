@@ -23,22 +23,23 @@
         <a class="indexterm" name="asio.indexterm.uses_executor"></a>
       </p>
 <p>
-        The <a class="link" href="uses_executor.html" title="uses_executor"><code class="computeroutput">uses_executor</code></a>
+        The <a class="link" href="uses_executor.html" title="uses_executor"><code class="computeroutput"><span class="identifier">uses_executor</span></code></a>
         trait detects whether a type T has an associated executor that is convertible
         from type Executor.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename <a class="link" href="Executor1.html" title="Executor requirements">Executor</a>&gt;
-struct uses_executor :
-  public false_type
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="Executor1.html" title="Executor requirements">Executor</a><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">uses_executor</span> <span class="special">:</span>
+  <span class="keyword">public</span> <span class="identifier">false_type</span>
 </pre>
 <p>
         Meets the BinaryTypeTrait requirements. The Asio library provides a definition
-        that is derived from <code class="computeroutput">false_type</code>. A program may specialize this
-        template to derive from true_type for a user-defined type T that can be constructed
-        with an executor, where the first argument of a constructor has type <a class="link" href="executor_arg_t.html" title="executor_arg_t"><code class="computeroutput">executor_arg_t</code></a>
-        and the second argument is convertible from type Executor.
+        that is derived from <code class="computeroutput"><span class="identifier">false_type</span></code>.
+        A program may specialize this template to derive from true_type for a user-defined
+        type T that can be constructed with an executor, where the first argument
+        of a constructor has type <a class="link" href="executor_arg_t.html" title="executor_arg_t"><code class="computeroutput"><span class="identifier">executor_arg_t</span></code></a> and the second argument
+        is convertible from type Executor.
       </p>
 <h5>
 <a name="asio.reference.uses_executor.h0"></a>
@@ -53,8 +54,7 @@ struct uses_executor :
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -24,7 +24,7 @@
 The
           socket type when rebound to the specified executor.
         </p>
-<pre class="programlisting">typedef basic_stream_socket&lt; Protocol, Executor1 &gt; other;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_stream_socket</span><span class="special">&lt;</span> <span class="identifier">Protocol</span><span class="special">,</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="identifier">other</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.basic_stream_socket__rebind_executor.other.h0"></a>
@@ -877,7 +877,7 @@ The
 </tbody>
 </table></div>
 <p>
-          The <a class="link" href="../basic_stream_socket.html" title="basic_stream_socket"><code class="computeroutput">basic_stream_socket</code></a>
+          The <a class="link" href="../basic_stream_socket.html" title="basic_stream_socket"><code class="computeroutput"><span class="identifier">basic_stream_socket</span></code></a>
           class template provides asynchronous and blocking stream-oriented socket
           functionality.
         </p>
@@ -893,12 +893,14 @@ The
           <span class="emphasis"><em>Shared</em></span> <span class="emphasis"><em>objects:</em></span> Unsafe.
         </p>
 <p>
-          Synchronous <code class="computeroutput">send</code>, <code class="computeroutput">receive</code>, and <code class="computeroutput">connect</code>
-          operations are thread safe with respect to each other, if the underlying
-          operating system calls are also thread safe. This means that it is permitted
-          to perform concurrent calls to these synchronous operations on a single
-          socket object. Other synchronous operations, such as <code class="computeroutput">open</code>
-          or <code class="computeroutput">close</code>, are not thread safe.
+          Synchronous <code class="computeroutput"><span class="identifier">send</span></code>, <code class="computeroutput"><span class="identifier">receive</span></code>, <code class="computeroutput"><span class="identifier">connect</span></code>,
+          and <code class="computeroutput"><span class="identifier">shutdown</span></code> operations
+          are thread safe with respect to each other, if the underlying operating
+          system calls are also thread safe. This means that it is permitted to perform
+          concurrent calls to these synchronous operations on a single socket object.
+          Other synchronous operations, such as <code class="computeroutput"><span class="identifier">open</span></code>
+          or <code class="computeroutput"><span class="identifier">close</span></code>, are not thread
+          safe.
         </p>
 <h6>
 <a name="asio.reference.basic_stream_socket__rebind_executor.other.h4"></a>
@@ -913,8 +915,7 @@ The
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -21,14 +21,15 @@
           (1 of 2 overloads)</a>
 </h5></div></div></div>
 <p>
-            Run the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+            Run the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
             object's event processing loop to execute ready handlers.
           </p>
-<pre class="programlisting">count_type poll();
+<pre class="programlisting"><span class="identifier">count_type</span> <span class="identifier">poll</span><span class="special">();</span>
 </pre>
 <p>
-            The <code class="computeroutput">poll()</code> function runs handlers that are ready to run,
-            without blocking, until the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+            The <code class="computeroutput"><span class="identifier">poll</span><span class="special">()</span></code>
+            function runs handlers that are ready to run, without blocking, until
+            the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
             has been stopped or there are no more ready handlers.
           </p>
 <h6>
@@ -42,8 +43,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

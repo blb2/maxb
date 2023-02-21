@@ -25,7 +25,7 @@
 <p>
         Encapsulates the flags needed for a generic raw socket.
       </p>
-<pre class="programlisting">class raw_protocol
+<pre class="programlisting"><span class="keyword">class</span> <span class="identifier">raw_protocol</span>
 </pre>
 <h5>
 <a name="asio.reference.generic__raw_protocol.h0"></a>
@@ -198,7 +198,7 @@
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="generic__raw_protocol.html" title="generic::raw_protocol"><code class="computeroutput">generic::raw_protocol</code></a>
+        The <a class="link" href="generic__raw_protocol.html" title="generic::raw_protocol"><code class="computeroutput"><span class="identifier">generic</span><span class="special">::</span><span class="identifier">raw_protocol</span></code></a>
         class contains flags necessary for raw sockets of any address family and
         protocol.
       </p>
@@ -209,12 +209,12 @@
 <p>
         Constructing using a native address family and socket protocol:
       </p>
-<pre class="programlisting">raw_protocol p(AF_INET, IPPROTO_ICMP);
+<pre class="programlisting"><span class="identifier">raw_protocol</span> <span class="identifier">p</span><span class="special">(</span><span class="identifier">AF_INET</span><span class="special">,</span> <span class="identifier">IPPROTO_ICMP</span><span class="special">);</span>
 </pre>
 <p>
         Constructing from a specific protocol type:
       </p>
-<pre class="programlisting">raw_protocol p(asio::ip::icmp::v4());
+<pre class="programlisting"><span class="identifier">raw_protocol</span> <span class="identifier">p</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">icmp</span><span class="special">::</span><span class="identifier">v4</span><span class="special">());</span>
 </pre>
 <h5>
 <a name="asio.reference.generic__raw_protocol.h4"></a>
@@ -240,8 +240,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

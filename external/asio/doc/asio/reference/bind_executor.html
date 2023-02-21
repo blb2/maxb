@@ -20,29 +20,32 @@
 <a name="asio.reference.bind_executor"></a><a class="link" href="bind_executor.html" title="bind_executor">bind_executor</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.bind_executor"></a> 
-Associate an object of type <code class="computeroutput">T</code>
-        with an executor of type <code class="computeroutput">Executor</code>.
+        <a class="indexterm" name="asio.indexterm.bind_executor"></a>
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="Executor1.html" title="Executor requirements">Executor</a>,
-    typename T&gt;
-executor_binder&lt; typename decay&lt; T &gt;::type, Executor &gt; <a class="link" href="bind_executor/overload1.html" title="bind_executor (1 of 2 overloads)">bind_executor</a>(
-    const Executor &amp; ex,
-    T &amp;&amp; t,
-    typename constraint&lt; is_executor&lt; Executor &gt;::value||execution::is_executor&lt; Executor &gt;::value &gt;::type  = 0);
+<p>
+        Associate an object of type <code class="computeroutput"><span class="identifier">T</span></code>
+        with an executor of type <code class="computeroutput"><span class="identifier">Executor</span></code>.
+      </p>
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="Executor1.html" title="Executor requirements">Executor</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">executor_binder</span><span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">decay</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;::</span><span class="identifier">type</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <a class="link" href="bind_executor/overload1.html" title="bind_executor (1 of 2 overloads)">bind_executor</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">Executor</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">,</span>
+    <span class="identifier">T</span> <span class="special">&amp;&amp;</span> <span class="identifier">t</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_executor</span><span class="special">&lt;</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">||</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">is_executor</span><span class="special">&lt;</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="bind_executor/overload1.html" title="bind_executor (1 of 2 overloads)">more...</a></em></span>
 </pre>
 <p>
-        Associate an object of type <code class="computeroutput">T</code> with an execution context's executor.
+        Associate an object of type <code class="computeroutput"><span class="identifier">T</span></code>
+        with an execution context's executor.
       </p>
-<pre class="programlisting">template&lt;
-    typename ExecutionContext,
-    typename T&gt;
-executor_binder&lt; typename decay&lt; T &gt;::type, typename ExecutionContext::executor_type &gt; <a class="link" href="bind_executor/overload2.html" title="bind_executor (2 of 2 overloads)">bind_executor</a>(
-    ExecutionContext &amp; ctx,
-    T &amp;&amp; t,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">executor_binder</span><span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">decay</span><span class="special">&lt;</span> <span class="identifier">T</span> <span class="special">&gt;::</span><span class="identifier">type</span><span class="special">,</span> <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">::</span><span class="identifier">executor_type</span> <span class="special">&gt;</span> <a class="link" href="bind_executor/overload2.html" title="bind_executor (2 of 2 overloads)">bind_executor</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">ctx</span><span class="special">,</span>
+    <span class="identifier">T</span> <span class="special">&amp;&amp;</span> <span class="identifier">t</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="bind_executor/overload2.html" title="bind_executor (2 of 2 overloads)">more...</a></em></span>
 </pre>
 <h5>
@@ -58,8 +61,7 @@ executor_binder&lt; typename decay&lt; T &gt;::type, typename ExecutionContext::
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

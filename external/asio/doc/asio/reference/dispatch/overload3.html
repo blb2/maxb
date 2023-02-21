@@ -23,27 +23,57 @@
 <p>
           Submits a completion token or function object for execution.
         </p>
-<pre class="programlisting">template&lt;
-    typename ExecutionContext,
-    typename CompletionToken = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>&gt;
-<a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> dispatch(
-    ExecutionContext &amp; ctx,
-    CompletionToken &amp;&amp; token = <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a>,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../NullaryToken.html" title="Nullary token requirements">NullaryToken</a> <span class="special">=</span> <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a><span class="special">&gt;</span>
+<a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <span class="identifier">dispatch</span><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">ctx</span><span class="special">,</span>
+    <span class="identifier">NullaryToken</span> <span class="special">&amp;&amp;</span> <span class="identifier">token</span> <span class="special">=</span> <a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.default_completion_tokens"><span class="emphasis"><em>DEFAULT</em></span></a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.dispatch.overload3.h0"></a>
+          <span><a name="asio.reference.dispatch.overload3.parameters"></a></span><a class="link" href="overload3.html#asio.reference.dispatch.overload3.parameters">Parameters</a>
+        </h6>
+<div class="variablelist">
+<p class="title"><b></b></p>
+<dl>
+<dt><span class="term">ctx</span></dt>
+<dd><p>
+                An execution context, from which the target executor is obtained.
+              </p></dd>
+<dt><span class="term">token</span></dt>
+<dd>
+<p>
+                The <a class="link" href="../../overview/model/completion_tokens.html" title="Completion Tokens">completion
+                token</a> that will be used to produce a completion handler. The
+                function signature of the completion handler must be:
+              </p>
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">();</span>
+</pre>
+</dd>
+</dl>
+</div>
+<h6>
+<a name="asio.reference.dispatch.overload3.h1"></a>
           <span><a name="asio.reference.dispatch.overload3.return_value"></a></span><a class="link" href="overload3.html#asio.reference.dispatch.overload3.return_value">Return
           Value</a>
         </h6>
 <p>
-          <code class="computeroutput">dispatch(ctx.get_executor(), forward&lt;CompletionToken&gt;(token))</code>.
+          <code class="computeroutput"><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">ctx</span><span class="special">.</span><span class="identifier">get_executor</span><span class="special">(),</span>
+          <span class="identifier">forward</span><span class="special">&lt;</span><span class="identifier">NullaryToken</span><span class="special">&gt;(</span><span class="identifier">token</span><span class="special">))</span></code>.
         </p>
+<h6>
+<a name="asio.reference.dispatch.overload3.h2"></a>
+          <span><a name="asio.reference.dispatch.overload3.completion_signature"></a></span><a class="link" href="overload3.html#asio.reference.dispatch.overload3.completion_signature">Completion
+          Signature</a>
+        </h6>
+<pre class="programlisting"><span class="keyword">void</span><span class="special">()</span>
+</pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

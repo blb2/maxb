@@ -22,61 +22,67 @@
 <p>
           <a class="indexterm" name="asio.indexterm.basic_system_executor.require"></a> 
 Obtain
-          an executor with the <code class="computeroutput">blocking.possibly</code> property.
+          an executor with the <code class="computeroutput"><span class="identifier">blocking</span><span class="special">.</span><span class="identifier">possibly</span></code>
+          property.
         </p>
-<pre class="programlisting">basic_system_executor&lt; execution::blocking_t::possibly_t, Relationship, Allocator &gt; <a class="link" href="require/overload1.html" title="basic_system_executor::require (1 of 7 overloads)">require</a>(
-    execution::blocking_t::possibly_t ) const;
+<pre class="programlisting"><span class="identifier">basic_system_executor</span><span class="special">&lt;</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">::</span><span class="identifier">possibly_t</span><span class="special">,</span> <span class="identifier">Relationship</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <a class="link" href="require/overload1.html" title="basic_system_executor::require (1 of 7 overloads)">require</a><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">::</span><span class="identifier">possibly_t</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <span class="emphasis"><em>» <a class="link" href="require/overload1.html" title="basic_system_executor::require (1 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Obtain an executor with the <code class="computeroutput">blocking.always</code> property.
+          Obtain an executor with the <code class="computeroutput"><span class="identifier">blocking</span><span class="special">.</span><span class="identifier">always</span></code>
+          property.
         </p>
-<pre class="programlisting">basic_system_executor&lt; execution::blocking_t::always_t, Relationship, Allocator &gt; <a class="link" href="require/overload2.html" title="basic_system_executor::require (2 of 7 overloads)">require</a>(
-    execution::blocking_t::always_t ) const;
+<pre class="programlisting"><span class="identifier">basic_system_executor</span><span class="special">&lt;</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">::</span><span class="identifier">always_t</span><span class="special">,</span> <span class="identifier">Relationship</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <a class="link" href="require/overload2.html" title="basic_system_executor::require (2 of 7 overloads)">require</a><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">::</span><span class="identifier">always_t</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <span class="emphasis"><em>» <a class="link" href="require/overload2.html" title="basic_system_executor::require (2 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Obtain an executor with the <code class="computeroutput">blocking.never</code> property.
+          Obtain an executor with the <code class="computeroutput"><span class="identifier">blocking</span><span class="special">.</span><span class="identifier">never</span></code>
+          property.
         </p>
-<pre class="programlisting">basic_system_executor&lt; execution::blocking_t::never_t, Relationship, Allocator &gt; <a class="link" href="require/overload3.html" title="basic_system_executor::require (3 of 7 overloads)">require</a>(
-    execution::blocking_t::never_t ) const;
+<pre class="programlisting"><span class="identifier">basic_system_executor</span><span class="special">&lt;</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">::</span><span class="identifier">never_t</span><span class="special">,</span> <span class="identifier">Relationship</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <a class="link" href="require/overload3.html" title="basic_system_executor::require (3 of 7 overloads)">require</a><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">blocking_t</span><span class="special">::</span><span class="identifier">never_t</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <span class="emphasis"><em>» <a class="link" href="require/overload3.html" title="basic_system_executor::require (3 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Obtain an executor with the <code class="computeroutput">relationship.continuation</code> property.
+          Obtain an executor with the <code class="computeroutput"><span class="identifier">relationship</span><span class="special">.</span><span class="identifier">continuation</span></code>
+          property.
         </p>
-<pre class="programlisting">basic_system_executor&lt; Blocking, execution::relationship_t::continuation_t, Allocator &gt; <a class="link" href="require/overload4.html" title="basic_system_executor::require (4 of 7 overloads)">require</a>(
-    execution::relationship_t::continuation_t ) const;
+<pre class="programlisting"><span class="identifier">basic_system_executor</span><span class="special">&lt;</span> <span class="identifier">Blocking</span><span class="special">,</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">relationship_t</span><span class="special">::</span><span class="identifier">continuation_t</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <a class="link" href="require/overload4.html" title="basic_system_executor::require (4 of 7 overloads)">require</a><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">relationship_t</span><span class="special">::</span><span class="identifier">continuation_t</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <span class="emphasis"><em>» <a class="link" href="require/overload4.html" title="basic_system_executor::require (4 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Obtain an executor with the <code class="computeroutput">relationship.fork</code> property.
+          Obtain an executor with the <code class="computeroutput"><span class="identifier">relationship</span><span class="special">.</span><span class="identifier">fork</span></code>
+          property.
         </p>
-<pre class="programlisting">basic_system_executor&lt; Blocking, execution::relationship_t::fork_t, Allocator &gt; <a class="link" href="require/overload5.html" title="basic_system_executor::require (5 of 7 overloads)">require</a>(
-    execution::relationship_t::fork_t ) const;
+<pre class="programlisting"><span class="identifier">basic_system_executor</span><span class="special">&lt;</span> <span class="identifier">Blocking</span><span class="special">,</span> <span class="identifier">execution</span><span class="special">::</span><span class="identifier">relationship_t</span><span class="special">::</span><span class="identifier">fork_t</span><span class="special">,</span> <span class="identifier">Allocator</span> <span class="special">&gt;</span> <a class="link" href="require/overload5.html" title="basic_system_executor::require (5 of 7 overloads)">require</a><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">relationship_t</span><span class="special">::</span><span class="identifier">fork_t</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <span class="emphasis"><em>» <a class="link" href="require/overload5.html" title="basic_system_executor::require (5 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Obtain an executor with the specified <code class="computeroutput">allocator</code> property.
+          Obtain an executor with the specified <code class="computeroutput"><span class="identifier">allocator</span></code>
+          property.
         </p>
-<pre class="programlisting">template&lt;
-    typename OtherAllocator&gt;
-basic_system_executor&lt; Blocking, Relationship, OtherAllocator &gt; <a class="link" href="require/overload6.html" title="basic_system_executor::require (6 of 7 overloads)">require</a>(
-    execution::allocator_t&lt; OtherAllocator &gt; a) const;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">OtherAllocator</span><span class="special">&gt;</span>
+<span class="identifier">basic_system_executor</span><span class="special">&lt;</span> <span class="identifier">Blocking</span><span class="special">,</span> <span class="identifier">Relationship</span><span class="special">,</span> <span class="identifier">OtherAllocator</span> <span class="special">&gt;</span> <a class="link" href="require/overload6.html" title="basic_system_executor::require (6 of 7 overloads)">require</a><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">allocator_t</span><span class="special">&lt;</span> <span class="identifier">OtherAllocator</span> <span class="special">&gt;</span> <span class="identifier">a</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <span class="emphasis"><em>» <a class="link" href="require/overload6.html" title="basic_system_executor::require (6 of 7 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Obtain an executor with the default <code class="computeroutput">allocator</code> property.
+          Obtain an executor with the default <code class="computeroutput"><span class="identifier">allocator</span></code>
+          property.
         </p>
-<pre class="programlisting">basic_system_executor&lt; Blocking, Relationship, std::allocator&lt; void &gt; &gt; <a class="link" href="require/overload7.html" title="basic_system_executor::require (7 of 7 overloads)">require</a>(
-    execution::allocator_t&lt; void &gt; ) const;
+<pre class="programlisting"><span class="identifier">basic_system_executor</span><span class="special">&lt;</span> <span class="identifier">Blocking</span><span class="special">,</span> <span class="identifier">Relationship</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">allocator</span><span class="special">&lt;</span> <span class="keyword">void</span> <span class="special">&gt;</span> <span class="special">&gt;</span> <a class="link" href="require/overload7.html" title="basic_system_executor::require (7 of 7 overloads)">require</a><span class="special">(</span>
+    <span class="identifier">execution</span><span class="special">::</span><span class="identifier">allocator_t</span><span class="special">&lt;</span> <span class="keyword">void</span> <span class="special">&gt;</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
   <span class="emphasis"><em>» <a class="link" href="require/overload7.html" title="basic_system_executor::require (7 of 7 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

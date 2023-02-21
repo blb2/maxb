@@ -20,18 +20,45 @@
 <a name="asio.reference.experimental__coro.operator_lp__rp_"></a><a class="link" href="operator_lp__rp_.html" title="experimental::coro::operator()">experimental::coro::operator()</a>
 </h4></div></div></div>
 <p>
-          <a class="indexterm" name="asio.indexterm.experimental__coro.operator_lp__rp_"></a>
+          <a class="indexterm" name="asio.indexterm.experimental__coro.operator_lp__rp_"></a> 
+Operator
+          used for coroutines with input value.
         </p>
-<pre class="programlisting">template&lt;
-    detail::convertible_to&lt; input_type &gt; T&gt;
-auto operator()(
-    T &amp;&amp; ip);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="identifier">detail</span><span class="special">::</span><span class="identifier">convertible_to</span><span class="special">&lt;</span> <span class="identifier">input_type</span> <span class="special">&gt;</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="keyword">auto</span> <span class="keyword">operator</span><span class="special">()(</span>
+    <span class="identifier">T</span> <span class="special">&amp;&amp;</span> <span class="identifier">ip</span><span class="special">);</span>
+</pre>
+<h6>
+<a name="asio.reference.experimental__coro.operator_lp__rp_.h0"></a>
+          <span><a name="asio.reference.experimental__coro.operator_lp__rp_.parameters"></a></span><a class="link" href="operator_lp__rp_.html#asio.reference.experimental__coro.operator_lp__rp_.parameters">Parameters</a>
+        </h6>
+<div class="variablelist">
+<p class="title"><b></b></p>
+<dl>
+<dt><span class="term">ip</span></dt>
+<dd><p>
+                The input value
+              </p></dd>
+</dl>
+</div>
+<h6>
+<a name="asio.reference.experimental__coro.operator_lp__rp_.h1"></a>
+          <span><a name="asio.reference.experimental__coro.operator_lp__rp_.return_value"></a></span><a class="link" href="operator_lp__rp_.html#asio.reference.experimental__coro.operator_lp__rp_.return_value">Return
+          Value</a>
+        </h6>
+<p>
+          An awaitable handle.
+        </p>
+<pre class="programlisting"><span class="identifier">coro</span><span class="special">&lt;</span><span class="keyword">void</span><span class="special">&gt;</span> <span class="identifier">push_values</span><span class="special">(</span><span class="identifier">coro</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">(</span><span class="keyword">int</span><span class="special">)&gt;</span> <span class="identifier">c</span><span class="special">)</span>
+<span class="special">{</span>
+   <span class="identifier">std</span><span class="special">::</span><span class="identifier">optional</span><span class="special">&lt;</span><span class="keyword">double</span><span class="special">&gt;</span> <span class="identifier">res</span> <span class="special">=</span> <span class="identifier">co_await</span> <span class="identifier">c</span><span class="special">(</span><span class="number">42</span><span class="special">);</span>
+<span class="special">}</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

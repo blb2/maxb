@@ -24,7 +24,7 @@
 The
           UNIX domain acceptor type.
         </p>
-<pre class="programlisting">typedef basic_socket_acceptor&lt; stream_protocol &gt; acceptor;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_socket_acceptor</span><span class="special">&lt;</span> <span class="identifier">stream_protocol</span> <span class="special">&gt;</span> <span class="identifier">acceptor</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.local__stream_protocol.acceptor.h0"></a>
@@ -721,8 +721,8 @@ The
 </tbody>
 </table></div>
 <p>
-          The <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput">basic_socket_acceptor</code></a>
-          class template is used for accepting new socket connections.
+          The <a class="link" href="../basic_socket_acceptor.html" title="basic_socket_acceptor"><code class="computeroutput"><span class="identifier">basic_socket_acceptor</span></code></a> class template
+          is used for accepting new socket connections.
         </p>
 <h6>
 <a name="asio.reference.local__stream_protocol.acceptor.h3"></a>
@@ -736,11 +736,12 @@ The
           <span class="emphasis"><em>Shared</em></span> <span class="emphasis"><em>objects:</em></span> Unsafe.
         </p>
 <p>
-          Synchronous <code class="computeroutput">accept</code> operations are thread safe, if the underlying
-          operating system calls are also thread safe. This means that it is permitted
-          to perform concurrent calls to synchronous <code class="computeroutput">accept</code> operations
-          on a single socket object. Other synchronous operations, such as <code class="computeroutput">open</code>
-          or <code class="computeroutput">close</code>, are not thread safe.
+          Synchronous <code class="computeroutput"><span class="identifier">accept</span></code> operations
+          are thread safe, if the underlying operating system calls are also thread
+          safe. This means that it is permitted to perform concurrent calls to synchronous
+          <code class="computeroutput"><span class="identifier">accept</span></code> operations on a
+          single socket object. Other synchronous operations, such as <code class="computeroutput"><span class="identifier">open</span></code> or <code class="computeroutput"><span class="identifier">close</span></code>,
+          are not thread safe.
         </p>
 <h6>
 <a name="asio.reference.local__stream_protocol.acceptor.h4"></a>
@@ -749,12 +750,12 @@ The
 <p>
           Opening a socket acceptor with the SO_REUSEADDR option enabled:
         </p>
-<pre class="programlisting">asio::ip::tcp::acceptor acceptor(my_context);
-asio::ip::tcp::endpoint endpoint(asio::ip::tcp::v4(), port);
-acceptor.open(endpoint.protocol());
-acceptor.set_option(asio::ip::tcp::acceptor::reuse_address(true));
-acceptor.bind(endpoint);
-acceptor.listen();
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">acceptor</span> <span class="identifier">acceptor</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">endpoint</span> <span class="identifier">endpoint</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">v4</span><span class="special">(),</span> <span class="identifier">port</span><span class="special">);</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">open</span><span class="special">(</span><span class="identifier">endpoint</span><span class="special">.</span><span class="identifier">protocol</span><span class="special">());</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">set_option</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">acceptor</span><span class="special">::</span><span class="identifier">reuse_address</span><span class="special">(</span><span class="keyword">true</span><span class="special">));</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">bind</span><span class="special">(</span><span class="identifier">endpoint</span><span class="special">);</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">listen</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="asio.reference.local__stream_protocol.acceptor.h5"></a>
@@ -769,8 +770,7 @@ acceptor.listen();
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

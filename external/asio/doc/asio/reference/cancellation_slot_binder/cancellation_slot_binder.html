@@ -24,93 +24,92 @@
 Construct
           a cancellation slot wrapper for the specified object.
         </p>
-<pre class="programlisting">template&lt;
-    typename U&gt;
-<a class="link" href="cancellation_slot_binder/overload1.html" title="cancellation_slot_binder::cancellation_slot_binder (1 of 9 overloads)">cancellation_slot_binder</a>(
-    const cancellation_slot_type &amp; s,
-    U &amp;&amp; u);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">U</span><span class="special">&gt;</span>
+<a class="link" href="cancellation_slot_binder/overload1.html" title="cancellation_slot_binder::cancellation_slot_binder (1 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_type</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">U</span> <span class="special">&amp;&amp;</span> <span class="identifier">u</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload1.html" title="cancellation_slot_binder::cancellation_slot_binder (1 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Copy constructor.
         </p>
-<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload2.html" title="cancellation_slot_binder::cancellation_slot_binder (2 of 9 overloads)">cancellation_slot_binder</a>(
-    const cancellation_slot_binder &amp; other);
+<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload2.html" title="cancellation_slot_binder::cancellation_slot_binder (2 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_binder</span> <span class="special">&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload2.html" title="cancellation_slot_binder::cancellation_slot_binder (2 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Construct a copy, but specify a different cancellation slot.
         </p>
-<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload3.html" title="cancellation_slot_binder::cancellation_slot_binder (3 of 9 overloads)">cancellation_slot_binder</a>(
-    const cancellation_slot_type &amp; s,
-    const cancellation_slot_binder &amp; other);
+<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload3.html" title="cancellation_slot_binder::cancellation_slot_binder (3 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_type</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_binder</span> <span class="special">&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload3.html" title="cancellation_slot_binder::cancellation_slot_binder (3 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Construct a copy of a different cancellation slot wrapper type.
         </p>
-<pre class="programlisting">template&lt;
-    typename U,
-    typename <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a>&gt;
-<a class="link" href="cancellation_slot_binder/overload4.html" title="cancellation_slot_binder::cancellation_slot_binder (4 of 9 overloads)">cancellation_slot_binder</a>(
-    const cancellation_slot_binder&lt; U, OtherCancellationSlot &gt; &amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">U</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a><span class="special">&gt;</span>
+<a class="link" href="cancellation_slot_binder/overload4.html" title="cancellation_slot_binder::cancellation_slot_binder (4 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_binder</span><span class="special">&lt;</span> <span class="identifier">U</span><span class="special">,</span> <span class="identifier">OtherCancellationSlot</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload4.html" title="cancellation_slot_binder::cancellation_slot_binder (4 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Construct a copy of a different cancellation slot wrapper type, but specify
           a different cancellation slot.
         </p>
-<pre class="programlisting">template&lt;
-    typename U,
-    typename <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a>&gt;
-<a class="link" href="cancellation_slot_binder/overload5.html" title="cancellation_slot_binder::cancellation_slot_binder (5 of 9 overloads)">cancellation_slot_binder</a>(
-    const cancellation_slot_type &amp; s,
-    const cancellation_slot_binder&lt; U, OtherCancellationSlot &gt; &amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">U</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a><span class="special">&gt;</span>
+<a class="link" href="cancellation_slot_binder/overload5.html" title="cancellation_slot_binder::cancellation_slot_binder (5 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_type</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_binder</span><span class="special">&lt;</span> <span class="identifier">U</span><span class="special">,</span> <span class="identifier">OtherCancellationSlot</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload5.html" title="cancellation_slot_binder::cancellation_slot_binder (5 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Move constructor.
         </p>
-<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload6.html" title="cancellation_slot_binder::cancellation_slot_binder (6 of 9 overloads)">cancellation_slot_binder</a>(
-    cancellation_slot_binder &amp;&amp; other);
+<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload6.html" title="cancellation_slot_binder::cancellation_slot_binder (6 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="identifier">cancellation_slot_binder</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload6.html" title="cancellation_slot_binder::cancellation_slot_binder (6 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Move construct the target object, but specify a different cancellation
           slot.
         </p>
-<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload7.html" title="cancellation_slot_binder::cancellation_slot_binder (7 of 9 overloads)">cancellation_slot_binder</a>(
-    const cancellation_slot_type &amp; s,
-    cancellation_slot_binder &amp;&amp; other);
+<pre class="programlisting"><a class="link" href="cancellation_slot_binder/overload7.html" title="cancellation_slot_binder::cancellation_slot_binder (7 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_type</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">cancellation_slot_binder</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload7.html" title="cancellation_slot_binder::cancellation_slot_binder (7 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Move construct from a different cancellation slot wrapper type.
         </p>
-<pre class="programlisting">template&lt;
-    typename U,
-    typename <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a>&gt;
-<a class="link" href="cancellation_slot_binder/overload8.html" title="cancellation_slot_binder::cancellation_slot_binder (8 of 9 overloads)">cancellation_slot_binder</a>(
-    cancellation_slot_binder&lt; U, OtherCancellationSlot &gt; &amp;&amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">U</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a><span class="special">&gt;</span>
+<a class="link" href="cancellation_slot_binder/overload8.html" title="cancellation_slot_binder::cancellation_slot_binder (8 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="identifier">cancellation_slot_binder</span><span class="special">&lt;</span> <span class="identifier">U</span><span class="special">,</span> <span class="identifier">OtherCancellationSlot</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload8.html" title="cancellation_slot_binder::cancellation_slot_binder (8 of 9 overloads)">more...</a></em></span>
 </pre>
 <p>
           Move construct from a different cancellation slot wrapper type, but specify
           a different cancellation slot.
         </p>
-<pre class="programlisting">template&lt;
-    typename U,
-    typename <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a>&gt;
-<a class="link" href="cancellation_slot_binder/overload9.html" title="cancellation_slot_binder::cancellation_slot_binder (9 of 9 overloads)">cancellation_slot_binder</a>(
-    const cancellation_slot_type &amp; s,
-    cancellation_slot_binder&lt; U, OtherCancellationSlot &gt; &amp;&amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">U</span><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../CancellationSlot.html" title="Cancellation slot requirements">OtherCancellationSlot</a><span class="special">&gt;</span>
+<a class="link" href="cancellation_slot_binder/overload9.html" title="cancellation_slot_binder::cancellation_slot_binder (9 of 9 overloads)">cancellation_slot_binder</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">cancellation_slot_type</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">cancellation_slot_binder</span><span class="special">&lt;</span> <span class="identifier">U</span><span class="special">,</span> <span class="identifier">OtherCancellationSlot</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="cancellation_slot_binder/overload9.html" title="cancellation_slot_binder::cancellation_slot_binder (9 of 9 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

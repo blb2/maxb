@@ -21,16 +21,17 @@
         void(Ts...), Executor &gt;::cancel</a>
 </h4></div></div></div>
 <p>
-          <a class="indexterm" name="asio.indexterm.experimental__promise_lt__void_lp_Ts_ellipsis__rp__comma__Executor__gt_.cancel"></a>
+          <a class="indexterm" name="asio.indexterm.experimental__promise_lt__void_lp_Ts_ellipsis__rp__comma__Executor__gt_.cancel"></a> 
+Cancel the promise. Usually done through the
+          destructor.
         </p>
-<pre class="programlisting">void cancel(
-    cancellation_type level = cancellation_type::all);
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">cancel</span><span class="special">(</span>
+    <span class="identifier">cancellation_type</span> <span class="identifier">level</span> <span class="special">=</span> <span class="identifier">cancellation_type</span><span class="special">::</span><span class="identifier">all</span><span class="special">);</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

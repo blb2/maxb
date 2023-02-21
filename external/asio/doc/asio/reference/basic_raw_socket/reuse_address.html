@@ -28,7 +28,7 @@ Socket
           option to allow the socket to be bound to an address that is already in
           use.
         </p>
-<pre class="programlisting">typedef implementation_defined reuse_address;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">implementation_defined</span> <span class="identifier">reuse_address</span><span class="special">;</span>
 </pre>
 <p>
           Implements the SOL_SOCKET/SO_REUSEADDR socket option.
@@ -40,19 +40,19 @@ Socket
 <p>
           Setting the option:
         </p>
-<pre class="programlisting">asio::ip::tcp::acceptor acceptor(my_context);
-...
-asio::socket_base::reuse_address option(true);
-acceptor.set_option(option);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">acceptor</span> <span class="identifier">acceptor</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="special">...</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">reuse_address</span> <span class="identifier">option</span><span class="special">(</span><span class="keyword">true</span><span class="special">);</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">set_option</span><span class="special">(</span><span class="identifier">option</span><span class="special">);</span>
 </pre>
 <p>
           Getting the current option value:
         </p>
-<pre class="programlisting">asio::ip::tcp::acceptor acceptor(my_context);
-...
-asio::socket_base::reuse_address option;
-acceptor.get_option(option);
-bool is_set = option.value();
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">acceptor</span> <span class="identifier">acceptor</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="special">...</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">socket_base</span><span class="special">::</span><span class="identifier">reuse_address</span> <span class="identifier">option</span><span class="special">;</span>
+<span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">get_option</span><span class="special">(</span><span class="identifier">option</span><span class="special">);</span>
+<span class="keyword">bool</span> <span class="identifier">is_set</span> <span class="special">=</span> <span class="identifier">option</span><span class="special">.</span><span class="identifier">value</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="asio.reference.basic_raw_socket.reuse_address.h1"></a>
@@ -67,8 +67,7 @@ bool is_set = option.value();
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

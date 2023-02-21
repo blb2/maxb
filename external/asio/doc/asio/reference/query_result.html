@@ -23,12 +23,13 @@
         <a class="indexterm" name="asio.indexterm.query_result"></a>
       </p>
 <p>
-        A type trait that determines the result type of a <code class="computeroutput">query</code> expression.
+        A type trait that determines the result type of a <code class="computeroutput"><span class="identifier">query</span></code>
+        expression.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename Property&gt;
-struct query_result
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Property</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">query_result</span>
 </pre>
 <h5>
 <a name="asio.reference.query_result.h0"></a>
@@ -65,8 +66,9 @@ struct query_result
 </tr></tbody>
 </table></div>
 <p>
-        Class template <code class="computeroutput">query_result</code> is a trait that determines the result
-        type of the expression <code class="computeroutput">asio::query(std::declval&lt;T&gt;(), std::declval&lt;Property&gt;())</code>.
+        Class template <code class="computeroutput"><span class="identifier">query_result</span></code>
+        is a trait that determines the result type of the expression <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">query</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;(),</span>
+        <span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">Property</span><span class="special">&gt;())</span></code>.
       </p>
 <h5>
 <a name="asio.reference.query_result.h1"></a>
@@ -81,8 +83,7 @@ struct query_result
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

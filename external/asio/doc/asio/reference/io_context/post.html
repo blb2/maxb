@@ -21,24 +21,26 @@
 </h4></div></div></div>
 <p>
           <a class="indexterm" name="asio.indexterm.io_context.post"></a> 
-(Deprecated: Use <a class="link" href="../post.html" title="post"><code class="computeroutput">post</code></a>.)
-          Request the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          to invoke the given handler and return immediately.
+(Deprecated: Use <a class="link" href="../post.html" title="post"><code class="computeroutput"><span class="identifier">post</span></code></a>.) Request the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> to invoke the given
+          handler and return immediately.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../LegacyCompletionHandler.html" title="Legacy completion handler requirements">LegacyCompletionHandler</a>&gt;
-<a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> post(
-    LegacyCompletionHandler &amp;&amp; handler);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../LegacyCompletionHandler.html" title="Legacy completion handler requirements">LegacyCompletionHandler</a><span class="special">&gt;</span>
+<a class="link" href="../asynchronous_operations.html#asio.reference.asynchronous_operations.automatic_deduction_of_initiating_function_return_type"><span class="emphasis"><em>DEDUCED</em></span></a> <span class="identifier">post</span><span class="special">(</span>
+    <span class="identifier">LegacyCompletionHandler</span> <span class="special">&amp;&amp;</span> <span class="identifier">handler</span><span class="special">);</span>
 </pre>
 <p>
-          This function is used to ask the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          to execute the given handler, but without allowing the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          to call the handler from inside this function.
+          This function is used to ask the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> to execute the given
+          handler, but without allowing the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> to call the handler
+          from inside this function.
         </p>
 <p>
-          The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+          The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
           guarantees that the handler will only be called in a thread in which the
-          <code class="computeroutput">run()</code>, <code class="computeroutput">run_one()</code>, <code class="computeroutput">poll()</code> or <code class="computeroutput">poll_one()</code>
+          <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">run_one</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">poll</span><span class="special">()</span></code>
+          or <code class="computeroutput"><span class="identifier">poll_one</span><span class="special">()</span></code>
           member functions is currently being invoked.
         </p>
 <h6>
@@ -51,14 +53,12 @@
 <dt><span class="term">handler</span></dt>
 <dd>
 <p>
-                The handler to be called. The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-                will make a copy of the handler object as required. The function
-                signature of the handler must be:
-</p>
-<pre class="programlisting">void handler();
-</pre>
-<p>
+                The handler to be called. The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> will make a copy
+                of the handler object as required. The function signature of the
+                handler must be:
               </p>
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">();</span>
+</pre>
 </dd>
 </dl>
 </div>
@@ -71,7 +71,8 @@
         </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-              the handler's <code class="computeroutput">asio_handler_allocate</code> function; or
+              the handler's <code class="computeroutput"><span class="identifier">asio_handler_allocate</span></code>
+              function; or
             </li>
 <li class="listitem">
               the handler's copy constructor
@@ -83,8 +84,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

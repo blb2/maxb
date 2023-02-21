@@ -24,21 +24,21 @@
           (Deprecated: Use range overload.) Establishes a socket connection by trying
           each endpoint in a sequence.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol</a>,
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>,
-    typename Iterator&gt;
-Iterator connect(
-    basic_socket&lt; Protocol, Executor &gt; &amp; s,
-    Iterator begin,
-    asio::error_code &amp; ec,
-    typename constraint&lt;!is_endpoint_sequence&lt; Iterator &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Protocol.html" title="Protocol requirements">Protocol</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Iterator</span><span class="special">&gt;</span>
+<span class="identifier">Iterator</span> <span class="identifier">connect</span><span class="special">(</span>
+    <span class="identifier">basic_socket</span><span class="special">&lt;</span> <span class="identifier">Protocol</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">Iterator</span> <span class="identifier">begin</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;!</span><span class="identifier">is_endpoint_sequence</span><span class="special">&lt;</span> <span class="identifier">Iterator</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
           This function attempts to connect a socket to one of a sequence of endpoints.
-          It does this by repeated calls to the socket's <code class="computeroutput">connect</code> member
-          function, once for each endpoint in the sequence, until a connection is
-          successfully established.
+          It does this by repeated calls to the socket's <code class="computeroutput"><span class="identifier">connect</span></code>
+          member function, once for each endpoint in the sequence, until a connection
+          is successfully established.
         </p>
 <h6>
 <a name="asio.reference.connect.overload4.h0"></a>
@@ -59,8 +59,8 @@ Iterator connect(
 <dt><span class="term">ec</span></dt>
 <dd><p>
                 Set to indicate what error occurred, if any. If the sequence is empty,
-                set to <code class="computeroutput">asio::error::not_found</code>. Otherwise, contains the
-                error from the last connection attempt.
+                set to <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">error</span><span class="special">::</span><span class="identifier">not_found</span></code>. Otherwise, contains
+                the error from the last connection attempt.
               </p></dd>
 </dl>
 </div>
@@ -78,15 +78,13 @@ Iterator connect(
           <span><a name="asio.reference.connect.overload4.remarks"></a></span><a class="link" href="overload4.html#asio.reference.connect.overload4.remarks">Remarks</a>
         </h6>
 <p>
-          This overload assumes that a default constructed object of type <code class="computeroutput">Iterator</code>
-          represents the end of the sequence. This is a valid assumption for iterator
-          types such as <code class="computeroutput">asio::ip::tcp::resolver::iterator</code>.
+          This overload assumes that a default constructed object of type <code class="computeroutput"><span class="identifier">Iterator</span></code> represents the end of the sequence.
+          This is a valid assumption for iterator types such as <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">resolver</span><span class="special">::</span><span class="identifier">iterator</span></code>.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

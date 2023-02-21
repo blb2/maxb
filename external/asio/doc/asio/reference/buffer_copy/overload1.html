@@ -23,12 +23,12 @@
 <p>
           Copies bytes from a source buffer sequence to a target buffer sequence.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../MutableBufferSequence.html" title="Mutable buffer sequence requirements">MutableBufferSequence</a>,
-    typename <a class="link" href="../ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a>&gt;
-std::size_t buffer_copy(
-    const MutableBufferSequence &amp; target,
-    const ConstBufferSequence &amp; source);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../MutableBufferSequence.html" title="Mutable buffer sequence requirements">MutableBufferSequence</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../ConstBufferSequence.html" title="Constant buffer sequence requirements">ConstBufferSequence</a><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">buffer_copy</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">MutableBufferSequence</span> <span class="special">&amp;</span> <span class="identifier">target</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">ConstBufferSequence</span> <span class="special">&amp;</span> <span class="identifier">source</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.buffer_copy.overload1.h0"></a>
@@ -66,21 +66,20 @@ std::size_t buffer_copy(
         </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-              <code class="computeroutput">buffer_size(target)</code>
+              <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">target</span><span class="special">)</span></code>
             </li>
 <li class="listitem">
-              <code class="computeroutput">buffer_size(source)</code>
+              <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">source</span><span class="special">)</span></code>
             </li>
 </ul></div>
 <p>
-          This function is implemented in terms of <code class="computeroutput">memcpy</code>, and consequently
-          it cannot be used to copy between overlapping memory regions.
+          This function is implemented in terms of <code class="computeroutput"><span class="identifier">memcpy</span></code>,
+          and consequently it cannot be used to copy between overlapping memory regions.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

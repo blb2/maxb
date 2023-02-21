@@ -20,26 +20,27 @@
 <a name="asio.reference.this_coro__reset_cancellation_state"></a><a class="link" href="this_coro__reset_cancellation_state.html" title="this_coro::reset_cancellation_state">this_coro::reset_cancellation_state</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.this_coro__reset_cancellation_state"></a> 
-Returns
-        an awaitable object that may be used to reset the cancellation state of the
-        current coroutine.
+        <a class="indexterm" name="asio.indexterm.this_coro__reset_cancellation_state"></a>
       </p>
-<pre class="programlisting">constexpr unspecified <a class="link" href="this_coro__reset_cancellation_state/overload1.html" title="this_coro::reset_cancellation_state (1 of 3 overloads)">reset_cancellation_state</a>();
+<p>
+        Returns an awaitable object that may be used to reset the cancellation state
+        of the current coroutine.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <a class="link" href="this_coro__reset_cancellation_state/overload1.html" title="this_coro::reset_cancellation_state (1 of 3 overloads)">reset_cancellation_state</a><span class="special">();</span>
   <span class="emphasis"><em>» <a class="link" href="this_coro__reset_cancellation_state/overload1.html" title="this_coro::reset_cancellation_state (1 of 3 overloads)">more...</a></em></span>
 
-template&lt;
-    typename Filter&gt;
-constexpr unspecified <a class="link" href="this_coro__reset_cancellation_state/overload2.html" title="this_coro::reset_cancellation_state (2 of 3 overloads)">reset_cancellation_state</a>(
-    Filter &amp;&amp; filter);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Filter</span><span class="special">&gt;</span>
+<span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <a class="link" href="this_coro__reset_cancellation_state/overload2.html" title="this_coro::reset_cancellation_state (2 of 3 overloads)">reset_cancellation_state</a><span class="special">(</span>
+    <span class="identifier">Filter</span> <span class="special">&amp;&amp;</span> <span class="identifier">filter</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="this_coro__reset_cancellation_state/overload2.html" title="this_coro::reset_cancellation_state (2 of 3 overloads)">more...</a></em></span>
 
-template&lt;
-    typename InFilter,
-    typename OutFilter&gt;
-constexpr unspecified <a class="link" href="this_coro__reset_cancellation_state/overload3.html" title="this_coro::reset_cancellation_state (3 of 3 overloads)">reset_cancellation_state</a>(
-    InFilter &amp;&amp; in_filter,
-    OutFilter &amp;&amp; out_filter);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">InFilter</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">OutFilter</span><span class="special">&gt;</span>
+<span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <a class="link" href="this_coro__reset_cancellation_state/overload3.html" title="this_coro::reset_cancellation_state (3 of 3 overloads)">reset_cancellation_state</a><span class="special">(</span>
+    <span class="identifier">InFilter</span> <span class="special">&amp;&amp;</span> <span class="identifier">in_filter</span><span class="special">,</span>
+    <span class="identifier">OutFilter</span> <span class="special">&amp;&amp;</span> <span class="identifier">out_filter</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="this_coro__reset_cancellation_state/overload3.html" title="this_coro::reset_cancellation_state (3 of 3 overloads)">more...</a></em></span>
 </pre>
 <h5>
@@ -55,8 +56,7 @@ constexpr unspecified <a class="link" href="this_coro__reset_cancellation_state/
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

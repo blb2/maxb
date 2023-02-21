@@ -24,18 +24,18 @@
           Read data into a dynamic buffer sequence until a function object indicates
           a match.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a>,
-    typename <a class="link" href="../DynamicBuffer_v1.html" title="Dynamic buffer requirements (version 1)">DynamicBuffer_v1</a>,
-    typename MatchCondition&gt;
-std::size_t read_until(
-    SyncReadStream &amp; s,
-    DynamicBuffer_v1 &amp;&amp; buffers,
-    MatchCondition match_condition,
-    asio::error_code &amp; ec,
-    typename constraint&lt; is_match_condition&lt; MatchCondition &gt;::value &gt;::type  = 0,
-    typename constraint&lt; is_dynamic_buffer_v1&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0,
-    typename constraint&lt; !is_dynamic_buffer_v2&lt; typename decay&lt; DynamicBuffer_v1 &gt;::type &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../SyncReadStream.html" title="Buffer-oriented synchronous read stream requirements">SyncReadStream</a><span class="special">,</span>
+    <span class="keyword">typename</span> <a class="link" href="../DynamicBuffer_v1.html" title="Dynamic buffer requirements (version 1)">DynamicBuffer_v1</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">MatchCondition</span><span class="special">&gt;</span>
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">read_until</span><span class="special">(</span>
+    <span class="identifier">SyncReadStream</span> <span class="special">&amp;</span> <span class="identifier">s</span><span class="special">,</span>
+    <span class="identifier">DynamicBuffer_v1</span> <span class="special">&amp;&amp;</span> <span class="identifier">buffers</span><span class="special">,</span>
+    <span class="identifier">MatchCondition</span> <span class="identifier">match_condition</span><span class="special">,</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_match_condition</span><span class="special">&lt;</span> <span class="identifier">MatchCondition</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_dynamic_buffer_v1</span><span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">decay</span><span class="special">&lt;</span> <span class="identifier">DynamicBuffer_v1</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="special">!</span><span class="identifier">is_dynamic_buffer_v2</span><span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">decay</span><span class="special">&lt;</span> <span class="identifier">DynamicBuffer_v1</span> <span class="special">&gt;::</span><span class="identifier">type</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to read data into the specified dynamic buffer sequence
@@ -78,23 +78,26 @@ std::size_t read_until(
 <p>
                 The function object to be called to determine whether a match exists.
                 The signature of the function object must be:
-</p>
-<pre class="programlisting">pair&lt;iterator, bool&gt; match_condition(iterator begin, iterator end);
+              </p>
+<pre class="programlisting"><span class="identifier">pair</span><span class="special">&lt;</span><span class="identifier">iterator</span><span class="special">,</span> <span class="keyword">bool</span><span class="special">&gt;</span> <span class="identifier">match_condition</span><span class="special">(</span><span class="identifier">iterator</span> <span class="identifier">begin</span><span class="special">,</span> <span class="identifier">iterator</span> <span class="identifier">end</span><span class="special">);</span>
 </pre>
 <p>
-                where <code class="computeroutput">iterator</code> represents the type:
-</p>
-<pre class="programlisting">buffers_iterator&lt;DynamicBuffer_v1::const_buffers_type&gt;
+                where <code class="computeroutput"><span class="identifier">iterator</span></code> represents
+                the type:
+              </p>
+<pre class="programlisting"><span class="identifier">buffers_iterator</span><span class="special">&lt;</span><span class="identifier">DynamicBuffer_v1</span><span class="special">::</span><span class="identifier">const_buffers_type</span><span class="special">&gt;</span>
 </pre>
 <p>
-                The iterator parameters <code class="computeroutput">begin</code> and <code class="computeroutput">end</code> define
-                the range of bytes to be scanned to determine whether there is a
-                match. The <code class="computeroutput">first</code> member of the return value is an iterator
-                marking one-past-the-end of the bytes that have been consumed by
-                the match function. This iterator is used to calculate the <code class="computeroutput">begin</code>
+                The iterator parameters <code class="computeroutput"><span class="identifier">begin</span></code>
+                and <code class="computeroutput"><span class="identifier">end</span></code> define the
+                range of bytes to be scanned to determine whether there is a match.
+                The <code class="computeroutput"><span class="identifier">first</span></code> member
+                of the return value is an iterator marking one-past-the-end of the
+                bytes that have been consumed by the match function. This iterator
+                is used to calculate the <code class="computeroutput"><span class="identifier">begin</span></code>
                 parameter for any subsequent invocation of the match condition. The
-                <code class="computeroutput">second</code> member of the return value is true if a match
-                has been found, false otherwise.
+                <code class="computeroutput"><span class="identifier">second</span></code> member of
+                the return value is true if a match has been found, false otherwise.
               </p>
 </dd>
 <dt><span class="term">ec</span></dt>
@@ -123,16 +126,15 @@ std::size_t read_until(
           for a subsequent read_until operation to examine.
         </p>
 <p>
-          The default implementation of the <code class="computeroutput">is_match_condition</code> type
-          trait evaluates to true for function pointers and function objects with
-          a <code class="computeroutput">result_type</code> typedef. It must be specialised for other user-defined
-          function objects.
+          The default implementation of the <code class="computeroutput"><span class="identifier">is_match_condition</span></code>
+          type trait evaluates to true for function pointers and function objects
+          with a <code class="computeroutput"><span class="identifier">result_type</span></code> typedef.
+          It must be specialised for other user-defined function objects.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

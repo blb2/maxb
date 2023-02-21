@@ -24,25 +24,24 @@
           Returns an awaitable object that may be used to determine whether the coroutine
           throws if trying to suspend when it has been cancelled.
         </p>
-<pre class="programlisting">constexpr unspecified throw_if_cancelled();
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">throw_if_cancelled</span><span class="special">();</span>
 </pre>
 <h6>
 <a name="asio.reference.this_coro__throw_if_cancelled.overload1.h0"></a>
           <span><a name="asio.reference.this_coro__throw_if_cancelled.overload1.example"></a></span><a class="link" href="overload1.html#asio.reference.this_coro__throw_if_cancelled.overload1.example">Example</a>
         </h6>
-<pre class="programlisting">asio::awaitable&lt;void&gt; my_coroutine()
-{
-  if (co_await asio::this_coro::throw_if_cancelled)
-    // ...
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">awaitable</span><span class="special">&lt;</span><span class="keyword">void</span><span class="special">&gt;</span> <span class="identifier">my_coroutine</span><span class="special">()</span>
+<span class="special">{</span>
+  <span class="keyword">if</span> <span class="special">(</span><span class="identifier">co_await</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">this_coro</span><span class="special">::</span><span class="identifier">throw_if_cancelled</span><span class="special">)</span>
+    <span class="comment">// ...</span>
 
-  // ...
-}
+  <span class="comment">// ...</span>
+<span class="special">}</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

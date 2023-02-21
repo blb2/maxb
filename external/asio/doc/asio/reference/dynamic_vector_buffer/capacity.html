@@ -24,7 +24,7 @@
 Get
           the maximum size that the buffer may grow to without triggering reallocation.
         </p>
-<pre class="programlisting">std::size_t capacity() const;
+<pre class="programlisting"><span class="identifier">std</span><span class="special">::</span><span class="identifier">size_t</span> <span class="identifier">capacity</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.dynamic_vector_buffer.capacity.h0"></a>
@@ -34,13 +34,12 @@ Get
 <p>
           <span class="bold"><strong>DynamicBuffer_v1:</strong></span> The current total capacity
           of the buffer, i.e. for both the input sequence and output sequence. <span class="bold"><strong>DynamicBuffer_v2:</strong></span> The current capacity of the underlying
-          vector if less than <code class="computeroutput">max_size()</code>. Otherwise returns <code class="computeroutput">max_size()</code>.
+          vector if less than <code class="computeroutput"><span class="identifier">max_size</span><span class="special">()</span></code>. Otherwise returns <code class="computeroutput"><span class="identifier">max_size</span><span class="special">()</span></code>.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

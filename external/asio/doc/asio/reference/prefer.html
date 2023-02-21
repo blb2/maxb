@@ -20,61 +20,77 @@
 <a name="asio.reference.prefer"></a><a class="link" href="prefer.html" title="prefer">prefer</a>
 </h3></div></div></div>
 <p>
-        <a class="indexterm" name="asio.indexterm.prefer"></a> 
-A customisation point that attempts to apply a
-        property to an object.
+        <a class="indexterm" name="asio.indexterm.prefer"></a>
       </p>
-<pre class="programlisting">constexpr unspecified prefer = unspecified;
+<p>
+        A customisation point that attempts to apply a property to an object.
+      </p>
+<pre class="programlisting"><span class="keyword">constexpr</span> <span class="identifier">unspecified</span> <span class="identifier">prefer</span> <span class="special">=</span> <span class="identifier">unspecified</span><span class="special">;</span>
 </pre>
 <p>
-        The name <code class="computeroutput">prefer</code> denotes a customisation point object. The expression
-        <code class="computeroutput">asio::prefer(E, P0, Pn...)</code> for some subexpressions <code class="computeroutput">E</code>
-        and <code class="computeroutput">P0</code>, and where <code class="computeroutput">Pn...</code> represents <code class="computeroutput">N</code>
-        subexpressions (where <code class="computeroutput">N</code> is 0 or more, and with types <code class="computeroutput">T
-        = decay_t&lt;decltype(E)&gt;</code> and <code class="computeroutput">Prop0 = decay_t&lt;decltype(P0)&gt;</code>)
+        The name <code class="computeroutput"><span class="identifier">prefer</span></code> denotes a
+        customisation point object. The expression <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span>
+        <span class="identifier">P0</span><span class="special">,</span> <span class="identifier">Pn</span><span class="special">...)</span></code>
+        for some subexpressions <code class="computeroutput"><span class="identifier">E</span></code>
+        and <code class="computeroutput"><span class="identifier">P0</span></code>, and where <code class="computeroutput"><span class="identifier">Pn</span><span class="special">...</span></code> represents
+        <code class="computeroutput"><span class="identifier">N</span></code> subexpressions (where
+        <code class="computeroutput"><span class="identifier">N</span></code> is 0 or more, and with
+        types <code class="computeroutput"><span class="identifier">T</span> <span class="special">=</span>
+        <span class="identifier">decay_t</span><span class="special">&lt;</span><span class="keyword">decltype</span><span class="special">(</span><span class="identifier">E</span><span class="special">)&gt;</span></code>
+        and <code class="computeroutput"><span class="identifier">Prop0</span> <span class="special">=</span>
+        <span class="identifier">decay_t</span><span class="special">&lt;</span><span class="keyword">decltype</span><span class="special">(</span><span class="identifier">P0</span><span class="special">)&gt;</span></code>)
         is expression-equivalent to:
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            If <code class="computeroutput">is_applicable_property_v&lt;T, Prop0&gt; &amp;&amp; Prop0::is_preferable</code>
-            is not a well-formed constant expression with value <code class="computeroutput">true</code>,
-            <code class="computeroutput">asio::prefer(E, P0, Pn...)</code> is ill-formed.
+            If <code class="computeroutput"><span class="identifier">is_applicable_property_v</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">,</span> <span class="identifier">Prop0</span><span class="special">&gt;</span> <span class="special">&amp;&amp;</span>
+            <span class="identifier">Prop0</span><span class="special">::</span><span class="identifier">is_preferable</span></code> is not a well-formed
+            constant expression with value <code class="computeroutput"><span class="keyword">true</span></code>,
+            <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">,</span> <span class="identifier">Pn</span><span class="special">...)</span></code>
+            is ill-formed.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">E</code> if <code class="computeroutput">N == 0</code> and the expression
-            <code class="computeroutput">Prop0::template static_query_v&lt;T&gt; == Prop0::value()</code>
-            is a well-formed constant expression with value <code class="computeroutput">true</code>.
+            Otherwise, <code class="computeroutput"><span class="identifier">E</span></code> if <code class="computeroutput"><span class="identifier">N</span> <span class="special">==</span> <span class="number">0</span></code> and the expression <code class="computeroutput"><span class="identifier">Prop0</span><span class="special">::</span><span class="keyword">template</span> <span class="identifier">static_query_v</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="special">==</span> <span class="identifier">Prop0</span><span class="special">::</span><span class="identifier">value</span><span class="special">()</span></code> is a well-formed constant expression
+            with value <code class="computeroutput"><span class="keyword">true</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">(E).require(P0)</code> if <code class="computeroutput">N == 0</code> and the
-            expression <code class="computeroutput">(E).require(P0)</code> is a valid expression.
+            Otherwise, <code class="computeroutput"><span class="special">(</span><span class="identifier">E</span><span class="special">).</span><span class="identifier">require</span><span class="special">(</span><span class="identifier">P0</span><span class="special">)</span></code> if <code class="computeroutput"><span class="identifier">N</span>
+            <span class="special">==</span> <span class="number">0</span></code>
+            and the expression <code class="computeroutput"><span class="special">(</span><span class="identifier">E</span><span class="special">).</span><span class="identifier">require</span><span class="special">(</span><span class="identifier">P0</span><span class="special">)</span></code> is a valid expression.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">require(E, P0)</code> if <code class="computeroutput">N == 0</code> and the
-            expression <code class="computeroutput">require(E, P0)</code> is a valid expression with overload
-            resolution performed in a context that does not include the declaration
-            of the <code class="computeroutput">require</code> customization point object.
+            Otherwise, <code class="computeroutput"><span class="identifier">require</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">)</span></code>
+            if <code class="computeroutput"><span class="identifier">N</span> <span class="special">==</span>
+            <span class="number">0</span></code> and the expression <code class="computeroutput"><span class="identifier">require</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">)</span></code>
+            is a valid expression with overload resolution performed in a context
+            that does not include the declaration of the <code class="computeroutput"><span class="identifier">require</span></code>
+            customization point object.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">(E).prefer(P0)</code> if <code class="computeroutput">N == 0</code> and the
-            expression <code class="computeroutput">(E).prefer(P0)</code> is a valid expression.
+            Otherwise, <code class="computeroutput"><span class="special">(</span><span class="identifier">E</span><span class="special">).</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">P0</span><span class="special">)</span></code> if <code class="computeroutput"><span class="identifier">N</span>
+            <span class="special">==</span> <span class="number">0</span></code>
+            and the expression <code class="computeroutput"><span class="special">(</span><span class="identifier">E</span><span class="special">).</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">P0</span><span class="special">)</span></code> is a valid expression.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">prefer(E, P0)</code> if <code class="computeroutput">N == 0</code> and the
-            expression <code class="computeroutput">prefer(E, P0)</code> is a valid expression with overload
-            resolution performed in a context that does not include the declaration
-            of the <code class="computeroutput">prefer</code> customization point object.
+            Otherwise, <code class="computeroutput"><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">)</span></code>
+            if <code class="computeroutput"><span class="identifier">N</span> <span class="special">==</span>
+            <span class="number">0</span></code> and the expression <code class="computeroutput"><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">)</span></code>
+            is a valid expression with overload resolution performed in a context
+            that does not include the declaration of the <code class="computeroutput"><span class="identifier">prefer</span></code>
+            customization point object.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">E</code> if <code class="computeroutput">N == 0</code>.
+            Otherwise, <code class="computeroutput"><span class="identifier">E</span></code> if <code class="computeroutput"><span class="identifier">N</span> <span class="special">==</span> <span class="number">0</span></code>.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">asio::prefer(asio::prefer(E, P0), Pn...)</code> if
-            <code class="computeroutput">N &gt; 0</code> and the expression <code class="computeroutput">asio::prefer(asio::prefer(E,
-            P0), Pn...)</code> is a valid expression.
+            Otherwise, <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">),</span> <span class="identifier">Pn</span><span class="special">...)</span></code>
+            if <code class="computeroutput"><span class="identifier">N</span> <span class="special">&gt;</span>
+            <span class="number">0</span></code> and the expression <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">),</span> <span class="identifier">Pn</span><span class="special">...)</span></code>
+            is a valid expression.
           </li>
 <li class="listitem">
-            Otherwise, <code class="computeroutput">asio::prefer(E, P0, Pn...)</code> is ill-formed.
+            Otherwise, <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">prefer</span><span class="special">(</span><span class="identifier">E</span><span class="special">,</span> <span class="identifier">P0</span><span class="special">,</span> <span class="identifier">Pn</span><span class="special">...)</span></code>
+            is ill-formed.
           </li>
 </ul></div>
 <h5>
@@ -90,8 +106,7 @@ A customisation point that attempts to apply a
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

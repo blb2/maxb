@@ -23,14 +23,14 @@
 <p>
             Construct and attach to a parent slot to create a new child slot.
           </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../../CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a>,
-    typename InFilter,
-    typename OutFilter&gt;
-constexpr cancellation_state(
-    CancellationSlot slot,
-    InFilter in_filter,
-    OutFilter out_filter);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../../CancellationSlot.html" title="Cancellation slot requirements">CancellationSlot</a><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">InFilter</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">OutFilter</span><span class="special">&gt;</span>
+<span class="keyword">constexpr</span> <span class="identifier">cancellation_state</span><span class="special">(</span>
+    <span class="identifier">CancellationSlot</span> <span class="identifier">slot</span><span class="special">,</span>
+    <span class="identifier">InFilter</span> <span class="identifier">in_filter</span><span class="special">,</span>
+    <span class="identifier">OutFilter</span> <span class="identifier">out_filter</span><span class="special">);</span>
 </pre>
 <h6>
 <a name="asio.reference.cancellation_state.cancellation_state.overload4.h0"></a>
@@ -49,12 +49,10 @@ constexpr cancellation_state(
                   A function object that is used to transform incoming cancellation
                   signals as they are received from the parent slot. This function
                   object must have the signature:
-</p>
-<pre class="programlisting">asio::cancellation_type_t in_filter(
-    asio::cancellation_type_t);
-</pre>
-<p>
                 </p>
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">cancellation_type_t</span> <span class="identifier">in_filter</span><span class="special">(</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">cancellation_type_t</span><span class="special">);</span>
+</pre>
 </dd>
 <dt><span class="term">out_filter</span></dt>
 <dd>
@@ -62,12 +60,10 @@ constexpr cancellation_state(
                   A function object that is used to transform outcoming cancellation
                   signals as they are relayed to the child slot. This function object
                   must have the signature:
-</p>
-<pre class="programlisting">asio::cancellation_type_t out_filter(
-    asio::cancellation_type_t);
-</pre>
-<p>
                 </p>
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">cancellation_type_t</span> <span class="identifier">out_filter</span><span class="special">(</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">cancellation_type_t</span><span class="special">);</span>
+</pre>
 </dd>
 </dl>
 </div>
@@ -76,23 +72,22 @@ constexpr cancellation_state(
           </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-                <a class="link" href="../../disable_cancellation.html" title="disable_cancellation"><code class="computeroutput">disable_cancellation</code></a>
+                <a class="link" href="../../disable_cancellation.html" title="disable_cancellation"><code class="computeroutput"><span class="identifier">disable_cancellation</span></code></a>
               </li>
 <li class="listitem">
-                <a class="link" href="../../enable_terminal_cancellation.html" title="enable_terminal_cancellation"><code class="computeroutput">enable_terminal_cancellation</code></a>
+                <a class="link" href="../../enable_terminal_cancellation.html" title="enable_terminal_cancellation"><code class="computeroutput"><span class="identifier">enable_terminal_cancellation</span></code></a>
               </li>
 <li class="listitem">
-                <a class="link" href="../../enable_partial_cancellation.html" title="enable_partial_cancellation"><code class="computeroutput">enable_partial_cancellation</code></a>
+                <a class="link" href="../../enable_partial_cancellation.html" title="enable_partial_cancellation"><code class="computeroutput"><span class="identifier">enable_partial_cancellation</span></code></a>
               </li>
 <li class="listitem">
-                <a class="link" href="../../enable_total_cancellation.html" title="enable_total_cancellation"><code class="computeroutput">enable_total_cancellation</code></a>
+                <a class="link" href="../../enable_total_cancellation.html" title="enable_total_cancellation"><code class="computeroutput"><span class="identifier">enable_total_cancellation</span></code></a>
               </li>
 </ul></div>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

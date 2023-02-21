@@ -24,17 +24,17 @@
 Request the
           strand to invoke the given function object.
         </p>
-<pre class="programlisting">template&lt;
-    typename Function,
-    typename Allocator&gt;
-void defer(
-    Function &amp;&amp; f,
-    const Allocator &amp; a) const;
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Function</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span><span class="special">&gt;</span>
+<span class="keyword">void</span> <span class="identifier">defer</span><span class="special">(</span>
+    <span class="identifier">Function</span> <span class="special">&amp;&amp;</span> <span class="identifier">f</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">Allocator</span> <span class="special">&amp;</span> <span class="identifier">a</span><span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <p>
           This function is used to ask the executor to execute the given function
           object. The function object will never be executed inside this function.
-          Instead, it will be scheduled to run by the underlying <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>.
+          Instead, it will be scheduled to run by the underlying <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>.
         </p>
 <h6>
 <a name="asio.reference.io_context__strand.defer.h0"></a>
@@ -49,11 +49,9 @@ void defer(
                 The function object to be called. The executor will make a copy of
                 the handler object as required. The function signature of the function
                 object must be:
-</p>
-<pre class="programlisting">void function();
-</pre>
-<p>
               </p>
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">function</span><span class="special">();</span>
+</pre>
 </dd>
 <dt><span class="term">a</span></dt>
 <dd><p>
@@ -65,8 +63,7 @@ void defer(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

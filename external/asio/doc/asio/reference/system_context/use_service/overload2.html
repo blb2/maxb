@@ -26,16 +26,16 @@
 <p>
             Obtain the service object corresponding to the given type.
           </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../../Service.html" title="Service requirements">Service</a>&gt;
-friend Service &amp; use_service(
-    io_context &amp; ioc);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../../Service.html" title="Service requirements">Service</a><span class="special">&gt;</span>
+<span class="keyword">friend</span> <span class="identifier">Service</span> <span class="special">&amp;</span> <span class="identifier">use_service</span><span class="special">(</span>
+    <span class="identifier">io_context</span> <span class="special">&amp;</span> <span class="identifier">ioc</span><span class="special">);</span>
 </pre>
 <p>
             This function is used to locate a service object that corresponds to
             the given service type. If there is no existing implementation of the
-            service, then the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-            will create a new instance of the service.
+            service, then the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> will create a new
+            instance of the service.
           </p>
 <h6>
 <a name="asio.reference.system_context.use_service.overload2.h0"></a>
@@ -46,7 +46,7 @@ friend Service &amp; use_service(
 <dl>
 <dt><span class="term">ioc</span></dt>
 <dd><p>
-                  The <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+                  The <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
                   object that owns the service.
                 </p></dd>
 </dl>
@@ -66,7 +66,7 @@ friend Service &amp; use_service(
           </h6>
 <p>
             This overload is preserved for backwards compatibility with services
-            that inherit from <a class="link" href="../../io_context__service.html" title="io_context::service"><code class="computeroutput">io_context::service</code></a>.
+            that inherit from <a class="link" href="../../io_context__service.html" title="io_context::service"><code class="computeroutput"><span class="identifier">io_context</span><span class="special">::</span><span class="identifier">service</span></code></a>.
           </p>
 <h6>
 <a name="asio.reference.system_context.use_service.overload2.h3"></a>
@@ -81,8 +81,7 @@ friend Service &amp; use_service(
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

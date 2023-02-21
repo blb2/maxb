@@ -24,38 +24,37 @@
 Assignment
           operator.
         </p>
-<pre class="programlisting">any_executor &amp; <a class="link" href="operator_eq_/overload1.html" title="execution::any_executor::operator= (1 of 4 overloads)">operator=</a>(
-    const any_executor &amp; e);
+<pre class="programlisting"><span class="identifier">any_executor</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload1.html" title="execution::any_executor::operator= (1 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">any_executor</span> <span class="special">&amp;</span> <span class="identifier">e</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload1.html" title="execution::any_executor::operator= (1 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
           Move assignment operator.
         </p>
-<pre class="programlisting">any_executor &amp; <a class="link" href="operator_eq_/overload2.html" title="execution::any_executor::operator= (2 of 4 overloads)">operator=</a>(
-    any_executor &amp;&amp; e);
+<pre class="programlisting"><span class="identifier">any_executor</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload2.html" title="execution::any_executor::operator= (2 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">any_executor</span> <span class="special">&amp;&amp;</span> <span class="identifier">e</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload2.html" title="execution::any_executor::operator= (2 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
           Assignment operator that sets the polymorphic wrapper to the empty state.
         </p>
-<pre class="programlisting">any_executor &amp; <a class="link" href="operator_eq_/overload3.html" title="execution::any_executor::operator= (3 of 4 overloads)">operator=</a>(
-    nullptr_t );
+<pre class="programlisting"><span class="identifier">any_executor</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload3.html" title="execution::any_executor::operator= (3 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">nullptr_t</span> <span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload3.html" title="execution::any_executor::operator= (3 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
           Assignment operator to create a polymorphic wrapper for the specified executor.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a>&gt;
-any_executor &amp; <a class="link" href="operator_eq_/overload4.html" title="execution::any_executor::operator= (4 of 4 overloads)">operator=</a>(
-    Executor e);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor</a><span class="special">&gt;</span>
+<span class="identifier">any_executor</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload4.html" title="execution::any_executor::operator= (4 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">Executor</span> <span class="identifier">e</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload4.html" title="execution::any_executor::operator= (4 of 4 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

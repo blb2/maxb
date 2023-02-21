@@ -20,17 +20,18 @@
 <a name="asio.reference.EndpointSequence"></a><a class="link" href="EndpointSequence.html" title="Endpoint sequence requirements">Endpoint sequence requirements</a>
 </h3></div></div></div>
 <p>
-        A type <code class="computeroutput">X</code> meets the <code class="computeroutput">EndpointSequence</code> requirements
-        if it satisfies the requirements of <code class="computeroutput">Destructible</code> (C++Std [destructible])
-        and <code class="computeroutput">CopyConstructible</code> (C++Std [copyconstructible]), as well
-        as the additional requirements listed below.
+        A type <code class="computeroutput"><span class="identifier">X</span></code> meets the <code class="computeroutput"><span class="identifier">EndpointSequence</span></code> requirements if it satisfies
+        the requirements of <code class="computeroutput"><span class="identifier">Destructible</span></code>
+        (C++Std [destructible]) and <code class="computeroutput"><span class="identifier">CopyConstructible</span></code>
+        (C++Std [copyconstructible]), as well as the additional requirements listed
+        below.
       </p>
 <p>
-        In the table below, <code class="computeroutput">x</code> denotes a (possibly const) value of type
-        <code class="computeroutput">X</code>.
+        In the table below, <code class="computeroutput"><span class="identifier">x</span></code> denotes
+        a (possibly const) value of type <code class="computeroutput"><span class="identifier">X</span></code>.
       </p>
 <div class="table">
-<a name="asio.reference.EndpointSequence.t0"></a><p class="title"><b>Table 15. EndpointSequence requirements</b></p>
+<a name="asio.reference.EndpointSequence.t0"></a><p class="title"><b>Table 16. EndpointSequence requirements</b></p>
 <div class="table-contents"><table class="table" summary="EndpointSequence requirements">
 <colgroup>
 <col>
@@ -57,19 +58,21 @@
 <tbody><tr>
 <td>
                 <p>
-                  <code class="computeroutput">x.begin()</code><br> <code class="computeroutput">x.end()</code>
+                  <code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">begin</span><span class="special">()</span></code><br>
+                  <code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">end</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
                   A type meeting the requirements for forward iterators (C++Std [forward.iterators])
-                  whose value type is convertible to a type satisfying the <a class="link" href="Endpoint.html" title="Endpoint requirements"><code class="computeroutput">Endpoint</code></a>
+                  whose value type is convertible to a type satisfying the <a class="link" href="Endpoint.html" title="Endpoint requirements"><code class="computeroutput"><span class="identifier">Endpoint</span></code></a>
                   requirements.
                 </p>
               </td>
 <td>
                 <p>
-                  [<code class="computeroutput">x.begin()</code>,<code class="computeroutput">x.end()</code>) is a valid range.
+                  [<code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">begin</span><span class="special">()</span></code>,<code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">end</span><span class="special">()</span></code>)
+                  is a valid range.
                 </p>
               </td>
 </tr></tbody>
@@ -79,8 +82,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

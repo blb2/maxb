@@ -21,15 +21,15 @@
           (2 of 2 overloads)</a>
 </h5></div></div></div>
 <p>
-            (Deprecated: Use non-error_code overload.) Run the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-            object's event processing loop to execute one ready handler.
+            (Deprecated: Use non-error_code overload.) Run the <a class="link" href="../../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> object's event processing
+            loop to execute one ready handler.
           </p>
-<pre class="programlisting">count_type poll_one(
-    asio::error_code &amp; ec);
+<pre class="programlisting"><span class="identifier">count_type</span> <span class="identifier">poll_one</span><span class="special">(</span>
+    <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">ec</span><span class="special">);</span>
 </pre>
 <p>
-            The <code class="computeroutput">poll_one()</code> function runs at most one handler that is
-            ready to run, without blocking.
+            The <code class="computeroutput"><span class="identifier">poll_one</span><span class="special">()</span></code>
+            function runs at most one handler that is ready to run, without blocking.
           </p>
 <h6>
 <a name="asio.reference.io_context.poll_one.overload2.h0"></a>
@@ -55,8 +55,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

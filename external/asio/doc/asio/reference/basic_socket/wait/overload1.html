@@ -24,8 +24,8 @@
             Wait for the socket to become ready to read, ready to write, or to have
             pending error conditions.
           </p>
-<pre class="programlisting">void wait(
-    wait_type w);
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">wait</span><span class="special">(</span>
+    <span class="identifier">wait_type</span> <span class="identifier">w</span><span class="special">);</span>
 </pre>
 <p>
             This function is used to perform a blocking wait for a socket to enter
@@ -51,15 +51,14 @@
 <p>
             Waiting for a socket to become readable.
           </p>
-<pre class="programlisting">asio::ip::tcp::socket socket(my_context);
-...
-socket.wait(asio::ip::tcp::socket::wait_read);
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">socket</span> <span class="identifier">socket</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="special">...</span>
+<span class="identifier">socket</span><span class="special">.</span><span class="identifier">wait</span><span class="special">(</span><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">socket</span><span class="special">::</span><span class="identifier">wait_read</span><span class="special">);</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

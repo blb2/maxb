@@ -23,13 +23,12 @@
         <a class="indexterm" name="asio.indexterm.execution__executor_index"></a>
       </p>
 <p>
-        The <a class="link" href="execution__executor_index.html" title="execution::executor_index"><code class="computeroutput">execution::executor_index</code></a>
-        trait detects the type used by an executor to represent an index within a
-        bulk operation.
+        The <a class="link" href="execution__executor_index.html" title="execution::executor_index"><code class="computeroutput"><span class="identifier">execution</span><span class="special">::</span><span class="identifier">executor_index</span></code></a> trait detects the
+        type used by an executor to represent an index within a bulk operation.
       </p>
-<pre class="programlisting">template&lt;
-    typename T&gt;
-struct executor_index
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">executor_index</span>
 </pre>
 <h5>
 <a name="asio.reference.execution__executor_index.h0"></a>
@@ -66,9 +65,10 @@ struct executor_index
 </tr></tbody>
 </table></div>
 <p>
-        Class template <code class="computeroutput">executor_index</code> is a type trait with a nested
-        type alias <code class="computeroutput">type</code> whose type is <code class="computeroutput">T::index_type</code> if
-        <code class="computeroutput">T::index_type</code> is valid, otherwise <code class="computeroutput">executor_shape_t&lt;T&gt;</code>.
+        Class template <code class="computeroutput"><span class="identifier">executor_index</span></code>
+        is a type trait with a nested type alias <code class="computeroutput"><span class="identifier">type</span></code>
+        whose type is <code class="computeroutput"><span class="identifier">T</span><span class="special">::</span><span class="identifier">index_type</span></code> if <code class="computeroutput"><span class="identifier">T</span><span class="special">::</span><span class="identifier">index_type</span></code>
+        is valid, otherwise <code class="computeroutput"><span class="identifier">executor_shape_t</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span></code>.
       </p>
 <h5>
 <a name="asio.reference.execution__executor_index.h1"></a>
@@ -83,8 +83,7 @@ struct executor_index
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

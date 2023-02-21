@@ -23,40 +23,39 @@
           <a class="indexterm" name="asio.indexterm.strand.operator_eq_"></a> 
 Assignment operator.
         </p>
-<pre class="programlisting">strand &amp; <a class="link" href="operator_eq_/overload1.html" title="strand::operator= (1 of 4 overloads)">operator=</a>(
-    const strand &amp; other);
+<pre class="programlisting"><span class="identifier">strand</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload1.html" title="strand::operator= (1 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">strand</span> <span class="special">&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload1.html" title="strand::operator= (1 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
           Converting assignment operator.
         </p>
-<pre class="programlisting">template&lt;
-    class <a class="link" href="../Executor1.html" title="Executor requirements">OtherExecutor</a>&gt;
-strand &amp; <a class="link" href="operator_eq_/overload2.html" title="strand::operator= (2 of 4 overloads)">operator=</a>(
-    const strand&lt; OtherExecutor &gt; &amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">class</span> <a class="link" href="../Executor1.html" title="Executor requirements">OtherExecutor</a><span class="special">&gt;</span>
+<span class="identifier">strand</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload2.html" title="strand::operator= (2 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">strand</span><span class="special">&lt;</span> <span class="identifier">OtherExecutor</span> <span class="special">&gt;</span> <span class="special">&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload2.html" title="strand::operator= (2 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
           Move assignment operator.
         </p>
-<pre class="programlisting">strand &amp; <a class="link" href="operator_eq_/overload3.html" title="strand::operator= (3 of 4 overloads)">operator=</a>(
-    strand &amp;&amp; other);
+<pre class="programlisting"><span class="identifier">strand</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload3.html" title="strand::operator= (3 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">strand</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload3.html" title="strand::operator= (3 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
           Converting move assignment operator.
         </p>
-<pre class="programlisting">template&lt;
-    class <a class="link" href="../Executor1.html" title="Executor requirements">OtherExecutor</a>&gt;
-strand &amp; <a class="link" href="operator_eq_/overload4.html" title="strand::operator= (4 of 4 overloads)">operator=</a>(
-    strand&lt; OtherExecutor &gt; &amp;&amp; other);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">class</span> <a class="link" href="../Executor1.html" title="Executor requirements">OtherExecutor</a><span class="special">&gt;</span>
+<span class="identifier">strand</span> <span class="special">&amp;</span> <a class="link" href="operator_eq_/overload4.html" title="strand::operator= (4 of 4 overloads)">operator=</a><span class="special">(</span>
+    <span class="identifier">strand</span><span class="special">&lt;</span> <span class="identifier">OtherExecutor</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="operator_eq_/overload4.html" title="strand::operator= (4 of 4 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

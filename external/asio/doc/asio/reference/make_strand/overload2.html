@@ -21,20 +21,41 @@
         of 2 overloads)</a>
 </h4></div></div></div>
 <p>
-          Create a <a class="link" href="../strand.html" title="strand"><code class="computeroutput">strand</code></a>
+          Create a <a class="link" href="../strand.html" title="strand"><code class="computeroutput"><span class="identifier">strand</span></code></a>
           object for an execution context.
         </p>
-<pre class="programlisting">template&lt;
-    typename ExecutionContext&gt;
-strand&lt; typename ExecutionContext::executor_type &gt; make_strand(
-    ExecutionContext &amp; ctx,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<span class="identifier">strand</span><span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">::</span><span class="identifier">executor_type</span> <span class="special">&gt;</span> <span class="identifier">make_strand</span><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">ctx</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
+<h6>
+<a name="asio.reference.make_strand.overload2.h0"></a>
+          <span><a name="asio.reference.make_strand.overload2.parameters"></a></span><a class="link" href="overload2.html#asio.reference.make_strand.overload2.parameters">Parameters</a>
+        </h6>
+<div class="variablelist">
+<p class="title"><b></b></p>
+<dl>
+<dt><span class="term">ctx</span></dt>
+<dd><p>
+                An execution context, from which an executor will be obtained.
+              </p></dd>
+</dl>
+</div>
+<h6>
+<a name="asio.reference.make_strand.overload2.h1"></a>
+          <span><a name="asio.reference.make_strand.overload2.return_value"></a></span><a class="link" href="overload2.html#asio.reference.make_strand.overload2.return_value">Return
+          Value</a>
+        </h6>
+<p>
+          A strand constructed with the execution context's executor, obtained by
+          performing <code class="computeroutput"><span class="identifier">ctx</span><span class="special">.</span><span class="identifier">get_executor</span><span class="special">()</span></code>.
+        </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

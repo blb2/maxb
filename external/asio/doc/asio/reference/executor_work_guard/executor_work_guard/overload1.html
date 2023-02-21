@@ -21,21 +21,20 @@
           (1 of 3 overloads)</a>
 </h5></div></div></div>
 <p>
-            Constructs a <code class="computeroutput">executor_work_guard</code> object for the specified
-            executor.
+            Constructs a <code class="computeroutput"><span class="identifier">executor_work_guard</span></code>
+            object for the specified executor.
           </p>
-<pre class="programlisting">executor_work_guard(
-    const executor_type &amp; e);
+<pre class="programlisting"><span class="identifier">executor_work_guard</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">e</span><span class="special">);</span>
 </pre>
 <p>
-            Stores a copy of <code class="computeroutput">e</code> and calls <code class="computeroutput">on_work_started()</code>
-            on it.
+            Stores a copy of <code class="computeroutput"><span class="identifier">e</span></code> and
+            calls <code class="computeroutput"><span class="identifier">on_work_started</span><span class="special">()</span></code> on it.
           </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

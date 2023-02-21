@@ -24,7 +24,7 @@
 Get
           the last error associated with the stream.
         </p>
-<pre class="programlisting">const asio::error_code &amp; error() const;
+<pre class="programlisting"><span class="keyword">const</span> <span class="identifier">asio</span><span class="special">::</span><span class="identifier">error_code</span> <span class="special">&amp;</span> <span class="identifier">error</span><span class="special">()</span> <span class="keyword">const</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.basic_socket_iostream.error.h0"></a>
@@ -32,7 +32,8 @@ Get
           Value</a>
         </h6>
 <p>
-          An <code class="computeroutput">error_code</code> corresponding to the last error from the stream.
+          An <code class="computeroutput"><span class="identifier">error_code</span></code> corresponding
+          to the last error from the stream.
         </p>
 <h6>
 <a name="asio.reference.basic_socket_iostream.error.h1"></a>
@@ -41,17 +42,16 @@ Get
 <p>
           To print the error associated with a failure to establish a connection:
         </p>
-<pre class="programlisting">tcp::iostream s("www.boost.org", "http");
-if (!s)
-{
-  std::cout &lt;&lt; "Error: " &lt;&lt; s.error().message() &lt;&lt; std::endl;
-}
+<pre class="programlisting"><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">iostream</span> <span class="identifier">s</span><span class="special">(</span><span class="string">"www.boost.org"</span><span class="special">,</span> <span class="string">"http"</span><span class="special">);</span>
+<span class="keyword">if</span> <span class="special">(!</span><span class="identifier">s</span><span class="special">)</span>
+<span class="special">{</span>
+  <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"Error: "</span> <span class="special">&lt;&lt;</span> <span class="identifier">s</span><span class="special">.</span><span class="identifier">error</span><span class="special">().</span><span class="identifier">message</span><span class="special">()</span> <span class="special">&lt;&lt;</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+<span class="special">}</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

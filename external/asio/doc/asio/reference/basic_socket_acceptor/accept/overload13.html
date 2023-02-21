@@ -23,12 +23,12 @@
 <p>
             Accept a new connection.
           </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../../Executor1.html" title="Executor requirements">Executor1</a>&gt;
-Protocol::socket::template rebind_executor&lt; Executor1 &gt;::other accept(
-    const Executor1 &amp; ex,
-    endpoint_type &amp; peer_endpoint,
-    typename constraint&lt; is_executor&lt; Executor1 &gt;::value||execution::is_executor&lt; Executor1 &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../../Executor1.html" title="Executor requirements">Executor1</a><span class="special">&gt;</span>
+<span class="identifier">Protocol</span><span class="special">::</span><span class="identifier">socket</span><span class="special">::</span><span class="keyword">template</span> <span class="identifier">rebind_executor</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;::</span><span class="identifier">other</span> <span class="identifier">accept</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">Executor1</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">,</span>
+    <span class="identifier">endpoint_type</span> <span class="special">&amp;</span> <span class="identifier">peer_endpoint</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_executor</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;::</span><span class="identifier">value</span><span class="special">||</span><span class="identifier">execution</span><span class="special">::</span><span class="identifier">is_executor</span><span class="special">&lt;</span> <span class="identifier">Executor1</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
 </pre>
 <p>
             This function is used to accept a new connection from a peer. The function
@@ -82,17 +82,16 @@ Protocol::socket::template rebind_executor&lt; Executor1 &gt;::other accept(
 <a name="asio.reference.basic_socket_acceptor.accept.overload13.h3"></a>
             <span><a name="asio.reference.basic_socket_acceptor.accept.overload13.example"></a></span><a class="link" href="overload13.html#asio.reference.basic_socket_acceptor.accept.overload13.example">Example</a>
           </h6>
-<pre class="programlisting">asio::ip::tcp::acceptor acceptor(my_context);
-...
-asio::ip::tcp::endpoint endpoint;
-asio::ip::tcp::socket socket(
-    acceptor.accept(my_context2, endpoint));
+<pre class="programlisting"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">acceptor</span> <span class="identifier">acceptor</span><span class="special">(</span><span class="identifier">my_context</span><span class="special">);</span>
+<span class="special">...</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">endpoint</span> <span class="identifier">endpoint</span><span class="special">;</span>
+<span class="identifier">asio</span><span class="special">::</span><span class="identifier">ip</span><span class="special">::</span><span class="identifier">tcp</span><span class="special">::</span><span class="identifier">socket</span> <span class="identifier">socket</span><span class="special">(</span>
+    <span class="identifier">acceptor</span><span class="special">.</span><span class="identifier">accept</span><span class="special">(</span><span class="identifier">my_context2</span><span class="special">,</span> <span class="identifier">endpoint</span><span class="special">));</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

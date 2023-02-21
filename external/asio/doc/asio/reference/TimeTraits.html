@@ -20,10 +20,12 @@
 <a name="asio.reference.TimeTraits"></a><a class="link" href="TimeTraits.html" title="Time traits requirements">Time traits requirements</a>
 </h3></div></div></div>
 <p>
-        In the table below, <code class="computeroutput">X</code> denotes a time traits class for time type
-        <code class="computeroutput">Time</code>, <code class="computeroutput">t</code>, <code class="computeroutput">t1</code>, and <code class="computeroutput">t2</code> denote
-        values of type <code class="computeroutput">Time</code>, and <code class="computeroutput">d</code> denotes a value of type
-        <code class="computeroutput">X::duration_type</code>.
+        In the table below, <code class="computeroutput"><span class="identifier">X</span></code> denotes
+        a time traits class for time type <code class="computeroutput"><span class="identifier">Time</span></code>,
+        <code class="computeroutput"><span class="identifier">t</span></code>, <code class="computeroutput"><span class="identifier">t1</span></code>,
+        and <code class="computeroutput"><span class="identifier">t2</span></code> denote values of type
+        <code class="computeroutput"><span class="identifier">Time</span></code>, and <code class="computeroutput"><span class="identifier">d</span></code>
+        denotes a value of type <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">duration_type</span></code>.
       </p>
 <div class="table">
 <a name="asio.reference.TimeTraits.t0"></a><p class="title"><b>Table 34. TimeTraits requirements</b></p>
@@ -54,26 +56,26 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::time_type</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">time_type</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">Time</code>
+                  <code class="computeroutput"><span class="identifier">Time</span></code>
                 </p>
               </td>
 <td>
                 <p>
                   Represents an absolute time. Must support default construction,
-                  and meet the requirements for <code class="computeroutput">CopyConstructible</code> and
-                  <code class="computeroutput">Assignable</code>.
+                  and meet the requirements for <code class="computeroutput"><span class="identifier">CopyConstructible</span></code>
+                  and <code class="computeroutput"><span class="identifier">Assignable</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::duration_type</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">duration_type</span></code>
                 </p>
               </td>
 <td>
@@ -81,21 +83,20 @@
 <td>
                 <p>
                   Represents the difference between two absolute times. Must support
-                  default construction, and meet the requirements for <code class="computeroutput">CopyConstructible</code>
-                  and <code class="computeroutput">Assignable</code>. A duration can be positive, negative,
-                  or zero.
+                  default construction, and meet the requirements for <code class="computeroutput"><span class="identifier">CopyConstructible</span></code> and <code class="computeroutput"><span class="identifier">Assignable</span></code>. A duration can be
+                  positive, negative, or zero.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::now();</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">now</span><span class="special">();</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">time_type</code>
+                  <code class="computeroutput"><span class="identifier">time_type</span></code>
                 </p>
               </td>
 <td>
@@ -107,72 +108,76 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::add(t, d);</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">add</span><span class="special">(</span><span class="identifier">t</span><span class="special">,</span>
+                  <span class="identifier">d</span><span class="special">);</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">time_type</code>
+                  <code class="computeroutput"><span class="identifier">time_type</span></code>
                 </p>
               </td>
 <td>
                 <p>
                   Returns a new absolute time resulting from adding the duration
-                  <code class="computeroutput">d</code> to the absolute time <code class="computeroutput">t</code>.
+                  <code class="computeroutput"><span class="identifier">d</span></code> to the absolute
+                  time <code class="computeroutput"><span class="identifier">t</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::subtract(t1, t2);</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">subtract</span><span class="special">(</span><span class="identifier">t1</span><span class="special">,</span>
+                  <span class="identifier">t2</span><span class="special">);</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">duration_type</code>
+                  <code class="computeroutput"><span class="identifier">duration_type</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  Returns the duration resulting from subtracting <code class="computeroutput">t2</code>
-                  from <code class="computeroutput">t1</code>.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <code class="computeroutput">X::less_than(t1, t2);</code>
-                </p>
-              </td>
-<td>
-                <p>
-                  <code class="computeroutput">bool</code>
-                </p>
-              </td>
-<td>
-                <p>
-                  Returns whether <code class="computeroutput">t1</code> is to be treated as less than
-                  <code class="computeroutput">t2</code>.
+                  Returns the duration resulting from subtracting <code class="computeroutput"><span class="identifier">t2</span></code>
+                  from <code class="computeroutput"><span class="identifier">t1</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::to_posix_duration(d);</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">less_than</span><span class="special">(</span><span class="identifier">t1</span><span class="special">,</span>
+                  <span class="identifier">t2</span><span class="special">);</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">date_time::time_duration_type</code>
+                  <code class="computeroutput"><span class="keyword">bool</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  Returns the <code class="computeroutput">date_time::time_duration_type</code> value that
-                  most closely represents the duration <code class="computeroutput">d</code>.
+                  Returns whether <code class="computeroutput"><span class="identifier">t1</span></code>
+                  is to be treated as less than <code class="computeroutput"><span class="identifier">t2</span></code>.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">to_posix_duration</span><span class="special">(</span><span class="identifier">d</span><span class="special">);</span></code>
+                </p>
+              </td>
+<td>
+                <p>
+                  <code class="computeroutput"><span class="identifier">date_time</span><span class="special">::</span><span class="identifier">time_duration_type</span></code>
+                </p>
+              </td>
+<td>
+                <p>
+                  Returns the <code class="computeroutput"><span class="identifier">date_time</span><span class="special">::</span><span class="identifier">time_duration_type</span></code>
+                  value that most closely represents the duration <code class="computeroutput"><span class="identifier">d</span></code>.
                 </p>
               </td>
 </tr>
@@ -183,8 +188,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

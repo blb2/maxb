@@ -23,19 +23,20 @@
         <a class="indexterm" name="asio.indexterm.is_nothrow_require_concept"></a>
       </p>
 <p>
-        A type trait that determines whether a <code class="computeroutput">require_concept</code> expression
-        will not throw.
+        A type trait that determines whether a <code class="computeroutput"><span class="identifier">require_concept</span></code>
+        expression will not throw.
       </p>
-<pre class="programlisting">template&lt;
-    typename T,
-    typename Property&gt;
-struct is_nothrow_require_concept
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Property</span><span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">is_nothrow_require_concept</span>
 </pre>
 <p>
-        Class template <code class="computeroutput">is_nothrow_require_concept</code> is a trait that is
-        derived from <code class="computeroutput">true_type</code> if the expression <code class="computeroutput">asio::require_concept(std::declval&lt;T&gt;(),
-        std::declval&lt;Property&gt;())</code> is <code class="computeroutput">noexcept</code>; otherwise
-        <code class="computeroutput">false_type</code>.
+        Class template <code class="computeroutput"><span class="identifier">is_nothrow_require_concept</span></code>
+        is a trait that is derived from <code class="computeroutput"><span class="identifier">true_type</span></code>
+        if the expression <code class="computeroutput"><span class="identifier">asio</span><span class="special">::</span><span class="identifier">require_concept</span><span class="special">(</span><span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;(),</span>
+        <span class="identifier">std</span><span class="special">::</span><span class="identifier">declval</span><span class="special">&lt;</span><span class="identifier">Property</span><span class="special">&gt;())</span></code>
+        is <code class="computeroutput"><span class="keyword">noexcept</span></code>; otherwise <code class="computeroutput"><span class="identifier">false_type</span></code>.
       </p>
 <h5>
 <a name="asio.reference.is_nothrow_require_concept.h0"></a>
@@ -50,8 +51,7 @@ struct is_nothrow_require_concept
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

@@ -24,40 +24,38 @@
 Construct
           with executor.
         </p>
-<pre class="programlisting">explicit <a class="link" href="basic_resolver/overload1.html" title="ip::basic_resolver::basic_resolver (1 of 4 overloads)">basic_resolver</a>(
-    const executor_type &amp; ex);
+<pre class="programlisting"><span class="keyword">explicit</span> <a class="link" href="basic_resolver/overload1.html" title="ip::basic_resolver::basic_resolver (1 of 4 overloads)">basic_resolver</a><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">executor_type</span> <span class="special">&amp;</span> <span class="identifier">ex</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_resolver/overload1.html" title="ip::basic_resolver::basic_resolver (1 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
           Construct with execution context.
         </p>
-<pre class="programlisting">template&lt;
-    typename ExecutionContext&gt;
-explicit <a class="link" href="basic_resolver/overload2.html" title="ip::basic_resolver::basic_resolver (2 of 4 overloads)">basic_resolver</a>(
-    ExecutionContext &amp; context,
-    typename constraint&lt; is_convertible&lt; ExecutionContext &amp;, execution_context &amp; &gt;::value &gt;::type  = 0);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">ExecutionContext</span><span class="special">&gt;</span>
+<span class="keyword">explicit</span> <a class="link" href="basic_resolver/overload2.html" title="ip::basic_resolver::basic_resolver (2 of 4 overloads)">basic_resolver</a><span class="special">(</span>
+    <span class="identifier">ExecutionContext</span> <span class="special">&amp;</span> <span class="identifier">context</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">ExecutionContext</span> <span class="special">&amp;,</span> <span class="identifier">execution_context</span> <span class="special">&amp;</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_resolver/overload2.html" title="ip::basic_resolver::basic_resolver (2 of 4 overloads)">more...</a></em></span>
 </pre>
 <p>
-          Move-construct a <a class="link" href="../ip__basic_resolver.html" title="ip::basic_resolver"><code class="computeroutput">ip::basic_resolver</code></a>
-          from another.
+          Move-construct a <a class="link" href="../ip__basic_resolver.html" title="ip::basic_resolver"><code class="computeroutput"><span class="identifier">ip</span><span class="special">::</span><span class="identifier">basic_resolver</span></code></a> from another.
         </p>
-<pre class="programlisting"><a class="link" href="basic_resolver/overload3.html" title="ip::basic_resolver::basic_resolver (3 of 4 overloads)">basic_resolver</a>(
-    basic_resolver &amp;&amp; other);
+<pre class="programlisting"><a class="link" href="basic_resolver/overload3.html" title="ip::basic_resolver::basic_resolver (3 of 4 overloads)">basic_resolver</a><span class="special">(</span>
+    <span class="identifier">basic_resolver</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_resolver/overload3.html" title="ip::basic_resolver::basic_resolver (3 of 4 overloads)">more...</a></em></span>
 
-template&lt;
-    typename <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a>&gt;
-<a class="link" href="basic_resolver/overload4.html" title="ip::basic_resolver::basic_resolver (4 of 4 overloads)">basic_resolver</a>(
-    basic_resolver&lt; InternetProtocol, Executor1 &gt; &amp;&amp; other,
-    typename constraint&lt; is_convertible&lt; Executor1, Executor &gt;::value &gt;::type  = 0);
+<span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Executor1.html" title="Executor requirements">Executor1</a><span class="special">&gt;</span>
+<a class="link" href="basic_resolver/overload4.html" title="ip::basic_resolver::basic_resolver (4 of 4 overloads)">basic_resolver</a><span class="special">(</span>
+    <span class="identifier">basic_resolver</span><span class="special">&lt;</span> <span class="identifier">InternetProtocol</span><span class="special">,</span> <span class="identifier">Executor1</span> <span class="special">&gt;</span> <span class="special">&amp;&amp;</span> <span class="identifier">other</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">constraint</span><span class="special">&lt;</span> <span class="identifier">is_convertible</span><span class="special">&lt;</span> <span class="identifier">Executor1</span><span class="special">,</span> <span class="identifier">Executor</span> <span class="special">&gt;::</span><span class="identifier">value</span> <span class="special">&gt;::</span><span class="identifier">type</span>  <span class="special">=</span> <span class="number">0</span><span class="special">);</span>
   <span class="emphasis"><em>» <a class="link" href="basic_resolver/overload4.html" title="ip::basic_resolver::basic_resolver (4 of 4 overloads)">more...</a></em></span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

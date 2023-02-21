@@ -25,17 +25,21 @@
         as required.
       </p>
 <p>
-        A dynamic buffer type <code class="computeroutput">X</code> shall satisfy the requirements of <code class="computeroutput">CopyConstructible</code>
+        A dynamic buffer type <code class="computeroutput"><span class="identifier">X</span></code> shall
+        satisfy the requirements of <code class="computeroutput"><span class="identifier">CopyConstructible</span></code>
         (C++ Std, [copyconstructible]) types in addition to those listed below.
       </p>
 <p>
-        In the table below, <code class="computeroutput">X</code> denotes a dynamic buffer class, <code class="computeroutput">x</code>
-        denotes a value of type <code class="computeroutput">X&amp;</code>, <code class="computeroutput">x1</code> denotes values
-        of type <code class="computeroutput">const X&amp;</code>, <code class="computeroutput">pos</code> and <code class="computeroutput">n</code> denote
-        values of type <code class="computeroutput">size_t</code>, and <code class="computeroutput">u</code> denotes an identifier.
+        In the table below, <code class="computeroutput"><span class="identifier">X</span></code> denotes
+        a dynamic buffer class, <code class="computeroutput"><span class="identifier">x</span></code>
+        denotes a value of type <code class="computeroutput"><span class="identifier">X</span><span class="special">&amp;</span></code>, <code class="computeroutput"><span class="identifier">x1</span></code>
+        denotes values of type <code class="computeroutput"><span class="keyword">const</span> <span class="identifier">X</span><span class="special">&amp;</span></code>,
+        <code class="computeroutput"><span class="identifier">pos</span></code> and <code class="computeroutput"><span class="identifier">n</span></code>
+        denote values of type <code class="computeroutput"><span class="identifier">size_t</span></code>,
+        and <code class="computeroutput"><span class="identifier">u</span></code> denotes an identifier.
       </p>
 <div class="table">
-<a name="asio.reference.DynamicBuffer_v2.t0"></a><p class="title"><b>Table 12. DynamicBuffer_v2 requirements</b></p>
+<a name="asio.reference.DynamicBuffer_v2.t0"></a><p class="title"><b>Table 13. DynamicBuffer_v2 requirements</b></p>
 <div class="table-contents"><table class="table" summary="DynamicBuffer_v2 requirements">
 <colgroup>
 <col>
@@ -63,7 +67,7 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::const_buffers_type</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">const_buffers_type</span></code>
                 </p>
               </td>
 <td>
@@ -82,7 +86,7 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">X::mutable_buffers_type</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">mutable_buffers_type</span></code>
                 </p>
               </td>
 <td>
@@ -101,12 +105,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1.size()</code>
+                  <code class="computeroutput"><span class="identifier">x1</span><span class="special">.</span><span class="identifier">size</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">size_t</code>
+                  <code class="computeroutput"><span class="identifier">size_t</span></code>
                 </p>
               </td>
 <td>
@@ -118,12 +122,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1.max_size()</code>
+                  <code class="computeroutput"><span class="identifier">x1</span><span class="special">.</span><span class="identifier">max_size</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">size_t</code>
+                  <code class="computeroutput"><span class="identifier">size_t</span></code>
                 </p>
               </td>
 <td>
@@ -135,12 +139,12 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1.capacity()</code>
+                  <code class="computeroutput"><span class="identifier">x1</span><span class="special">.</span><span class="identifier">capacity</span><span class="special">()</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">size_t</code>
+                  <code class="computeroutput"><span class="identifier">size_t</span></code>
                 </p>
               </td>
 <td>
@@ -153,93 +157,98 @@
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x1.data(pos, n)</code>
+                  <code class="computeroutput"><span class="identifier">x1</span><span class="special">.</span><span class="identifier">data</span><span class="special">(</span><span class="identifier">pos</span><span class="special">,</span>
+                  <span class="identifier">n</span><span class="special">)</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">X::const_buffers_type</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">const_buffers_type</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  Returns a constant buffer sequence <code class="computeroutput">u</code> that represents
-                  the underlying memory beginning at offset <code class="computeroutput">pos</code>, and
-                  where <code class="computeroutput">buffer_size(u) &lt;= n</code>.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <code class="computeroutput">x.data(pos, n)</code>
-                </p>
-              </td>
-<td>
-                <p>
-                  <code class="computeroutput">X::mutable_buffers_type</code>
-                </p>
-              </td>
-<td>
-                <p>
-                  Returns a mutable buffer sequence <code class="computeroutput">u</code> that represents
-                  the underlying memory beginning at offset <code class="computeroutput">pos</code>, and
-                  where <code class="computeroutput">buffer_size(u) &lt;= n</code>.
+                  Returns a constant buffer sequence <code class="computeroutput"><span class="identifier">u</span></code>
+                  that represents the underlying memory beginning at offset <code class="computeroutput"><span class="identifier">pos</span></code>, and where <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">u</span><span class="special">)</span>
+                  <span class="special">&lt;=</span> <span class="identifier">n</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x.grow(n)</code>
+                  <code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">data</span><span class="special">(</span><span class="identifier">pos</span><span class="special">,</span>
+                  <span class="identifier">n</span><span class="special">)</span></code>
                 </p>
               </td>
 <td>
-              </td>
-<td>
                 <p>
-                  Requires: <code class="computeroutput">size() + n &lt;= max_size()</code>.<br> <br>
-                  Extends the underlying memory to accommodate <code class="computeroutput">n</code> additional
-                  bytes at the end. The dynamic buffer reallocates memory as required.
-                  All constant or mutable buffer sequences previously obtained using
-                  <code class="computeroutput">data()</code> are invalidated.<br> <br> Throws: <code class="computeroutput">length_error</code>
-                  if <code class="computeroutput">size() + n &gt; max_size()</code>.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-                  <code class="computeroutput">x.shrink(n)</code>
+                  <code class="computeroutput"><span class="identifier">X</span><span class="special">::</span><span class="identifier">mutable_buffers_type</span></code>
                 </p>
               </td>
 <td>
-              </td>
-<td>
                 <p>
-                  Removes <code class="computeroutput">n</code> bytes from the end of the underlying memory.
-                  If <code class="computeroutput">n</code> is greater than the size of the underlying memory,
-                  the entire underlying memory is emptied. All constant or mutable
-                  buffer sequences previously obtained using <code class="computeroutput">data()</code>
-                  are invalidated.
+                  Returns a mutable buffer sequence <code class="computeroutput"><span class="identifier">u</span></code>
+                  that represents the underlying memory beginning at offset <code class="computeroutput"><span class="identifier">pos</span></code>, and where <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">u</span><span class="special">)</span>
+                  <span class="special">&lt;=</span> <span class="identifier">n</span></code>.
                 </p>
               </td>
 </tr>
 <tr>
 <td>
                 <p>
-                  <code class="computeroutput">x.consume(n)</code>
+                  <code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">grow</span><span class="special">(</span><span class="identifier">n</span><span class="special">)</span></code>
                 </p>
               </td>
 <td>
               </td>
 <td>
                 <p>
-                  Removes <code class="computeroutput">n</code> bytes from the beginning of the underlying
-                  memory. If <code class="computeroutput">n</code> is greater than the size of the underlying
-                  memory, the entire underlying memory is emptied. All constant or
-                  mutable buffer sequences previously obtained using <code class="computeroutput">data()</code>
-                  are invalidated.
+                  Requires: <code class="computeroutput"><span class="identifier">size</span><span class="special">()</span> <span class="special">+</span> <span class="identifier">n</span> <span class="special">&lt;=</span>
+                  <span class="identifier">max_size</span><span class="special">()</span></code>.<br>
+                  <br> Extends the underlying memory to accommodate <code class="computeroutput"><span class="identifier">n</span></code> additional bytes at the end.
+                  The dynamic buffer reallocates memory as required. All constant
+                  or mutable buffer sequences previously obtained using <code class="computeroutput"><span class="identifier">data</span><span class="special">()</span></code>
+                  are invalidated.<br> <br> Throws: <code class="computeroutput"><span class="identifier">length_error</span></code>
+                  if <code class="computeroutput"><span class="identifier">size</span><span class="special">()</span>
+                  <span class="special">+</span> <span class="identifier">n</span>
+                  <span class="special">&gt;</span> <span class="identifier">max_size</span><span class="special">()</span></code>.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">shrink</span><span class="special">(</span><span class="identifier">n</span><span class="special">)</span></code>
+                </p>
+              </td>
+<td>
+              </td>
+<td>
+                <p>
+                  Removes <code class="computeroutput"><span class="identifier">n</span></code> bytes
+                  from the end of the underlying memory. If <code class="computeroutput"><span class="identifier">n</span></code>
+                  is greater than the size of the underlying memory, the entire underlying
+                  memory is emptied. All constant or mutable buffer sequences previously
+                  obtained using <code class="computeroutput"><span class="identifier">data</span><span class="special">()</span></code> are invalidated.
+                </p>
+              </td>
+</tr>
+<tr>
+<td>
+                <p>
+                  <code class="computeroutput"><span class="identifier">x</span><span class="special">.</span><span class="identifier">consume</span><span class="special">(</span><span class="identifier">n</span><span class="special">)</span></code>
+                </p>
+              </td>
+<td>
+              </td>
+<td>
+                <p>
+                  Removes <code class="computeroutput"><span class="identifier">n</span></code> bytes
+                  from the beginning of the underlying memory. If <code class="computeroutput"><span class="identifier">n</span></code>
+                  is greater than the size of the underlying memory, the entire underlying
+                  memory is emptied. All constant or mutable buffer sequences previously
+                  obtained using <code class="computeroutput"><span class="identifier">data</span><span class="special">()</span></code> are invalidated.
                 </p>
               </td>
 </tr>
@@ -250,8 +259,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

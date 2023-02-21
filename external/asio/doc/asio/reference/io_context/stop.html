@@ -21,23 +21,26 @@
 </h4></div></div></div>
 <p>
           <a class="indexterm" name="asio.indexterm.io_context.stop"></a> 
-Stop the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          object's event processing loop.
+Stop the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> object's event processing
+          loop.
         </p>
-<pre class="programlisting">void stop();
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">stop</span><span class="special">();</span>
 </pre>
 <p>
-          This function does not block, but instead simply signals the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          to stop. All invocations of its <code class="computeroutput">run()</code> or <code class="computeroutput">run_one()</code>
+          This function does not block, but instead simply signals the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> to stop. All invocations
+          of its <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>
+          or <code class="computeroutput"><span class="identifier">run_one</span><span class="special">()</span></code>
           member functions should return as soon as possible. Subsequent calls to
-          <code class="computeroutput">run()</code>, <code class="computeroutput">run_one()</code>, <code class="computeroutput">poll()</code> or <code class="computeroutput">poll_one()</code>
-          will return immediately until <code class="computeroutput">restart()</code> is called.
+          <code class="computeroutput"><span class="identifier">run</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">run_one</span><span class="special">()</span></code>,
+          <code class="computeroutput"><span class="identifier">poll</span><span class="special">()</span></code>
+          or <code class="computeroutput"><span class="identifier">poll_one</span><span class="special">()</span></code>
+          will return immediately until <code class="computeroutput"><span class="identifier">restart</span><span class="special">()</span></code> is called.
         </p>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

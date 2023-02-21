@@ -20,123 +20,18 @@
 <a name="asio.reference.Handler"></a><a class="link" href="Handler.html" title="Handlers">Handlers</a>
 </h3></div></div></div>
 <p>
-        A handler must meet the requirements of <code class="computeroutput">MoveConstructible</code> types
+        A handler must satisfy the requirements of <code class="computeroutput"><span class="identifier">Destructible</span></code>
+        (C++Std [destructible]) and <code class="computeroutput"><span class="identifier">MoveConstructible</span></code>
         (C++Std [moveconstructible]).
       </p>
 <p>
-        In the table below, <code class="computeroutput">X</code> denotes a handler class, <code class="computeroutput">h</code>
-        denotes a value of <code class="computeroutput">X</code>, <code class="computeroutput">p</code> denotes a pointer to a
-        block of allocated memory of type <code class="computeroutput">void*</code>, <code class="computeroutput">s</code> denotes
-        the size for a block of allocated memory, and <code class="computeroutput">f</code> denotes a function
-        object taking no arguments.
+        A handler may expose additional information and behaviour via <a class="link" href="../overview/model/associators.html" title="Associated Characteristics and Associators">associators</a>,
+        such as <a class="link" href="associated_allocator.html" title="associated_allocator"><code class="computeroutput"><span class="identifier">associated_allocator</span></code></a>, <a class="link" href="associated_executor.html" title="associated_executor"><code class="computeroutput"><span class="identifier">associated_executor</span></code></a>, and <a class="link" href="associated_cancellation_slot.html" title="associated_cancellation_slot"><code class="computeroutput"><span class="identifier">associated_cancellation_slot</span></code></a>.
       </p>
-<div class="table">
-<a name="asio.reference.Handler.t0"></a><p class="title"><b>Table 20. Handler requirements</b></p>
-<div class="table-contents"><table class="table" summary="Handler requirements">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead><tr>
-<th>
-                <p>
-                  expression
-                </p>
-              </th>
-<th>
-                <p>
-                  return type
-                </p>
-              </th>
-<th>
-                <p>
-                  assertion/note<br> pre/post-conditions
-                </p>
-              </th>
-</tr></thead>
-<tbody>
-<tr>
-<td>
-                <p>
-</p>
-<pre class="programlisting">using asio::asio_handler_allocate;
-asio_handler_allocate(s, &amp;h);
-</pre>
-<p>
-                </p>
-              </td>
-<td>
-                <p>
-                  <code class="computeroutput">void*</code>
-                </p>
-              </td>
-<td>
-                <p>
-                  Returns a pointer to a block of memory of size <code class="computeroutput">s</code>.
-                  The pointer must satisfy the same alignment requirements as a pointer
-                  returned by <code class="computeroutput">::operator new()</code>. Throws <code class="computeroutput">bad_alloc</code>
-                  on failure.<br> <br> The <code class="computeroutput">asio_handler_allocate()</code>
-                  function is located using argument-dependent lookup. The function
-                  <code class="computeroutput">asio::asio_handler_allocate()</code> serves as a default
-                  if no user-supplied function is available.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-</p>
-<pre class="programlisting">using asio::asio_handler_deallocate;
-asio_handler_deallocate(p, s, &amp;h);
-</pre>
-<p>
-                </p>
-              </td>
-<td>
-              </td>
-<td>
-                <p>
-                  Frees a block of memory associated with a pointer <code class="computeroutput">p</code>,
-                  of at least size <code class="computeroutput">s</code>, that was previously allocated
-                  using <code class="computeroutput">asio_handler_allocate()</code>.<br> <br> The <code class="computeroutput">asio_handler_deallocate()</code>
-                  function is located using argument-dependent lookup. The function
-                  <code class="computeroutput">asio::asio_handler_deallocate()</code> serves as a default
-                  if no user-supplied function is available.
-                </p>
-              </td>
-</tr>
-<tr>
-<td>
-                <p>
-</p>
-<pre class="programlisting">using asio::asio_handler_invoke;
-asio_handler_invoke(f, &amp;h);
-</pre>
-<p>
-                </p>
-              </td>
-<td>
-              </td>
-<td>
-                <p>
-                  Causes the function object <code class="computeroutput">f</code> to be executed as if
-                  by calling <code class="computeroutput">f()</code>.<br> <br> The <code class="computeroutput">asio_handler_invoke()</code>
-                  function is located using argument-dependent lookup. The function
-                  <code class="computeroutput">asio::asio_handler_invoke()</code> serves as a default if
-                  no user-supplied function is available.
-                </p>
-              </td>
-</tr>
-</tbody>
-</table></div>
-</div>
-<br class="table-break">
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

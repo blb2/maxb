@@ -25,7 +25,7 @@
 <p>
         Provides serialised handler execution.
       </p>
-<pre class="programlisting">class strand
+<pre class="programlisting"><span class="keyword">class</span> <span class="identifier">strand</span>
 </pre>
 <h5>
 <a name="asio.reference.io_context__strand.h0"></a>
@@ -226,7 +226,7 @@
 </tbody>
 </table></div>
 <p>
-        The <a class="link" href="io_context__strand.html" title="io_context::strand"><code class="computeroutput">io_context::strand</code></a>
+        The <a class="link" href="io_context__strand.html" title="io_context::strand"><code class="computeroutput"><span class="identifier">io_context</span><span class="special">::</span><span class="identifier">strand</span></code></a>
         class provides the ability to post and dispatch handlers with the guarantee
         that none of those handlers will execute concurrently.
       </p>
@@ -240,20 +240,24 @@
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            a strand object <code class="computeroutput">s</code>
+            a strand object <code class="computeroutput"><span class="identifier">s</span></code>
           </li>
 <li class="listitem">
-            an object <code class="computeroutput">a</code> meeting completion handler requirements
+            an object <code class="computeroutput"><span class="identifier">a</span></code> meeting completion
+            handler requirements
           </li>
 <li class="listitem">
-            an object <code class="computeroutput">a1</code> which is an arbitrary copy of <code class="computeroutput">a</code>
+            an object <code class="computeroutput"><span class="identifier">a1</span></code> which is
+            an arbitrary copy of <code class="computeroutput"><span class="identifier">a</span></code>
             made by the implementation
           </li>
 <li class="listitem">
-            an object <code class="computeroutput">b</code> meeting completion handler requirements
+            an object <code class="computeroutput"><span class="identifier">b</span></code> meeting completion
+            handler requirements
           </li>
 <li class="listitem">
-            an object <code class="computeroutput">b1</code> which is an arbitrary copy of <code class="computeroutput">b</code>
+            an object <code class="computeroutput"><span class="identifier">b1</span></code> which is
+            an arbitrary copy of <code class="computeroutput"><span class="identifier">b</span></code>
             made by the implementation
           </li>
 </ul></div>
@@ -262,37 +266,42 @@
       </p>
 <div class="itemizedlist"><ul class="itemizedlist" type="disc">
 <li class="listitem">
-            <code class="computeroutput">s.post(a)</code> happens-before <code class="computeroutput">s.post(b)</code>
+            <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">post</span><span class="special">(</span><span class="identifier">a</span><span class="special">)</span></code>
+            happens-before <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">post</span><span class="special">(</span><span class="identifier">b</span><span class="special">)</span></code>
           </li>
 <li class="listitem">
-            <code class="computeroutput">s.post(a)</code> happens-before <code class="computeroutput">s.dispatch(b)</code>, where
-            the latter is performed outside the strand
+            <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">post</span><span class="special">(</span><span class="identifier">a</span><span class="special">)</span></code>
+            happens-before <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">b</span><span class="special">)</span></code>,
+            where the latter is performed outside the strand
           </li>
 <li class="listitem">
-            <code class="computeroutput">s.dispatch(a)</code> happens-before <code class="computeroutput">s.post(b)</code>, where
-            the former is performed outside the strand
+            <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">a</span><span class="special">)</span></code>
+            happens-before <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">post</span><span class="special">(</span><span class="identifier">b</span><span class="special">)</span></code>,
+            where the former is performed outside the strand
           </li>
 <li class="listitem">
-            <code class="computeroutput">s.dispatch(a)</code> happens-before <code class="computeroutput">s.dispatch(b)</code>,
+            <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">a</span><span class="special">)</span></code>
+            happens-before <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">b</span><span class="special">)</span></code>,
             where both are performed outside the strand
           </li>
 </ul></div>
 <p>
-        then <code class="computeroutput">asio_handler_invoke(a1, &amp;a1)</code> happens-before <code class="computeroutput">asio_handler_invoke(b1,
-        &amp;b1)</code>.
+        then <code class="computeroutput"><span class="identifier">asio_handler_invoke</span><span class="special">(</span><span class="identifier">a1</span><span class="special">,</span>
+        <span class="special">&amp;</span><span class="identifier">a1</span><span class="special">)</span></code> happens-before <code class="computeroutput"><span class="identifier">asio_handler_invoke</span><span class="special">(</span><span class="identifier">b1</span><span class="special">,</span>
+        <span class="special">&amp;</span><span class="identifier">b1</span><span class="special">)</span></code>.
       </p>
 <p>
         Note that in the following case:
       </p>
-<pre class="programlisting">async_op_1(..., s.wrap(a));
-async_op_2(..., s.wrap(b));
+<pre class="programlisting"><span class="identifier">async_op_1</span><span class="special">(...,</span> <span class="identifier">s</span><span class="special">.</span><span class="identifier">wrap</span><span class="special">(</span><span class="identifier">a</span><span class="special">));</span>
+<span class="identifier">async_op_2</span><span class="special">(...,</span> <span class="identifier">s</span><span class="special">.</span><span class="identifier">wrap</span><span class="special">(</span><span class="identifier">b</span><span class="special">));</span>
 </pre>
 <p>
-        the completion of the first async operation will perform <code class="computeroutput">s.dispatch(a)</code>,
-        and the second will perform <code class="computeroutput">s.dispatch(b)</code>, but the order in
-        which those are performed is unspecified. That is, you cannot state whether
-        one happens-before the other. Therefore none of the above conditions are
-        met and no ordering guarantee is made.
+        the completion of the first async operation will perform <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">a</span><span class="special">)</span></code>,
+        and the second will perform <code class="computeroutput"><span class="identifier">s</span><span class="special">.</span><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">b</span><span class="special">)</span></code>,
+        but the order in which those are performed is unspecified. That is, you cannot
+        state whether one happens-before the other. Therefore none of the above conditions
+        are met and no ordering guarantee is made.
       </p>
 <h5>
 <a name="asio.reference.io_context__strand.h3"></a>
@@ -300,7 +309,8 @@ async_op_2(..., s.wrap(b));
       </h5>
 <p>
         The implementation makes no guarantee that handlers posted or dispatched
-        through different <code class="computeroutput">strand</code> objects will be invoked concurrently.
+        through different <code class="computeroutput"><span class="identifier">strand</span></code>
+        objects will be invoked concurrently.
       </p>
 <h5>
 <a name="asio.reference.io_context__strand.h4"></a>
@@ -326,8 +336,7 @@ async_op_2(..., s.wrap(b));
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

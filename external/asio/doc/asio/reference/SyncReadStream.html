@@ -21,13 +21,15 @@
       read stream requirements</a>
 </h3></div></div></div>
 <p>
-        A type <code class="computeroutput">X</code> meets the <code class="computeroutput">SyncReadStream</code> requirements
-        if it satisfies the requirements listed below.
+        A type <code class="computeroutput"><span class="identifier">X</span></code> meets the <code class="computeroutput"><span class="identifier">SyncReadStream</span></code> requirements if it satisfies
+        the requirements listed below.
       </p>
 <p>
-        In the table below, <code class="computeroutput">a</code> denotes a value of type <code class="computeroutput">X</code>,
-        <code class="computeroutput">mb</code> denotes a (possibly const) value satisfying the <a class="link" href="MutableBufferSequence.html" title="Mutable buffer sequence requirements"><code class="computeroutput">MutableBufferSequence</code></a>
-        requirements, and <code class="computeroutput">ec</code> denotes an object of type <code class="computeroutput">error_code</code>.
+        In the table below, <code class="computeroutput"><span class="identifier">a</span></code> denotes
+        a value of type <code class="computeroutput"><span class="identifier">X</span></code>, <code class="computeroutput"><span class="identifier">mb</span></code> denotes a (possibly const) value satisfying
+        the <a class="link" href="MutableBufferSequence.html" title="Mutable buffer sequence requirements"><code class="computeroutput"><span class="identifier">MutableBufferSequence</span></code></a>
+        requirements, and <code class="computeroutput"><span class="identifier">ec</span></code> denotes
+        an object of type <code class="computeroutput"><span class="identifier">error_code</span></code>.
       </p>
 <div class="table">
 <a name="asio.reference.SyncReadStream.t0"></a><p class="title"><b>Table 32. SyncReadStream requirements</b></p>
@@ -57,28 +59,34 @@
 <tbody><tr>
 <td>
                 <p>
-                  <code class="computeroutput">a.read_some(mb)</code><br> <code class="computeroutput">a.read_some(mb,ec)</code>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">read_some</span><span class="special">(</span><span class="identifier">mb</span><span class="special">)</span></code><br>
+                  <code class="computeroutput"><span class="identifier">a</span><span class="special">.</span><span class="identifier">read_some</span><span class="special">(</span><span class="identifier">mb</span><span class="special">,</span><span class="identifier">ec</span><span class="special">)</span></code>
                 </p>
               </td>
 <td>
                 <p>
-                  <code class="computeroutput">size_t</code>
+                  <code class="computeroutput"><span class="identifier">size_t</span></code>
                 </p>
               </td>
 <td>
                 <p>
                   Meets the requirements for a <a class="link" href="read_write_operations.html" title="Requirements on read and write operations">read
-                  operation</a>.<br> <br> If <code class="computeroutput">buffer_size(mb) &gt; 0</code>,
-                  reads one or more bytes of data from the stream <code class="computeroutput">a</code>
-                  into the buffer sequence <code class="computeroutput">mb</code>. If successful, sets
-                  <code class="computeroutput">ec</code> such that <code class="computeroutput">!ec</code> is <code class="computeroutput">true</code>,
-                  and returns the number of bytes read. If an error occurred, sets
-                  <code class="computeroutput">ec</code> such that <code class="computeroutput">!!ec</code> is <code class="computeroutput">true</code>,
+                  operation</a>.<br> <br> If <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">mb</span><span class="special">)</span> <span class="special">&gt;</span>
+                  <span class="number">0</span></code>, reads one or more bytes
+                  of data from the stream <code class="computeroutput"><span class="identifier">a</span></code>
+                  into the buffer sequence <code class="computeroutput"><span class="identifier">mb</span></code>.
+                  If successful, sets <code class="computeroutput"><span class="identifier">ec</span></code>
+                  such that <code class="computeroutput"><span class="special">!</span><span class="identifier">ec</span></code>
+                  is <code class="computeroutput"><span class="keyword">true</span></code>, and returns
+                  the number of bytes read. If an error occurred, sets <code class="computeroutput"><span class="identifier">ec</span></code> such that <code class="computeroutput"><span class="special">!!</span><span class="identifier">ec</span></code> is <code class="computeroutput"><span class="keyword">true</span></code>,
                   and returns 0. If all data has been read from the stream, and the
-                  stream performed an orderly shutdown, sets <code class="computeroutput">ec</code> to
-                  <code class="computeroutput">stream_errc::eof</code> and returns 0.<br> <br> If <code class="computeroutput">buffer_size(mb)
-                  == 0</code>, the operation shall not block. Sets <code class="computeroutput">ec</code>
-                  such that <code class="computeroutput">!ec</code> is <code class="computeroutput">true</code>, and returns 0.
+                  stream performed an orderly shutdown, sets <code class="computeroutput"><span class="identifier">ec</span></code>
+                  to <code class="computeroutput"><span class="identifier">stream_errc</span><span class="special">::</span><span class="identifier">eof</span></code>
+                  and returns 0.<br> <br> If <code class="computeroutput"><span class="identifier">buffer_size</span><span class="special">(</span><span class="identifier">mb</span><span class="special">)</span> <span class="special">==</span> <span class="number">0</span></code>, the operation shall not block.
+                  Sets <code class="computeroutput"><span class="identifier">ec</span></code> such that
+                  <code class="computeroutput"><span class="special">!</span><span class="identifier">ec</span></code>
+                  is <code class="computeroutput"><span class="keyword">true</span></code>, and returns
+                  0.
                 </p>
               </td>
 </tr></tbody>
@@ -88,8 +96,7 @@
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

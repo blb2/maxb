@@ -21,19 +21,17 @@
 </h4></div></div></div>
 <p>
           <a class="indexterm" name="asio.indexterm.io_context.wrap"></a> 
-(Deprecated: Use <a class="link" href="../bind_executor.html" title="bind_executor"><code class="computeroutput">bind_executor</code></a>.)
-          Create a new handler that automatically dispatches the wrapped handler
-          on the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>.
+(Deprecated: Use <a class="link" href="../bind_executor.html" title="bind_executor"><code class="computeroutput"><span class="identifier">bind_executor</span></code></a>.) Create a new handler
+          that automatically dispatches the wrapped handler on the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>.
         </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="../Handler.html" title="Handlers">Handler</a>&gt;
-unspecified wrap(
-    Handler handler);
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="../Handler.html" title="Handlers">Handler</a><span class="special">&gt;</span>
+<span class="identifier">unspecified</span> <span class="identifier">wrap</span><span class="special">(</span>
+    <span class="identifier">Handler</span> <span class="identifier">handler</span><span class="special">);</span>
 </pre>
 <p>
           This function is used to create a new handler function object that, when
-          invoked, will automatically pass the wrapped handler to the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-          object's dispatch function.
+          invoked, will automatically pass the wrapped handler to the <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> object's dispatch function.
         </p>
 <h6>
 <a name="asio.reference.io_context.wrap.h0"></a>
@@ -45,14 +43,12 @@ unspecified wrap(
 <dt><span class="term">handler</span></dt>
 <dd>
 <p>
-                The handler to be wrapped. The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
-                will make a copy of the handler object as required. The function
-                signature of the handler must be:
-</p>
-<pre class="programlisting">void handler(A1 a1, ... An an);
-</pre>
-<p>
+                The handler to be wrapped. The <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a> will make a copy
+                of the handler object as required. The function signature of the
+                handler must be:
               </p>
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">handler</span><span class="special">(</span><span class="identifier">A1</span> <span class="identifier">a1</span><span class="special">,</span> <span class="special">...</span> <span class="identifier">An</span> <span class="identifier">an</span><span class="special">);</span>
+</pre>
 </dd>
 </dl>
 </div>
@@ -63,31 +59,30 @@ unspecified wrap(
         </h6>
 <p>
           A function object that, when invoked, passes the wrapped handler to the
-          <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput">io_context</code></a>
+          <a class="link" href="../io_context.html" title="io_context"><code class="computeroutput"><span class="identifier">io_context</span></code></a>
           object's dispatch function. Given a function object with the signature:
         </p>
-<pre class="programlisting">R f(A1 a1, ... An an);
+<pre class="programlisting"><span class="identifier">R</span> <span class="identifier">f</span><span class="special">(</span><span class="identifier">A1</span> <span class="identifier">a1</span><span class="special">,</span> <span class="special">...</span> <span class="identifier">An</span> <span class="identifier">an</span><span class="special">);</span>
 </pre>
 <p>
           If this function object is passed to the wrap function like so:
         </p>
-<pre class="programlisting">io_context.wrap(f);
+<pre class="programlisting"><span class="identifier">io_context</span><span class="special">.</span><span class="identifier">wrap</span><span class="special">(</span><span class="identifier">f</span><span class="special">);</span>
 </pre>
 <p>
           then the return value is a function object with the signature
         </p>
-<pre class="programlisting">void g(A1 a1, ... An an);
+<pre class="programlisting"><span class="keyword">void</span> <span class="identifier">g</span><span class="special">(</span><span class="identifier">A1</span> <span class="identifier">a1</span><span class="special">,</span> <span class="special">...</span> <span class="identifier">An</span> <span class="identifier">an</span><span class="special">);</span>
 </pre>
 <p>
           that, when invoked, executes code equivalent to:
         </p>
-<pre class="programlisting">io_context.dispatch(boost::bind(f, a1, ... an));
+<pre class="programlisting"><span class="identifier">io_context</span><span class="special">.</span><span class="identifier">dispatch</span><span class="special">(</span><span class="identifier">boost</span><span class="special">::</span><span class="identifier">bind</span><span class="special">(</span><span class="identifier">f</span><span class="special">,</span> <span class="identifier">a1</span><span class="special">,</span> <span class="special">...</span> <span class="identifier">an</span><span class="special">));</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

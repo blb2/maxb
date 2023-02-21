@@ -25,11 +25,11 @@
 <p>
         Adapt a basic_string to the DynamicBuffer requirements.
       </p>
-<pre class="programlisting">template&lt;
-    typename Elem,
-    typename Traits,
-    typename Allocator&gt;
-class dynamic_string_buffer
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <span class="identifier">Elem</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Traits</span><span class="special">,</span>
+    <span class="keyword">typename</span> <span class="identifier">Allocator</span><span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">dynamic_string_buffer</span>
 </pre>
 <h5>
 <a name="asio.reference.dynamic_string_buffer.h0"></a>
@@ -238,7 +238,7 @@ class dynamic_string_buffer
 </tbody>
 </table></div>
 <p>
-        Requires that <code class="computeroutput">sizeof(Elem) == 1</code>.
+        Requires that <code class="computeroutput"><span class="keyword">sizeof</span><span class="special">(</span><span class="identifier">Elem</span><span class="special">)</span> <span class="special">==</span> <span class="number">1</span></code>.
       </p>
 <h5>
 <a name="asio.reference.dynamic_string_buffer.h2"></a>
@@ -253,8 +253,7 @@ class dynamic_string_buffer
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

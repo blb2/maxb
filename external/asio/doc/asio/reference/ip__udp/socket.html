@@ -23,7 +23,7 @@
           <a class="indexterm" name="asio.indexterm.ip__udp.socket"></a> 
 The UDP socket type.
         </p>
-<pre class="programlisting">typedef basic_datagram_socket&lt; udp &gt; socket;
+<pre class="programlisting"><span class="keyword">typedef</span> <span class="identifier">basic_datagram_socket</span><span class="special">&lt;</span> <span class="identifier">udp</span> <span class="special">&gt;</span> <span class="identifier">socket</span><span class="special">;</span>
 </pre>
 <h6>
 <a name="asio.reference.ip__udp.socket.h0"></a>
@@ -875,9 +875,8 @@ The UDP socket type.
 </tbody>
 </table></div>
 <p>
-          The <a class="link" href="../basic_datagram_socket.html" title="basic_datagram_socket"><code class="computeroutput">basic_datagram_socket</code></a>
-          class template provides asynchronous and blocking datagram-oriented socket
-          functionality.
+          The <a class="link" href="../basic_datagram_socket.html" title="basic_datagram_socket"><code class="computeroutput"><span class="identifier">basic_datagram_socket</span></code></a> class template
+          provides asynchronous and blocking datagram-oriented socket functionality.
         </p>
 <h6>
 <a name="asio.reference.ip__udp.socket.h3"></a>
@@ -891,13 +890,14 @@ The UDP socket type.
           <span class="emphasis"><em>Shared</em></span> <span class="emphasis"><em>objects:</em></span> Unsafe.
         </p>
 <p>
-          Synchronous <code class="computeroutput">send</code>, <code class="computeroutput">send_to</code>, <code class="computeroutput">receive</code>,
-          <code class="computeroutput">receive_from</code>, and <code class="computeroutput">connect</code> operations are thread
-          safe with respect to each other, if the underlying operating system calls
-          are also thread safe. This means that it is permitted to perform concurrent
-          calls to these synchronous operations on a single socket object. Other
-          synchronous operations, such as <code class="computeroutput">open</code> or <code class="computeroutput">close</code>,
-          are not thread safe.
+          Synchronous <code class="computeroutput"><span class="identifier">send</span></code>, <code class="computeroutput"><span class="identifier">send_to</span></code>, <code class="computeroutput"><span class="identifier">receive</span></code>,
+          <code class="computeroutput"><span class="identifier">receive_from</span></code>, <code class="computeroutput"><span class="identifier">connect</span></code>, and <code class="computeroutput"><span class="identifier">shutdown</span></code>
+          operations are thread safe with respect to each other, if the underlying
+          operating system calls are also thread safe. This means that it is permitted
+          to perform concurrent calls to these synchronous operations on a single
+          socket object. Other synchronous operations, such as <code class="computeroutput"><span class="identifier">open</span></code>
+          or <code class="computeroutput"><span class="identifier">close</span></code>, are not thread
+          safe.
         </p>
 <h6>
 <a name="asio.reference.ip__udp.socket.h4"></a>
@@ -912,8 +912,7 @@ The UDP socket type.
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

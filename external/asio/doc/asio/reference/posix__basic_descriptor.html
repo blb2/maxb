@@ -25,10 +25,10 @@
 <p>
         Provides POSIX descriptor functionality.
       </p>
-<pre class="programlisting">template&lt;
-    typename <a class="link" href="Executor1.html" title="Executor requirements">Executor</a> = any_io_executor&gt;
-class basic_descriptor :
-  public posix::descriptor_base
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span>
+    <span class="keyword">typename</span> <a class="link" href="Executor1.html" title="Executor requirements">Executor</a> <span class="special">=</span> <span class="identifier">any_io_executor</span><span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">basic_descriptor</span> <span class="special">:</span>
+  <span class="keyword">public</span> <span class="identifier">posix</span><span class="special">::</span><span class="identifier">descriptor_base</span>
 </pre>
 <h5>
 <a name="asio.reference.posix__basic_descriptor.h0"></a>
@@ -185,7 +185,8 @@ class basic_descriptor :
                 <p>
                   Construct a descriptor without opening it. <br> <span class="silver"> —</span><br> Construct
                   a descriptor on an existing native descriptor. <br> <span class="silver"> —</span><br> Move-construct
-                  a descriptor from another.
+                  a descriptor from another. <br> <span class="silver"> —</span><br> Move-construct a basic_descriptor
+                  from a descriptor of another executor type.
                 </p>
               </td>
 </tr>
@@ -309,7 +310,8 @@ class basic_descriptor :
               </td>
 <td>
                 <p>
-                  Move-assign a descriptor from another.
+                  Move-assign a descriptor from another. <br> <span class="silver"> —</span><br> Move-assign
+                  a basic_descriptor from a descriptor of another executor type.
                 </p>
               </td>
 </tr>
@@ -376,8 +378,8 @@ class basic_descriptor :
 </tr></tbody>
 </table></div>
 <p>
-        The <a class="link" href="posix__basic_descriptor.html" title="posix::basic_descriptor"><code class="computeroutput">posix::basic_descriptor</code></a>
-        class template provides the ability to wrap a POSIX descriptor.
+        The <a class="link" href="posix__basic_descriptor.html" title="posix::basic_descriptor"><code class="computeroutput"><span class="identifier">posix</span><span class="special">::</span><span class="identifier">basic_descriptor</span></code></a> class template
+        provides the ability to wrap a POSIX descriptor.
       </p>
 <h5>
 <a name="asio.reference.posix__basic_descriptor.h3"></a>
@@ -402,8 +404,7 @@ class basic_descriptor :
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

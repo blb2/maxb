@@ -21,19 +21,18 @@
 </h4></div></div></div>
 <p>
           <a class="indexterm" name="asio.indexterm.associated_executor.get"></a> 
-If <code class="computeroutput">T</code>
-          has a nested type <code class="computeroutput">executor_type</code>, returns <code class="computeroutput">t.get_executor()</code>.
-          Otherwise returns <code class="computeroutput">ex</code>.
+If <code class="computeroutput"><span class="identifier">T</span></code> has a nested type <code class="computeroutput"><span class="identifier">executor_type</span></code>,
+          returns <code class="computeroutput"><span class="identifier">t</span><span class="special">.</span><span class="identifier">get_executor</span><span class="special">()</span></code>.
+          Otherwise returns <code class="computeroutput"><span class="identifier">ex</span></code>.
         </p>
-<pre class="programlisting">static type get(
-    const T &amp; t,
-    const Executor &amp; ex = Executor());
+<pre class="programlisting"><span class="keyword">static</span> <span class="identifier">type</span> <span class="identifier">get</span><span class="special">(</span>
+    <span class="keyword">const</span> <span class="identifier">T</span> <span class="special">&amp;</span> <span class="identifier">t</span><span class="special">,</span>
+    <span class="keyword">const</span> <span class="identifier">Executor</span> <span class="special">&amp;</span> <span class="identifier">ex</span> <span class="special">=</span> <span class="identifier">Executor</span><span class="special">());</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>

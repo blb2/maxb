@@ -7,13 +7,13 @@
 <link rel="home" href="../../index.html" title="Asio">
 <link rel="up" href="../reference.html" title="Reference">
 <link rel="prev" href="WaitTraits.html" title="Wait traits requirements">
-<link rel="next" href="any_io_executor.html" title="any_io_executor">
+<link rel="next" href="WriteToken.html" title="Write token requirements">
 </head>
 <body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
 <table cellpadding="2" width="100%"><tr><td valign="top"><img alt="asio C++ library" width="250" height="60" src="../../asio.png"></td></tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="WaitTraits.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="any_io_executor.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="WaitTraits.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="WriteToken.html"><img src="../../next.png" alt="Next"></a>
 </div>
 <div class="section">
 <div class="titlepage"><div><div><h3 class="title">
@@ -21,85 +21,18 @@
 </h3></div></div></div>
 <p>
         A write handler must meet the requirements for a <a class="link" href="Handler.html" title="Handlers">handler</a>.
-        A value <code class="computeroutput">h</code> of a write handler class should work correctly in
-        the expression <code class="computeroutput">h(ec, s)</code>, where <code class="computeroutput">ec</code> is an lvalue
-        of type <code class="computeroutput">const error_code</code> and <code class="computeroutput">s</code> is an lvalue of
-        type <code class="computeroutput">const size_t</code>.
+        A value <code class="computeroutput"><span class="identifier">h</span></code> of a write handler
+        class should work correctly in the expression <code class="computeroutput"><span class="identifier">h</span><span class="special">(</span><span class="identifier">ec</span><span class="special">,</span>
+        <span class="identifier">s</span><span class="special">)</span></code>,
+        where <code class="computeroutput"><span class="identifier">ec</span></code> is an lvalue of
+        type <code class="computeroutput"><span class="keyword">const</span> <span class="identifier">error_code</span></code>
+        and <code class="computeroutput"><span class="identifier">s</span></code> is an lvalue of type
+        <code class="computeroutput"><span class="keyword">const</span> <span class="identifier">size_t</span></code>.
       </p>
-<h5>
-<a name="asio.reference.WriteHandler.h0"></a>
-        <span><a name="asio.reference.WriteHandler.examples"></a></span><a class="link" href="WriteHandler.html#asio.reference.WriteHandler.examples">Examples</a>
-      </h5>
-<p>
-        A free function as a write handler:
-      </p>
-<pre class="programlisting">void write_handler(
-    const asio::error_code&amp; ec,
-    std::size_t bytes_transferred)
-{
-  ...
-}
-</pre>
-<p>
-        A write handler function object:
-      </p>
-<pre class="programlisting">struct write_handler
-{
-  ...
-  void operator()(
-      const asio::error_code&amp; ec,
-      std::size_t bytes_transferred)
-  {
-    ...
-  }
-  ...
-};
-</pre>
-<p>
-        A lambda as a write handler:
-      </p>
-<pre class="programlisting">socket.async_write(...
-    [](const asio::error_code&amp; ec,
-      std::size_t bytes_transferred)
-    {
-      ...
-    });
-</pre>
-<p>
-        A non-static class member function adapted to a write handler using <code class="computeroutput">std::bind()</code>:
-      </p>
-<pre class="programlisting">void my_class::write_handler(
-    const asio::error_code&amp; ec,
-    std::size_t bytes_transferred)
-{
-  ...
-}
-...
-socket.async_write(...,
-    std::bind(&amp;my_class::write_handler,
-      this, std::placeholders::_1,
-      std::placeholders::_2));
-</pre>
-<p>
-        A non-static class member function adapted to a write handler using <code class="computeroutput">boost::bind()</code>:
-      </p>
-<pre class="programlisting">void my_class::write_handler(
-    const asio::error_code&amp; ec,
-    std::size_t bytes_transferred)
-{
-  ...
-}
-...
-socket.async_write(...,
-    boost::bind(&amp;my_class::write_handler,
-      this, asio::placeholders::error,
-      asio::placeholders::bytes_transferred));
-</pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
@@ -107,7 +40,7 @@ socket.async_write(...,
 </tr></table>
 <hr>
 <div class="spirit-nav">
-<a accesskey="p" href="WaitTraits.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="any_io_executor.html"><img src="../../next.png" alt="Next"></a>
+<a accesskey="p" href="WaitTraits.html"><img src="../../prev.png" alt="Prev"></a><a accesskey="u" href="../reference.html"><img src="../../up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../home.png" alt="Home"></a><a accesskey="n" href="WriteToken.html"><img src="../../next.png" alt="Next"></a>
 </div>
 </body>
 </html>

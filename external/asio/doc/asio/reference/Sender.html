@@ -24,20 +24,20 @@
         <span><a name="asio.reference.Sender.sender_and_sender_to"></a></span><a class="link" href="Sender.html#asio.reference.Sender.sender_and_sender_to">sender
         and sender_to</a>
       </h5>
-<pre class="programlisting">template&lt;class S&gt;
-  concept sender =
-    move_constructible&lt;remove_cvref_t&lt;S&gt;&gt; &amp;&amp;
-    !requires {
-      typename sender_traits&lt;remove_cvref_t&lt;S&gt;&gt;::__unspecialized; // exposition only
-    };
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">S</span><span class="special">&gt;</span>
+  <span class="identifier">concept</span> <span class="identifier">sender</span> <span class="special">=</span>
+    <span class="identifier">move_constructible</span><span class="special">&lt;</span><span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;&gt;</span> <span class="special">&amp;&amp;</span>
+    <span class="special">!</span><span class="identifier">requires</span> <span class="special">{</span>
+      <span class="keyword">typename</span> <span class="identifier">sender_traits</span><span class="special">&lt;</span><span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;&gt;::</span><span class="identifier">__unspecialized</span><span class="special">;</span> <span class="comment">// exposition only</span>
+    <span class="special">};</span>
 
-template&lt;class S, class R&gt;
-  concept sender_to =
-    sender&lt;S&gt; &amp;&amp;
-    receiver&lt;R&gt; &amp;&amp;
-    requires (S&amp;&amp; s, R&amp;&amp; r) {
-      execution::connect((S&amp;&amp;) s, (R&amp;&amp;) r);
-    };
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">S</span><span class="special">,</span> <span class="keyword">class</span> <span class="identifier">R</span><span class="special">&gt;</span>
+  <span class="identifier">concept</span> <span class="identifier">sender_to</span> <span class="special">=</span>
+    <span class="identifier">sender</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;</span> <span class="special">&amp;&amp;</span>
+    <span class="identifier">receiver</span><span class="special">&lt;</span><span class="identifier">R</span><span class="special">&gt;</span> <span class="special">&amp;&amp;</span>
+    <span class="identifier">requires</span> <span class="special">(</span><span class="identifier">S</span><span class="special">&amp;&amp;</span> <span class="identifier">s</span><span class="special">,</span> <span class="identifier">R</span><span class="special">&amp;&amp;</span> <span class="identifier">r</span><span class="special">)</span> <span class="special">{</span>
+      <span class="identifier">execution</span><span class="special">::</span><span class="identifier">connect</span><span class="special">((</span><span class="identifier">S</span><span class="special">&amp;&amp;)</span> <span class="identifier">s</span><span class="special">,</span> <span class="special">(</span><span class="identifier">R</span><span class="special">&amp;&amp;)</span> <span class="identifier">r</span><span class="special">);</span>
+    <span class="special">};</span>
 </pre>
 <p>
         None of these operations shall introduce data races as a result of concurrent
@@ -58,33 +58,32 @@ template&lt;class S, class R&gt;
       </h5>
 <p>
         A sender is <span class="bold"><strong>typed</strong></span> if it declares what types
-        it sends through a receiver's channels. The <code class="computeroutput">typed_sender</code> concept
-        is defined as:
+        it sends through a receiver's channels. The <code class="computeroutput"><span class="identifier">typed_sender</span></code>
+        concept is defined as:
       </p>
-<pre class="programlisting">template&lt;template&lt;template&lt;class...&gt; class Tuple, template&lt;class...&gt; class Variant&gt; class&gt;
-  struct has-value-types; // exposition only
+<pre class="programlisting"><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span><span class="special">...&gt;</span> <span class="keyword">class</span> <span class="identifier">Tuple</span><span class="special">,</span> <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span><span class="special">...&gt;</span> <span class="keyword">class</span> <span class="identifier">Variant</span><span class="special">&gt;</span> <span class="keyword">class</span><span class="special">&gt;</span>
+  <span class="keyword">struct</span> <span class="identifier">has</span><span class="special">-</span><span class="identifier">value</span><span class="special">-</span><span class="identifier">types</span><span class="special">;</span> <span class="comment">// exposition only</span>
 
-template&lt;template&lt;class...&gt; class Variant&gt;
-  struct has-error-types; // exposition only
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span><span class="special">...&gt;</span> <span class="keyword">class</span> <span class="identifier">Variant</span><span class="special">&gt;</span>
+  <span class="keyword">struct</span> <span class="identifier">has</span><span class="special">-</span><span class="identifier">error</span><span class="special">-</span><span class="identifier">types</span><span class="special">;</span> <span class="comment">// exposition only</span>
 
-template&lt;class S&gt;
-  concept has-sender-types = // exposition only
-    requires {
-      typename has-value-types&lt;S::template value_types&gt;;
-      typename has-error-types&lt;S::template error_types&gt;;
-      typename bool_constant&lt;S::sends_done&gt;;
-    };
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">S</span><span class="special">&gt;</span>
+  <span class="identifier">concept</span> <span class="identifier">has</span><span class="special">-</span><span class="identifier">sender</span><span class="special">-</span><span class="identifier">types</span> <span class="special">=</span> <span class="comment">// exposition only</span>
+    <span class="identifier">requires</span> <span class="special">{</span>
+      <span class="keyword">typename</span> <span class="identifier">has</span><span class="special">-</span><span class="identifier">value</span><span class="special">-</span><span class="identifier">types</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">::</span><span class="keyword">template</span> <span class="identifier">value_types</span><span class="special">&gt;;</span>
+      <span class="keyword">typename</span> <span class="identifier">has</span><span class="special">-</span><span class="identifier">error</span><span class="special">-</span><span class="identifier">types</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">::</span><span class="keyword">template</span> <span class="identifier">error_types</span><span class="special">&gt;;</span>
+      <span class="keyword">typename</span> <span class="identifier">bool_constant</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">::</span><span class="identifier">sends_done</span><span class="special">&gt;;</span>
+    <span class="special">};</span>
 
-template&lt;class S&gt;
-  concept typed_sender =
-    sender&lt;S&gt; &amp;&amp;
-    has-sender-types&lt;sender_traits&lt;remove_cvref_t&lt;S&gt;&gt;&gt;;
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">S</span><span class="special">&gt;</span>
+  <span class="identifier">concept</span> <span class="identifier">typed_sender</span> <span class="special">=</span>
+    <span class="identifier">sender</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;</span> <span class="special">&amp;&amp;</span>
+    <span class="identifier">has</span><span class="special">-</span><span class="identifier">sender</span><span class="special">-</span><span class="identifier">types</span><span class="special">&lt;</span><span class="identifier">sender_traits</span><span class="special">&lt;</span><span class="identifier">remove_cvref_t</span><span class="special">&lt;</span><span class="identifier">S</span><span class="special">&gt;&gt;&gt;;</span>
 </pre>
 </div>
 <table xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" width="100%"><tr>
 <td align="left"></td>
-<td align="right"><div class="copyright-footer">Copyright © 2003-2021 Christopher
-      M. Kohlhoff<p>
+<td align="right"><div class="copyright-footer">Copyright © 2003-2022 Christopher M. Kohlhoff<p>
         Distributed under the Boost Software License, Version 1.0. (See accompanying
         file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
       </p>
