@@ -17,7 +17,6 @@
  * along with maxb.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "stdafx.h"
 #include "platform.h"
 
 struct sender_data {
