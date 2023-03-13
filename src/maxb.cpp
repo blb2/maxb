@@ -17,6 +17,19 @@
  * along with maxb.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <cassert>
+#include <cstdint>
+#include <cstdio>
+#include <cstdlib>
+#include <algorithm>
+#include <chrono>
+#include <future>
+#include <memory>
+#include <random>
+#include <string>
+#include <thread>
+#include <vector>
+#include <asio.hpp>
 #include "platform.h"
 
 struct sender_data {

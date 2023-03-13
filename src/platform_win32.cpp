@@ -17,6 +17,8 @@
  * along with maxb.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+#include <windows.h>
+
 void set_thread_affinity(unsigned int cpu_num)
 {
 	SetThreadAffinityMask(GetCurrentThread(), (DWORD_PTR)1 << cpu_num);

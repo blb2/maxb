@@ -15,7 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "stdafx.h"
+#include <pthread.h>
+#include <sched.h>
 
 void set_thread_affinity(unsigned int cpu_num)
 {
