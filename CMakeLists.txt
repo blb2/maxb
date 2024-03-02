@@ -1,19 +1,21 @@
 cmake_minimum_required(VERSION 3.16)
 
-# For Windows and using CMake >= 3.27, ensure that the version of the Windows
-# SDK that's selected is 10.0 and not a specific version. This is only done if
-# version= is not given on command-line. This has to be done before project().
-if(WIN32 AND "${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.27")
-	if(NOT "${CMAKE_GENERATOR_PLATFORM}" MATCHES "version=")
-		if(CMAKE_GENERATOR_PLATFORM)
-			string(APPEND CMAKE_GENERATOR_PLATFORM ",")
-		endif()
-		string(APPEND CMAKE_GENERATOR_PLATFORM "version=10.0")
-	endif()
-endif()
-# If CMAKE_SYSTEM_VERSION is not given, default to Windows 10.
-if(WIN32 AND NOT CMAKE_SYSTEM_VERSION)
+if(WIN32)
+	# Default to Windows 10.
 	set(CMAKE_SYSTEM_VERSION 10.0 CACHE INTERNAL "")
+
+	# Set some variables/values that were introduced with CMake >= 3.27.
+	if("${CMAKE_VERSION}" VERSION_GREATER_EQUAL "3.27")
+		# Ensure that the version of the Windows SDK that's selected is 10.0 and
+		# not a specific version. This is only done if version= is not given on
+		# command-line. This has to be done before project().
+		if("${CMAKE_GENERATOR}" MATCHES "Visual Studio" AND NOT "${CMAKE_GENERATOR_PLATFORM}" MATCHES "version=")
+			if(CMAKE_GENERATOR_PLATFORM)
+				string(APPEND CMAKE_GENERATOR_PLATFORM ",")
+			endif()
+			string(APPEND CMAKE_GENERATOR_PLATFORM "version=10.0")
+		endif()
+	endif()
 endif()
 
 project(maxb VERSION 0.1.0 LANGUAGES CXX)
@@ -37,6 +39,8 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
 	set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
 elseif(CMAKE_BUILD_TYPE)
 	message(STATUS "CMake Build Type: ${CMAKE_BUILD_TYPE}")
+elseif(CMAKE_CONFIGURATION_TYPES)
+	message(STATUS "CMake Build Types: ${CMAKE_CONFIGURATION_TYPES}")
 endif()
 
 # Allow usage of folders if supported.
