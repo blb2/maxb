@@ -107,7 +107,7 @@ int main(int argc, char* argv[])
 	if (argc != 3) {
 		fprintf(stderr, "Usage: %s ip time\n", argv[0]);
 		return EXIT_FAILURE;
-	} 
+	}
 
 	asio::ip::udp::endpoint endpoint;
 	if (!parse_addr(argv[1], endpoint)) {
