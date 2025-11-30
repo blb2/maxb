@@ -46,8 +46,8 @@ endif()
 # Allow usage of folders if supported.
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-# This project requires at least C++14.
-set(CMAKE_CXX_STANDARD 14)
+# This project requires at least C++20.
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -99,8 +99,8 @@ else()
 endif()
 
 if(WIN32)
-	# Target Windows 7 at a minimum.
-	string(APPEND PROJ_CXX_FLAGS " /D_WIN32_WINNT=0x0601")
+	# Target Windows 10 at a minimum.
+	string(APPEND PROJ_CXX_FLAGS " /D_WIN32_WINNT=0x0A00")
 	# Ensure the WIN32 macro is defined.
 	string(APPEND PROJ_CXX_FLAGS " /DWIN32")
 	# Put the Win32 API onto a diet.
@@ -110,8 +110,6 @@ if(WIN32)
 else()
 	string(APPEND PROJ_CXX_FLAGS " /D_GNU_SOURCE")
 endif()
-
-string(APPEND PROJ_CXX_FLAGS " /DASIO_STANDALONE")
 
 # Set the flag overrides.
 set(CMAKE_CXX_FLAGS "${PROJ_CXX_FLAGS}" CACHE STRING "" FORCE)
@@ -168,3 +166,4 @@ endif()
 add_executable(maxb ${SOURCES} ${HEADERS})
 target_precompile_headers(maxb PRIVATE ${PCH})
 target_include_directories(maxb PRIVATE "external/asio/include")
+target_compile_definitions(maxb PRIVATE ASIO_STANDALONE)
