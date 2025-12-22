@@ -81,8 +81,9 @@ static void send(asio::ip::udp::socket& sock, const uint8_t* p_buf, int buf_size
 
 		if (num_sent != num_send) {
 			fprintf(stderr, "send incomplete\n");
-			if (num_sent == 0)
+			if (num_sent == 0) {
 				break;
+			}
 		}
 
 		p_buf += num_sent;
@@ -93,8 +94,9 @@ static void send(sender_data* p_sender)
 {
 	int num_sends;
 
-	for (num_sends = 0; std::chrono::high_resolution_clock::now() - p_sender->reftime < p_sender->duration; num_sends++)
+	for (num_sends = 0; std::chrono::high_resolution_clock::now() - p_sender->reftime < p_sender->duration; num_sends++) {
 		send(*p_sender->p_socket, p_sender->p_buf, p_sender->buf_size, p_sender->pkt_size, p_sender->p_endpoint);
+	}
 
 	p_sender->num_sends.set_value(num_sends);
 }
@@ -122,15 +124,17 @@ int main(int argc, char* argv[])
 	}
 
 	std::unique_ptr<uint8_t[]> p_buf = std::make_unique<uint8_t[]>(buf_size);
-	for (size_t i = 0, n = buf_size; i != n; i++)
+	for (size_t i = 0, n = buf_size; i != n; i++) {
 		p_buf[i] = 'A' + (i % 26);
+	}
 
 	asio::io_service io;
 	asio::io_service::work* p_work = new asio::io_service::work(io);
 
 	std::vector<std::thread> io_threads;
-	for (unsigned int i = 0, n = std::thread::hardware_concurrency(); i != n; i++)
+	for (unsigned int i = 0, n = std::thread::hardware_concurrency(); i != n; i++) {
 		io_threads.emplace_back([i, &io]() { set_thread_affinity(i); io.run(); });
+	}
 
 	std::random_device random_device;
 	std::default_random_engine random_engine(random_device());
@@ -177,8 +181,9 @@ int main(int argc, char* argv[])
 	double elapsed  = std::chrono::duration_cast<std::chrono::duration<double>>(end_time - beg_time).count();
 
 	delete p_work;
-	for (auto& thread : io_threads)
+	for (auto& thread : io_threads) {
 		thread.join();
+	}
 
 	printf("%f Mbps over %f seconds\n", ((8.0 * num_sends * buf_size) / elapsed) / (1000.0 * 1000.0), elapsed);
 }
