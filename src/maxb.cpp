@@ -36,10 +36,10 @@ struct sender_data {
 	std::chrono::high_resolution_clock::time_point reftime;
 	std::chrono::seconds duration;
 
-	asio::ip::udp::socket*   p_socket;
-	asio::ip::udp::endpoint* p_endpoint;
+	asio::ip::udp::socket*   socket;
+	asio::ip::udp::endpoint* endpoint;
 
-	const uint8_t* p_buf;
+	const uint8_t* buf;
 	int buf_size;
 	int pkt_size;
 
@@ -64,15 +64,15 @@ static bool parse_int(const char* str, int& value)
 	}
 }
 
-static void send(asio::ip::udp::socket& sock, const uint8_t* p_buf, int buf_size, int pkt_size, asio::ip::udp::endpoint* p_endpoint)
+static void send(asio::ip::udp::socket& socket, const uint8_t* buf, int buf_size, int pkt_size, asio::ip::udp::endpoint* endpoint)
 {
-	const uint8_t* p_buf_end = p_buf + buf_size;
+	const uint8_t* buf_end = buf + buf_size;
 	asio::error_code ec;
 
-	while (p_buf != p_buf_end) {
-		size_t num_send = std::min<size_t>(p_buf_end - p_buf, pkt_size);
-		size_t num_sent = p_endpoint ? sock.send_to(asio::buffer(p_buf, num_send), *p_endpoint, 0, ec) :
-		                               sock.send(asio::buffer(p_buf, num_send), 0, ec);
+	while (buf != buf_end) {
+		size_t num_send = std::min<size_t>(buf_end - buf, pkt_size);
+		size_t num_sent = endpoint ? socket.send_to(asio::buffer(buf, num_send), *endpoint, 0, ec) :
+		                             socket.send(asio::buffer(buf, num_send), 0, ec);
 
 		if (ec) {
 			fprintf(stderr, "send error: %s\n", ec.message().c_str());
@@ -86,19 +86,19 @@ static void send(asio::ip::udp::socket& sock, const uint8_t* p_buf, int buf_size
 			}
 		}
 
-		p_buf += num_sent;
+		buf += num_sent;
 	}
 }
 
-static void send(sender_data* p_sender)
+static void send(sender_data* sender)
 {
 	int num_sends;
 
-	for (num_sends = 0; std::chrono::high_resolution_clock::now() - p_sender->reftime < p_sender->duration; num_sends++) {
-		send(*p_sender->p_socket, p_sender->p_buf, p_sender->buf_size, p_sender->pkt_size, p_sender->p_endpoint);
+	for (num_sends = 0; std::chrono::high_resolution_clock::now() - sender->reftime < sender->duration; num_sends++) {
+		send(*sender->socket, sender->buf, sender->buf_size, sender->pkt_size, sender->endpoint);
 	}
 
-	p_sender->num_sends.set_value(num_sends);
+	sender->num_sends.set_value(num_sends);
 }
 
 int main(int argc, char* argv[])
@@ -123,13 +123,13 @@ int main(int argc, char* argv[])
 		return EXIT_FAILURE;
 	}
 
-	std::unique_ptr<uint8_t[]> p_buf = std::make_unique<uint8_t[]>(buf_size);
+	std::unique_ptr<uint8_t[]> buf = std::make_unique<uint8_t[]>(buf_size);
 	for (size_t i = 0, n = buf_size; i != n; i++) {
-		p_buf[i] = 'A' + (i % 26);
+		buf[i] = 'A' + (i % 26);
 	}
 
 	asio::io_service io;
-	asio::io_service::work* p_work = new asio::io_service::work(io);
+	asio::io_service::work* io_work = new asio::io_service::work(io);
 
 	std::vector<std::thread> io_threads;
 	for (unsigned int i = 0, n = std::thread::hardware_concurrency(); i != n; i++) {
@@ -140,25 +140,25 @@ int main(int argc, char* argv[])
 	std::default_random_engine random_engine(random_device());
 	std::uniform_int_distribution<uint16_t> random_dist(1024 + 1);
 
-	asio::ip::udp::socket sock(io);
+	asio::ip::udp::socket socket(io);
 	endpoint.port(random_dist(random_engine));
 
 	asio::ip::udp::endpoint* p_endpoint = nullptr;
 	if (!endpoint.address().is_loopback()) {
 		asio::error_code ec;
-		sock.connect(endpoint, ec);
+		socket.connect(endpoint, ec);
 		assert(!ec);
 	} else {
-		sock.open(asio::ip::udp::v4());
+		socket.open(asio::ip::udp::v4());
 		p_endpoint = &endpoint;
 	}
 
 	std::vector<sender_data> senders(std::thread::hardware_concurrency());
 	for (auto& sender : senders) {
 		sender.duration   = std::chrono::seconds(time_sec);
-		sender.p_socket   = &sock;
-		sender.p_endpoint = p_endpoint;
-		sender.p_buf      = p_buf.get();
+		sender.socket     = &socket;
+		sender.endpoint   = p_endpoint;
+		sender.buf        = buf.get();
 		sender.buf_size   = buf_size;
 		sender.pkt_size   = pkt_size;
 	}
@@ -166,9 +166,9 @@ int main(int argc, char* argv[])
 	auto beg_time = std::chrono::high_resolution_clock::now();
 
 	for (size_t i = 0, n = senders.size(); i != n; i++) {
-		sender_data* p_sender = &senders[i];
-		p_sender->reftime = beg_time;
-		p_sender->thread  = std::thread([i, p_sender]() { set_thread_affinity((int)i); send(p_sender); });
+		sender_data* sender = &senders[i];
+		sender->reftime = beg_time;
+		sender->thread  = std::thread([i, sender]() { set_thread_affinity((int)i); send(sender); });
 	}
 
 	int num_sends = 0;
@@ -180,7 +180,9 @@ int main(int argc, char* argv[])
 	auto   end_time = std::chrono::high_resolution_clock::now();
 	double elapsed  = std::chrono::duration_cast<std::chrono::duration<double>>(end_time - beg_time).count();
 
-	delete p_work;
+	delete io_work;
+	io_work = nullptr;
+	
 	for (auto& thread : io_threads) {
 		thread.join();
 	}
